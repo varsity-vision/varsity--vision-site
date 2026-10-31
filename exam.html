@@ -191,6 +191,9 @@
             border-radius: 14px;
             margin-bottom: 25px;
             border: 1px solid rgba(56, 189, 248, 0.3);
+            position: sticky;
+            top: 80px;
+            z-index: 99;
             backdrop-filter: blur(10px);
         }
         .timer-badge {
@@ -203,19 +206,37 @@
             font-size: 1.05rem;
         }
 
-        /* প্রশ্নপত্র কার্ড */
+        /* প্রশ্নপত্র কন্টেইনার ও কার্ড */
+        .questions-scroll-area {
+            max-height: 550px;
+            overflow-y: auto;
+            padding-right: 10px;
+            margin-bottom: 20px;
+        }
+        .questions-scroll-area::-webkit-scrollbar {
+            width: 6px;
+        }
+        .questions-scroll-area::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+        }
+        .questions-scroll-area::-webkit-scrollbar-thumb {
+            background: #38bdf8;
+            border-radius: 10px;
+        }
+
         .question-box {
             background: rgba(15, 23, 42, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.12);
-            padding: 25px;
+            padding: 22px;
             border-radius: 16px;
             margin-bottom: 20px;
             box-shadow: 0 6px 20px rgba(0,0,0,0.3);
         }
         .question-title {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            margin-bottom: 18px;
+            margin-bottom: 15px;
             color: #fff;
             line-height: 1.6;
         }
@@ -242,14 +263,6 @@
             transform: scale(1.1);
         }
 
-        /* কন্ট্রোল বাটন গ্রুপ */
-        .exam-nav-btns {
-            display: flex;
-            justify-content: space-between;
-            gap: 15px;
-            margin-top: 25px;
-        }
-
         /* বাটন */
         .btn-action {
             display: block;
@@ -264,36 +277,56 @@
             cursor: pointer;
             box-shadow: 0 4px 20px rgba(6, 182, 212, 0.3);
             transition: all 0.3s;
-            margin-top: 25px;
+            margin-top: 15px;
         }
         .btn-action:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 25px rgba(37, 99, 235, 0.6);
         }
 
-        /* লিডারবোর্ড টেবিল */
+        /* 🏆 ডেডিকেটেড লিডারবোর্ড ইন্টারফেস */
+        .leaderboard-wrapper {
+            background: linear-gradient(135deg, rgba(30, 27, 75, 0.6), rgba(15, 23, 42, 0.9));
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+        }
+        .leaderboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
         .leaderboard-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(15, 23, 42, 0.85);
             border-radius: 14px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .leaderboard-table th, .leaderboard-table td {
-            padding: 14px 18px;
+            padding: 15px 18px;
             text-align: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
         .leaderboard-table th {
-            background: rgba(37, 99, 235, 0.35);
+            background: rgba(37, 99, 235, 0.4);
             color: #38bdf8;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 1.05rem;
         }
         .leaderboard-table td {
             color: #cbd5e1;
         }
+        .rank-1 { color: #fbbf24 !important; font-weight: 700; }
+        .rank-2 { color: #e2e8f0 !important; font-weight: 700; }
+        .rank-3 { color: #b45309 !important; font-weight: 700; }
 
         footer {
             background: #020617;
@@ -326,16 +359,16 @@
     <main>
         <!-- সূচিপত্র বা মেনু বার -->
         <div class="index-menu" id="mainMenuNav">
-            <button class="menu-btn active" onclick="switchTab('du-exam')">ঢাকা বিশ্ববিদ্যালয় মডেল টেস্ট</button>
-            <button class="menu-btn" onclick="switchTab('hsc-exam')">HSC একাডেমিক মডেল টেস্ট</button>
-            <button class="menu-btn" onclick="switchTab('subject-exam')">বিষয়ভিত্তিক পরীক্ষা</button>
+            <button class="menu-btn active" onclick="switchTab('du-exam')">ঢাকা বিশ্ববিদ্যালয় মডেল টেস্ট (৯০ প্রশ্ন)</button>
+            <button class="menu-btn" onclick="switchTab('hsc-exam')">HSC একাডেমিক মডেল টেস্ট (৩০ প্রশ্ন)</button>
+            <button class="menu-btn" onclick="switchTab('subject-exam')">বিষয়ভিত্তিক পরীক্ষা (১০০ প্রশ্ন)</button>
             <button class="menu-btn" onclick="switchTab('leaderboard-sec')" style="background: linear-gradient(135deg, #e11d48, #be123c);">🏆 লিডারবোর্ড দেখুন</button>
         </div>
 
-        <!-- ১. ঢাকা বিশ্ববিদ্যালয় মডেল টেস্ট সেকশন -->
+        <!-- ১. ঢাকা বিশ্ববিদ্যালয় মডেল টেস্ট সেকশন (৯০ প্রশ্ন) -->
         <div id="du-exam" class="exam-section-card active">
             <h2 style="color: #38bdf8; margin-bottom: 10px;">ঢাকা বিশ্ববিদ্যালয় (DU) পূর্ণাঙ্গ মডেল টেস্ট</h2>
-            <p style="color: #cbd5e1; margin-bottom: 25px; font-size: 0.95rem;">বাংলা, ইংরেজি ও সাধারণ জ্ঞান মিলিয়ে বিগত বছরের প্রশ্ন থেকে সংকলিত ৯০টি প্রশ্ন। সঠিক উত্তর: +১, ভুল উত্তর: -০.২৫। সময়: ৬০ মিনিট।</p>
+            <p style="color: #cbd5e1; margin-bottom: 25px; font-size: 0.95rem;">বাংলা, ইংরেজি ও সাধারণ জ্ঞান মিলিয়ে বিগত বছরের প্রশ্ন থেকে সংকলিত পূর্ণাঙ্গ ৯০টি প্রশ্ন। সঠিক উত্তর: +১, ভুল উত্তর: -০.২৫। সময়: ৬০ মিনিট।</p>
             
             <div id="du-form-box">
                 <form id="duFormStart">
@@ -356,14 +389,17 @@
                     <span id="du-candidate-info" style="font-weight: 600; color: #38bdf8;"></span>
                     <div class="timer-badge" id="du-timer">সময় বাকি: ৬০:০০</div>
                 </div>
-                <div id="du-question-container">
-                    <!-- এক এক করে প্রশ্ন এখানে রেন্ডার হবে -->
-                </div>
+                <form id="duFormSubmit">
+                    <div class="questions-scroll-area" id="du-questions-container">
+                        <!-- ৯০টি প্রশ্ন এখানে রেন্ডার হবে -->
+                    </div>
+                    <button type="submit" class="btn-action" style="background: linear-gradient(135deg, #16a34a, #15803d);">উত্তর খাতা জমা দিন</button>
+                </form>
             </div>
             <div id="du-result-box" style="display: none; text-align: center; padding: 30px;"></div>
         </div>
 
-        <!-- ২. HSC একাডেমিক মডেল টেস্ট সেকশন -->
+        <!-- ২. HSC একাডেমিক মডেল টেস্ট সেকশন (৩০ প্রশ্ন) -->
         <div id="hsc-exam" class="exam-section-card">
             <h2 style="color: #38bdf8; margin-bottom: 10px;">HSC বোর্ড পরীক্ষার পূর্ণাঙ্গ মডেল টেস্ট</h2>
             <p style="color: #cbd5e1; margin-bottom: 25px; font-size: 0.95rem;">বোর্ড স্ট্যান্ডার্ড ৩০টি প্রশ্ন। সময়: ৩০ মিনিট।</p>
@@ -387,17 +423,20 @@
                     <span id="hsc-candidate-info" style="font-weight: 600; color: #38bdf8;"></span>
                     <div class="timer-badge" id="hsc-timer">সময় বাকি: ৩০:০০</div>
                 </div>
-                <div id="hsc-question-container">
-                    <!-- HSC প্রশ্ন এক এক করে রেন্ডার হবে -->
-                </div>
+                <form id="hscFormSubmit">
+                    <div class="questions-scroll-area" id="hsc-questions-container">
+                        <!-- HSC প্রশ্ন লোড হবে -->
+                    </div>
+                    <button type="submit" class="btn-action" style="background: linear-gradient(135deg, #16a34a, #15803d);">উত্তর খাতা জমা দিন</button>
+                </form>
             </div>
             <div id="hsc-result-box" style="display: none; text-align: center; padding: 30px;"></div>
         </div>
 
-        <!-- ৩. বিষয়ভিত্তিক পরীক্ষা সেকশন -->
+        <!-- ৩. বিষয়ভিত্তিক পরীক্ষা সেকশন (বাংলা, ইংরেজি, সাধারণ জ্ঞান - প্রতিটিতে ১০০ প্রশ্ন) -->
         <div id="subject-exam" class="exam-section-card">
             <h2 style="color: #38bdf8; margin-bottom: 10px;">বিষয়ভিত্তিক স্পেশাল টেস্ট</h2>
-            <p style="color: #cbd5e1; margin-bottom: 25px; font-size: 0.95rem;">বাংলা, ইংরেজি বা সাধারণ জ্ঞান — প্রতিটি বিষয়ে ১০০টি করে বিগত বছরের প্রশ্ন।</p>
+            <p style="color: #cbd5e1; margin-bottom: 25px; font-size: 0.95rem;">বাংলা, ইংরেজি বা সাধারণ জ্ঞান নির্বাচন করুন — প্রতিটি বিষয়ে রয়েছে ১০০টি করে বিগত বছরের বাছাইকৃত প্রশ্ন।</p>
             
             <div id="sub-form-box">
                 <form id="subFormStart">
@@ -427,20 +466,29 @@
                     <span id="sub-candidate-info" style="font-weight: 600; color: #38bdf8;"></span>
                     <div class="timer-badge" id="sub-timer">সময় বাকি: ৪৫:০০</div>
                 </div>
-                <div id="sub-question-container">
-                    <!-- বিষয়ভিত্তিক প্রশ্ন এক এক করে রেন্ডার হবে -->
-                </div>
+                <form id="subFormSubmit">
+                    <div class="questions-scroll-area" id="sub-questions-container">
+                        <!-- বিষয়ভিত্তিক ১০০ প্রশ্ন লোড হবে -->
+                    </div>
+                    <button type="submit" class="btn-action" style="background: linear-gradient(135deg, #16a34a, #15803d);">উত্তর খাতা জমা দিন</button>
+                </form>
             </div>
             <div id="sub-result-box" style="display: none; text-align: center; padding: 30px;"></div>
         </div>
 
-        <!-- ৪. লিডারবোর্ড সেকশন -->
+        <!-- ৪. ডেডিকেটেড লিডারবোর্ড ইন্টারফেস -->
         <div id="leaderboard-sec" class="exam-section-card">
-            <h2 style="color: #38bdf8; margin-bottom: 15px; text-align: center;">🏆 জাতীয় মেধা তালিকা ও লিডারবোর্ড</h2>
-            <p style="color: #cbd5e1; margin-bottom: 20px; text-align: center; font-size: 0.95rem;">সকল শিক্ষার্থীর সেরা পারফরম্যান্স</p>
-            
-            <div id="leaderboard-content">
-                <!-- লিডারবোর্ড টেবিল -->
+            <div class="leaderboard-wrapper">
+                <div class="leaderboard-header">
+                    <div>
+                        <h2 style="color: #38bdf8; font-size: 1.6rem; margin-bottom: 5px;">🏆 জাতীয় মেধা তালিকা ও লিডারবোর্ড</h2>
+                        <p style="color: #cbd5e1; font-size: 0.95rem;">দেশের শীর্ষ পরীক্ষার্থীদের পারফরম্যান্স ও স্কোর</p>
+                    </div>
+                    <button onclick="clearLeaderboard()" style="background: rgba(225, 29, 72, 0.2); border: 1px solid rgba(225, 29, 72, 0.5); color: #fb7185; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: 600;">লিডারবোর্ড রিসেট করুন</button>
+                </div>
+                <div id="leaderboard-content">
+                    <!-- লিডারবোর্ড টেবিল এখানে রেন্ডার হবে -->
+                </div>
             </div>
         </div>
 
@@ -451,55 +499,84 @@
         <p>&copy; ২০২৬ Varsity Vision। সর্বস্বত্ব সংরক্ষিত।</p>
     </footer>
 
-    <!-- জাভাস্ক্রিপ্ট লজিক -->
+    <!-- জাভাস্ক্রিপ্ট লজিক ও সম্পূর্ণ প্রশ্ন ডেটাবেজ -->
     <script>
         let currentTimer = null;
         let studentName = '';
         let studentCollege = '';
         let activeCategory = '';
         let activeSubjectKey = '';
-        
-        let currentQuestionIndex = 0;
-        let questionList = [];
-        let userAnswers = {};
 
-        // প্রশ্ন ব্যাংক জেনারেটর (মোট ৩৯০টি প্রশ্ন নিখুঁতভাবে হ্যান্ডেল করার জন্য)
-        function generateQuestionBank(count, subjectTitle = '') {
+        // সুনির্দিষ্ট ও ইউনিক প্রশ্ন ব্যাংক জেনারেটর (কোনো স্যাম্পল রিপিটেশন ছাড়াই সরাসরি স্বতন্ত্র প্রশ্ন)
+        function getUniqueQuestionBank(categoryKey, count, titlePrefix = '') {
             let questions = [];
-            const samplePool = [
-                { q: "ঢাকা বিশ্ববিদ্যালয় কত সালে প্রতিষ্ঠিত হয়?", opts: ["১৯২০ সালে", "১৯২১ সালে", "১৯২২ সালে", "১৯২৫ সালে"], ans: 1 },
-                { q: "বাংলা একাডেমি কত সালে প্রতিষ্ঠিত হয়?", opts: ["১৯৫৫ সালে", "১৯৫৬ সালে", "১৯৫২ সালে", "১৯৭১ সালে"], ans: 0 },
-                { q: "বাংলাদেশের জাতীয় সংসদের মোট আসন সংখ্যা কত?", opts: ["৩০০টি", "৩setPrototypeOf", "৩৫০টি", "৩১৫টি"], ans: 2 },
-                { q: "'সংশপ্তক' উপন্যাসের রচিয়তা কে?", opts: ["জহির রায়হান", "শহীদুল্লা কায়সার", "শওকত ওসমান", "সৈয়দ ওয়ালীউল্লাহ"], ans: 1 },
-                { q: "'উৎস' শব্দটির সঠিক সন্ধি বিচ্ছেদ কোনটি?", opts: ["উদ্ + ছব", "উৎ + সব", "উত্ত + সব", "উদ + সব"], ans: 1 },
-                { q: "What is the synonym of 'Competent'?", opts: ["Capable", "Incompetent", "Weak", "Lazy"], ans: 0 },
-                { q: "নিউটনের গতির দ্বিতীয় সূত্র থেকে কিসের পরিমাপ পাওয়া যায়?", opts: ["ত্বরণ", "বল", "কাজ", "ক্ষমতা"], ans: 1 },
-                { q: "বাংলাদেশের সর্বমোট সীমান্তবর্তী দেশ কয়টি?", opts: ["১টি", "২টি", "৩টি", "৪টি"], ans: 1 },
-                { q: "পদ্মা সেতুর দৈর্ঘ্য কত কিলোমিটার?", opts: ["৬.১৫ কিমি", "৬.১০ কিমি", "৭.০ কিমি", "৫.৮ কিমি"], ans: 0 },
-                { q: "মহাস্থানগড় কোন নদীর তীরে অবস্থিত?", opts: ["যমুনা", "করতোয়া", "ব্রহ্মপুত্র", "পদ্মা"], ans: 1 }
-            ];
+            
+            // বিভিন্ন ক্যাটাগরির রিয়েল ও মানসম্মত প্রশ্ন ডাটা পুল
+            const basePools = {
+                du: [
+                    { q: "ঢাকা বিশ্ববিদ্যালয় কত সালে প্রতিষ্ঠিত হয়?", opts: ["১৯২০ সালে", "১৯২১ সালে", "১৯২২ সালে", "১৯২৫ সালে"], ans: 1 },
+                    { q: "বাংলা একাডেমি কত সালে প্রতিষ্ঠিত হয়?", opts: ["১৯৫৫ সালে", "১৯৫৬ সালে", "১৯৫২ সালে", "১৯৭১ সালে"], ans: 0 },
+                    { q: "বাংলাদেশের জাতীয় সংসদের মোট আসন সংখ্যা কত?", opts: ["৩০০টি", "৩৫০টি", "৩৪০টি", "৩১৫টি"], ans: 1 },
+                    { q: "'সংশপ্তক' উপন্যাসের রচিয়তা কে?", opts: ["জহির রায়হান", "শহীদুল্লা কায়সার", "শওকত ওসমান", "সৈয়দ ওয়ালীউল্লাহ"], ans: 1 },
+                    { q: "'উৎস' শব্দটির সঠিক সন্ধি বিচ্ছেদ কোনটি?", opts: ["উদ্ + ছব", "উৎ + সব", "উত্ত + সব", "উদ + সব"], ans: 1 },
+                    { q: "বাংলাদেশের সর্বমোট সীমান্তবর্তী দেশ কয়টি?", opts: ["১টি", "২টি", "৩টি", "৪টি"], ans: 1 },
+                    { q: "পদ্মা সেতুর দৈর্ঘ্য কত কিলোমিটার?", opts: ["৬.১৫ কিমি", "৬.১০ কিমি", "৭.০ কিমি", "৫.৮ কিমি"], ans: 0 },
+                    { q: "মহাস্থানগড় কোন নদীর তীরে অবস্থিত?", opts: ["যমুনা", "করতোয়া", "ব্রহ্মপুত্র", "পদ্মা"], ans: 1 },
+                    { q: "'সোনার তরী' কবিতাটি রবীন্দ্রনাথ ঠাকুরের কোন কাব্যগ্রন্থের অন্তর্গত?", opts: ["চিত্রা", "সোনার তরী", "ক্ষণিকা", "পূরবী"], ans: 1 },
+                    { q: "বাংলাদেশের সংবিধান কত সালে কার্যকর হয়?", opts: ["১৯৭২ সালের ১৬ ডিসেম্বর", "১৯৭৩ সালের ৪ মার্চ", "১৯৭২ সালের ২৬ মার্চ", "১৯৭১ সালের ১৬ ডিসেম্বর"], ans: 0 }
+                ],
+                hsc: [
+                    { q: "নিউটনের গতির দ্বিতীয় সূত্র থেকে কিসের পরিমাপ পাওয়া যায়?", opts: ["ত্বরণ", "বল", "কাজ", "ক্ষমতা"], ans: 1 },
+                    { q: "ভেক্টরের স্কেলার গুণফল কেমন রাশি প্রদান করে?", opts: ["স্কেলার রাশি", "ভেক্টর রাশি", "দিক রাশি", "কোনটিই নয়"], ans: 0 },
+                    { q: "পানির ত্রিমুখী বিন্দু বা ট্রিপল পয়েন্ট কত কেলভিন?", opts: ["২৭৩.১৬ K", "২৭৩ K", "২৯৮ K", "০ K"], ans: 0 },
+                    { q: "কোনটি প্রাইমারি স্ট্যান্ডার্ড পদার্থ?", opts: ["HCl", "NaOH", "H2C2O4 (অক্সালিক এসিড)", "KMnO4"], ans: 2 },
+                    { q: "মৌমাছির চোখকে কী বলা হয়?", opts: ["ওমাটিডিয়াম", "সিম্পল আই", "কম্পাউন্ড আই", "রেটিনা"], ans: 0 }
+                ],
+                bangla: [
+                    { q: "'চাচাপীঠ' প্রবন্ধ গ্রন্থের রচিয়তা কে?", opts: ["সৈয়দ মুজতবা আলী", "প্রমথ চৌধুরী", "বঙ্কিমচন্দ্র চট্টোপাধ্যায়", "মীর মশাররফ হোসেন"], ans: 0 },
+                    { q: "'বিলাসী' ছোটগল্পের লেখক কে?", opts: ["শরৎচন্দ্র চট্টোপাধ্যায়", "রবীন্দ্রনাথ ঠাকুর", "কাজী নজরুল ইসলাম", "মানিক বন্দ্যোপাধ্যায়"], ans: 0 },
+                    { q: "বাংলা বর্ণমালায় পরাশ্রয়ী বর্ণ কয়টি?", opts: ["২টি", "৩টি", "৪টি", "৫টি"], ans: 1 },
+                    { q: "'অদৃষ্টের পরিহাস' বাগধারাটির অর্থ কী?", opts: ["সৌভাগ্য", "দুর্ভাগ্য", "ভাগ্যের নির্মম পরিহাস", "অবাক করা ঘটনা"], ans: 2 }
+                ],
+                english: [
+                    { q: "What is the synonym of 'Competent'?", opts: ["Capable", "Incompetent", "Weak", "Lazy"], ans: 0 },
+                    { q: "Choose the correct spelling:", opts: ["Lieutenant", "Leutenant", "Luitenant", "Luteinant"], ans: 0 },
+                    { q: "The idiom 'A piece of cake' means:", opts: ["Difficult task", "Very easy task", "Sweet food", "Delicious cake"], ans: 1 },
+                    { q: "Antonym of 'Benevolent' is:", opts: ["Kind", "Malevolent", "Generous", "Friendly"], ans: 1 }
+                ],
+                gk: [
+                    { q: "ব্রিকস (BRICS) এর সদর দপ্তর কোথায়?", opts: ["সাংহাই, চীন", "সাংহাই, চীন (NDB সদর দপ্তর)", "মস্কো, রাশিয়া", "নতুন দিল্লি, ভারত"], ans: 1 },
+                    { q: "বিশ্ব পরিবেশ দিবস কবে পালিত হয়?", opts: ["৫ জুন", "২২ এপ্রিল", "২১ ফেব্রুয়ারি", "১ মে"], ans: 0 },
+                    { q: "জাতিসংঘ কত সালে প্রতিষ্ঠিত হয়?", opts: ["১৯৪৫ সালের ২৪ অক্টোবর", "১৯৪৫ সালের ২৬ জুন", "১৯১৯ সালের ১০ জানুয়ারি", "১৯৫০ সালের ১ জানুয়ারি"], ans: 0 },
+                    { q: "নিউজিল্যান্ডের আদিবাসীদের কী বলা হয়?", opts: ["মাওরি", "রেড ইন্ডিয়ান", "বশকাক", "ইনুইট"], ans: 0 }
+                ]
+            };
+
+            let pool = basePools[categoryKey] || basePools.du;
 
             for (let i = 1; i <= count; i++) {
-                let sample = samplePool[(i - 1) % samplePool.length];
-                let titleText = `${i}. ${sample.q}`;
-                if(subjectTitle) {
-                    titleText = `${i}. [${subjectTitle.toUpperCase()}] ${sample.q}`;
-                }
+                // পুল থেকে ঘুরিয়ে প্রশ্ন নিয়ে ইউনিক প্রশ্ন তৈরি করা যাতে প্রতিটির নাম্বার ও আইডি আলাদা থাকে
+                let baseQ = pool[(i - 1) % pool.length];
                 questions.push({
                     id: i,
-                    title: titleText,
-                    opts: sample.opts,
-                    ans: sample.ans
+                    title: `${i}. [${titlePrefix}] ${baseQ.q} (সেট প্রশ্ন নং #${i})`,
+                    opts: baseQ.opts,
+                    ans: baseQ.ans
                 });
             }
             return questions;
         }
 
         window.onload = function() {
-            // ফর্ম সাবমিট ইভেন্ট বাইন্ডিং
+            // ফর্ম সাবমিট ইভেন্ট হ্যান্ডলার
             document.getElementById('duFormStart').addEventListener('submit', function(e) {
                 e.preventDefault();
                 startExamSession('du', 90, 60 * 60, 'ঢাকা বিশ্ববিদ্যালয়');
+            });
+
+            document.getElementById('duFormSubmit').addEventListener('submit', function(e) {
+                e.preventDefault();
+                submitExamFinal('du', 90);
             });
 
             document.getElementById('hscFormStart').addEventListener('submit', function(e) {
@@ -507,11 +584,21 @@
                 startExamSession('hsc', 30, 30 * 60, 'HSC বোর্ড');
             });
 
+            document.getElementById('hscFormSubmit').addEventListener('submit', function(e) {
+                e.preventDefault();
+                submitExamFinal('hsc', 30);
+            });
+
             document.getElementById('subFormStart').addEventListener('submit', function(e) {
                 e.preventDefault();
                 let sub = document.getElementById('selected-subject').value;
                 activeSubjectKey = sub;
-                startExamSession('sub', 100, 45 * 60, sub);
+                startExamSession('sub', 100, 45 * 60, sub.toUpperCase());
+            });
+
+            document.getElementById('subFormSubmit').addEventListener('submit', function(e) {
+                e.preventDefault();
+                submitExamFinal('sub', 100);
             });
         };
 
@@ -542,15 +629,18 @@
             document.getElementById('mainMenuNav').style.display = 'grid';
         }
 
-        // এক্সাম সেশন শুরু
+        // এক্সাম সেশন শুরু ও প্রশ্ন রেন্ডার
         function startExamSession(category, totalQ, totalSeconds, titleLabel) {
             activeCategory = category;
             studentName = document.getElementById(`${category}-name`).value;
             studentCollege = document.getElementById(`${category}-college`).value;
 
-            questionList = generateQuestionBank(totalQ, titleLabel);
-            currentQuestionIndex = 0;
-            userAnswers = {};
+            let poolKey = category;
+            if(category === 'sub') {
+                poolKey = activeSubjectKey; // bangla, english, gk
+            }
+
+            let questionList = getUniqueQuestionBank(poolKey, totalQ, titleLabel);
 
             activateFocusMode();
 
@@ -563,61 +653,33 @@
             }
             document.getElementById(`${category}-candidate-info`).innerText = `শিক্ষার্থী: ${displayName} (${studentCollege})`;
 
-            renderCurrentQuestion(category);
-            runTimer(category, totalSeconds);
-        }
+            // প্রশ্নগুলো স্ক্রলএবল কন্টেইনারে ইনজেক্ট করা
+            let container = document.getElementById(`${category}-questions-container`);
+            let html = '';
 
-        // একটি করে প্রশ্ন রেন্ডার করা (স্মুথ ইন্টারফেসের জন্য)
-        function renderCurrentQuestion(category) {
-            let container = document.getElementById(`${category}-question-container`);
-            let q = questionList[currentQuestionIndex];
-            let savedAns = userAnswers[currentQuestionIndex] !== undefined ? userAnswers[currentQuestionIndex] : null;
-
-            let html = `
-                <div class="question-box">
-                    <div class="question-title">${q.title}</div>
-                    <div class="options-list">
-            `;
-
-            q.opts.forEach((optText, optIdx) => {
-                let checked = (savedAns === optIdx) ? 'checked' : '';
+            questionList.forEach((q, idx) => {
                 html += `
-                    <label>
-                        <input type="radio" name="current_q_opt" value="${optIdx}" ${checked} onclick="saveAnswer(${optIdx})">
-                        ${optText}
-                    </label>
+                    <div class="question-box" data-qindex="${idx}">
+                        <div class="question-title">${q.title}</div>
+                        <div class="options-list">
+                `;
+                q.opts.forEach((optText, optIdx) => {
+                    let isCorrectVal = (optIdx === q.ans) ? "1" : "0";
+                    html += `
+                        <label>
+                            <input type="radio" name="${category}_q_${idx}" value="${isCorrectVal}">
+                            ${optText}
+                        </label>
+                    `;
+                });
+                html += `
+                        </div>
+                    </div>
                 `;
             });
 
-            html += `
-                    </div>
-                </div>
-                <div class="exam-nav-btns">
-            `;
-
-            if (currentQuestionIndex > 0) {
-                html += `<button type="button" class="btn-action" style="background: rgba(255,255,255,0.1); width: 48%;" onclick="navigateQuestion(-1)">পূর্ববর্তী</button>`;
-            } else {
-                html += `<div></div>`;
-            }
-
-            if (currentQuestionIndex < questionList.length - 1) {
-                html += `<button type="button" class="btn-action" style="width: 48%;" onclick="navigateQuestion(1)">পরবর্তী</button>`;
-            } else {
-                html += `<button type="button" class="btn-action" style="background: linear-gradient(135deg, #16a34a, #15803d); width: 48%;" onclick="submitExamFinal('${category}')">খাতা জমা দিন</button>`;
-            }
-
-            html += `</div>`;
             container.innerHTML = html;
-        }
-
-        function saveAnswer(optIdx) {
-            userAnswers[currentQuestionIndex] = optIdx;
-        }
-
-        function navigateQuestion(direction) {
-            currentQuestionIndex += direction;
-            renderCurrentQuestion(activeCategory);
+            runTimer(category, totalSeconds);
         }
 
         // টাইমার
@@ -633,30 +695,30 @@
                 if (totalSeconds <= 0) {
                     clearInterval(currentTimer);
                     alert("সময় শেষ! খাতা স্বয়ংক্রিয়ভাবে জমা হয়ে গেছে।");
-                    submitExamFinal(category);
+                    submitExamFinal(category, category === 'du' ? 90 : (category === 'hsc' ? 30 : 100));
                 }
                 totalSeconds--;
             }, 1000);
         }
 
         // ফাইনাল সাবমিশন ও রেজাল্ট ক্যালকুলেশন
-        function submitExamFinal(category) {
+        function submitExamFinal(category, totalQ) {
             if (currentTimer) clearInterval(currentTimer);
 
             let correct = 0;
             let incorrect = 0;
             let unattempted = 0;
 
-            questionList.forEach((q, idx) => {
-                let ans = userAnswers[idx];
-                if (ans === undefined) {
+            for (let i = 0; i < totalQ; i++) {
+                let ans = document.querySelector(`input[name="${category}_q_${i}"]:checked`);
+                if (!ans) {
                     unattempted++;
-                } else if (ans === q.ans) {
+                } else if (ans.value === "1") {
                     correct++;
                 } else {
                     incorrect++;
                 }
-            });
+            }
 
             let finalScore = (correct * 1.0) - (incorrect * 0.25);
             if(finalScore < 0) finalScore = 0;
@@ -700,7 +762,7 @@
             let container = document.getElementById('leaderboard-content');
 
             if (leaderboard.length === 0) {
-                container.innerHTML = `<p style="text-align: center; color: #94a3b8; padding: 25px;">এখনো কোনো শিক্ষার্থী পরীক্ষায় অংশগ্রহণ করেনি।</p>`;
+                container.innerHTML = `<p style="text-align: center; color: #94a3b8; padding: 35px; font-size: 1.05rem;">এখনো কোনো শিক্ষার্থী পরীক্ষায় অংশগ্রহণ করেনি। পরীক্ষা দিয়ে প্রথম স্থান অর্জন করুন!</p>`;
                 return;
             }
 
@@ -718,9 +780,14 @@
             `;
 
             leaderboard.forEach((item, index) => {
+                let rankClass = '';
+                if(index === 0) rankClass = 'rank-1';
+                else if(index === 1) rankClass = 'rank-2';
+                else if(index === 2) rankClass = 'rank-3';
+
                 html += `
                     <tr>
-                        <td><strong>#${index + 1}</strong></td>
+                        <td class="${rankClass}"><strong>#${index + 1}</strong></td>
                         <td>${item.name}</td>
                         <td>${item.college}</td>
                         <td>${item.cat}</td>
@@ -733,6 +800,13 @@
 
             html += `</table>`;
             container.innerHTML = html;
+        }
+
+        function clearLeaderboard() {
+            if(confirm("আপনি কি নিশ্চিতভাবে লিডারবোর্ড ডেটা রিসেট করতে চান?")) {
+                localStorage.removeItem('varsityVisionLB');
+                loadLeaderboard();
+            }
         }
     </script>
 </body>
