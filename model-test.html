@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>মডেল টেস্ট - Varsity Vision</title>
+    
+    <!-- Noto Serif Bengali Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-main: linear-gradient(135deg, #090d16 0%, #171f33 50%, #090d16 100%);
+            --glass-card: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+            --btn-gradient: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Serif Bengali', serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-main);
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-bottom: 50px;
+            background-attachment: fixed;
+        }
+
+        /* স্টিকি নেভিগেশন বার */
+        .sticky-header-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            padding: 10px 4%;
+            background: rgba(9, 13, 22, 0.9);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        .brand-subtitle {
+            font-size: 0.75rem;
+            color: #38bdf8;
+            font-weight: 600;
+            display: block;
+        }
+
+        .btn-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 18px;
+            background: #0f172a;
+            color: #38bdf8;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border-radius: 50px;
+            text-decoration: none;
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            transition: 0.3s;
+        }
+        .btn-home:hover {
+            background: var(--btn-gradient);
+            color: #fff;
+        }
+
+        main {
+            margin-top: 90px;
+            flex: 1;
+            padding: 30px 8%;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
+
+        .card {
+            background: var(--glass-card);
+            backdrop-filter: blur(12px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            margin-bottom: 25px;
+        }
+
+        .card h2 {
+            color: #38bdf8;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #cbd5e1;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 12px 22px;
+            background: var(--btn-gradient);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+            transition: 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        /* এক্সাম সেকশন ও টাইমার */
+        #exam-section {
+            display: none;
+        }
+
+        .exam-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.8);
+            padding: 15px 25px;
+            border-radius: 14px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            position: sticky;
+            top: 80px;
+            z-index: 99;
+            backdrop-filter: blur(10px);
+            margin-bottom: 25px;
+        }
+
+        .timer-box {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #f87171;
+            background: rgba(239, 68, 68, 0.1);
+            padding: 6px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .question-card {
+            background: var(--glass-card);
+            backdrop-filter: blur(12px);
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .question-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #f8fafc;
+            margin-bottom: 15px;
+        }
+
+        .options-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .options-list li label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            cursor: pointer;
+            transition: 0.2s;
+            color: #cbd5e1;
+        }
+
+        .options-list li label:hover {
+            background: rgba(56, 189, 248, 0.1);
+            border-color: rgba(56, 189, 248, 0.3);
+            color: #fff;
+        }
+
+        .options-list input[type="radio"] {
+            accent-color: #06b6d4;
+        }
+
+        #result-section {
+            display: none;
+            text-align: center;
+        }
+
+        .result-box {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #38bdf8;
+            margin: 20px 0;
+        }
+
+        footer {
+            background: #020617;
+            color: #94a3b8;
+            text-align: center;
+            padding: 25px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- নেভিগেশন বার -->
+    <div class="sticky-header-container">
+        <div class="navbar-card">
+            <div>
+                <a href="bangla.html" class="brand-name">varsity vision</a>
+                <span class="brand-subtitle">মডেল টেস্ট সেকশন</span>
+            </div>
+            <div>
+                <a href="bangla.html" class="btn-home">
+                    <i class="fa-solid fa-arrow-left"></i> পেজে ফিরে যান
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- ১. স্টুডেন্ট রেজিস্ট্রেশন ফর্ম -->
+        <div id="reg-section" class="card">
+            <h2>এইচএসসি বাংলা মডেল টেস্ট - ২০২৬</h2>
+            <p style="color: #94a3b8; margin-bottom: 20px;">পরীক্ষায় অংশ নিতে আপনার নাম ও কলেজের নাম দিয়ে 'পরীক্ষা শুরু করুন' বাটনে ক্লিক করুন। মোট প্রশ্ন: ৬০টি (সাহিত্যপাঠ: ৪০, ব্যাকরণ: ২০)। সময়: ৩০ মিনিট।</p>
+            
+            <div class="form-group">
+                <label for="student-name">আপনার নাম:</label>
+                <input type="text" id="student-name" class="form-control" placeholder="পূর্ণ নাম লিখুন" required>
+            </div>
+
+            <div class="form-group">
+                <label for="college-name">কলেজের নাম:</label>
+                <input type="text" id="college-name" class="form-control" placeholder="আপনার কলেজের নাম লিখুন" required>
+            </div>
+
+            <button type="button" class="btn-primary" onclick="startExam()">
+                <i class="fa-solid fa-play"></i> পরীক্ষা শুরু করুন
+            </button>
+        </div>
+
+        <!-- ২. মূল পরীক্ষা ও প্রশ্নপত্র সেকশন -->
+        <div id="exam-section">
+            <div class="exam-header">
+                <div>
+                    <h3 id="display-user-info" style="color: #38bdf8; font-size: 1.1rem;">শিক্ষার্থী: </h3>
+                </div>
+                <div class="timer-box">
+                    <i class="fa-solid fa-clock"></i> সময় বাকি: <span id="time">30:00</span>
+                </div>
+            </div>
+
+            <form id="quiz-form">
+                <!-- প্রশ্ন কনটেইনার -->
+                <div id="questions-container"></div>
+
+                <button type="button" class="btn-primary" onclick="submitExam()" style="margin-top: 20px; padding: 15px;">
+                    <i class="fa-solid fa-check-to-slot"></i> পরীক্ষা সম্পন্ন করুন (Submit)
+                </button>
+            </form>
+        </div>
+
+        <!-- ৩. রেজাল্ট সেকশন -->
+        <div id="result-section" class="card">
+            <h2>পরীক্ষার ফলাফল</h2>
+            <div class="result-box" id="score-display"></div>
+            <p id="feedback-text" style="color: #cbd5e1; font-size: 1.1rem; margin-bottom: 20px;"></p>
+            <a href="bangla.html" class="btn-primary" style="text-decoration: none;">হোম পেজে ফিরে যান</a>
+        </div>
+    </main>
+
+    <!-- ফুটার -->
+    <footer>
+        <p>&copy; ২০২৬ Varsity Vision। সর্বস্বত্ব সংরক্ষিত।</p>
+        <p style="margin-top: 5px; font-size: 0.85rem; color: #64748b;">সম্পাদনা : জুনায়েদ তনয়</p>
+    </footer>
+
+    <!-- এক্সাম লজিক ও প্রশ্ন ডাটা -->
+    <script>
+        // সাহিত্যপাঠ থেকে ৪০ এবং ব্যাকরণ থেকে ২০ মোট ৬০টি প্রমিত প্রশ্ন
+        const questionsData = [
+            // --- সাহিত্যপাঠ অংশ (১ - ৪০) ---
+            { q: "১. 'বাঙ্গালা নব্য লেখকদিগের প্রতি নিবেদন' প্রবন্ধটি কত সালে প্রথম প্রকাশিত হয়?", options: ["১৮৮০ সালে", "১৮৮৫ সালে", "১৮৯০ সালে", "১৯০০ সালে"], answer: 1 },
+            { q: "২. 'যশের জন্য লিখিবেন না'—উক্তিটি কার?", options: ["রবীন্দ্রনাথ ঠাকুর", "প্রমথ চৌধুরী", "বঙ্কিমচন্দ্র চট্টোপাধ্যায়", "শরৎচন্দ্র চট্টোপাধ্যায়"], answer: 2 },
+            { q: "৩. 'অপরিচিতা' গল্পে অনুপমের বর্তমান বয়স কত?", options: ["২৩ বছর", "২৫ বছর", "২৭ বছর", "৩০ বছর"], answer: 2 },
+            { q: "৪. 'অপরিচিতা' গল্পে কল্যাণীর বয়স কত?", options: ["১৪ বছর", "১৫ বছর", "১৯ বছর", "২১ বছর"], answer: 2 },
+            { q: "৫. প্রমথ চৌধুরীর ছদ্মনাম কী?", options: ["বনফুল", "বীরবল", "পরশুরাম", "ভ্রমর"], answer: 1 },
+            { q: "৬. 'সাহিত্যে খেলা' প্রবন্ধটি কোন পত্রিকায় প্রথম প্রকাশিত হয়?", options: ["বঙ্গদর্শন", "সবুজপত্র", "কালবেলা", "পূর্বাশা"], answer: 1 },
+            { q: "৭. 'বিলাসী' গল্পে কথকের নাম কী?", options: ["মৃত্যুঞ্জয়", "বিলাসী", "ন্যাড়া", "সন্তু"], answer: 2 },
+            { q: "৮. 'বিলাসী' গল্পটি কোন পত্রিকায় প্রকাশিত হয়?", options: ["ভারতী", "কালি ও কলম", "মাসী পিসি", "উদ্বোধন"], answer: 0 },
+            { q: "৯. রোকেয়া সাখাওয়াত হোসেনের জন্মস্থান কোথায়?", options: ["বরিশাল", "রংপুর", "ঢাকা", "যশোর"], answer: 1 },
+            { q: "১০. 'যৌবনের গান' প্রবন্ধের রচয়িতা কে?", options: ["কাজী নজরুল ইসলাম", "মোতাহের হোসেন চৌধুরী", "সৈয়দ মুজতবা আলী", "আখতারুজ্জামান ইলিয়াস"], answer: 0 },
+            { q: "১১. 'জীবন ও বৃক্ষ' প্রবন্ধটি কার 'সংস্কৃতি-কথা' গ্রন্থ থেকে সংকলিত?", options: ["বঙ্কিমচন্দ্র", "মোতাহের হোসেন চৌধুরী", "রবীন্দ্রনাথ", "প্রমথ চৌধুরী"], answer: 1 },
+            { q: "১২. 'গন্তব্য কাবুল' ভ্রমণকাহিনীটি কার রচনা?", options: ["সৈয়দ মুজতবা আলী", "মানিক বন্দ্যোপাধ্যায়", "শওকত আলী", "আল মাহমুদ"], answer: 0 },
+            { q: "১৩. 'মাসি পিসি' গল্পে আহ্লাদী কার নাতনি বা আত্মীয়?", options: ["মাসি-পিসির", "মামা-মামী", "চাচা-চাচী", "দাদা-দাদী"], answer: 0 },
+            { q: "১৪. 'কপিল দাস মুর্মুর শেষ কাজ' গল্পের লেখকের নাম কী?", options: ["শওকত আলী", "আখতারুজ্জামান ইলিয়াস", "মানিক বন্দ্যোপাধ্যায়", "শরৎচন্দ্র"], answer: 0 },
+            { q: "১৫. 'রেইনকোট' গল্পে নুরুল হুদা কোন বিষয়ের লেকচারার ছিলেন?", options: ["বাংলা", "ইংরেজি", "কেমিস্ট্রি", "পদার্থবিজ্ঞান"], answer: 2 },
+            { q: "১৬. 'নেকলেস' গল্পের মূল চরিত্র মাদাম লোইসেলের আসল নাম কী ছিল?", options: ["মাতিলদা", "ফোরস্টিয়ার", "সোফি", "মারিয়া"], answer: 0 },
+            { q: "১৭. 'ঋতু বর্ণন' কবিতাটি কোন কাব্যের অন্তর্ভুক্ত?", options: ["পদ্মাবতী", "সৌরভ", "অগ্নিবীণা", "সঞ্চয়িতা"], answer: 0 },
+            { q: "১৮. 'বিভীষণের প্রতি মেঘনাদ' কবিতার রচয়িতা কে?", options: ["আলাওল", "মাইকেল মধুসূদন দত্ত", "ফররুখ আহমদ", "কায়কোবাদ"], answer: 1 },
+            { q: "১৯. 'সোনার তরী' কবিতায় সোনার ধান কোনটির প্রতীক?", options: ["মানবিকতার", "সৃষ্টিকর্ম ও শিল্পকর্ম", "স্বর্ণালংকার", "ফসলের প্রাচুর্য"], answer: 1 },
+            { q: "২০. 'বিদ্রোহী' কবিতাটি কোন কাব্যগ্রন্থের অন্তর্গত?", options: ["বিষের বাঁশি", "অগ্নিবীণা", "সাম্যবাদী", "সর্বহারা"], answer: 1 },
+            { q: "২১. জীবনানন্দ দাশকে 'নির্জনতম কবি' উপাধি কে দিয়েছেন?", options: ["বুদ্ধদেব বসু", "রবীন্দ্রনাথ ঠাকুর", "কাজী নজরুল", "সুনীল গঙ্গোপাধ্যায়"], answer: 0 },
+            { q: "২২. 'প্রতিদান' কবিতাটি জসীমউদ্দীনের কোন কাব্যগ্রন্থ থেকে নেওয়া?", options: ["নকশী কাথার মাঠ", "বালুচর", "সোজন বাদিয়ার ঘাট", "রংিলা বাইসা"], answer: 1 },
+            { q: "২৩. 'তাহਾਰেই পড়ে মনে' কবিতার রচয়িতা কে?", options: ["সুফিয়া কামাল", "বেগম রোকেয়া", "শামসুর রহমান", "নাসরীন জাহান"], answer: 0 },
+            { q: "২৪. 'পদ্মা' সনেটটি কার রচনা?", options: ["ফররুখ আহমদ", "আল মাহমুদ", "সুকান্ত ভট্টাচার্য", "আবু জাফর ওবায়দুল্লাহ"], answer: 0 },
+            { q: "২৫. 'আঠারো বছর বয়স' কবিতার কবির নাম কী?", options: ["সুকান্ত ভট্টাচার্য", "শামসুর রহমান", "আহসান হাবীব", "বন্ধুবর"], answer: 0 },
+            { q: "২৬. 'ফেব্রুয়ারি ১৯৬৯' কবিতার মূল পটভূমি কী?", options: ["বায়ান্নর ভাষা আন্দোলন", "উনসত্তরের গণ-অভ্যুত্থান", "মুক্তিযুদ্ধ", "ছিয়াত্তরের মন্বন্তর"], answer: 1 },
+            { q: "২৭. 'আমি কিংবদন্তির কথা বলছি' কবিতার রচয়িতা কে?", options: ["আবু জাফর ওবায়দুল্লাহ", "আল মাহমুদ", "সিকান্দার আবু জাফর", "রুদ্র মুহম্মদ"], answer: 0 },
+            { q: "২৮. 'প্রত্যাবর্তনের লজ্জা' কবিতার কবির নাম কী?", options: ["আল মাহমুদ", "ফররুখ আহমদ", "শামসুর রহমান", "সুকান্ত ভট্টাচার্য"], answer: 0 },
+            { q: "২৯. 'সিরাজউদ্দৌলা' নাটকের নাট্যকার কে?", options: ["সিকান্দার আবু জাফর", "সৈয়দ ওয়ালীউল্লাহ্", "গিরিশচন্দ্র ঘোষ", "মুনীর চৌধুরী"], answer: 0 },
+            { q: "৩০. নবাব সিরাজউদ্দৌলার শাসনকাল কত দিন ছিল?", options: ["১ বছর ২ মাস ১৫ দিন", "২ বছর", "৬ মাস", "৩ বছর"], answer: 0 },
+            { q: "৩১. 'লালসালু' উপন্যাসের রচয়িতা কে?", options: ["সৈয়দ ওয়ালীউল্লাহ্", "মানিক বন্দ্যোপাধ্যায়", "শওকত ওসমান", "সৈয়দ শামসুল হক"], answer: 0 },
+            { q: "৩২. 'লালসালু' উপন্যাসটি প্রথম কবে প্রকাশিত হয়?", options: ["১৯৪৮ সালে", "১৯৫২ সালে", "১৯৭১ সালে", "১৯৪৫ সালে"], answer: 0 },
+            { q: "৩৩. বঙ্কিমচন্দ্র চট্টোপাধ্যায়ের প্রথম সার্থক উপন্যাস কোনটি?", options: ["কপালকুণ্ডলা", "দুর্গেশনন্দিনী", "আনন্দমঠ", "বিষবৃক্ষ"], answer: 1 },
+            { q: "৩৪. 'অপরিচিতা' গল্পে হরিশ কোথায় কাজ করত?", options: ["কানপুরে", "কলকাতায়", "পাটনায়", "দিল্লিতে"], answer: 1 },
+            { q: "৩৫. 'বিলাসী' গল্পে মৃত্যুঞ্জয়ের বয়স কত ছিল?", options: ["ষোল-সতেরো বছর", "বিশ বছর", "পঁচিশ বছর", "ত্রিশ বছর"], answer: 0 },
+            { q: "৩৬. 'যৌবনের গান' প্রবন্ধটি নজরুলের কোন সভার ভাষণের পরিমার্জিত রূপ?", options: ["সিরাজগঞ্জ যুবসংবর্ধনা", "ঢাকা মুসলিম সাহিত্য সমাজ", "কল্লোল সভা", "বঙ্গীয় সাহিত্য পরিষদ"], answer: 0 },
+            { q: "৩৭. 'মাসি পিসি' গল্পের প্রধান চরিত্রগুলোর নাম কী?", options: ["মাসি, পিসি ও আহ্লাদী", "রহিমা ও জমিলা", "বিলাসী ও ন্যাড়া", "কল্যাণী ও অনুপম"], answer: 0 },
+            { q: "৩৮. 'নেকলেস' গল্পের ফরাসি মূল নাম কী ছিল?", options: ["La Parure", "Les Misérables", "Carmen", "Madame"], answer: 0 },
+            { q: "৩৯. 'সোনার তরী' কবিতায় মোট কয়টি স্তবক রয়েছে?", options: ["৪টি", "৫টি", "৬টি", "৭টি"], answer: 2 },
+            { q: "৪০. 'বিদ্রোহী' কবিতাটি কোন পত্রিকায় প্রথম প্রকাশিত হয়?", options: ["বিজলী", "সওগাত", "ধূমকেতু", "বঙ্গদর্শন"], answer: 0 },
+
+            // --- ব্যাকরণ অংশ (৪১ - ৬০) ---
+            { q: "৪১. যে শাস্ত্রে ভাষার নিয়মকানুন আলোচনা করা হয় তাকে কী বলে?", options: ["সাহিত্য", "ব্যাকরণ", "ভাষাবিজ্ঞান", "নির্মিতি"], answer: 1 },
+            { q: "৪২. বাংলা ব্যাকরণের প্রধান আলোচ্য বিষয় কয়টি?", options: ["৩টি", "৪টি", "৫টি", "২টি"], answer: 1 },
+            { q: "৪৩. নিচের কোনটি শুদ্ধ বানান?", options: ["মুমুর্ষু", "মুর্মুশু", "মুমূর্ষু", "মুমূর্ষ"], answer: 2 },
+            { q: "৪৪. ধ্বনি পরিবর্তনের নিয়মে পাশাপাশি দুটি ধ্বনির মিলনকে কী বলে?", options: ["সমাস", "সন্ধি", "প্রত্যয়", "উপসর্গ"], answer: 1 },
+            { q: "৪৫. 'বিদ্যালয়' কোন সন্ধির উদাহরণ?", options: ["স্বরসন্ধি", "ব্যঞ্জনসন্ধি", "বিসর্গসন্ধি", "নিপাতনে সিদ্ধ"], answer: 0 },
+            { q: "৪৬. যে সমাসে উভয় পদের অর্থ প্রধান থাকে তাকে কী বলে?", options: ["কর্মধারয়", "দ্বন্দ্ব", "তৎপুরুষ", "বহুব্রীহি"], answer: 1 },
+            { q: "৪৭. 'নীল যে পদ্ম = নীলপদ্ম' এটি কোন সমাস?", options: ["দ্বন্দ্ব", "কর্মধারয়", "দ্বিগু", "অব্যয়ীভাব"], answer: 1 },
+            { q: "৪৮. বাক্যে ক্রিয়ার সঙ্গে বিশেষ্য বা সর্বনাম পদের সম্পর্ককে কী বলে?", options: ["কারক", "বিভক্তি", "পদ", "অনুসর্গ"], answer: 0 },
+            { q: "৪৯. বাংলা ব্যাকরণে কারক প্রধানত কত প্রকার?", options: ["৪ প্রকার", "৫ প্রকার", "৬ প্রকার", "৭ প্রকার"], answer: 2 },
+            { q: "৫০. 'গাছ থেকে ফল পড়ে'—এখানে 'গাছ থেকে' কোন কারক?", options: ["করণ কারক", "অপাদান কারক", "অধিকরণ কারক", "কর্ম কারক"], answer: 1 },
+            { q: "৫১. 'অগ্নিশর্মা' বাগধারার সঠিক অর্থ কোনটি?", options: ["অত্যন্ত রাগান্বিত", "শান্ত স্বভাব", "নির্বোধ", "কাপুরুষ"], answer: 0 },
+            { q: "৫২. 'অরণ্যে রোদন' বাগধারার অর্থ কী?", options: ["জঙ্গলে কান্না", "নিষ্ফল আবেদন", "বড় বিপদে পড়া", "গোপন তথ্য"], answer: 1 },
+            { q: "৫৩. 'অল্প বিদ্যা ভয়ংকরী' এটি কী?", options: ["বাগধারা", "প্রবাদ-প্রবচন", "এক কথায় প্রকাশ", "সমার্থক শব্দ"], answer: 1 },
+            { q: "৫৪. যে সব জানে—তাকে এক কথায় কী বলে?", options: ["মিতভাষী", "সর্বজ্ঞ", "বহুদর্শী", "অজ্ঞ"], answer: 1 },
+            { q: "৫৫. 'সূর্য' শব্দের সমার্থক শব্দ কোনটি?", options: ["শশী", "ভানু", "ইন্দু", "নীর"], answer: 1 },
+            { q: "৫৬. 'স্বাধীন' শব্দের বিপরীতার্থক শব্দ কোনটি?", options: ["পরাধীন", "মুক্ত", "অধীন", "ক্ষুদ্র"], answer: 0 },
+            { q: "৫৭. অর্থপূর্ণ মিলন বা মনের ভাব সম্পূর্ণ প্রকাশের একক কোনটি?", options: ["শব্দ", "বাক্য", "ধ্বনি", "পদ"], answer: 1 },
+            { q: "৫৮. গঠন অনুসারে বাক্য কয় প্রকার?", options: ["২ প্রকার", "৩ প্রকার", "৪ প্রকার", "৫ প্রকার"], answer: 1 },
+            { q: "৫৯. 'সকল ছাত্ররা উপস্থিত ছিল'—বাক্যটির শুদ্ধরূপ কোনটি?", options: ["সব ছাত্ররা উপস্থিত ছিল", "সকল ছাত্র উপস্থিত ছিল", "ছাত্ররা সকলেই উপস্থিত ছিল", "সব ছাত্ররা উপস্থিত ছিল না"], answer: 1 },
+            { q: "৬০. বাক্যে স্বল্প বিরতি বোঝাতে কোন বিরামচিহ্ন বসে?", options: ["দাঁড়ি", "কমা", "সেমিকোলন", "কোলন"], answer: 1 }
+        ];
+
+        let timer;
+        let timeLeft = 1800; // ৩০ মিনিট (১৮০০ সেকেন্ড)
+
+        function startExam() {
+            const name = document.getElementById('student-name').value.trim();
+            const college = document.getElementById('college-name').value.trim();
+
+            if(!name || !college) {
+                alert('দয়া করে আপনার নাম ও কলেজের নাম লিখুন!');
+                return;
+            }
+
+            document.getElementById('display-user-info').innerText = `শিক্ষার্থী: ${name} (${college})`;
+            document.getElementById('reg-section').style.display = 'none';
+            document.getElementById('exam-section').style.display = 'block';
+
+            loadQuestions();
+            startTimer();
+        }
+
+        function loadQuestions() {
+            const container = document.getElementById('questions-container');
+            let html = '';
+
+            questionsData.forEach((item, index) => {
+                html += `
+                    <div class="question-card">
+                        <div class="question-title">${item.q}</div>
+                        <ul class="options-list">
+                `;
+                item.options.forEach((opt, optIndex) => {
+                    html += `
+                        <li>
+                            <label>
+                                <input type="radio" name="q${index}" value="${optIndex}">
+                                ${opt}
+                            </label>
+                        </li>
+                    `;
+                });
+                html += `</ul></div>`;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function startTimer() {
+            timer = setInterval(() => {
+                let minutes = Math.floor(timeLeft / 60);
+                let seconds = timeLeft % 60;
+
+                minutes = minutes < 10 ? '0' + minutes : minutes;
+                seconds = seconds < 10 ? '0' + seconds : seconds;
+
+                document.getElementById('time').innerText = `${minutes}:${seconds}`;
+
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    alert('সময় শেষ! আপনার খাতা স্বয়ংক্রিয়ভাবে জমা হয়ে গেছে।');
+                    submitExam();
+                }
+                timeLeft--;
+            }, 1000);
+        }
+
+        function submitExam() {
+            clearInterval(timer);
+            let score = 0;
+
+            questionsData.forEach((item, index) => {
+                const selected = document.querySelector(`input[name="q${index}"]:checked`);
+                if (selected && parseInt(selected.value) === item.answer) {
+                    score++;
+                }
+            });
+
+            document.getElementById('exam-section').style.display = 'none';
+            document.getElementById('result-section').style.display = 'block';
+
+            document.getElementById('score-display').innerText = `আপনার প্রাপ্ত নম্বর: ${score} / ৬০`;
+            
+            let feedback = '';
+            if(score >= 50) feedback = 'চমৎকার! আপনার প্রস্তুতি অত্যন্ত ভালো।';
+            else if(score >= 35) feedback = 'ভালো ফলাফল! তবে আরও একটু চর্চা করলে আরও ভালো করতে পারবেন।';
+            else feedback = 'আরও মনোযোগ দিয়ে শিটগুলো পড়তে হবে। শুভকামনা!';
+            
+            document.getElementById('feedback-text').innerText = feedback;
+        }
+    </script>
+</body>
+</html>
