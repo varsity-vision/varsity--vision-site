@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>কবি ও সাহিত্যিক পরিচিতি - Varsity Vision</title>
+    
+    <!-- Noto Serif Bengali Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-main: linear-gradient(135deg, #090d16 0%, #171f33 50%, #090d16 100%);
+            --glass-card: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+            --btn-gradient: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Serif Bengali', serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-main);
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-bottom: 50px;
+            background-attachment: fixed;
+        }
+
+        /* স্টিকি নেভিগেশন বার */
+        .sticky-header-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            padding: 10px 4%;
+            background: rgba(9, 13, 22, 0.9);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        .brand-subtitle {
+            font-size: 0.75rem;
+            color: #38bdf8;
+            font-weight: 600;
+            display: block;
+        }
+
+        .btn-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 18px;
+            background: #0f172a;
+            color: #38bdf8;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border-radius: 50px;
+            text-decoration: none;
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            transition: 0.3s;
+        }
+        .btn-home:hover {
+            background: var(--btn-gradient);
+            color: #fff;
+        }
+
+        main {
+            margin-top: 90px;
+            flex: 1;
+            padding: 30px 6%;
+        }
+
+        .category-title {
+            color: #38bdf8;
+            font-size: 1.2rem;
+            margin: 20px 0 10px 0;
+            border-left: 4px solid #06b6d4;
+            padding-left: 10px;
+        }
+
+        .chapter-tabs {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            scrollbar-width: thin;
+        }
+
+        .tab-btn {
+            background: var(--glass-card);
+            color: #cbd5e1;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 8px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background: var(--btn-gradient);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
+        }
+
+        .chapter-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .chapter-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card {
+            background: var(--glass-card);
+            backdrop-filter: blur(12px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            margin-bottom: 25px;
+        }
+
+        .content-card h3 {
+            color: #38bdf8;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 8px;
+        }
+
+        .content-card ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            color: #cbd5e1;
+            line-height: 1.8;
+            font-size: 0.98rem;
+        }
+        .content-card ul li { margin-bottom: 8px; }
+
+        footer {
+            background: #020617;
+            color: #94a3b8;
+            text-align: center;
+            padding: 25px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- নেভিগেশন বার -->
+    <div class="sticky-header-container">
+        <div class="navbar-card">
+            <div>
+                <a href="bangla.html" class="brand-name">varsity vision</a>
+                <span class="brand-subtitle">কবি ও সাহিত্যিক পরিচিতি সেকশন</span>
+            </div>
+            <div>
+                <a href="bangla.html" class="btn-home">
+                    <i class="fa-solid fa-arrow-left"></i> পেজে ফিরে যান
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <h2 style="font-size: 1.8rem; margin-bottom: 15px; background: linear-gradient(90deg, #fff, #93c5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">কবি ও সাহিত্যিক পরিচিতি</h2>
+        
+        <!-- কবি লেখকদের নাম দিয়ে ট্যাব বক্স -->
+        <div class="category-title">লেখক নির্বাচন করুন</div>
+        <div class="chapter-tabs">
+            <button class="tab-btn active" onclick="showAuthor('bankim')">বঙ্কিমচন্দ্র চট্টোপাধ্যায়</button>
+            <button class="tab-btn" onclick="showAuthor('rabindranath')">রবীন্দ্রনাথ ঠাকুর</button>
+            <button class="tab-btn" onclick="showAuthor('promoth')">প্রমথ চৌধুরী</button>
+            <button class="tab-btn" onclick="showAuthor('sarat')">শরৎচন্দ্র চট্টোপাধ্যায়</button>
+            <button class="tab-btn" onclick="showAuthor('rokeya')">রোকেয়া সাখাওয়াত হোসেন</button>
+            <button class="tab-btn" onclick="showAuthor('nazrul')">কাজী নজরুল ইসলাম</button>
+            <button class="tab-btn" onclick="showAuthor('motahar')">মোতাহের হোসেন চৌধুরী</button>
+            <button class="tab-btn" onclick="showAuthor('mujtaba')">সৈয়দ মুজতবা আলী</button>
+            <button class="tab-btn" onclick="showAuthor('manik')">মানিক বন্দ্যোপাধ্যায়</button>
+            <button class="tab-btn" onclick="showAuthor('shawkat')">শওকত আলী</button>
+            <button class="tab-btn" onclick="showAuthor('ilias')">আখতারুজ্জামান ইলিয়াস</button>
+            <button class="tab-btn" onclick="showAuthor('alasol')">আলাওল</button>
+            <button class="tab-btn" onclick="showAuthor('modhusudan')">মাইকেল মধুসূদন দত্ত</button>
+            <button class="tab-btn" onclick="showAuthor('jashim')">জসীমউদ্দীন</button>
+            <button class="tab-btn" onclick="showAuthor('sufia')">সুফিয়া কামাল</button>
+            <button class="tab-btn" onclick="showAuthor('farrukh')">ফররুখ আহমদ</button>
+            <button class="tab-btn" onclick="showAuthor('sukanta')">সুকান্ত ভট্টাচার্য</button>
+            <button class="tab-btn" onclick="showAuthor('shamsur')">শামসুর রহমান</button>
+            <button class="tab-btn" onclick="showAuthor('abuzafor')">আবু জাফর ওবায়দুল্লাহ</button>
+            <button class="tab-btn" onclick="showAuthor('almahmud')">আল মাহমুদ</button>
+            <button class="tab-btn" onclick="showAuthor('sikandar')">সিকান্দার আবু জাফর</button>
+            <button class="tab-btn" onclick="showAuthor('waliullah')">সৈয়দ ওয়ালীউল্লাহ্</button>
+        </div>
+
+        <!-- ================= BANKIM ================= -->
+        <div id="bankim" class="chapter-content active">
+            <div class="content-card">
+                <h3>বঙ্কিমচন্দ্র চট্টোপাধ্যায়</h3>
+                <ul>
+                    <li><strong>জন্ম:</strong> ২৫ জুন, ১৮৩৮, পশ্চিমবঙ্গের চব্বিশ পরগণার কাঁঠালপাড়া গ্রাম[cite: 2]।</li>
+                    <li><strong>পিতা:</strong> যাদবচন্দ্র চট্টোপাধ্যায় (পেশায় ডেপুটি কালেক্টর ছিলেন)[cite: 2]।</li>
+                    <li><strong>সাহিত্যকর্ম:</strong> 'দুর্গেশনন্দিনী' (১৮৬৫) বাংলা সাহিত্যের প্রথম সার্থক উপন্যাস[cite: 2]। অন্যান্য উপন্যাসের মধ্যে কপালকুণ্ডলা, বিষবৃক্ষ, আনন্দমঠ, দেবী চৌধুরানী ইত্যাদি উল্লেখযোগ্য[cite: 2]।</li>
+                    <li><strong>উপাধি:</strong> সাহিত্য সম্রাট, ঋষি রায় বাহাদুর[cite: 2]।</li>
+                    <li><strong>মৃত্যু:</strong> ১৮৯৪ খ্রিষ্টাব্দের ৮ই এপ্রিল, কলকাতায়[cite: 3]।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= RABINDRANATH ================= -->
+        <div id="rabindranath" class="chapter-content">
+            <div class="content-card">
+                <h3>রবীন্দ্রনাথ ঠাকুর</h3>
+                <ul>
+                    <li><strong>জন্ম:</strong> ৭ মে ১৮৬১ (২৫ বৈশাখ ১২৬৮ বঙ্গাব্দ), জোড়াসাঁকো, কলকাতা[cite: 6]।</li>
+                    <li><strong>বিশেষ অর্জন:</strong> ১৯১৩ সালে 'গীতাঞ্জলি' কাব্যের ইংরেজি অনুবাদের জন্য এশীয়দের মধ্যে সাহিত্যে প্রথম নোবেল পুরস্কার লাভ করেন[cite: 6]।</li>
+                    <li><strong>অবদান:</strong> ছোটগল্প, কবিতা, নাটক, উপন্যাস, প্রবন্ধসহ সাহিত্যের সকল শাখায় তাঁর অনন্য অবদান রয়েছে।</li>
+                    <li><strong>মৃত্যু:</strong> ৭ আগস্ট ১৯৪১ (২২ শ্রাবণ ১৩৪৮ বঙ্গাব্দ)[cite: 6]।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= PROMOTH ================= -->
+        <div id="promoth" class="chapter-content">
+            <div class="content-card">
+                <h3>প্রমথ চৌধুরী</h3>
+                <ul>
+                    <li><strong>ছদ্মনাম:</strong> বীরবল[cite: 13]।</li>
+                    <li><strong>ভূমিকা:</strong> বাংলা সাহিত্যে চলিত গতিরীতি বা প্রমিত গদ্যরীতির প্রবর্তক[cite: 13]।</li>
+                    <li><strong>পত্রিকা সম্পাদনা:</strong> সবুজপত্র পত্রিকা সম্পাদনার মাধ্যমে বাংলা সাহিত্যে নতুন বুদ্ধির আন্দোলন গড়ে তোলেন[cite: 13]।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= SARAT ================= -->
+        <div id="sarat" class="chapter-content">
+            <div class="content-card">
+                <h3>শরৎচন্দ্র চট্টোপাধ্যায়</h3>
+                <ul>
+                    <li><strong>জন্ম:</strong> ১৮৭৬, হুগলি জেলার দেবানন্দ গ্রাম[cite: 17]।</li>
+                    <li><strong>খ্যাতি:</strong> বাংলা সাহিত্যের অন্যতম জনপ্রিয় ও জননন্দিত ঔপন্যাসিক।</li>
+                    <li><strong>সৃষ্টি:</strong> দেবদাস, বড়দিদি, পরিণীতা, শ্রীকান্ত ইত্যাদি তাঁর বিখ্যাত উপন্যাস।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= ROKEYA ================= -->
+        <div id="rokeya" class="chapter-content">
+            <div class="content-card">
+                <h3>রোকেয়া সাখাওয়াত হোসেন</h3>
+                <ul>
+                    <li><strong>জন্ম:</strong> ১৮৮০, রংপুর জেলার পায়রাবন্ধ গ্রাম[cite: 21]।</li>
+                    <li><strong>পরিচয়:</strong> বাঙালি নারী জাগরণের অগ্রদূত, প্রাবন্ধিক ও সমাজ সংস্কারক।</li>
+                    <li><strong>উল্লেখযোগ্য গ্রন্থ:</strong> সুলতানার স্বপ্ন, অবরোধবাসিনী, মতিচূর[cite: 21]।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= NAZRUL ================= -->
+        <div id="nazrul" class="chapter-content">
+            <div class="content-card">
+                <h3>কাজী নজরুল ইসলাম</h3>
+                <ul>
+                    <li><strong>জাতীয় কবি:</strong> বাংলাদেশের জাতীয় কবি[cite: 24], যাঁকে 'বিদ্রোহী কবি' হিসেবেও অভিহিত করা হয়।</li>
+                    <li><strong>কাব্যগ্রন্থ:</strong> অগ্নিবীণা, বিষের বাঁশি, সাম্যবাদী ইত্যাদি।</li>
+                    <li><strong>অবদান:</strong> বাংলা কবিতায় নতুন সুর, তেজ ও তারুণ্যের জোয়ার নিয়ে এসেছিলেন।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= MOTAHAR ================= -->
+        <div id="motahar" class="chapter-content">
+            <div class="content-card">
+                <h3>মোতাহের হোসেন চৌধুরী</h3>
+                <ul>
+                    <li><strong>পরিচয়:</strong> প্রাবন্ধিক ও শিক্ষক।</li>
+                    <li><strong>আন্দোলন:</strong> বাংলার 'বুদ্ধির মুক্তি' আন্দোলনের অন্যতম প্রবক্তা[cite: 27]।</li>
+                    <li><strong>গ্রন্থ:</strong> সংস্কৃতি-কথা তাঁর অন্যতম প্রখ্যাত প্রবন্ধগ্রন্থ[cite: 27]।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= MUJTABA ================= -->
+        <div id="mujtaba" class="chapter-content">
+            <div class="content-card">
+                <h3>সৈয়দ মুজতবা আলী</h3>
+                <ul>
+                    <li><strong>পরিচয়:</strong> প্রখ্যাত ভ্রমণকাহিনীকার, ভাষাবিদ ও প্রাবন্ধিক।</li>
+                    <li><strong>খ্যাতি:</strong> রম্যরচনা ও ভ্রমণ সাহিত্যে তাঁর জুড়ি মেলা ভার।</li>
+                    <li><strong>উল্লেখযোগ্য গ্রন্থ:</strong> দেশে-বিদেশে, জলে হাওয়া, চাচা কাহিনী[cite: 29]।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= MANIK ================= -->
+        <div id="manik" class="chapter-content">
+            <div class="content-card">
+                <h3>মানিক বন্দ্যোপাধ্যায়</h3>
+                <ul>
+                    <li><strong>পরিচয়:</strong> বাংলা কথাসাহিত্যের আধুনিক ধারার অন্যতম প্রধান ঔপন্যাসিক ও ছোটগল্পকার।</li>
+                    <li><strong>উল্লেখযোগ্য সৃষ্টি:</strong> পুতুল নাচের ইতিকথা, পদ্মা নদীর মাঝি[cite: 33]।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= SHAWKAT ================= -->
+        <div id="shawkat" class="chapter-content">
+            <div class="content-card">
+                <h3>শওকত আলী</h3>
+                <ul>
+                    <li><strong>পরিচয়:</strong> বিশিষ্ট কথাশিল্পী ও ঔপন্যাসিক।</li>
+                    <li><strong>উল্লেখযোগ্য কাজ:</strong> লেলিহান সাধ, ওয়ারিশ[cite: 39]। গ্রামীণ ও প্রান্তিক মানুষের জীবন সংগ্রাম তাঁর সাহিত্যে ফুটে উঠেছে।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= ILIAS ================= -->
+        <div id="ilias" class="chapter-content">
+            <div class="content-card">
+                <h3>আখতারুজ্জামান ইলিয়াস</h3>
+                <ul>
+                    <li><strong>পরিচয়:</strong> আধুনিক বাংলা উপন্যাসের অন্যতম শ্রেষ্ঠ জাদুকরী ও বাস্তববাদী লেখক।</li>
+                    <li><strong>উল্লেখযোগ্য সৃষ্টি:</strong> চিলেকোঠার সেপাই, খোয়াবনামা এবং 'জাল স্বপ্ন স্বপ্নের জাল'[cite: 43]।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= ALASOL ================= -->
+        <div id="alasol" class="chapter-content">
+            <div class="content-card">
+                <h3>আলাওল</h3>
+                <ul>
+                    <li><strong>পরিচয়:</strong> মধ্যযুগের অন্যতম শ্রেষ্ঠ বাঙালি কবি ও অনুবাদক।</li>
+                    <li><strong>সৃষ্টি:</strong> 'পদ্মাবতী' তাঁর অমর কীর্তি, যা মালিক মোহাম্মদ জাইসীর 'পদমাবৎ' অবলম্বনে রচিত[cite: 52]।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= MODHUSUDAN ================= -->
+        <div id="modhusudan" class="chapter-content">
+            <div class="content-card">
+                <h3>মাইকেল মধুসূদন দত্ত</h3>
+                <ul>
+                    <li><strong>পরিচয়:</strong> আধুনিক বাংলা সাহিত্যের প্রথম বিদ্রোহী কবি ও নাট্যকার।</li>
+                    <li><strong>প্রবর্তন:</strong> বাংলা কবিতায় অমিত্রাক্ষর ছন্দ এবং সনেট প্রবর্তন করেন[cite: 56]।</li>
+                    <li><strong>সৃষ্টি:</strong> মেঘনাদবধ কাব্য, পদ্মাবতী, কৃষ্ণকুমারী[cite: 57]।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= JASHIM ================= -->
+        <div id="jashim" class="chapter-content">
+            <div class="content-card">
+                <h3>জসীমউদ্দীন</h3>
+                <ul>
+                    <li><strong>পল্লীকবি:</strong> গ্রামীণ প্রকৃতি, জনজীবন ও লোকসংস্কৃতি ফুটিয়ে তোলার জন্য তাঁকে 'পল্লীকবি' বলা হয়।</li>
+                    <li><strong>উল্লেখযোগ্য গ্রন্থ:</strong> নকশী কাথার মাঠ, সোজন বাদিয়ার ঘাট, বালুচর[cite: 75]।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= SUFIA ================= -->
+        <div id="sufia" class="chapter-content">
+            <div class="content-card">
+                <h3>সুফিয়া কামাল</h3>
+                <ul>
+                    <li><strong>পরিচয়:</strong> বিশিষ্ট কবি, নারী অধিকার নেত্রী ও সমাজকর্মী।</li>
+                    <li><strong>সৃষ্টি:</strong> সাঁঝের মায়া, মায়া প্রদীপ প্রভৃতি তাঁর বিখ্যাত কাব্যগ্রন্থ।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= FARRUKH ================= -->
+        <div id="farrukh" class="chapter-content">
+            <div class="content-card">
+                <h3>ফররুখ আহমদ</h3>
+                <ul>
+                    <li><strong>পরিচয়:</strong> বাংলা সাহিত্যের অনন্য ধারার মুসলিম রেনেসাঁসের কবি।</li>
+                    <li><strong>উল্লেখযোগ্য গ্রন্থ:</strong> সাত সাগরের মাঝি, কাফেলা[cite: 82]।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= SUKANTA ================= -->
+        <div id="sukanta" class="chapter-content">
+            <div class="content-card">
+                <h3>সুকান্ত ভট্টাচার্য</h3>
+                <ul>
+                    <li><strong>পরিচয়:</strong> মার্ক্সবাদী চেতনায় উদ্বুদ্ধ তারুণ্য ও দ্রোহের কবি। অল্প বয়সে মারা গেলেও তাঁর কবিতা যুগান্তকারী প্রভাব ফেলেছে।</li>
+                    <li><strong>গ্রন্থ:</strong> ছাড়পত্র[cite: 86], ঘুম নেই, পূর্বাভাস।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= SHAMSUR ================= -->
+        <div id="shamsur" class="chapter-content">
+            <div class="content-card">
+                <h3>শামসুর রহমান</h3>
+                <ul>
+                    <li><strong>পরিচয়:</strong> আধুনিক বাংলা কবিতার অন্যতম প্রধান কবি ও নাগরিক কবি।</li>
+                    <li><strong>উল্লেখযোগ্য কাব্য:</strong> নিজ বাসভূমে[cite: 89], বন্দিশিবির থেকে, প্রথমা ইত্যাদি।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= ABU ZAFAR ================= -->
+        <div id="abuzafor" class="chapter-content">
+            <div class="content-card">
+                <h3>আবু জাফর ওবায়দুল্লাহ</h3>
+                <ul>
+                    <li><strong>পরিচয়:</strong> বিশিষ্ট কবি ও কূটনীতিবিদ।</li>
+                    <li><strong>সৃষ্টি:</strong> 'আমি কিংবদন্তির কথা বলছি' তাঁর কালজয়ী একটি সৃষ্টি[cite: 93]।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= AL MAHMUD ================= -->
+        <div id="almahmud" class="chapter-content">
+            <div class="content-card">
+                <h3>আল মাহমুদ</h3>
+                <ul>
+                    <li><strong>পরিচয়:</strong> আধুনিক বাংলা কবিতার অন্যতম প্রধান কবি, যিনি গ্রামীণ জনপদ ও নদীর রূপ সুনিপুণভাবে ফুটিয়ে তুলেছেন।</li>
+                    <li><strong>গ্রন্থ:</strong> সোনালী কাবিন[cite: 97], লোকসমাজ ও লোকায়ত জীবনের চিত্র তাঁর কবিতায় প্রধান।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= SIKANDAR ================= -->
+        <div id="sikandar" class="chapter-content">
+            <div class="content-card">
+                <h3>সিকান্দার আবু জাফর</h3>
+                <ul>
+                    <li><strong>পরিচয়:</strong> প্রখ্যাত কবি, নাট্যকার ও সম্পাদক।</li>
+                    <li><strong>সৃষ্টি:</strong> 'সিরাজউদ্দৌলা' ঐতিহাসিক নাটকটি তাঁর অন্যতম শ্রেষ্ঠ অবদান[cite: 100]।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= WALIULLAH ================= -->
+        <div id="waliullah" class="chapter-content">
+            <div class="content-card">
+                <h3>সৈয়দ ওয়ালীউল্লাহ্</h3>
+                <ul>
+                    <li><strong>পরিচয়:</strong> বাংলা উপন্যাসে অস্তিত্ববাদ ও মনস্তাত্ত্বিক ধারার প্রবক্তা।</li>
+                    <li><strong>সৃষ্টি:</strong> 'লালসালু' (১৯৪৮) তাঁর বিখ্যাত সামাজিক উপন্যাস[cite: 109]।</li>
+                </ul>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ফুটার -->
+    <footer>
+        <p>&copy; ২০২৬ Varsity Vision। সর্বস্বত্ব সংরক্ষিত।</p>
+        <p style="margin-top: 5px; font-size: 0.85rem; color: #64748b;">সম্পাদনা : জুনায়েদ তনয়</p>
+    </footer>
+
+    <!-- ট্যাব পরিবর্তন লজিক -->
+    <script>
+        function showAuthor(authorId) {
+            const contents = document.querySelectorAll('.chapter-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(authorId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
