@@ -3,88 +3,320 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>বাংলা প্রস্তুতি ও লেকচার শিট - Varsity Vision</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>বাংলা প্রস্তুতি - Varsity Vision</title>
+    
+    <!-- Noto Serif Bengali Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        body { font-family: 'Hind Siliguri', sans-serif; }
+        :root {
+            --bg-main: linear-gradient(135deg, #090d16 0%, #171f33 50%, #090d16 100%);
+            --glass-card: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+            --glass-card-hover: linear-gradient(135deg, rgba(56, 189, 248, 0.15) 0%, rgba(99, 102, 241, 0.2) 100%);
+            --btn-gradient: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+            --section-grad-1: linear-gradient(180deg, #0f172a 0%, #1e1b4b 100%);
+            --section-grad-2: linear-gradient(180deg, #1e1b4b 0%, #0f172a 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Serif Bengali', serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-main);
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-bottom: 50px;
+            background-attachment: fixed;
+        }
+
+        /* 📌 ফিক্সড স্লিম স্টিকি নেভিগেশন কার্ড */
+        .sticky-header-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            padding: 10px 4%;
+            background: rgba(9, 13, 22, 0.9);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+        }
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+        .brand-subtitle {
+            font-size: 0.75rem;
+            color: #38bdf8;
+            font-weight: 600;
+        }
+
+        /* হোম পেজে ফিরে যাওয়ার বাটন */
+        .home-btn-box {
+            background: var(--btn-gradient);
+            padding: 2px;
+            border-radius: 50px;
+            box-shadow: 0 0 12px rgba(37, 99, 235, 0.4);
+            transition: transform 0.2s;
+        }
+        .home-btn-box:hover {
+            transform: scale(1.05);
+        }
+        .btn-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 18px;
+            background: #0f172a;
+            color: #38bdf8;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .btn-home:hover {
+            background: transparent;
+            color: #ffffff;
+        }
+
+        /* 📌 সেকশন লেআউট */
+        main {
+            margin-top: 85px;
+            flex: 1;
+        }
+        .section-container {
+            padding: 60px 8%;
+        }
+        .bg-grad-1 { background: var(--section-grad-1); }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            background: linear-gradient(90deg, #ffffff, #93c5fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        .section-desc {
+            text-align: center;
+            color: #cbd5e1;
+            margin-bottom: 40px;
+            font-size: 1rem;
+        }
+
+        /* গ্রিড কার্ডস */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--glass-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card:hover { 
+            transform: translateY(-8px); 
+            background: var(--glass-card-hover);
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 12px 40px rgba(56, 189, 248, 0.25);
+        }
+
+        .subject-card {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.35) 0%, rgba(15, 23, 42, 0.6) 100%);
+            border-left: 4px solid #06b6d4;
+        }
+
+        .card-icon {
+            font-size: 2.2rem;
+            color: #38bdf8;
+            margin-bottom: 15px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--btn-gradient);
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 18px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 6px 25px rgba(37, 99, 235, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* ফুটার */
+        footer {
+            background: #020617;
+            color: #94a3b8;
+            text-align: center;
+            padding: 25px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            .sticky-header-container {
+                padding: 6px 3%;
+            }
+            .navbar-card {
+                padding: 8px 12px;
+            }
+            .brand-name {
+                font-size: 1.25rem;
+            }
+            .brand-subtitle {
+                font-size: 0.65rem;
+            }
+            main {
+                margin-top: 70px;
+            }
+            .section-container {
+                padding: 40px 4%;
+            }
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
+<body>
 
-    <!-- Top Navigation -->
-    <nav class="bg-emerald-800 text-white shadow-lg sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center space-x-3">
-                    <a href="index.html" class="bg-emerald-600 p-2 rounded-lg text-xl font-bold"><i class="fa-solid fa-arrow-left"></i></a>
-                    <span class="font-bold text-xl sm:text-2xl">বাংলা প্রস্তুতি সেকশন</span>
-                </div>
-                <div>
-                    <a href="index.html" class="bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold px-4 py-2 rounded-full text-sm transition">
-                        হোম পেজে ফিরে যান
-                    </a>
-                </div>
+    <!-- 📌 ফিক্সড স্লিম মোবাইল-ফ্রেন্ডলি নেভিগেশন কার্ড -->
+    <div class="sticky-header-container">
+        <div class="navbar-card">
+            <div class="brand">
+                <a href="index.html" class="brand-name">varsity vision</a>
+                <span class="brand-subtitle">বাংলা প্রস্তুতি সেকশন</span>
+            </div>
+            <div class="home-btn-box">
+                <a href="index.html" class="btn-home">
+                    <i class="fa-solid fa-house"></i> হোমপেজে ফিরে যান
+                </a>
             </div>
         </div>
-    </nav>
-
-    <!-- Content Header -->
-    <div class="bg-emerald-900 text-white py-12 px-4 text-center">
-        <h1 class="text-3xl sm:text-4xl font-extrabold mb-3">বাংলা বিষয়ভিত্তিক লেকচার ও মডেল টেস্ট</h1>
-        <p class="text-slate-200 max-w-xl mx-auto">এখানে বাংলার ব্যাকরণ, সাহিত্য এবং বিগত বছরের প্রশ্নের পিডিএফ শিটগুলো পেয়ে যাবে।</p>
     </div>
 
-    <!-- PDF Segments List -->
-    <div class="max-w-4xl mx-auto px-4 py-12">
-        <div class="space-y-4">
+    <!-- মূল কনটেন্ট -->
+    <main>
+        <section class="section-container bg-grad-1">
+            <h2 class="section-title">বাংলা বিষয়ভিত্তিক প্রস্তুতি</h2>
+            <p class="section-desc">আপনার কাঙ্ক্ষিত বিভাগটি বেছে নিয়ে পড়াশোনা শুরু করুন বা পিডিএফ শিট সংগ্রহ করুন</p>
             
-            <!-- Item 1 -->
-            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                <div>
-                    <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-1 rounded">ব্যাকরণ</span>
-                    <h3 class="text-lg font-bold text-slate-900 mt-2">বাংলা ব্যাকরণ ও নির্মিতি শর্টকাট শিট</h3>
-                    <p class="text-slate-600 text-sm">সমাস, কারক, প্রবচন ও বানান শুদ্ধির গুরুত্বপূর্ণ রুলস।</p>
+            <div class="grid-cards">
+                
+                <!-- ১. সাহিত্যপাঠ ও সহপাঠ -->
+                <div class="card subject-card">
+                    <div>
+                        <div class="card-icon"><i class="fa-solid fa-book-open-reader"></i></div>
+                        <h3 style="color: #06b6d4; font-size: 1.3rem;">১. সাহিত্যপাঠ ও সহপাঠ</h3>
+                        <p style="color: #cbd5e1; margin-top: 10px; font-size: 0.95rem; line-height: 1.6;">গদ্য, পদ্য ও সহপাঠের গুরুত্বপূর্ণ অধ্যায়ভিত্তিক আলোচনা, সারসংক্ষেপ ও লেকচার শিট।</p>
+                    </div>
+                    <a href="literature.html" class="btn-primary">প্রবেশ করুন</a>
                 </div>
-                <a href="https://drive.google.com/file/d/1CmRdesFGlvYpnt405lprpMx72pH1n2RX/view?usp=drivesdk" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-2.5 rounded-lg text-sm transition flex items-center gap-2 whitespace-nowrap">
-                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
-                </a>
-            </div>
 
-            <!-- Item 2 -->
-            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                <div>
-                    <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded">সাহিত্য</span>
-                    <h3 class="text-lg font-bold text-slate-900 mt-2">সাহিত্যপাঠ ও সহপাঠ</h3>
-                    <p class="text-slate-600 text-sm">গদ্য,পদ্য,উপন্যাস ও নাটক।</p>
+                <!-- ২. বাংলা ব্যাকরণ -->
+                <div class="card subject-card">
+                    <div>
+                        <div class="card-icon"><i class="fa-solid fa-pen-nib"></i></div>
+                        <h3 style="color: #06b6d4; font-size: 1.3rem;">২. বাংলা ব্যাকরণ</h3>
+                        <p style="color: #cbd5e1; margin-top: 10px; font-size: 0.95rem; line-height: 1.6;">সমাস, কারক, প্রবচন, বানান শুদ্ধি এবং ব্যাকরণের শর্টকাট রুলস ও ব্যাখ্যা।</p>
+                    </div>
+                    <a href="grammar.html" class="btn-primary">প্রবেশ করুন</a>
                 </div>
-                <a href="https://drive.google.com/file/d/1rjMOBj1hCVP_x5QtolXweQv8nWBkZ_te/view?usp=drivesdk" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-2.5 rounded-lg text-sm transition flex items-center gap-2 whitespace-nowrap">
-                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
-                </a>
-            </div>
 
-            <!-- Item 3 -->
-            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                <div>
-                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2.5 py-1 rounded">মডেল টেস্ট</span>
-                    <h3 class="text-lg font-bold text-slate-900 mt-2">ঢাবি ভর্তি পরীক্ষার বাংলা প্রশ্ন ব্যাংক ও সমাধান</h3>
-                    <p class="text-slate-600 text-sm">গত ১০ বছরের ঢাকা বিশ্ববিদ্যালয় ভর্তি পরীক্ষার বাংলা অংশের ব্যাখ্যাসহ সমাধান।</p>
+                <!-- ৩. কবি-সাহিত্যিক পরিচিতি -->
+                <div class="card subject-card">
+                    <div>
+                        <div class="card-icon"><i class="fa-solid fa-user-graduate"></i></div>
+                        <h3 style="color: #06b6d4; font-size: 1.3rem;">৩. কবি-সাহিত্যিক পরিচিতি</h3>
+                        <p style="color: #cbd5e1; margin-top: 10px; font-size: 0.95rem; line-height: 1.6;">বিখ্যাত কবি ও লেখকদের জীবনকথা, সাহিত্যকর্ম, উপাধি ও ভর্তি পরীক্ষার গুরুত্বপূর্ণ প্রশ্ন।</p>
+                    </div>
+                    <a href="authors.html" class="btn-primary">প্রবেশ করুন</a>
                 </div>
-                <a href="আপনার_গুগল_ড্রাইভের_পিডিএফ_লিংক_এখানে_দিন" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-2.5 rounded-lg text-sm transition flex items-center gap-2 whitespace-nowrap">
-                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
-                </a>
+
+                <!-- ৪. মডেল টেস্ট -->
+                <div class="card subject-card">
+                    <div>
+                        <div class="card-icon"><i class="fa-solid fa-file-signature"></i></div>
+                        <h3 style="color: #06b6d4; font-size: 1.3rem;">৪. মডেল টেস্ট</h3>
+                        <p style="color: #cbd5e1; margin-top: 10px; font-size: 0.95rem; line-height: 1.6;">নিজেকে যাচাই করতে অধ্যায়ভিত্তিক অনলাইন মডেল টেস্ট ও বিগত বছরের প্রশ্ন ব্যাংক সমাধান।</p>
+                    </div>
+                    <a href="model-test.html" class="btn-primary">প্রবেশ করুন</a>
+                </div>
+
+                <!-- ৫. রিটেন সাজেশন -->
+                <div class="card subject-card">
+                    <div>
+                        <div class="card-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                        <h3 style="color: #06b6d4; font-size: 1.3rem;">৫. রিটেন সাজেশন</h3>
+                        <p style="color: #cbd5e1; margin-top: 10px; font-size: 0.95rem; line-height: 1.6;">ঢাকা বিশ্ববিদ্যালয়সহ অন্যান্য বিশ্ববিদ্যালয়ের লিখিত পরীক্ষার প্রস্তুতি, সারমর্ম ও সাজেশনের তালিকা।</p>
+                    </div>
+                    <a href="written-suggestion.html" class="btn-primary">প্রবেশ করুন</a>
+                </div>
+
             </div>
+        </section>
+    </main>
 
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-8 text-center border-t border-slate-800">
-        <p class="text-xs">&copy; 2026 Varsity Vision. All rights reserved.</p>
+    <!-- ফুটার -->
+    <footer>
+        <p>&copy; ২০২৬ Varsity Vision। সর্বস্বত্ব সংরক্ষিত।</p>
+        <p style="margin-top: 5px; font-size: 0.85rem; color: #64748b;">সম্পাদনা : জুনায়েদ তনয়</p>
     </footer>
 
 </body>
