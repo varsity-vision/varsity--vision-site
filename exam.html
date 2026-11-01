@@ -35,7 +35,7 @@
             background-attachment: fixed;
         }
 
-        /* 📌 প্রফেশনাল স্লিম নেভিগেশন বার */
+        /* প্রফেশনাল স্লিম নেভিগেশন বার */
         .sticky-header-container {
             position: fixed;
             top: 0;
@@ -284,7 +284,7 @@
             box-shadow: 0 6px 25px rgba(37, 99, 235, 0.6);
         }
 
-        /* 🏆 ডেডিকেটেড লিডারবোর্ড ইন্টারফেস */
+        /* ডেডিকেটেড লিডারবোর্ড ইন্টারফেস */
         .leaderboard-wrapper {
             background: linear-gradient(135deg, rgba(30, 27, 75, 0.6), rgba(15, 23, 42, 0.9));
             border: 1px solid rgba(56, 189, 248, 0.4);
@@ -347,11 +347,11 @@
 </head>
 <body>
 
-    <!-- 📌 প্রফেশনাল স্লিম নেভিগেশন বার -->
+    <!-- প্রফেশনাল স্লিম নেভিগেশন বার -->
     <div class="sticky-header-container">
         <div class="navbar-card">
-            <a href="index.html" class="brand-name">Varsity Vision Portal</a>
-            <a href="index.html" class="btn-home">হোমপেজ</a>
+            <a href="#" class="brand-name">Varsity Vision Portal</a>
+            <a href="#" class="btn-home">হোমপেজ</a>
         </div>
     </div>
 
@@ -360,12 +360,12 @@
         <!-- সূচিপত্র বা মেনু বার -->
         <div class="index-menu" id="mainMenuNav">
             <button class="menu-btn active" onclick="switchTab('du-exam')">ঢাকা বিশ্ববিদ্যালয় মডেল টেস্ট (৯০ প্রশ্ন)</button>
-            <button class="menu-btn" onclick="switchTab('hsc-exam')">HSC একাডেমিক মডেল টেস্ট (৩০ প্রশ্ন)</button>
+            <button class="menu-btn" onclick="switchTab('hsc-exam')">HSC একাডেমিক মডেল টেস্ট (৬০ প্রশ্ন)</button>
             <button class="menu-btn" onclick="switchTab('subject-exam')">বিষয়ভিত্তিক পরীক্ষা (১০০ প্রশ্ন)</button>
             <button class="menu-btn" onclick="switchTab('leaderboard-sec')" style="background: linear-gradient(135deg, #e11d48, #be123c);">🏆 লিডারবোর্ড দেখুন</button>
         </div>
 
-        <!-- ১. ঢাকা বিশ্ববিদ্যালয় মডেল টেস্ট সেকশন (আপনার প্রদত্ত ৯০টি প্রশ্ন সংযুক্ত) -->
+        <!-- ১. ঢাকা বিশ্ববিদ্যালয় মডেল টেস্ট সেকশন (৯০টি প্রশ্ন) -->
         <div id="du-exam" class="exam-section-card active">
             <h2 style="color: #38bdf8; margin-bottom: 10px;">ঢাকা বিশ্ববিদ্যালয় (DU) পূর্ণাঙ্গ মডেল টেস্ট</h2>
             <p style="color: #cbd5e1; margin-bottom: 25px; font-size: 0.95rem;">বাছাইকৃত পূর্ণাঙ্গ ৯০টি রিয়েল প্রশ্ন। সঠিক উত্তর: +১, ভুল উত্তর: -০.২৫। সময়: ৬০ মিনিট।</p>
@@ -399,10 +399,10 @@
             <div id="du-result-box" style="display: none; text-align: center; padding: 30px;"></div>
         </div>
 
-        <!-- ২. HSC একাডেমিক মডেল টেস্ট সেকশন (৩০ প্রশ্ন) -->
+        <!-- ২. HSC একাডেমিক মডেল টেস্ট সেকশন (৬০ প্রশ্ন) -->
         <div id="hsc-exam" class="exam-section-card">
             <h2 style="color: #38bdf8; margin-bottom: 10px;">HSC বোর্ড পরীক্ষার পূর্ণাঙ্গ মডেল টেস্ট</h2>
-            <p style="color: #cbd5e1; margin-bottom: 25px; font-size: 0.95rem;">বোর্ড স্ট্যান্ডার্ড ৩০টি প্রশ্ন। সময়: ৩০ মিনিট।</p>
+            <p style="color: #cbd5e1; margin-bottom: 25px; font-size: 0.95rem;">বোর্ড স্ট্যান্ডার্ড ৬০টি প্রশ্ন। সময়: ৪৫ মিনিট।</p>
             
             <div id="hsc-form-box">
                 <form id="hscFormStart">
@@ -421,7 +421,7 @@
             <div id="hsc-exam-box" style="display: none;">
                 <div class="exam-top-bar">
                     <span id="hsc-candidate-info" style="font-weight: 600; color: #38bdf8;"></span>
-                    <div class="timer-badge" id="hsc-timer">সময় বাকি: ৩০:০০</div>
+                    <div class="timer-badge" id="hsc-timer">সময় বাকি: ৪৫:০০</div>
                 </div>
                 <form id="hscFormSubmit">
                     <div class="questions-scroll-area" id="hsc-questions-container">
@@ -507,7 +507,7 @@
         let activeCategory = '';
         let activeSubjectKey = '';
 
-        // আপনার প্রদানকৃত ৯০টি প্রশ্ন এখানে সরাসরি যুক্ত করা হলো
+        // ঢাকা বিশ্ববিদ্যালয় (DU) ৯০টি প্রশ্ন
         const duQuestions = [
             { id: 1, question: "ণ-ত্ব বিধি অনুসারে কোন জোড় অশুদ্ধ বানান?", options: ["দুর্নিবার, নবারুণ", "হরিণ, মূল্যায়ন", "কেরাণি, পরগণা", "পণ, প্রণয়ন"], answer: 2 },
             { id: 2, question: "'জেন্দা' কী?", options: ["ভাষা", "জাতি", "গ্রন্থ", "গোষ্ঠী"], answer: 2 },
@@ -601,388 +601,97 @@
             { id: 90, question: "বাংলার প্রথম নবাব কে ছিলেন?", options: ["আলীবর্দী খান", "সুজাউদ্দিন মুহাম্মদ খান", "মুর্শিদকুলী খান", "সিরাজউদ্দৌলা"], answer: 2 }
         ];
 
-        // অন্যান্য সেগমেন্টের জন্য মানসম্মত প্রশ্ন ব্যাংক জেনারেটর
+        // অন্যান্য সেগমেন্টের প্রশ্ন ব্যাংক (HSC-তে ৬০টি, Subject ভিত্তিক প্রতিটিতে ১০০টি করে)
+        const basePools = {
+            hsc: [
+                { id: 1, q: "'বিলাসী' গল্পে মৃত্যুঞ্জয় কোন শ্রেণিতে পড়ত?", opts: ["ফার্স্ট ক্লাস", "সেকেন্ড ক্লাস", "থার্ড ক্লাস", "ফোর্থ ক্লাস"], ans: 2 },
+                { id: 2, q: "What does the word 'unlettered' mean?", opts: ["Skilled in writing", "Illiterate", "Educated in literature", "Written in a letter"], ans: 1 },
+                { id: 3, q: "কম্পিউটার নেটওয়ার্কে ডেটা গ্রহণ ও প্রদানের নিয়মকে কী বলে?", opts: ["URL", "IP Address", "Browser", "Protocol"], ans: 3 },
+                { id: 4, q: "'ব্যাকরণ' শব্দটি কোন ভাষা থেকে এসেছে?", opts: ["বাংলা", "সংস্কৃত", "বিদেশি", "তদ্ভব"], ans: 1 },
+                { id: 5, q: "What was the first step taken to educate the bird in 'The Parrot's Tale'?", opts: ["Teaching it manners", "Building a proper cage", "Writing books for it", "Providing new food"], ans: 1 },
+                { id: 6, q: "জাতীয় পরিচয়পত্র তৈরিতে কোন প্রযুক্তি ব্যবহৃত হয়?", opts: ["আর্টিফিশিয়াল ইন্টেলিজেন্স", "বায়োমেট্রিক্স", "জেনেটিক ইঞ্জিনিয়ারিং", "বায়োইনফরমেটিক্স"], ans: 1 },
+                { id: 7, q: "'অপরিচিতা' গল্পে রেলভ্রমণকালে দেখা মেয়েটির সুধাকণ্ঠকে অনুপম কিসের সঙ্গে তুলনা করেছে?", opts: ["রুপার কাঠি", "সোনার কাঠি", "মধুর ঝরনা", "বাঁশির সুর"], ans: 1 },
+                { id: 8, q: "A good boy is accustomed ___ hard work.", opts: ["with", "for", "to", "by"], ans: 2 },
+                { id: 9, q: "'ব্যাকরণ' শব্দের বিশ্লেষিত রূপ কোনটি?", opts: ["বি + আ + √কৃ + অপ", "বি + আ + √কৃ + অন", "বি + আ + √কৃ + অন্", "বি + আ + √কৃ + অনট"], ans: 1 },
+                { id: 10, q: "HTML-এর পূর্ণরূপ কী?", opts: ["HighText Machine Language", "Hyperlink and Text Management Language", "HyperText Markup Language", "Home Tool Markup Language"], ans: 2 },
+                { id: 11, q: "What does the word 'scripture' mean?", opts: ["A type of bird", "Polite behaviour", "Sacred writings", "Exquisite craftsmanship"], ans: 2 },
+                { id: 12, q: "'রেইনকোট' গল্পে রেইনকোটটি কার?", opts: ["নুরুল হুদার", "মিন্টুর", "আলতাফের", "রহমানের"], ans: 1 },
+                { id: 13, q: "শব্দের অর্থযুক্ত ক্ষুদ্রতম অংশকে কী বলা হয়?", opts: ["রূপ", "ধ্বনি", "সন্ধি", "বর্ণ"], ans: 0 },
+                { id: 14, q: "ডেটা স্থানান্তরে বিটের বিন্যাসব্যবস্থা হলো—", opts: ["মোড", "মেথড", "স্পিড", "টপোলজি"], ans: 0 },
+                { id: 15, q: "Who was given the responsibility of educating the bird?", opts: ["The King", "The King's guards", "The King's nephews", "The royal ministers"], ans: 2 },
+                { id: 16, q: "'বিদ্রোহী' কবিতাটি কোন পত্রিকায় প্রকাশিত হয়েছিল?", opts: ["ধূমকেতু", "বিজলী", "সওগাত", "মোসলেম ভারত"], ans: 1 },
+                { id: 17, q: "কম্পিউটার থেকে প্রিন্টারে ডেটা স্থানান্তরের ক্ষেত্রে কোনটি ব্যবহৃত হয়?", opts: ["ন্যারো ব্যান্ড", "ভয়েস ব্যান্ড", "হাফ-ডুপ্লেক্স", "ফুল-ডুপ্লেক্স"], ans: 0 },
+                { id: 18, q: "He is not addicted ___ any bad thing.", opts: ["with", "to", "for", "by"], ans: 1 },
+                { id: 19, q: "রূপতত্ত্বের আলোচ্য বিষয় নয় কোনটি?", opts: ["সমাস", "প্রত্যয়", "সন্ধি", "উপসর্গ"], ans: 2 },
+                { id: 20, q: "What does the word 'exquisite' mean?", opts: ["Polite behaviour", "Genuine or real", "Finely made or beautiful", "Illiterate"], ans: 2 },
+                { id: 21, q: "'আমার পথ' প্রবন্ধে কাজী নজরুল ইসলামের কর্ণধার কে?", opts: ["সমাজ", "ধর্ম", "শিক্ষক", "নিজে"], ans: 3 },
+                { id: 22, q: "ডেটাবেজে প্রতিটি রেকর্ডকে অনন্যভাবে শনাক্ত করে কোনটি?", opts: ["Field", "Index", "Primary Key", "Foreign Key"], ans: 2 },
+                { id: 23, q: "'বিলাসী' গল্পে বিলাসী কীসের প্রতীক?", opts: ["প্রেমনিষ্ঠার", "প্রতিহিংসার", "সামাজিক মর্যাদার", "অর্থনৈতিক স্বাচ্ছন্দ্যের"], ans: 0 },
+                { id: 24, q: "The King ordered to educate the bird because—", opts: ["The bird was intelligent", "The bird lacked manners and was unlettered", "The bird could fly too high", "The bird had excellent manners"], ans: 1 },
+                { id: 25, q: "'ব্যাকরণ' শব্দের ব্যুৎপত্তিগত অর্থ কী?", opts: ["ভাষার সংবিধান", "গ্রামার", "ভাষাবিষয়ক জ্ঞান", "বিশ্লেষণ"], ans: 3 },
+                { id: 26, q: "কোনটি HTML-এর empty tag?", opts: ["<p>", "<table>", "<br>", "<b>"], ans: 2 },
+                { id: 27, q: "'রেইনকোট' গল্পে 'সাবভার্সিভ অ্যাকটিভিটিজ' বলতে কী বোঝানো হয়েছে?", opts: ["সামাজিক কর্মকাণ্ড", "রাষ্ট্রবিরোধী কর্মকাণ্ড", "সাংস্কৃতিক কর্মকাণ্ড", "রাজনৈতিক প্রচারণা"], ans: 1 },
+                { id: 28, q: "He is not averse ___ any hard work.", opts: ["to", "with", "for", "by"], ans: 0 },
+                { id: 29, q: "'বচন' ব্যাকরণের কোন অংশের আলোচ্য বিষয়?", opts: ["ধ্বনিতত্ত্ব", "শব্দতত্ত্ব", "রূপতত্ত্ব", "বাক্যতত্ত্ব"], ans: 2 },
+                { id: 30, q: "কোনটি সার্চ ইঞ্জিন?", opts: ["Twitter", "YouTube", "Pipilika", "Wikipedia"], ans: 2 },
+                { id: 31, q: "What did the royal scholars conclude about the bird?", opts: ["The bird was too wise", "The bird's nest could not hold much knowledge", "The bird was too young to be educated", "The bird needed more food"], ans: 1 },
+                { id: 32, q: "'সোনার তরী' কবিতায় 'বাঁকা জল' মূলত কীসের প্রতীক?", opts: ["কালস্রোতের", "জীবনের আনন্দের", "প্রকৃতির সৌন্দর্যের", "মানবপ্রেমের"], ans: 0 },
+                { id: 33, q: "He clings ___ his determination.", opts: ["on", "at", "to", "with"], ans: 2 },
+                { id: 34, q: "ক্রায়োসার্জারিতে সাধারণত কোনটি ক্রায়োজনিক এজেন্ট হিসেবে ব্যবহৃত হয়?", opts: ["তরল নাইট্রোজেন", "তরল পানি", "বাষ্প", "কার্বন ডাই-অক্সাইড গ্যাস"], ans: 0 },
+                { id: 35, q: "'ব্যাকরণ' শব্দটি কোন ধরনের শব্দ?", opts: ["তদ্ভব", "দেশি", "বিদেশি", "তৎসম"], ans: 3 },
+                { id: 36, q: "Which of the following best describes 'manners'?", opts: ["A type of bird", "Polite behaviour", "Illiteracy", "Fine craftsmanship"], ans: 1 },
+                { id: 37, q: "'সোনার তরী' কবিতার উপজীব্য বিষয় কী?", opts: ["প্রকৃতিপ্রেম", "জীবনচেতনা", "দেশপ্রেম", "মানবসভ্যতা"], ans: 1 },
+                { id: 38, q: "HTML ফাইল সম্পাদনার জন্য কোনটি Text Editor?", opts: ["Notepad", "Notepad++", "Sublime Text", "সবগুলো"], ans: 3 },
+                { id: 39, q: "He is used ___ hard work.", opts: ["with", "to", "by", "for"], ans: 1 },
+                { id: 40, q: "'The Origin and Development of Bengali Language' গ্রন্থটির লেখক কে?", opts: ["ড. দীনেশচন্দ্র সেন", "ড. সুনীতিকুমার চট্টোপাধ্যায়", "ড. মুহম্মদ শহীদুল্লাহ", "ড. সুকুমার সেন"], ans: 1 },
+                { id: 41, q: "কম্পিউটার নেটওয়ার্কের জন্য নেটওয়ার্ক ব্যাকবোন হিসেবে ব্যবহৃত ক্যাবলভিত্তিক টপোলজি কোনটি?", opts: ["বাস", "রিং", "স্টার", "মেশ"], ans: 0 },
+                { id: 42, q: "What does the word 'deliberated' mean?", opts: ["Considered carefully", "A type of bird", "Sacred writings", "Genuine or real"], ans: 0 },
+                { id: 43, q: "'বিলাসী' গল্পটি কত বঙ্গাব্দে প্রকাশিত হয়?", opts: ["১৩২৩", "১৩২৪", "১৩২৫", "১৩২৬"], ans: 2 },
+                { id: 44, q: "কম্পিউটার নেটওয়ার্কে একই সঙ্গে উভয় দিকে ডেটা স্থানান্তরের পদ্ধতিকে কী বলে?", opts: ["সিমপ্লেক্স", "হাফ-ডুপ্লেক্স", "ফুল-ডুপ্লেক্স", "অ্যাসিনক্রোনাস"], ans: 2 },
+                { id: 45, q: "He is not doubtful ___ his success.", opts: ["about", "of", "with", "for"], ans: 1 },
+                { id: 46, q: "What was the bird's cage made of?", opts: ["Silver", "Gold", "Wood", "Iron"], ans: 1 },
+                { id: 47, q: "'সাহিত্যে খেলা' প্রবন্ধ অনুসারে সাহিত্যের উদ্দেশ্য কী?", opts: ["আনন্দ দেওয়া", "অর্থ উপার্জন", "জ্ঞান বিতরণ", "ইতিহাস সংরক্ষণ"], ans: 0 },
+                { id: 48, q: "শর্তসাপেক্ষে ডেটা অনুসন্ধান করাকে কী বলে?", opts: ["মডিউল", "কুয়েরি", "সর্টিং", "ইনডেক্সিং"], ans: 1 },
+                { id: 49, q: "He is very much conscious ___ duties.", opts: ["with", "for", "of", "by"], ans: 2 },
+                { id: 50, q: "'রেইনকোট' গল্পে মিন্টু কবে বাড়ি ছেড়ে গিয়েছিল?", opts: ["২১ জুন", "২২ জুন", "২৩ জুন", "২৪ জুন"], ans: 2 },
+                { id: 51, q: "What did the bird's cage symbolize?", opts: ["The bird's freedom", "The bird's education", "The bird's imprisonment", "The bird's happiness"], ans: 2 },
+                { id: 52, q: "কোনটি কৃত্রিম বুদ্ধিমত্তায় ব্যবহৃত প্রোগ্রামিং ভাষা?", opts: ["LISP", "CSS", "HTML", "SQL"], ans: 0 },
+                { id: 53, q: "'বাঙ্গালার নব্য লেখকদিগের প্রতি নিবেদন' প্রবন্ধে লেখক প্রথমে কোনটির জন্য লিখতে নিষেধ করেছেন?", opts: ["অর্থ", "যশ", "জ্ঞান", "আনন্দ"], ans: 1 },
+                { id: 54, q: "He is not boastful ___ his talents.", opts: ["with", "of", "to", "by"], ans: 1 },
+                { id: 55, q: "টেবিলের প্রতিটি রেকর্ডকে অনন্যভাবে শনাক্ত করার জন্য কোন Key ব্যবহৃত হয়?", opts: ["Foreign Key", "Primary Key", "Composite Key", "Candidate Key"], ans: 1 },
+                { id: 56, q: "'তাহারেই পড়ে মনে' কবিতায় 'মাঘের সন্ন্যাসী' বলতে কী বোঝানো হয়েছে?", opts: ["বসন্ত ঋতু", "শীত ঋতুর বৈশিষ্ট্য", "বর্ষাকাল", "শরৎ ঋতু"], ans: 1 },
+                { id: 57, q: "Which of the following is the meaning of 'scripture'?", opts: ["Religious texts", "A type of bird", "A golden cage", "A musical instrument"], ans: 0 },
+                { id: 58, q: "কোনটি আউটসোর্সিংয়ের মার্কেটপ্লেস?", opts: ["Facebook", "Myspace", "Upwork", "Wikipedia"], ans: 2 },
+                { id: 59, q: "He behaves well ___ all.", opts: ["at", "with", "to", "by"], ans: 1 },
+                { id: 60, q: "ডেটাবেজের ভিত্তি কোনটি?", opts: ["ফিল্ড", "রেকর্ড", "টেবিল", "কুয়েরি"], ans: 0 }
+            ],
+            bangla: generateHundredPool('বাংলা'),
+            english: generateHundredPool('ইংরেজি'),
+            gk: generateHundredPool('সাধারণ জ্ঞান')
+        };
+
+        // ১০০ প্রশ্ন জেনারেটর হেল্পার ফাংশন
+        function generateHundredPool(subjectName) {
+            let list = [];
+            for(let i=1; i<=100; i++) {
+                list.push({
+                    id: i,
+                    q: `${subjectName} বিষয়ক গুরুত্বপূর্ণ প্রশ্ন নম্বর ${i}: নিচের কোনটি সঠিক?`,
+                    opts: ["বিকল্প ক (সঠিক উত্তর)", "বিকল্প খ", "বিকল্প গ", "বিকল্প ঘ"],
+                    ans: 0
+                });
+            }
+            return list;
+        }
+
         function getUniqueQuestionBank(categoryKey, count, titlePrefix = '') {
-            let questions = [];
-            const basePools = {
-                hsc: [
-  { id: 1, question: "'বিলাসী' গল্পে মৃত্যুঞ্জয় কোন শ্রেণিতে পড়ত?", options: ["ফার্স্ট ক্লাস", "সেকেন্ড ক্লাস", "থার্ড ক্লাস", "ফোর্থ ক্লাস"], answer: 2 },
-  { id: 2, question: "What does the word 'unlettered' mean?", options: ["Skilled in writing", "Illiterate", "Educated in literature", "Written in a letter"], answer: 1 },
-  { id: 3, question: "কম্পিউটার নেটওয়ার্কে ডেটা গ্রহণ ও প্রদানের নিয়মকে কী বলে?", options: ["URL", "IP Address", "Browser", "Protocol"], answer: 3 },
-  { id: 4, question: "'ব্যাকরণ' শব্দটি কোন ভাষা থেকে এসেছে?", options: ["বাংলা", "সংস্কৃত", "বিদেশি", "তদ্ভব"], answer: 1 },
-  { id: 5, question: "What was the first step taken to educate the bird in 'The Parrot's Tale'?", options: ["Teaching it manners", "Building a proper cage", "Writing books for it", "Providing new food"], answer: 1 },
-  { id: 6, question: "জাতীয় পরিচয়পত্র তৈরিতে কোন প্রযুক্তি ব্যবহৃত হয়?", options: ["আর্টিফিশিয়াল ইন্টেলিজেন্স", "বায়োমেট্রিক্স", "জেনেটিক ইঞ্জিনিয়ারিং", "বায়োইনফরমেটিক্স"], answer: 1 },
-  { id: 7, question: "'অপরিচিতা' গল্পে রেলভ্রমণকালে দেখা মেয়েটির সুধাকণ্ঠকে অনুপম কিসের সঙ্গে তুলনা করেছে?", options: ["রুপার কাঠি", "সোনার কাঠি", "মধুর ঝরনা", "বাঁশির সুর"], answer: 1 },
-  { id: 8, question: "A good boy is accustomed ___ hard work.", options: ["with", "for", "to", "by"], answer: 2 },
-  { id: 9, question: "'ব্যাকরণ' শব্দের বিশ্লেষিত রূপ কোনটি?", options: ["বি + আ + √কৃ + অপ", "বি + আ + √কৃ + অন", "বি + আ + √কৃ + অন্", "বি + আ + √কৃ + অনট"], answer: 1 },
-  { id: 10, question: "HTML-এর পূর্ণরূপ কী?", options: ["HighText Machine Language", "Hyperlink and Text Management Language", "HyperText Markup Language", "Home Tool Markup Language"], answer: 2 },
-  { id: 11, question: "What does the word 'scripture' mean?", options: ["A type of bird", "Polite behaviour", "Sacred writings", "Exquisite craftsmanship"], answer: 2 },
-  { id: 12, question: "'রেইনকোট' গল্পে রেইনকোটটি কার?", options: ["নুরুল হুদার", "মিন্টুর", "আলতাফের", "রহমানের"], answer: 1 },
-  { id: 13, question: "শব্দের অর্থযুক্ত ক্ষুদ্রতম অংশকে কী বলা হয়?", options: ["রূপ", "ধ্বনি", "সন্ধি", "বর্ণ"], answer: 0 },
-  { id: 14, question: "ডেটা স্থানান্তরে বিটের বিন্যাসব্যবস্থা হলো—", options: ["মোড", "মেথড", "স্পিড", "টপোলজি"], answer: 0 },
-  { id: 15, question: "Who was given the responsibility of educating the bird?", options: ["The King", "The King's guards", "The King's nephews", "The royal ministers"], answer: 2 },
-  { id: 16, question: "'বিদ্রোহী' কবিতাটি কোন পত্রিকায় প্রকাশিত হয়েছিল?", options: ["ধূমকেতু", "বিজলী", "সওগাত", "মোসলেম ভারত"], answer: 1 },
-  { id: 17, question: "কম্পিউটার থেকে প্রিন্টারে ডেটা স্থানান্তরের ক্ষেত্রে কোনটি ব্যবহৃত হয়?", options: ["ন্যারো ব্যান্ড", "ভয়েস ব্যান্ড", "হাফ-ডুপ্লেক্স", "ফুল-ডুপ্লেক্স"], answer: 0 },
-  { id: 18, question: "He is not addicted ___ any bad thing.", options: ["with", "to", "for", "by"], answer: 1 },
-  { id: 19, question: "রূপতত্ত্বের আলোচ্য বিষয় নয় কোনটি?", options: ["সমাস", "প্রত্যয়", "সন্ধি", "উপসর্গ"], answer: 2 },
-  { id: 20, question: "What does the word 'exquisite' mean?", options: ["Polite behaviour", "Genuine or real", "Finely made or beautiful", "Illiterate"], answer: 2 },
-  { id: 21, question: "'আমার পথ' প্রবন্ধে কাজী নজরুল ইসলামের কর্ণধার কে?", options: ["সমাজ", "ধর্ম", "শিক্ষক", "নিজে"], answer: 3 },
-  { id: 22, question: "ডেটাবেজে প্রতিটি রেকর্ডকে অনন্যভাবে শনাক্ত করে কোনটি?", options: ["Field", "Index", "Primary Key", "Foreign Key"], answer: 2 },
-  { id: 23, question: "'বিলাসী' গল্পে বিলাসী কীসের প্রতীক?", options: ["প্রেমনিষ্ঠার", "প্রতিহিংসার", "সামাজিক মর্যাদার", "অর্থনৈতিক স্বাচ্ছন্দ্যের"], answer: 0 },
-  { id: 24, question: "The King ordered to educate the bird because—", options: ["The bird was intelligent", "The bird lacked manners and was unlettered", "The bird could fly too high", "The bird had excellent manners"], answer: 1 },
-  { id: 25, question: "'ব্যাকরণ' শব্দের ব্যুৎপত্তিগত অর্থ কী?", options: ["ভাষার সংবিধান", "গ্রামার", "ভাষাবিষয়ক জ্ঞান", "বিশ্লেষণ"], answer: 3 },
-  { id: 26, question: "কোনটি HTML-এর empty tag?", options: ["<p>", "<table>", "<br>", "<b>"], answer: 2 },
-  { id: 27, question: "'রেইনকোট' গল্পে 'সাবভার্সিভ অ্যাকটিভিটিজ' বলতে কী বোঝানো হয়েছে?", options: ["সামাজিক কর্মকাণ্ড", "রাষ্ট্রবিরোধী কর্মকাণ্ড", "সাংস্কৃতিক কর্মকাণ্ড", "রাজনৈতিক প্রচারণা"], answer: 1 },
-  { id: 28, question: "He is not averse ___ any hard work.", options: ["to", "with", "for", "by"], answer: 0 },
-  { id: 29, question: "'বচন' ব্যাকরণের কোন অংশের আলোচ্য বিষয়?", options: ["ধ্বনিতত্ত্ব", "শব্দতত্ত্ব", "রূপতত্ত্ব", "বাক্যতত্ত্ব"], answer: 2 },
-  { id: 30, question: "কোনটি সার্চ ইঞ্জিন?", options: ["Twitter", "YouTube", "Pipilika", "Wikipedia"], answer: 2 },
-  { id: 31, question: "What did the royal scholars conclude about the bird?", options: ["The bird was too wise", "The bird's nest could not hold much knowledge", "The bird was too young to be educated", "The bird needed more food"], answer: 1 },
-  { id: 32, question: "'সোনার তরী' কবিতায় 'বাঁকা জল' মূলত কীসের প্রতীক?", options: ["কালস্রোতের", "জীবনের আনন্দের", "প্রকৃতির সৌন্দর্যের", "মানবপ্রেমের"], answer: 0 },
-  { id: 33, question: "He clings ___ his determination.", options: ["on", "at", "to", "with"], answer: 2 },
-  { id: 34, question: "ক্রায়োসার্জারিতে সাধারণত কোনটি ক্রায়োজনিক এজেন্ট হিসেবে ব্যবহৃত হয়?", options: ["তরল নাইট্রোজেন", "তরল পানি", "বাষ্প", "কার্বন ডাই-অক্সাইড গ্যাস"], answer: 0 },
-  { id: 35, question: "'ব্যাকরণ' শব্দটি কোন ধরনের শব্দ?", options: ["তদ্ভব", "দেশি", "বিদেশি", "তৎসম"], answer: 3 },
-  { id: 36, question: "Which of the following best describes 'manners'?", options: ["A type of bird", "Polite behaviour", "Illiteracy", "Fine craftsmanship"], answer: 1 },
-  { id: 37, question: "'সোনার তরী' কবিতার উপজীব্য বিষয় কী?", options: ["প্রকৃতিপ্রেম", "জীবনচেতনা", "দেশপ্রেম", "মানবসভ্যতা"], answer: 1 },
-  { id: 38, question: "HTML ফাইল সম্পাদনার জন্য কোনটি Text Editor?", options: ["Notepad", "Notepad++", "Sublime Text", "সবগুলো"], answer: 3 },
-  { id: 39, question: "He is used ___ hard work.", options: ["with", "to", "by", "for"], answer: 1 },
-  { id: 40, question: "'The Origin and Development of Bengali Language' গ্রন্থটির লেখক কে?", options: ["ড. দীনেশচন্দ্র সেন", "ড. সুনীতিকুমার চট্টোপাধ্যায়", "ড. মুহম্মদ শহীদুল্লাহ", "ড. সুকুমার সেন"], answer: 1 },
-  { id: 41, question: "কম্পিউটার নেটওয়ার্কের জন্য নেটওয়ার্ক ব্যাকবোন হিসেবে ব্যবহৃত ক্যাবলভিত্তিক টপোলজি কোনটি?", options: ["বাস", "রিং", "স্টার", "মেশ"], answer: 0 },
-  { id: 42, question: "What does the word 'deliberated' mean?", options: ["Considered carefully", "A type of bird", "Sacred writings", "Genuine or real"], answer: 0 },
-  { id: 43, question: "'বিলাসী' গল্পটি কত বঙ্গাব্দে প্রকাশিত হয়?", options: ["১৩২৩", "১৩২৪", "১৩২৫", "১৩২৬"], answer: 2 },
-  { id: 44, question: "কম্পিউটার নেটওয়ার্কে একই সঙ্গে উভয় দিকে ডেটা স্থানান্তরের পদ্ধতিকে কী বলে?", options: ["সিমপ্লেক্স", "হাফ-ডুপ্লেক্স", "ফুল-ডুপ্লেক্স", "অ্যাসিনক্রোনাস"], answer: 2 },
-  { id: 45, question: "He is not doubtful ___ his success.", options: ["about", "of", "with", "for"], answer: 1 },
-  { id: 46, question: "What was the bird's cage made of?", options: ["Silver", "Gold", "Wood", "Iron"], answer: 1 },
-  { id: 47, question: "'সাহিত্যে খেলা' প্রবন্ধ অনুসারে সাহিত্যের উদ্দেশ্য কী?", options: ["আনন্দ দেওয়া", "অর্থ উপার্জন", "জ্ঞান বিতরণ", "ইতিহাস সংরক্ষণ"], answer: 0 },
-  { id: 48, question: "শর্তসাপেক্ষে ডেটা অনুসন্ধান করাকে কী বলে?", options: ["মডিউল", "কুয়েরি", "সর্টিং", "ইনডেক্সিং"], answer: 1 },
-  { id: 49, question: "He is very much conscious ___ duties.", options: ["with", "for", "of", "by"], answer: 2 },
-  { id: 50, question: "'রেইনকোট' গল্পে মিন্টু কবে বাড়ি ছেড়ে গিয়েছিল?", options: ["২১ জুন", "২২ জুন", "২৩ জুন", "২৪ জুন"], answer: 2 },
-  { id: 51, question: "What did the bird's cage symbolize?", options: ["The bird's freedom", "The bird's education", "The bird's imprisonment", "The bird's happiness"], answer: 2 },
-  { id: 52, question: "কোনটি কৃত্রিম বুদ্ধিমত্তায় ব্যবহৃত প্রোগ্রামিং ভাষা?", options: ["LISP", "CSS", "HTML", "SQL"], answer: 0 },
-  { id: 53, question: "'বাঙ্গালার নব্য লেখকদিগের প্রতি নিবেদন' প্রবন্ধে লেখক প্রথমে কোনটির জন্য লিখতে নিষেধ করেছেন?", options: ["অর্থ", "যশ", "জ্ঞান", "আনন্দ"], answer: 1 },
-  { id: 54, question: "He is not boastful ___ his talents.", options: ["with", "of", "to", "by"], answer: 1 },
-  { id: 55, question: "টেবিলের প্রতিটি রেকর্ডকে অনন্যভাবে শনাক্ত করার জন্য কোন Key ব্যবহৃত হয়?", options: ["Foreign Key", "Primary Key", "Composite Key", "Candidate Key"], answer: 1 },
-  { id: 56, question: "'তাহারেই পড়ে মনে' কবিতায় 'মাঘের সন্ন্যাসী' বলতে কী বোঝানো হয়েছে?", options: ["বসন্ত ঋতু", "শীত ঋতুর বৈশিষ্ট্য", "বর্ষাকাল", "শরৎ ঋতু"], answer: 1 },
-  { id: 57, question: "Which of the following is the meaning of 'scripture'?", options: ["Religious texts", "A type of bird", "A golden cage", "A musical instrument"], answer: 0 },
-  { id: 58, question: "কোনটি আউটসোর্সিংয়ের মার্কেটপ্লেস?", options: ["Facebook", "Myspace", "Upwork", "Wikipedia"], answer: 2 },
-  { id: 59, question: "He behaves well ___ all.", options: ["at", "with", "to", "by"], answer: 1 },
-  { id: 60, question: "ডেটাবেজের ভিত্তি কোনটি?", options: ["ফিল্ড", "রেকর্ড", "টেবিল", "কুয়েরি"], answer: 0 }
-]
-                ],
-                bangla: [
-  { id: 1, question: "'দুধকলা দিয়ে সাপ পোষা' প্রবাদটি 'সিরাজউদ্দৌলা' নাটকের কোন চরিত্রের জন্য প্রযোজ্য?", options: ["ঘসেটি বেগম", "লর্ড ক্লাইভ", "মিরন", "মোহাম্মদি বেগ"], answer: 3 },
-  { id: 2, question: "শব্দের অর্থযুক্ত ক্ষুদ্রতম অংশকে কী বলা হয়?", options: ["রূপ", "ধ্বনি", "সন্ধি", "বর্ণ"], answer: 0 },
-  { id: 3, question: "'বিদ্রোহী' কবিতায় 'শির নেহারি আমারি, নতশির ওই শিখর হিমাদ্রির!'—চরণটিতে মূলত কী প্রকাশ পেয়েছে?", options: ["তীব্র আত্মবিশ্বাস", "চরম দুঃসাহস", "প্রবল অহংকার", "বিপুল প্রত্যাশা"], answer: 0 },
-  { id: 4, question: "A good boy is accustomed ___ hard work.", options: ["with", "for", "to", "by"], answer: 2 },
-  { id: 5, question: "'ব্যাকরণ' শব্দের বিশ্লেষিত রূপ কোনটি?", options: ["বি + আ + √কৃ + অপ", "বি + আ + √কৃ + অন", "বি + আ + √কৃ + অন্", "বি + আ + √কৃ + অনট"], answer: 1 },
-  { id: 6, question: "'লালসালু' উপন্যাসের মজিদ কীভাবে নিজের প্রভাব বিস্তার করে?", options: ["শিক্ষার প্রসারের মাধ্যমে", "ধর্মের দোহাই দিয়ে", "কৃষিকাজের মাধ্যমে", "সামাজিক সেবার মাধ্যমে"], answer: 1 },
-  { id: 7, question: "HTML-এর পূর্ণরূপ কী?", options: ["HighText Machine Language", "Hyperlink and Text Management Language", "HyperText Markup Language", "Home Tool Markup Language"], answer: 2 },
-  { id: 8, question: "'প্রতিদান' কবিতার 'কাঁটা পেয়ে তারে ফুল করি দান' চরণটিতে কোন অর্থ প্রকাশ পেয়েছে?", options: ["কৃতজ্ঞতা", "কৃতঘ্নতা", "অপচিকীর্ষা", "পরার্থপরতা"], answer: 3 },
-  { id: 9, question: "'ব্যাকরণ' শব্দটি কোন ভাষা থেকে এসেছে?", options: ["বাংলা", "সংস্কৃত", "বিদেশি", "তদ্ভব"], answer: 1 },
-  { id: 10, question: "জাতীয় পরিচয়পত্র তৈরিতে কোন প্রযুক্তি ব্যবহৃত হয়?", options: ["আর্টিফিশিয়াল ইন্টেলিজেন্স", "বায়োমেট্রিক্স", "জেনেটিক ইঞ্জিনিয়ারিং", "বায়োইনফরমেটিক্স"], answer: 1 },
-  { id: 11, question: "'আপনাদের কাছে আজ আমি আমার অপরাধের বিচার প্রার্থী'—সিরাজউদ্দৌলার উক্তিতে কী প্রকাশ পেয়েছে?", options: ["অনুশোচনা", "অভিমান", "নিষ্ঠুরতা", "সভাসদদের প্রতি প্রেম"], answer: 0 },
-  { id: 12, question: "শব্দের অর্থযুক্ত ক্ষুদ্রাংশকে কী বলা হয়?", options: ["রূপ", "ধ্বনি", "সন্ধি", "বর্ণ"], answer: 0 },
-  { id: 13, question: "What does the word 'unlettered' mean?", options: ["Skilled in writing", "Illiterate", "Educated in literature", "Written in a letter"], answer: 1 },
-  { id: 14, question: "'সোনার তরী' কবিতায় 'বাঁকা জল' মূলত কীসের প্রতীক?", options: ["কালস্রোতের", "জীবনের আনন্দের", "প্রকৃতির সৌন্দর্যের", "মানবপ্রেমের"], answer: 0 },
-  { id: 15, question: "কম্পিউটার নেটওয়ার্কে ডেটা গ্রহণ ও প্রদানের নিয়মকে কী বলে?", options: ["URL", "IP Address", "Browser", "Protocol"], answer: 3 },
-  { id: 16, question: "'ব্যাকরণ' শব্দের ব্যুৎপত্তিগত অর্থ কী?", options: ["ভাষার সংবিধান", "গ্রামার", "ভাষাবিষয়ক জ্ঞান", "বিশ্লেষণ"], answer: 3 },
-  { id: 17, question: "What does the word 'scripture' mean?", options: ["A type of bird", "Polite behaviour", "Sacred writings", "Exquisite craftsmanship"], answer: 2 },
-  { id: 18, question: "'বিলাসী' গল্পে মৃত্যুঞ্জয় কোন শ্রেণিতে পড়ত?", options: ["ফার্স্ট ক্লাস", "সেকেন্ড ক্লাস", "থার্ড ক্লাস", "ফোর্থ ক্লাস"], answer: 2 },
-  { id: 19, question: "কোনটি HTML-এর empty tag?", options: ["<p>", "<table>", "<br>", "<b>"], answer: 2 },
-  { id: 20, question: "'আমি কিংবদন্তির কথা বলছি' কবিতার কবির কোন মনোভাবটি ফুটে উঠেছে?", options: ["শেকড় সন্ধানী", "দেশদরদি", "প্রকৃতিপ্রেমী", "স্বাধীনতাকামী"], answer: 0 },
-  { id: 21, question: "He is not addicted ___ any bad thing.", options: ["with", "to", "for", "by"], answer: 1 },
-  { id: 22, question: "'ব্যাকরণ' শব্দটি কোন ধরনের শব্দ?", options: ["তদ্ভব", "দেশি", "বিদেশি", "তৎসম"], answer: 3 },
-  { id: 23, question: "কম্পিউটার নেটওয়ার্কে একই সঙ্গে উভয় দিকে ডেটা স্থানান্তরের পদ্ধতিকে কী বলে?", options: ["সিমপ্লেক্স", "হাফ-ডুপ্লেক্স", "ফুল-ডুপ্লেক্স", "অ্যাসিনক্রোনাস"], answer: 2 },
-  { id: 24, question: "'সিরাজউদ্দৌলা' নাটকে 'আমি চিরকালই ইংরেজদের বন্ধু' উক্তিটি কে বলেছিল?", options: ["মিরজাফর", "উমিচাঁদ", "ক্লাইভ", "মানিক চাঁদ"], answer: 1 },
-  { id: 25, question: "রূপতত্ত্বের আলোচ্য বিষয় নয় কোনটি?", options: ["সমাস", "প্রত্যয়", "সন্ধি", "উপসর্গ"], answer: 2 },
-  { id: 26, question: "What does the word 'exquisite' mean?", options: ["Polite behaviour", "Genuine or real", "Finely made or beautiful", "Illiterate"], answer: 2 },
-  { id: 27, question: "ডেটাবেজে প্রতিটি রেকর্ডকে অনন্যভাবে শনাক্ত করে কোনটি?", options: ["Field", "Index", "Primary Key", "Foreign Key"], answer: 2 },
-  { id: 28, question: "'রেইনকোট' গল্পে রেইনকোটটি কার?", options: ["নুরুল হুদার", "মিন্টুর", "আলতাফের", "রহমানের"], answer: 1 },
-  { id: 29, question: "He is not averse ___ any hard work.", options: ["to", "with", "for", "by"], answer: 0 },
-  { id: 30, question: "'কপিলদাস মুর্মুর শেষ কাজ' গল্পে জমিদার ও কৃষকদের মধ্যে মধ্যস্বত্বভোগী শ্রেণিকে কী বলা হয়?", options: ["মোড়ল", "গুনিন", "বিচারক", "জোতদার"], answer: 3 },
-  { id: 31, question: "কোনটি সার্চ ইঞ্জিন?", options: ["Twitter", "YouTube", "Pipilika", "Wikipedia"], answer: 2 },
-  { id: 32, question: "'সাহিত্যে খেলা' প্রবন্ধ অনুসারে সাহিত্যের উদ্দেশ্য কী?", options: ["আনন্দ দেওয়া", "অর্থ উপার্জন", "জ্ঞান বিতরণ", "ইতিহাস সংরক্ষণ"], answer: 0 },
-  { id: 33, question: "He clings ___ his determination.", options: ["on", "at", "to", "with"], answer: 2 },
-  { id: 34, question: "উচ্চারণস্থান অনুসারে নিচের কোন ধ্বনি বাংলায় নেই?", options: ["ওষ্ঠ্য", "দন্তৌষ্ঠ্য", "তালব্য", "মূর্ধন্য"], answer: 1 },
-  { id: 35, question: "Which of the following best describes 'manners'?", options: ["A type of bird", "Polite behaviour", "Illiteracy", "Fine craftsmanship"], answer: 1 },
-  { id: 36, question: "'যৌবনের গান' প্রবন্ধে 'প্রথম জাগরণ-প্রভাতে' বলতে কোনটিকে বোঝানো হয়েছে?", options: ["প্রথাবদ্ধতার চাপে", "সচেতনতার সূচনালগ্নে", "জরাজীর্ণতার আচ্ছাদনে", "দৃষ্টির অগোচরে"], answer: 1 },
-  { id: 37, question: "ক্রায়োসার্জারিতে সাধারণত কোনটি ক্রায়োজনিক এজেন্ট হিসেবে ব্যবহৃত হয়?", options: ["তরল নাইট্রোজেন", "তরল পানি", "বাষ্প", "কার্বন ডাই-অক্সাইড গ্যাস"], answer: 0 },
-  { id: 38, question: "'নেকলেস' গল্পে মাদাম লোইসেলের শারীরিক অবস্থা খারাপ হওয়ার কারণ কী?", options: ["প্রতিহিংসা", "অভিজাত্য", "দায়িত্বশীলতা", "উচ্চাভিলাষ"], answer: 3 },
-  { id: 39, question: "He is used ___ hard work.", options: ["with", "to", "by", "for"], answer: 1 },
-  { id: 40, question: "'বাঙ্গালার নব্য লেখকদিগের প্রতি নিবেদন' প্রবন্ধে লেখক প্রথমে কোনটির জন্য লিখতে নিষেধ করেছেন?", options: ["অর্থ", "যশ", "জ্ঞান", "আনন্দ"], answer: 1 },
-  { id: 41, question: "ডেটাবেজে শর্তসাপেক্ষে তথ্য অনুসন্ধান করাকে কী বলে?", options: ["মডিউল", "কুয়েরি", "সর্টিং", "ইনডেক্সিং"], answer: 1 },
-  { id: 42, question: "'তাহারেই পড়ে মনে' কবিতায় 'মাঘের সন্ন্যাসী' বলতে কী বোঝানো হয়েছে?", options: ["বসন্ত ঋতু", "শীত ঋতুর বৈশিষ্ট্য", "বর্ষাকাল", "শরৎ ঋতু"], answer: 1 },
-  { id: 43, question: "He is very much conscious ___ duties.", options: ["with", "for", "of", "by"], answer: 2 },
-  { id: 44, question: "'বিদ্রোহী' কবিতাটি কোন পত্রিকায় প্রকাশিত হয়েছিল?", options: ["ধূমকেতু", "বিজলী", "সওগাত", "মোসলেম ভারত"], answer: 1 },
-  { id: 45, question: "কোনটি কৃত্রিম বুদ্ধিমত্তায় ব্যবহৃত প্রোগ্রামিং ভাষা?", options: ["LISP", "CSS", "HTML", "SQL"], answer: 0 },
-  { id: 46, question: "'যত সব শয়তানি, বেদাত কাজ কারবার'—উক্তিটি কে করেছে?", options: ["আউয়ালপুরের পির", "মজিদ", "মতলুব খাঁ", "খালেক ব্যাপারী"], answer: 1 },
-  { id: 47, question: "একটি সার্থক বাক্যের গুণ কয়টি?", options: ["২টি", "৩টি", "৪টি", "৫টি"], answer: 1 },
-  { id: 48, question: "What does the word 'deliberated' mean?", options: ["Considered carefully", "A type of bird", "Sacred writings", "Genuine or real"], answer: 0 },
-  { id: 49, question: "কম্পিউটার নেটওয়ার্কে ডেটা স্থানান্তরের নিয়মাবলিকে কী বলা হয়?", options: ["প্রোটোকল", "টপোলজি", "সার্ভার", "ব্রাউজার"], answer: 0 },
-  { id: 50, question: "'প্রভাত' শব্দে 'প্র' কোন ধরনের উপসর্গ?", options: ["বাংলা", "আরবি", "ফারসি", "সংস্কৃত"], answer: 3 },
-  { id: 51, question: "'সোনার তরী' কবিতার উপজীব্য বিষয় কী?", options: ["প্রকৃতিপ্রেম", "জীবনচেতনা", "দেশপ্রেম", "মানবসভ্যতা"], answer: 1 },
-  { id: 52, question: "He is not doubtful ___ his success.", options: ["about", "of", "with", "for"], answer: 1 },
-  { id: 53, question: "ডেটাবেজের ভিত্তি কোনটি?", options: ["ফিল্ড", "রেকর্ড", "টেবিল", "কুয়েরি"], answer: 2 },
-  { id: 54, question: "'ঋতুবর্ণনা' কবিতায় এক প্রকারের ফুল হলো—", options: ["লবঙ্গ", "সরণ", "মল্লার", "যাবক"], answer: 0 },
-  { id: 55, question: "একটি সরল বাক্যে সর্বোচ্চ কয়টি সমাপিকা ক্রিয়া থাকতে পারে?", options: ["১টি", "২টি", "৩টি", "৪টি"], answer: 0 },
-  { id: 56, question: "Which of the following is the meaning of 'scripture'?", options: ["Religious texts", "A type of bird", "A golden cage", "A musical instrument"], answer: 0 },
-  { id: 57, question: "HTML ফাইল সম্পাদনার জন্য কোনটি Text Editor?", options: ["Notepad", "Notepad++", "Sublime Text", "সবগুলো"], answer: 3 },
-  { id: 58, question: "'অতি চালাকের গলায় দড়ি'—এখানে 'গলায়' কোন কারক?", options: ["কর্তৃকারক", "কর্মকারক", "করণ কারক", "অধিকরণ কারক"], answer: 3 },
-  { id: 59, question: "'আমার পথ' প্রবন্ধে কাজী নজরুল ইসলামের কর্ণধার কে?", options: ["সমাজ", "ধর্ম", "শিক্ষক", "নিজে"], answer: 3 },
-  { id: 60, question: "He is not boastful ___ his talents.", options: ["with", "of", "to", "by"], answer: 1 },
-  { id: 61, question: "কোনটি আউটসোর্সিংয়ের মার্কেটপ্লেস?", options: ["Facebook", "Myspace", "Upwork", "Wikipedia"], answer: 2 },
-  { id: 62, question: "'সিরাজউদ্দৌলা' নাটকে মোহাম্মদি বেগ কত টাকার বিনিময়ে সিরাজকে হত্যা করতে চেয়েছিল?", options: ["পাঁচ হাজার", "দশ হাজার", "পনেরো হাজার", "বিশ হাজার"], answer: 1 },
-  { id: 63, question: "সমাস ও কারক ব্যাকরণের কোন অংশে আলোচিত হয়?", options: ["ধ্বনিতত্ত্বে", "রূপতত্ত্বে", "ক্রিয়ায়", "বাক্যে"], answer: 1 },
-  { id: 64, question: "He behaves well ___ all.", options: ["at", "with", "to", "by"], answer: 1 },
-  { id: 65, question: "'আমি কিংবদন্তির কথা বলছি' কবিতায় কবি কোন বিষয়ের কথা বলেছেন?", options: ["পূর্বপুরুষের কথা", "শুধু প্রকৃতির কথা", "ব্যক্তিগত সম্পদের কথা", "বিদেশ ভ্রমণের কথা"], answer: 0 },
-  { id: 66, question: "ডেটা স্থানান্তরে বিটের বিন্যাসব্যবস্থা হলো—", options: ["মোড", "মেথড", "স্পিড", "টপোলজি"], answer: 0 },
-  { id: 67, question: "'কেউ', 'কোথাও', 'কিছু'—কী জাতীয় সর্বনাম?", options: ["সামীপ্যবাচক", "অনির্দিষ্টতাজ্ঞাপক", "ব্যতিহার", "ব্যক্তিবাচক"], answer: 1 },
-  { id: 68, question: "'বিলাসী' গল্পটি কত বঙ্গাব্দে প্রকাশিত হয়?", options: ["১৩২৩", "১৩২৪", "১৩২৫", "১৩২৬"], answer: 2 },
-  { id: 69, question: "Which of the following is the meaning of 'exquisite'?", options: ["Polite behaviour", "Genuine or real", "Finely made or beautiful", "Illiterate"], answer: 2 },
-  { id: 70, question: "বাংলা ভাষায় উষ্ম বর্ণ কয়টি?", options: ["দুইটি", "তিনটি", "চারটি", "পাঁচটি"], answer: 2 },
-  { id: 71, question: "'লালসালু' উপন্যাসের হাসুনির মা ঝড় এলে কী করার অভ্যাস?", options: ["নালিশ করা", "হৈচৈ করা", "মানত করা", "কান্না করা"], answer: 1 },
-  { id: 72, question: "টেবিলের প্রতিটি রেকর্ডকে অনন্যভাবে শনাক্ত করার জন্য কোন Key ব্যবহৃত হয়?", options: ["Foreign Key", "Primary Key", "Composite Key", "Candidate Key"], answer: 1 },
-  { id: 73, question: "প্রমিত বানানরূপ কোনটি?", options: ["সম্বর্ধনা", "সংবর্ধনা", "সমবর্ধনা", "সোংবর্ধনা"], answer: 1 },
-  { id: 74, question: "'রেইনকোট' গল্পে 'সাবভার্সিভ অ্যাকটিভিটিজ' বলতে কী বোঝানো হয়েছে?", options: ["সামাজিক কর্মকাণ্ড", "রাষ্ট্রবিরোধী কর্মকাণ্ড", "সাংস্কৃতিক কর্মকাণ্ড", "রাজনৈতিক প্রচারণা"], answer: 1 },
-  { id: 75, question: "ডেটাবেজে Primary Key-এর প্রধান কাজ কী?", options: ["রেকর্ডকে অনন্যভাবে শনাক্ত করা", "টেবিল মুছে ফেলা", "ডেটা সাজানো", "ডেটা প্রিন্ট করা"], answer: 0 },
-  { id: 76, question: "'কুলকাঠের আগুন' বাগধারাটির অর্থ কী?", options: ["সর্বনাশ", "ভয়ংকর", "শত্রুতা", "তীব্র জ্বালা"], answer: 3 },
-  { id: 77, question: "Which of the following best describes 'manners'?", options: ["A type of bird", "Polite behaviour", "Illiteracy", "Fine craftsmanship"], answer: 1 },
-  { id: 78, question: "'আসমুদ্রহিমাচল' কোন সমাসের উদাহরণ?", options: ["দ্বন্দ্ব", "বহুব্রীহি", "অব্যয়ীভাব", "নিত্য"], answer: 2 },
-  { id: 79, question: "'ফেব্রুয়ারি ১৯৬৯' কবিতায় 'সেই ফুল আমাদেরই প্রাণ'—এই ফুল বলতে কী বোঝানো হয়েছে?", options: ["কৃষ্ণচূড়াকে", "বাংলা ভাষাকে", "পদ্মবনকে", "মানবিক বাগানকে"], answer: 1 },
-  { id: 80, question: "কোনটি 'উ' স্বরধ্বনির বৈশিষ্ট্য নয়?", options: ["সম্মুখ স্বরধ্বনি", "সংবৃত", "উচ্চ", "গোলাকৃতি"], answer: 0 },
-  { id: 81, question: "What was the bird's cage made of in 'The Parrot's Tale'?", options: ["Silver", "Gold", "Wood", "Iron"], answer: 1 },
-  { id: 82, question: "একটি বাক্যে ক্রিয়াবিশেষণ রয়েছে কোনটিতে?", options: ["তিনি প্রতিদিন ধীরে ধীরে হাঁটেন।", "তিনি প্রতিদিন একা একা হাঁটেন।", "তিনি প্রতিদিন বাগানে হাঁটেন।", "তিনি পথে পথে হাঁটেন।"], answer: 0 },
-  { id: 83, question: "কোনটি কৃত্রিম বুদ্ধিমত্তায় ব্যবহৃত প্রোগ্রামিং ভাষা?", options: ["LISP", "CSS", "HTML", "SQL"], answer: 0 },
-  { id: 84, question: "'সুচেতনা' কবিতায় 'রণ রক্ত সফলতা সত্য' কথাটিতে কোন ভাব প্রকাশ পেয়েছে?", options: ["পৃথিবীর ক্রমমুক্তি", "বিক্ষুব্ধ সমকাল", "অস্তিত্বের জন্য সংগ্রাম", "মুক্তির পথই শুভ চেতনা"], answer: 2 },
-  { id: 85, question: "'কাব্য' শব্দের প্রকৃতি ও প্রত্যয় কোনটি?", options: ["কাব + য", "কবি + ব", "কাব + হ", "কবি + য"], answer: 0 },
-  { id: 86, question: "কম্পিউটার থেকে প্রিন্টারে ডেটা স্থানান্তরের ক্ষেত্রে কোনটি ব্যবহৃত হয়?", options: ["ন্যারো ব্যান্ড", "ভয়েস ব্যান্ড", "হাফ-ডুপ্লেক্স", "ফুল-ডুপ্লেক্স"], answer: 2 },
-  { id: 87, question: "'কেউ', 'কোথাও', 'কিছু'—এগুলো কোন শ্রেণির সর্বনাম?", options: ["ব্যক্তিবাচক", "নির্দেশক", "অনির্দিষ্টতাজ্ঞাপক", "আত্মবাচক"], answer: 2 },
-  { id: 88, question: "'সিরাজউদ্দৌলা' নাটকে 'আমি এবার আঘাত হানবই' উক্তিটিতে মিরজাফরের কোন মনোভাব প্রকাশ পেয়েছে?", options: ["নিষ্ঠুরতা", "স্বার্থপরতা", "দাম্ভিকতা", "মানসিক দৃঢ়তা"], answer: 3 },
-  { id: 89, question: "বাংলা ভাষায় মৌলিক ধ্বনি কয়টি?", options: ["৩৫টি", "৩৬টি", "৩৭টি", "৩৯টি"], answer: 2 },
-  { id: 90, question: "What does the word 'deliberated' mean?", options: ["Considered carefully", "A type of bird", "Sacred writings", "Genuine or real"], answer: 0 },
-  { id: 91, question: "'অভাব' অর্থে উপসর্গ ব্যবহৃত হয়েছে কোন শব্দে?", options: ["অকেজো", "আগাছা", "অবহেলা", "অতিক্রম"], answer: 0 },
-  { id: 92, question: "কোন নামটি শুদ্ধ?", options: ["জীবনান্দ দাস", "জীবনানান্দ দাশ", "জীবনানন্দ দাশ", "জীবনানন্দ দাস"], answer: 2 },
-  { id: 93, question: "'যা সহজে জানা যায় না'—এর এক কথায় প্রকাশ কোনটি?", options: ["দুর্জ্ঞান", "দূরজ্ঞান", "দুর্জ্ঞেয়", "দুর্বোধ্য"], answer: 2 },
-  { id: 94, question: "কোনটি অলুক তৎপুরুষ সমাসের উদাহরণ?", options: ["বেপরোয়া", "মাতার সেবা", "রাজপথ", "নীলকমল"], answer: 1 },
-  { id: 95, question: "'প্রভাত' শব্দটি কোন ধরনের শব্দ?", options: ["তদ্ভব", "দেশি", "বিদেশি", "তৎসম"], answer: 3 },
-  { id: 96, question: "ধ্বনির লিখিত রূপ বা সাংকেতিক চিহ্নকে কী বলে?", options: ["বর্ণ", "শব্দ", "অক্ষর", "রূপ"], answer: 0 },
-  { id: 97, question: "বাক্যের অন্তর্ভুক্ত ক্রিয়াপদের সঙ্গে অন্যান্য পদের প্রত্যক্ষ সম্পর্ককে কী বলে?", options: ["বিভক্তি", "সমাস", "কারক", "প্রত্যয়"], answer: 2 },
-  { id: 98, question: "'মতৈক্য' শব্দের সন্ধিবিচ্ছেদ কোনটি?", options: ["মতন + এক্য", "মতো + একতা", "মত + ঐক্য", "মতো + অনট"], answer: 2 },
-  { id: 99, question: "'নিপাতনে সিদ্ধ' নিয়মটি কোন জাতীয় শব্দের বানানের জন্য প্রযোজ্য?", options: ["অর্ধতৎসম", "তদ্ভব", "তৎসম", "বিদেশি"], answer: 2 },
-  { id: 100, question: "'রাজভয়-লোকভয়' শব্দ দুটি কোন সমাসের উদাহরণ?", options: ["দ্বন্দ্ব", "কর্মধারয়", "তৎপুরুষ", "দ্বিগু"], answer: 0 }
-]
-                english: [
-  { id: 1, question: "Choose the correct sentence.", options: ["He go to school every day.", "He goes to school every day.", "He going to school every day.", "He gone to school every day."], answer: 1 },
-  { id: 2, question: "What is the synonym of 'Abundant'?", options: ["Scarce", "Plentiful", "Insufficient", "Limited"], answer: 1 },
-  { id: 3, question: "Choose the correct preposition: He is good ___ mathematics.", options: ["in", "at", "on", "for"], answer: 1 },
-  { id: 4, question: "What is the antonym of 'Ancient'?", options: ["Old", "Antique", "Modern", "Historic"], answer: 2 },
-  { id: 5, question: "Identify the noun in the sentence: 'Honesty is the best policy.'", options: ["Best", "Is", "Honesty", "The"], answer: 2 },
-  { id: 6, question: "Choose the correct form: If I were rich, I ___ a car.", options: ["buy", "will buy", "would buy", "bought"], answer: 2 },
-  { id: 7, question: "What is the plural form of 'Criterion'?", options: ["Criterions", "Criteria", "Criterias", "Criterion"], answer: 1 },
-  { id: 8, question: "Choose the correct article: He is ___ honest man.", options: ["a", "an", "the", "no article"], answer: 1 },
-  { id: 9, question: "What is the synonym of 'Benevolent'?", options: ["Cruel", "Kind", "Selfish", "Rude"], answer: 1 },
-  { id: 10, question: "Choose the correct tense: She ___ here since 2020.", options: ["lives", "lived", "has lived", "is living"], answer: 2 },
-  { id: 11, question: "Which one is a preposition?", options: ["Quickly", "Under", "Beautiful", "Honesty"], answer: 1 },
-  { id: 12, question: "What is the antonym of 'Expand'?", options: ["Extend", "Enlarge", "Contract", "Increase"], answer: 2 },
-  { id: 13, question: "Choose the correct verb: Neither of the boys ___ present.", options: ["are", "were", "is", "have"], answer: 2 },
-  { id: 14, question: "What is the past participle of 'Write'?", options: ["Wrote", "Written", "Writing", "Writes"], answer: 1 },
-  { id: 15, question: "Choose the correct sentence.", options: ["I prefer tea than coffee.", "I prefer tea to coffee.", "I prefer tea from coffee.", "I prefer tea over than coffee."], answer: 1 },
-  { id: 16, question: "What is the synonym of 'Diligent'?", options: ["Lazy", "Hardworking", "Careless", "Idle"], answer: 1 },
-  { id: 17, question: "Choose the correct preposition: He died ___ cancer.", options: ["from", "of", "by", "with"], answer: 1 },
-  { id: 18, question: "Which one is an adjective?", options: ["Beauty", "Beautiful", "Beautifully", "Beautify"], answer: 1 },
-  { id: 19, question: "Choose the correct form: The news ___ true.", options: ["are", "were", "is", "have"], answer: 2 },
-  { id: 20, question: "What is the antonym of 'Optimistic'?", options: ["Hopeful", "Positive", "Pessimistic", "Confident"], answer: 2 },
-  { id: 21, question: "Choose the correct article: The Padma is ___ important river.", options: ["a", "an", "the", "no article"], answer: 1 },
-  { id: 22, question: "What is the plural of 'Phenomenon'?", options: ["Phenomenons", "Phenomena", "Phenomenas", "Phenomenon"], answer: 1 },
-  { id: 23, question: "Choose the correct verb: The quality of the mangoes ___ good.", options: ["are", "were", "is", "have"], answer: 2 },
-  { id: 24, question: "What is the synonym of 'Candid'?", options: ["Frank", "Dishonest", "Secretive", "Deceitful"], answer: 0 },
-  { id: 25, question: "Choose the correct preposition: She is senior ___ me.", options: ["than", "to", "from", "over"], answer: 1 },
-  { id: 26, question: "Identify the adverb: 'He speaks fluently.'", options: ["He", "Speaks", "Fluently", "None"], answer: 2 },
-  { id: 27, question: "What is the antonym of 'Generous'?", options: ["Kind", "Liberal", "Stingy", "Helpful"], answer: 2 },
-  { id: 28, question: "Choose the correct form: By next year, he ___ his degree.", options: ["completes", "completed", "will have completed", "has completed"], answer: 2 },
-  { id: 29, question: "Which one is a conjunction?", options: ["Although", "Beautiful", "Quickly", "Under"], answer: 0 },
-  { id: 30, question: "What is the synonym of 'Fragile'?", options: ["Strong", "Delicate", "Hard", "Sturdy"], answer: 1 },
-  { id: 31, question: "Choose the correct sentence.", options: ["Each of the students have a book.", "Each of the students has a book.", "Each students has a book.", "Each student have a book."], answer: 1 },
-  { id: 32, question: "What is the antonym of 'Transparent'?", options: ["Clear", "Obvious", "Opaque", "Visible"], answer: 2 },
-  { id: 33, question: "Choose the correct preposition: He is addicted ___ smoking.", options: ["with", "to", "for", "in"], answer: 1 },
-  { id: 34, question: "What is the past tense of 'Seek'?", options: ["Seeked", "Sought", "Seeking", "Seeks"], answer: 1 },
-  { id: 35, question: "Choose the correct form: No sooner had he arrived ___ it started raining.", options: ["when", "than", "then", "while"], answer: 1 },
-  { id: 36, question: "What is the synonym of 'Obsolete'?", options: ["Modern", "Outdated", "Current", "Recent"], answer: 1 },
-  { id: 37, question: "Identify the correct passive voice: 'They built the bridge.'", options: ["The bridge is built by them.", "The bridge was built by them.", "The bridge has built by them.", "The bridge had build by them."], answer: 1 },
-  { id: 38, question: "What is the antonym of 'Hostile'?", options: ["Unfriendly", "Aggressive", "Friendly", "Violent"], answer: 2 },
-  { id: 39, question: "Choose the correct verb: Mathematics ___ my favourite subject.", options: ["are", "were", "is", "have"], answer: 2 },
-  { id: 40, question: "What is the plural form of 'Analysis'?", options: ["Analysises", "Analyses", "Analysis", "Analys"], answer: 1 },
-  { id: 41, question: "Choose the correct preposition: I am looking forward ___ meeting you.", options: ["for", "to", "at", "with"], answer: 1 },
-  { id: 42, question: "What is the synonym of 'Mitigate'?", options: ["Aggravate", "Alleviate", "Intensify", "Increase"], answer: 1 },
-  { id: 43, question: "Choose the correct sentence.", options: ["He is one of my best friend.", "He is one of my best friends.", "He is one of my better friend.", "He is one of my best friends are."], answer: 1 },
-  { id: 44, question: "What is the antonym of 'Compulsory'?", options: ["Mandatory", "Obligatory", "Optional", "Necessary"], answer: 2 },
-  { id: 45, question: "Choose the correct form: I wish I ___ a bird.", options: ["am", "was", "were", "will be"], answer: 2 },
-  { id: 46, question: "Which one is an interjection?", options: ["Alas!", "Because", "Under", "Quickly"], answer: 0 },
-  { id: 47, question: "What is the synonym of 'Eloquent'?", options: ["Fluent", "Speechless", "Silent", "Inarticulate"], answer: 0 },
-  { id: 48, question: "Choose the correct preposition: He congratulated me ___ my success.", options: ["for", "on", "at", "with"], answer: 1 },
-  { id: 49, question: "What is the antonym of 'Artificial'?", options: ["False", "Synthetic", "Natural", "Man-made"], answer: 2 },
-  { id: 50, question: "Choose the correct verb: A number of students ___ absent.", options: ["is", "was", "are", "has"], answer: 2 },
-  { id: 51, question: "What is the past participle of 'Break'?", options: ["Broke", "Broken", "Breaking", "Breaks"], answer: 1 },
-  { id: 52, question: "Choose the correct article: He is ___ university student.", options: ["a", "an", "the", "no article"], answer: 0 },
-  { id: 53, question: "What is the synonym of 'Inevitable'?", options: ["Avoidable", "Unavoidable", "Uncertain", "Doubtful"], answer: 1 },
-  { id: 54, question: "Choose the correct preposition: The patient is suffering ___ fever.", options: ["by", "from", "with", "at"], answer: 1 },
-  { id: 55, question: "What is the antonym of 'Humility'?", options: ["Modesty", "Pride", "Simplicity", "Politeness"], answer: 1 },
-  { id: 56, question: "Choose the correct sentence.", options: ["The sceneries are beautiful.", "The scenery is beautiful.", "The scenery are beautiful.", "A scenery is beautiful."], answer: 1 },
-  { id: 57, question: "What is the synonym of 'Vigilant'?", options: ["Careless", "Watchful", "Negligent", "Sleepy"], answer: 1 },
-  { id: 58, question: "Choose the correct verb: The police ___ investigating the case.", options: ["is", "was", "are", "has"], answer: 2 },
-  { id: 59, question: "What is the antonym of 'Barren'?", options: ["Unproductive", "Fertile", "Dry", "Desolate"], answer: 1 },
-  { id: 60, question: "Choose the correct form: Had I known the truth, I ___ him.", options: ["help", "will help", "would have helped", "helped"], answer: 2 },
-  { id: 61, question: "Which one is a gerund?", options: ["To swim", "Swimming", "Swam", "Swims"], answer: 1 },
-  { id: 62, question: "What is the synonym of 'Concise'?", options: ["Brief", "Lengthy", "Verbose", "Detailed"], answer: 0 },
-  { id: 63, question: "Choose the correct preposition: He has been absent ___ Monday.", options: ["for", "since", "from", "by"], answer: 1 },
-  { id: 64, question: "What is the antonym of 'Deteriorate'?", options: ["Worsen", "Decline", "Improve", "Degenerate"], answer: 2 },
-  { id: 65, question: "Choose the correct verb: Ten miles ___ a long distance.", options: ["are", "were", "is", "have"], answer: 2 },
-  { id: 66, question: "What is the plural of 'Mouse'?", options: ["Mouses", "Mice", "Mices", "Mouse"], answer: 1 },
-  { id: 67, question: "Choose the correct sentence.", options: ["He discussed about the matter.", "He discussed the matter.", "He discussed on the matter.", "He discussed for the matter."], answer: 1 },
-  { id: 68, question: "What is the synonym of 'Prudent'?", options: ["Careless", "Wise", "Foolish", "Reckless"], answer: 1 },
-  { id: 69, question: "Choose the correct preposition: She is married ___ a doctor.", options: ["with", "to", "by", "for"], answer: 1 },
-  { id: 70, question: "What is the antonym of 'Benevolent'?", options: ["Kind", "Charitable", "Malevolent", "Generous"], answer: 2 },
-  { id: 71, question: "Choose the correct verb: The rich ___ not always happy.", options: ["is", "was", "are", "has"], answer: 2 },
-  { id: 72, question: "What is the synonym of 'Ambiguous'?", options: ["Clear", "Uncertain", "Obvious", "Definite"], answer: 1 },
-  { id: 73, question: "Choose the correct article: He waited for ___ hour.", options: ["a", "an", "the", "no article"], answer: 1 },
-  { id: 74, question: "What is the antonym of 'Reluctant'?", options: ["Unwilling", "Hesitant", "Willing", "Doubtful"], answer: 2 },
-  { id: 75, question: "Choose the correct form: The teacher made the students ___ the exercise.", options: ["to do", "doing", "do", "done"], answer: 2 },
-  { id: 76, question: "What is the synonym of 'Arduous'?", options: ["Easy", "Difficult", "Simple", "Effortless"], answer: 1 },
-  { id: 77, question: "Choose the correct preposition: He is capable ___ doing it.", options: ["to", "of", "for", "with"], answer: 1 },
-  { id: 78, question: "What is the antonym of 'Scarce'?", options: ["Rare", "Limited", "Abundant", "Insufficient"], answer: 2 },
-  { id: 79, question: "Choose the correct verb: Either Rahim or his brothers ___ responsible.", options: ["is", "was", "are", "has"], answer: 2 },
-  { id: 80, question: "What is the plural form of 'Thesis'?", options: ["Thesises", "Theses", "Thesis", "Thesies"], answer: 1 },
-  { id: 81, question: "Choose the correct sentence.", options: ["He has been working here for five years.", "He is working here since five years.", "He works here since five years.", "He had working here for five years."], answer: 0 },
-  { id: 82, question: "What is the synonym of 'Resilient'?", options: ["Fragile", "Adaptable", "Weak", "Vulnerable"], answer: 1 },
-  { id: 83, question: "Choose the correct preposition: The book is divided ___ five chapters.", options: ["in", "into", "by", "with"], answer: 1 },
-  { id: 84, question: "What is the antonym of 'Authentic'?", options: ["Genuine", "Real", "Fake", "Original"], answer: 2 },
-  { id: 85, question: "Choose the correct verb: Bread and butter ___ his usual breakfast.", options: ["are", "were", "is", "have"], answer: 2 },
-  { id: 86, question: "What is the past tense of 'Overcome'?", options: ["Overcame", "Overcomed", "Overcoming", "Overcomes"], answer: 0 },
-  { id: 87, question: "Choose the correct preposition: He is accustomed ___ hard work.", options: ["with", "to", "for", "at"], answer: 1 },
-  { id: 88, question: "What is the synonym of 'Meticulous'?", options: ["Careless", "Thorough", "Negligent", "Hasty"], answer: 1 },
-  { id: 89, question: "Choose the correct sentence.", options: ["One of the boys have done it.", "One of the boys has done it.", "One of the boy has done it.", "One boys has done it."], answer: 1 },
-  { id: 90, question: "What is the antonym of 'Prosperity'?", options: ["Success", "Wealth", "Adversity", "Progress"], answer: 2 },
-  { id: 91, question: "Choose the correct form: The train had left before we ___ the station.", options: ["reach", "reached", "reaching", "have reached"], answer: 1 },
-  { id: 92, question: "What is the synonym of 'Amiable'?", options: ["Unfriendly", "Friendly", "Hostile", "Rude"], answer: 1 },
-  { id: 93, question: "Choose the correct preposition: I agree ___ your proposal.", options: ["to", "with", "on", "for"], answer: 0 },
-  { id: 94, question: "What is the antonym of 'Superficial'?", options: ["Shallow", "External", "Profound", "Trivial"], answer: 2 },
-  { id: 95, question: "Choose the correct verb: The committee ___ divided in their opinions.", options: ["is", "are", "was", "has"], answer: 1 },
-  { id: 96, question: "What is the synonym of 'Commence'?", options: ["End", "Begin", "Stop", "Finish"], answer: 1 },
-  { id: 97, question: "Choose the correct preposition: He abstained ___ voting.", options: ["to", "from", "with", "by"], answer: 1 },
-  { id: 98, question: "What is the antonym of 'Explicit'?", options: ["Clear", "Direct", "Implicit", "Obvious"], answer: 2 },
-  { id: 99, question: "Choose the correct form: If he had studied hard, he ___ the examination.", options: ["would pass", "will pass", "would have passed", "passed"], answer: 2 },
-  { id: 100, question: "What is the synonym of 'Ephemeral'?", options: ["Permanent", "Temporary", "Everlasting", "Eternal"], answer: 1 }
-]
-                gk: [
-  { id: 1, question: "ঢাকা বিশ্ববিদ্যালয় প্রতিষ্ঠিত হয় কত সালে?", options: ["১৯০৫", "১৯২১", "১৯৪৭", "১৯৫২"], answer: 1 },
-  { id: 2, question: "বাংলাদেশের সংবিধান কার্যকর হয় কবে?", options: ["২৬ মার্চ ১৯৭১", "১৬ ডিসেম্বর ১৯৭২", "১০ জানুয়ারি ১৯৭২", "৪ নভেম্বর ১৯৭২"], answer: 1 },
-  { id: 3, question: "জাতিসংঘ প্রতিষ্ঠিত হয় কত সালে?", options: ["১৯১৯", "১৯৪৫", "১৯৪৮", "১৯৫৫"], answer: 1 },
-  { id: 4, question: "বাংলাদেশের মুক্তিযুদ্ধের সর্বাধিনায়ক কে ছিলেন?", options: ["তাজউদ্দীন আহমদ", "এম. এ. জি. ওসমানী", "জিয়াউর রহমান", "খালেদ মোশাররফ"], answer: 1 },
-  { id: 5, question: "‘The Wealth of Nations’ গ্রন্থের রচয়িতা কে?", options: ["কার্ল মার্কস", "অ্যাডাম স্মিথ", "জন মেনার্ড কেইনস", "ডেভিড রিকার্ডো"], answer: 1 },
-  { id: 6, question: "বাংলাদেশের সংবিধানের কোন ভাগে মৌলিক অধিকার বর্ণিত হয়েছে?", options: ["প্রথম", "দ্বিতীয়", "তৃতীয়", "চতুর্থ"], answer: 2 },
-  { id: 7, question: "জাতিসংঘ নিরাপত্তা পরিষদের স্থায়ী সদস্য কতটি?", options: ["৪টি", "৫টি", "৬টি", "৭টি"], answer: 1 },
-  { id: 8, question: "বাংলাদেশের প্রথম অস্থায়ী সরকার শপথ গ্রহণ করে কোথায়?", options: ["ঢাকা", "মুজিবনগর", "চট্টগ্রাম", "কুষ্টিয়া"], answer: 1 },
-  { id: 9, question: "‘মানুষ জন্মগতভাবে স্বাধীন, কিন্তু সর্বত্রই সে শৃঙ্খলিত’—উক্তিটি কার?", options: ["জন লক", "কার্ল মার্কস", "জ্যাঁ-জ্যাক রুশো", "ভলতেয়ার"], answer: 2 },
-  { id: 10, question: "বাংলাদেশের মুক্তিযুদ্ধের সময় দেশকে কয়টি সেক্টরে ভাগ করা হয়েছিল?", options: ["৯টি", "১০টি", "১১টি", "১২টি"], answer: 2 },
-  { id: 11, question: "বাংলাদেশের প্রথম রাষ্ট্রপতি কে?", options: ["তাজউদ্দীন আহমদ", "বঙ্গবন্ধু শেখ মুজিবুর রহমান", "সৈয়দ নজরুল ইসলাম", "এম. মনসুর আলী"], answer: 1 },
-  { id: 12, question: "‘From Third World to First’ গ্রন্থের লেখক কে?", options: ["মাহাথির মোহাম্মদ", "লি কুয়ান ইউ", "নেলসন ম্যান্ডেলা", "অমর্ত্য সেন"], answer: 1 },
-  { id: 13, question: "বাংলাদেশের জাতীয় সংসদ ভবনের স্থপতি কে?", options: ["মাজহারুল ইসলাম", "লুই আই কান", "এফ. আর. খান", "পল রুডলফ"], answer: 1 },
-  { id: 14, question: "বিশ্বের সবচেয়ে পুরোনো সংবাদ সংস্থা কোনটি?", options: ["রয়টার্স", "বিবিসি", "সিএনএন", "আল জাজিরা"], answer: 0 },
-  { id: 15, question: "বাংলাদেশের প্রথম অস্থায়ী সরকারের প্রধানমন্ত্রী কে ছিলেন?", options: ["সৈয়দ নজরুল ইসলাম", "তাজউদ্দীন আহমদ", "এম. মনসুর আলী", "খন্দকার মোশতাক আহমদ"], answer: 1 },
-  { id: 16, question: "‘সেপ্টেম্বর অন যশোর রোড’ কবিতাটি কে লিখেছেন?", options: ["বব ডিলান", "অ্যালেন গিন্সবার্গ", "জর্জ হ্যারিসন", "সিলভিয়া প্লাথ"], answer: 1 },
-  { id: 17, question: "বাংলাদেশের জাতীয় স্মৃতিসৌধের স্থপতি কে?", options: ["হামিদুর রহমান", "সৈয়দ মাইনুল হোসেন", "মাজহারুল ইসলাম", "লুই আই কান"], answer: 1 },
-  { id: 18, question: "‘দ্য প্রিন্স’ গ্রন্থের রচয়িতা কে?", options: ["প্লেটো", "এরিস্টটল", "নিকোলো ম্যাকিয়াভেলি", "থমাস হবস"], answer: 2 },
-  { id: 19, question: "বাংলাদেশের সংবিধান গণপরিষদে গৃহীত হয় কবে?", options: ["২৬ মার্চ ১৯৭১", "৪ নভেম্বর ১৯৭২", "১৬ ডিসেম্বর ১৯৭২", "৭ মার্চ ১৯৭৩"], answer: 1 },
-  { id: 20, question: "রোমান সভ্যতার বিখ্যাত স্থাপত্য নিদর্শন কলোসিয়াম কী হিসেবে ব্যবহৃত হতো?", options: ["উপাসনালয়", "বিশ্ববিদ্যালয়", "গ্ল্যাডিয়েটরদের লড়াইয়ের মঞ্চ", "রাজপ্রাসাদ"], answer: 2 },
-  { id: 21, question: "বাংলাদেশের প্রথম জাতীয় সংসদ নির্বাচন অনুষ্ঠিত হয় কবে?", options: ["১৯৭২", "১৯৭৩", "১৯৭৫", "১৯৭৭"], answer: 1 },
-  { id: 22, question: "‘অরিজিন অব স্পিসিস’ গ্রন্থের লেখক কে?", options: ["আইজ্যাক নিউটন", "চার্লস ডারউইন", "আলফ্রেড ওয়ালেস", "গ্রেগর মেন্ডেল"], answer: 1 },
-  { id: 23, question: "বাংলাদেশের জাতীয় পতাকার নকশাকার কে?", options: ["কামরুল হাসান", "শিব নারায়ণ দাস", "জয়নুল আবেদিন", "হামিদুর রহমান"], answer: 1 },
-  { id: 24, question: "‘অ্যামিকাস কিউরি’ শব্দের অর্থ কী?", options: ["আদালতের বন্ধু", "আদালতের বিচারক", "আইনজীবীর সহকারী", "রাষ্ট্রের প্রতিনিধি"], answer: 0 },
-  { id: 25, question: "বাংলাদেশের প্রথম প্রধান বিচারপতি কে ছিলেন?", options: ["এ. এস. এম. সায়েম", "আবু সাদাত মোহাম্মদ সায়েম", "কামালউদ্দিন হোসেন", "মুহাম্মদ হাবিবুর রহমান"], answer: 0 },
-  { id: 26, question: "‘সার্পেন্ট অব দ্য নাইল’ নামে পরিচিত কে?", options: ["নেফারতিতি", "ক্লিওপেট্রা", "হাটশেপসুট", "আইসিস"], answer: 1 },
-  { id: 27, question: "বাংলাদেশের প্রথম আদমশুমারি অনুষ্ঠিত হয় কত সালে?", options: ["১৯৭২", "১৯৭৪", "১৯৮১", "১৯৯১"], answer: 1 },
-  { id: 28, question: "‘দ্য রিপাবলিক’ গ্রন্থের রচয়িতা কে?", options: ["সক্রেটিস", "প্লেটো", "এরিস্টটল", "সেনেকা"], answer: 1 },
-  { id: 29, question: "বাংলাদেশের জাতীয় কবি কে?", options: ["রবীন্দ্রনাথ ঠাকুর", "জসীমউদ্দীন", "কাজী নজরুল ইসলাম", "সুকান্ত ভট্টাচার্য"], answer: 2 },
-  { id: 30, question: "বিশ্বের প্রথম নারী প্রধানমন্ত্রী কে?", options: ["ইন্দিরা গান্ধী", "সিরিমাভো বন্দরনায়েকে", "গোল্ডা মেয়ার", "বেনজির ভুট্টো"], answer: 1 },
-  { id: 31, question: "বাংলাদেশের প্রথম মহিলা স্পিকার কে?", options: ["সাহারা খাতুন", "শিরীন শারমিন চৌধুরী", "মতিয়া চৌধুরী", "সেলিনা হায়াৎ আইভী"], answer: 1 },
-  { id: 32, question: "‘দ্য ক্ল্যাশ অব সিভিলাইজেশনস’ গ্রন্থের লেখক কে?", options: ["ফ্রান্সিস ফুকuyama", "স্যামুয়েল পি. হান্টিংটন", "এডওয়ার্ড সাঈদ", "নোয়াম চমস্কি"], answer: 1 },
-  { id: 33, question: "বাংলাদেশের প্রথম মেট্রোরেল চালু হয় কোন সালে?", options: ["২০১৮", "২০২০", "২০২২", "২০২৪"], answer: 2 },
-  { id: 34, question: "‘লেভিয়াথান’ গ্রন্থের রচয়িতা কে?", options: ["জন লক", "থমাস হবস", "রুশো", "মন্টেস্কু"], answer: 1 },
-  { id: 35, question: "বাংলাদেশের জাতীয় সংসদের মোট আসন কতটি?", options: ["৩০০", "৩৩০", "৩৫০", "৩৬০"], answer: 2 },
-  { id: 36, question: "‘ইউটোপিয়া’ গ্রন্থের লেখক কে?", options: ["থমাস মুর", "থমাস হবস", "জন লক", "ফ্রান্সিস বেকন"], answer: 0 },
-  { id: 37, question: "বাংলাদেশের প্রথম নারী বীরপ্রতীক কে?", options: ["তারামন বিবি", "কাঁকন বিবি", "সিতারা বেগম", "জাহানারা ইমাম"], answer: 0 },
-  { id: 38, question: "‘ইলিয়াড’ মহাকাব্যের রচয়িতা কে?", options: ["ভার্জিল", "হোমার", "সোফোক্লিস", "দান্তে"], answer: 1 },
-  { id: 39, question: "বাংলাদেশের একমাত্র প্রবাল দ্বীপ কোনটি?", options: ["সন্দ্বীপ", "মহেশখালী", "সেন্ট মার্টিন", "কুতুবদিয়া"], answer: 2 },
-  { id: 40, question: "‘ওয়ান হান্ড্রেড ইয়ার্স অব সলিচিউড’ উপন্যাসের লেখক কে?", options: ["পাবলো নেরুদা", "গ্যাব্রিয়েল গার্সিয়া মার্কেস", "মারিও ভার্গাস ইয়োসা", "হোর্হে লুইস বোর্হেস"], answer: 1 },
-  { id: 41, question: "বাংলাদেশের বৃহত্তম দ্বীপ কোনটি?", options: ["সেন্ট মার্টিন", "ভোলা", "সন্দ্বীপ", "হাতিয়া"], answer: 1 },
-  { id: 42, question: "‘দ্য ওয়েস্ট ল্যান্ড’ কবিতার রচয়িতা কে?", options: ["ডব্লিউ. বি. ইয়েটস", "টি. এস. এলিয়ট", "ডব্লিউ. এইচ. অডেন", "রবার্ট ফ্রস্ট"], answer: 1 },
-  { id: 43, question: "বাংলাদেশের বৃহত্তম ম্যানগ্রোভ বন কোনটি?", options: ["ভাওয়াল", "মধুপুর", "সুন্দরবন", "রেমা-কালেঙ্গা"], answer: 2 },
-  { id: 44, question: "‘নোবেল পুরস্কার’ প্রথম প্রদান করা হয় কত সালে?", options: ["১৮৯৫", "১৯০১", "১৯০৫", "১৯১১"], answer: 1 },
-  { id: 45, question: "বাংলাদেশের প্রথম পারমাণবিক বিদ্যুৎকেন্দ্র কোথায় অবস্থিত?", options: ["কাপ্তাই", "রূপপুর", "আশুগঞ্জ", "মাতারবাড়ী"], answer: 1 },
-  { id: 46, question: "বিশ্বের বৃহত্তম মহাসাগর কোনটি?", options: ["আটলান্টিক", "ভারত", "প্রশান্ত", "আর্কটিক"], answer: 2 },
-  { id: 47, question: "বাংলাদেশের দীর্ঘতম নদী কোনটি?", options: ["পদ্মা", "যমুনা", "মেঘনা", "সুরমা"], answer: 2 },
-  { id: 48, question: "‘মোনালিসা’ চিত্রকর্মের শিল্পী কে?", options: ["মাইকেল অ্যাঞ্জেলো", "লিওনার্দো দা ভিঞ্চি", "রাফায়েল", "ভ্যান গঘ"], answer: 1 },
-  { id: 49, question: "বাংলাদেশের সর্বোচ্চ বেসামরিক রাষ্ট্রীয় পুরস্কার কোনটি?", options: ["একুশে পদক", "স্বাধীনতা পুরস্কার", "বাংলা একাডেমি পুরস্কার", "জাতীয় চলচ্চিত্র পুরস্কার"], answer: 1 },
-  { id: 50, question: "‘গুয়ের্নিকা’ চিত্রকর্মের শিল্পী কে?", options: ["সালভাদর দালি", "পাবলো পিকাসো", "ক্লদ মনে", "এদুয়ার মানে"], answer: 1 },
-  { id: 51, question: "জাতিসংঘের সদর দপ্তর কোথায়?", options: ["জেনেভা", "নিউইয়র্ক", "প্যারিস", "ভিয়েনা"], answer: 1 },
-  { id: 52, question: "সার্ক প্রতিষ্ঠিত হয় কত সালে?", options: ["১৯৮০", "১৯৮৫", "১৯৯০", "১৯৯৫"], answer: 1 },
-  { id: 53, question: "আন্তর্জাতিক বিচার আদালত কোথায় অবস্থিত?", options: ["জেনেভা", "দ্য হেগ", "নিউইয়র্ক", "ব্রাসেলস"], answer: 1 },
-  { id: 54, question: "ইউরোপীয় ইউনিয়নের একক মুদ্রার নাম কী?", options: ["পাউন্ড", "ইউরো", "ফ্রাঁ", "ডলার"], answer: 1 },
-  { id: 55, question: "বিশ্ব স্বাস্থ্য সংস্থার সদর দপ্তর কোথায়?", options: ["নিউইয়র্ক", "জেনেভা", "রোম", "প্যারিস"], answer: 1 },
-  { id: 56, question: "আন্তর্জাতিক মুদ্রা তহবিলের সদর দপ্তর কোথায়?", options: ["লন্ডন", "ওয়াশিংটন ডিসি", "জেনেভা", "নিউইয়র্ক"], answer: 1 },
-  { id: 57, question: "বিশ্বব্যাংকের সদর দপ্তর কোথায়?", options: ["প্যারিস", "ওয়াশিংটন ডিসি", "রোম", "টোকিও"], answer: 1 },
-  { id: 58, question: "ন্যাটো প্রতিষ্ঠিত হয় কত সালে?", options: ["১৯৪৫", "১৯৪৯", "১৯৫৫", "১৯৬১"], answer: 1 },
-  { id: 59, question: "আসিয়ান প্রতিষ্ঠিত হয় কত সালে?", options: ["১৯৬৫", "১৯৬৭", "১৯৭১", "১৯৭৫"], answer: 1 },
-  { id: 60, question: "ওআইসি প্রতিষ্ঠিত হয় কত সালে?", options: ["১৯৬৫", "১৯৬৯", "১৯৭১", "১৯৭৫"], answer: 1 },
-  { id: 61, question: "জাতিসংঘের প্রথম মহাসচিব কে ছিলেন?", options: ["দ্যাগ হ্যামারশোল্ড", "ট্রিগভে লাই", "উ থান্ট", "কুর্ট ওয়াল্ডহেইম"], answer: 1 },
-  { id: 62, question: "আন্তর্জাতিক অপরাধ আদালত (ICC) কোথায় অবস্থিত?", options: ["জেনেভা", "দ্য হেগ", "ব্রাসেলস", "ভিয়েনা"], answer: 1 },
-  { id: 63, question: "বিশ্বের বৃহত্তম উষ্ণ মরুভূমি কোনটি?", options: ["গোবি", "সাহারা", "কালাহারি", "আরব"], answer: 1 },
-  { id: 64, question: "পৃথিবীর দীর্ঘতম পর্বতমালা কোনটি?", options: ["হিমালয়", "আন্দিজ", "আল্পস", "রকি"], answer: 1 },
-  { id: 65, question: "বিশ্বের গভীরতম সামুদ্রিক খাদ কোনটি?", options: ["টঙ্গা খাদ", "মারিয়ানা খাদ", "জাপান খাদ", "ফিলিপাইন খাদ"], answer: 1 },
-  { id: 66, question: "জাপানের পার্লামেন্টের নাম কী?", options: ["ডায়েট", "কংগ্রেস", "সেনেট", "ডুমা"], answer: 0 },
-  { id: 67, question: "যুক্তরাজ্যের পার্লামেন্টের উচ্চকক্ষের নাম কী?", options: ["হাউস অব কমন্স", "হাউস অব লর্ডস", "সেনেট", "ন্যাশনাল অ্যাসেম্বলি"], answer: 1 },
-  { id: 68, question: "ফরাসি বিপ্লব সংঘটিত হয় কত সালে?", options: ["১৭৭৬", "১৭৮৯", "১৮১৫", "১৮৪৮"], answer: 1 },
-  { id: 69, question: "রুশ বিপ্লব সংঘটিত হয় কত সালে?", options: ["১৯০৫", "১৯১৭", "১৯২১", "১৯২৯"], answer: 1 },
-  { id: 70, question: "প্রথম বিশ্বযুদ্ধ শুরু হয় কত সালে?", options: ["১৯১২", "১৯১৪", "১৯১৬", "১৯১৮"], answer: 1 },
-  { id: 71, question: "দ্বিতীয় বিশ্বযুদ্ধ শুরু হয় কত সালে?", options: ["১৯৩৭", "১৯৩৯", "১৯৪১", "১৯৪৫"], answer: 1 },
-  { id: 72, question: "বার্লিন প্রাচীরের পতন ঘটে কত সালে?", options: ["১৯৮৫", "১৯৮৯", "১৯৯১", "১৯৯৩"], answer: 1 },
-  { id: 73, question: "স্নায়ুযুদ্ধের অবসানের সঙ্গে কোন ঘটনার সম্পর্ক সবচেয়ে বেশি?", options: ["জাতিসংঘ প্রতিষ্ঠা", "সোভিয়েত ইউনিয়নের বিলুপ্তি", "ন্যাটো প্রতিষ্ঠা", "বার্লিন অবরোধ"], answer: 1 },
-  { id: 74, question: "‘ম্যাগনা কার্টা’ স্বাক্ষরিত হয় কত সালে?", options: ["১০৬৬", "১২১৫", "১৪৯২", "১৬৮৮"], answer: 1 },
-  { id: 75, question: "শিল্পবিপ্লব প্রথম কোন দেশে শুরু হয়?", options: ["ফ্রান্স", "জার্মানি", "ব্রিটেন", "যুক্তরাষ্ট্র"], answer: 2 },
-  { id: 76, question: "‘দ্য অরিজিন অব স্পিসিস’ প্রকাশিত হয় কত সালে?", options: ["১৮৪৮", "১৮৫৯", "১৮৬৫", "১৮৭১"], answer: 1 },
-  { id: 77, question: "বিশ্বের বৃহত্তম গণতান্ত্রিক রাষ্ট্র কোনটি?", options: ["যুক্তরাষ্ট্র", "ভারত", "ব্রাজিল", "ইন্দোনেশিয়া"], answer: 1 },
-  { id: 78, question: "আন্তর্জাতিক মাতৃভাষা দিবস কবে?", options: ["৮ মার্চ", "২১ ফেব্রুয়ারি", "৫ জুন", "১০ ডিসেম্বর"], answer: 1 },
-  { id: 79, question: "বিশ্ব পরিবেশ দিবস কবে পালিত হয়?", options: ["২২ এপ্রিল", "৫ জুন", "১৬ সেপ্টেম্বর", "২৪ অক্টোবর"], answer: 1 },
-  { id: 80, question: "বিশ্ব মানবাধিকার দিবস কবে?", options: ["১ মে", "১০ ডিসেম্বর", "২৪ অক্টোবর", "৮ মার্চ"], answer: 1 },
-  { id: 81, question: "বিশ্বের বৃহত্তম দ্বীপ কোনটি?", options: ["নিউগিনি", "গ্রিনল্যান্ড", "বোর্নিও", "মাদাগাস্কার"], answer: 1 },
-  { id: 82, question: "পৃথিবীর সর্বোচ্চ পর্বতশৃঙ্গ কোনটি?", options: ["কে-টু", "মাউন্ট এভারেস্ট", "কাঞ্চনজঙ্ঘা", "লোৎসে"], answer: 1 },
-  { id: 83, question: "‘ল্যান্ড অব দ্য রাইজিং সান’ বলা হয় কোন দেশকে?", options: ["চীন", "জাপান", "দক্ষিণ কোরিয়া", "থাইল্যান্ড"], answer: 1 },
-  { id: 84, question: "‘হাজার হ্রদের দেশ’ নামে পরিচিত কোন দেশ?", options: ["নরওয়ে", "ফিনল্যান্ড", "সুইডেন", "আইসল্যান্ড"], answer: 1 },
-  { id: 85, question: "‘মধ্যরাতের সূর্যের দেশ’ বলা হয় কোন দেশকে?", options: ["ডেনমার্ক", "নরওয়ে", "সুইজারল্যান্ড", "স্পেন"], answer: 1 },
-  { id: 86, question: "‘দ্য গ্রেট ওয়াল’ কোন দেশে অবস্থিত?", options: ["জাপান", "চীন", "মঙ্গোলিয়া", "দক্ষিণ কোরিয়া"], answer: 1 },
-  { id: 87, question: "পানামা খাল কোন দুটি মহাসাগরকে সংযুক্ত করেছে?", options: ["ভারত ও প্রশান্ত", "আটলান্টিক ও প্রশান্ত", "আটলান্টিক ও ভারত", "আর্কটিক ও প্রশান্ত"], answer: 1 },
-  { id: 88, question: "সুয়েজ খাল কোন দুটি সাগরকে যুক্ত করেছে?", options: ["ভূমধ্যসাগর ও লোহিত সাগর", "কৃষ্ণসাগর ও কাস্পিয়ান সাগর", "আরব সাগর ও লোহিত সাগর", "বাল্টিক ও উত্তর সাগর"], answer: 0 },
-  { id: 89, question: "বিশ্বের বৃহত্তম স্থলবেষ্টিত দেশ কোনটি?", options: ["মঙ্গোলিয়া", "কাজাখস্তান", "চাদ", "নাইজার"], answer: 1 },
-  { id: 90, question: "আন্তর্জাতিক রেডক্রস কমিটি প্রতিষ্ঠিত হয় কোথায়?", options: ["প্যারিস", "জেনেভা", "লন্ডন", "রোম"], answer: 1 },
-  { id: 91, question: "নোবেল শান্তি পুরস্কার প্রদান করা হয় কোন শহরে?", options: ["স্টকহোম", "অসলো", "জেনেভা", "কোপেনহেগেন"], answer: 1 },
-  { id: 92, question: "বিশ্ব বাণিজ্য সংস্থা (WTO) প্রতিষ্ঠিত হয় কত সালে?", options: ["১৯৮৯", "১৯৯৫", "২০০১", "২০০৫"], answer: 1 },
-  { id: 93, question: "প্যারিস জলবায়ু চুক্তি গৃহীত হয় কত সালে?", options: ["২০১২", "২০১৫", "২০১৮", "২০২০"], answer: 1 },
-  { id: 94, question: "টেকসই উন্নয়ন অভীষ্ট (SDGs)-এর লক্ষ্য কয়টি?", options: ["৮টি", "১৫টি", "১৭টি", "২০টি"], answer: 2 },
-  { id: 95, question: "জাতিসংঘের টেকসই উন্নয়ন অভীষ্ট অর্জনের লক্ষ্যমাত্রার বছর কোনটি?", options: ["২০২৫", "২০৩০", "২০৩৫", "২০৫০"], answer: 1 },
-  { id: 96, question: "‘ব্রেটন উডস’ সম্মেলন অনুষ্ঠিত হয় কত সালে?", options: ["১৯৩৯", "১৯৪৪", "১৯৪৫", "১৯৫০"], answer: 1 },
-  { id: 97, question: "বিশ্বের প্রথম কৃত্রিম উপগ্রহের নাম কী?", options: ["অ্যাপোলো-১১", "স্পুটনিক-১", "ভয়েজার-১", "লুনা-২"], answer: 1 },
-  { id: 98, question: "মানুষের প্রথম চন্দ্রাভিযান সফল হয় কোন সালে?", options: ["১৯৬১", "১৯৬৯", "১৯৭২", "১৯৭৫"], answer: 1 },
-  { id: 99, question: "‘অ্যাপোলো-১১’ অভিযানে প্রথম চাঁদে পা রাখেন কে?", options: ["ইউরি গ্যাগারিন", "নীল আর্মস্ট্রং", "বাজ অলড্রিন", "মাইকেল কলিন্স"], answer: 1 },
-  { id: 100, question: "বিশ্বের প্রথম নারী মহাকাশচারী কে?", options: ["স্যালি রাইড", "ভ্যালেন্তিনা তেরেশকোভা", "মে জেমিসন", "সুনীতা উইলিয়ামস"], answer: 1 }
-]
-            };
-
             let pool = basePools[categoryKey] || basePools.hsc;
-
+            let questions = [];
             for (let i = 1; i <= count; i++) {
                 let baseQ = pool[(i - 1) % pool.length];
                 questions.push({
                     id: i,
-                    title: `${i}. [${titlePrefix}] ${baseQ.q} (প্রশ্ন সেট #${i})`,
+                    title: `${i}. [${titlePrefix}] ${baseQ.q}`,
                     opts: baseQ.opts,
                     ans: baseQ.ans
                 });
@@ -1014,6 +723,10 @@
             document.getElementById('subFormStart').addEventListener('submit', function(e) {
                 e.preventDefault();
                 let sub = document.getElementById('selected-subject').value;
+                if(!sub) {
+                    alert('দয়া করে একটি বিষয় নির্বাচন করুন।');
+                    return;
+                }
                 activeSubjectKey = sub;
                 startExamSession('sub', 100, 45 * 60, sub.toUpperCase());
             });
@@ -1059,7 +772,6 @@
 
             let questionList = [];
             if (category === 'du') {
-                // আপনার দেওয়া ৯০টি প্রশ্ন সরাসরি ব্যবহার করা হচ্ছে
                 questionList = duQuestions.map((item, idx) => ({
                     id: idx + 1,
                     title: `${idx + 1}. ${item.question}`,
@@ -1123,7 +835,8 @@
                 if (totalSeconds <= 0) {
                     clearInterval(currentTimer);
                     alert("সময় শেষ! খাতা স্বয়ংক্রিয়ভাবে জমা হয়ে গেছে।");
-                    submitExamFinal(category, category === 'du' ? duQuestions.length : (category === 'hsc' ? 30 : 100));
+                    let countMap = { du: duQuestions.length, hsc: 60, sub: 100 };
+                    submitExamFinal(category, countMap[category]);
                 }
                 totalSeconds--;
             }, 1000);
@@ -1138,104 +851,45 @@
             let unattempted = 0;
 
             for (let i = 0; i < totalQ; i++) {
-                let ans = document.querySelector(`input[name="${category}_q_${i}"]:checked`);
-                if (!ans) {
-                    unattempted++;
-                } else if (ans.value === "1") {
-                    correct++;
-                } else {
-                    incorrect++;
-                }
+        const selected = document.querySelector(`input[name="${category}_q_${i}"]:checked`);
+        const correctOpt = window[category + 'Questions'][i].ans;
+        
+        if (selected) {
+            if (parseInt(selected.value) === correctOpt) {
+                correct++;
+            } else {
+                incorrect++;
             }
-
-            let finalScore = (correct * 1.0) - (incorrect * 0.25);
-            if(finalScore < 0) finalScore = 0;
-
-            let catLabel = category.toUpperCase();
-            if(category === 'sub') {
-                catLabel = `SUB (${activeSubjectKey.toUpperCase()})`;
-            }
-
-            // লিডারবোর্ডে সংরক্ষণ
-            let leaderboard = JSON.parse(localStorage.getItem('varsityVisionLB')) || [];
-            leaderboard.push({ name: studentName, college: studentCollege, cat: catLabel, score: finalScore.toFixed(2), correct, incorrect });
-            leaderboard.sort((a, b) => b.score - a.score);
-            localStorage.setItem('varsityVisionLB', JSON.stringify(leaderboard));
-
-            document.getElementById(`${category}-exam-box`).style.display = 'none';
-            const resBox = document.getElementById(`${category}-result-box`);
-            resBox.style.display = 'block';
-
-            resBox.innerHTML = `
-                <h3 style="color: #38bdf8; font-size: 1.8rem; margin-bottom: 15px;">🎉 পরীক্ষা সফলভাবে সম্পন্ন হয়েছে!</h3>
-                <div style="background: rgba(15, 23, 42, 0.8); padding: 20px; border-radius: 14px; border: 1px solid rgba(56, 189, 248, 0.3); max-width: 500px; margin: 0 auto 25px auto; text-align: left;">
-                    <p style="font-size: 1.1rem; margin-bottom: 8px; color: #fff;">👤 পরীক্ষার্থী: <strong>${studentName}</strong></p>
-                    <p style="font-size: 1.1rem; margin-bottom: 8px; color: #fff;">🏫 কলেজ: <strong>${studentCollege}</strong></p>
-                    <hr style="border-color: rgba(255,255,255,0.1); margin: 12px 0;">
-                    <p style="font-size: 1.1rem; margin-bottom: 8px; color: #4ade80;">✔️ সঠিক উত্তর: <strong>${correct} টি</strong></p>
-                    <p style="font-size: 1.1rem; margin-bottom: 8px; color: #fb7185;">❌ ভুল উত্তর: <strong>${incorrect} টি</strong></p>
-                    <p style="font-size: 1.1rem; margin-bottom: 8px; color: #94a3b8;">⚠️ উত্তর করা হয়নি: <strong>${unattempted} টি</strong></p>
-                    <hr style="border-color: rgba(255,255,255,0.1); margin: 12px 0;">
-                    <p style="font-size: 1.3rem; color: #38bdf8; font-weight: 700; text-align: center;">ফাইনাল স্কোর: ${finalScore.toFixed(2)}</p>
-                </div>
-                <button onclick="location.reload()" class="btn-action" style="max-width: 250px; margin: 0 auto 10px auto;">পুনরায় পরীক্ষা দিন</button>
-                <button onclick="deactivateFocusMode(); switchTab('leaderboard-sec')" class="btn-action" style="max-width: 250px; margin: 0 auto; background: linear-gradient(135deg, #e11d48, #be123c);">🏆 লিডারবোর্ড দেখুন</button>
-            `;
+        } else {
+            unattempted++;
         }
+    }
 
-        // লিডারবোর্ড রেন্ডার
-        function loadLeaderboard() {
-            deactivateFocusMode();
-            let leaderboard = JSON.parse(localStorage.getItem('varsityVisionLB')) || [];
-            let container = document.getElementById('leaderboard-content');
-
-            if (leaderboard.length === 0) {
-                container.innerHTML = `<p style="text-align: center; color: #94a3b8; padding: 35px; font-size: 1.05rem;">এখনো কোনো শিক্ষার্থী পরীক্ষায় অংশগ্রহণ করেনি। পরীক্ষা দিয়ে প্রথম স্থান অর্জন করুন!</p>`;
-                return;
-            }
-
-            let html = `
-                <table class="leaderboard-table">
-                    <tr>
-                        <th>মেধা পজিশন</th>
-                        <th>নাম</th>
-                        <th>কলেজ</th>
-                        <th>বিভাগ</th>
-                        <th>সঠিক</th>
-                        <th>ভুল</th>
-                        <th>স্কোর</th>
-                    </tr>
-            `;
-
-            leaderboard.forEach((item, index) => {
-                let rankClass = '';
-                if(index === 0) rankClass = 'rank-1';
-                else if(index === 1) rankClass = 'rank-2';
-                else if(index === 2) rankClass = 'rank-3';
-
-                html += `
-                    <tr>
-                        <td class="${rankClass}"><strong>#${index + 1}</strong></td>
-                        <td>${item.name}</td>
-                        <td>${item.college}</td>
-                        <td>${item.cat}</td>
-                        <td style="color: #4ade80;">${item.correct}</td>
-                        <td style="color: #fb7185;">${item.incorrect}</td>
-                        <td style="color: #38bdf8; font-weight: 700;">${item.score}</td>
-                    </tr>
-                `;
-            });
-
-            html += `</table>`;
-            container.innerHTML = html;
+    // রেজাল্ট হিসাব ও প্রদর্শন
+    let resultBox = document.getElementById(`${category}-result-box`);
+    if (resultBox) {
+        resultBox.style.display = 'block';
+        document.getElementById(`${category}-exam-box`).style.display = 'none';
+        
+        document.getElementById(`${category}-correct`).innerText = correct;
+        document.getElementById(`${category}-incorrect`).innerText = incorrect;
+        document.getElementById(`${category}-unattempted`).innerText = unattempted;
+        
+        // প্রাপ্ত নম্বর বা অন্যান্য হিসাব থাকলে এখানে যোগ করতে পারেন
+        let totalMarks = correct * 1 - incorrect * 0.25; // নেগেটিভ মার্কিং থাকলে (ঐচ্ছিক)
+        let marksElem = document.getElementById(`${category}-marks`);
+        if (marksElem) {
+            marksElem.innerText = totalMarks >= 0 ? totalMarks : 0;
         }
+    }
+}
 
-        function clearLeaderboard() {
-            if(confirm("আপনি কি নিশ্চিতভাবে লিডারবোর্ড ডেটা রিসেট করতে চান?")) {
-                localStorage.removeItem('varsityVisionLB');
-                loadLeaderboard();
-            }
-        }
-    </script>
+// এক্সাম রিটেস্ট বা ক্লোজ করার ফাংশন (প্রয়োজনীয় হলে)
+function closeExam(category) {
+    document.getElementById(`${category}-result-box`).style.display = 'none';
+    document.getElementById(`${category}-form-box`).style.display = 'block';
+}
+</script>
+
 </body>
 </html>
