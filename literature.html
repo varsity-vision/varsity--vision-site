@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>সাহিত্যপাঠ ও সহপাঠ - Varsity Vision</title>
+    
+    <!-- Noto Serif Bengali Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-main: linear-gradient(135deg, #090d16 0%, #171f33 50%, #090d16 100%);
+            --glass-card: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+            --btn-gradient: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Serif Bengali', serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-main);
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-bottom: 50px;
+            background-attachment: fixed;
+        }
+
+        /* স্টিকি নেভিগেশন বার */
+        .sticky-header-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            padding: 10px 4%;
+            background: rgba(9, 13, 22, 0.9);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        .brand-subtitle {
+            font-size: 0.75rem;
+            color: #38bdf8;
+            font-weight: 600;
+            display: block;
+        }
+
+        .btn-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 18px;
+            background: #0f172a;
+            color: #38bdf8;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border-radius: 50px;
+            text-decoration: none;
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            transition: 0.3s;
+        }
+        .btn-home:hover {
+            background: var(--btn-gradient);
+            color: #fff;
+        }
+
+        main {
+            margin-top: 90px;
+            flex: 1;
+            padding: 30px 6%;
+        }
+
+        .category-title {
+            color: #38bdf8;
+            font-size: 1.2rem;
+            margin: 20px 0 10px 0;
+            border-left: 4px solid #06b6d4;
+            padding-left: 10px;
+        }
+
+        .chapter-tabs {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            scrollbar-width: thin;
+        }
+
+        .tab-btn {
+            background: var(--glass-card);
+            color: #cbd5e1;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 8px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background: var(--btn-gradient);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
+        }
+
+        .chapter-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .chapter-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .pdf-box {
+            background: var(--glass-card);
+            backdrop-filter: blur(12px);
+            padding: 20px 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            background: var(--btn-gradient);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+            transition: 0.3s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        .content-card {
+            background: var(--glass-card);
+            backdrop-filter: blur(12px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            margin-bottom: 25px;
+        }
+
+        .content-card h3 {
+            color: #38bdf8;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 8px;
+        }
+
+        .content-card ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            color: #cbd5e1;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+        .content-card ul li { margin-bottom: 6px; }
+
+        footer {
+            background: #020617;
+            color: #94a3b8;
+            text-align: center;
+            padding: 25px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- নেভিগেশন বার -->
+    <div class="sticky-header-container">
+        <div class="navbar-card">
+            <div>
+                <a href="bangla.html" class="brand-name">varsity vision</a>
+                <span class="brand-subtitle">সাহিত্যপাঠ ও সহপাঠ সেকশন</span>
+            </div>
+            <div>
+                <a href="bangla.html" class="btn-home">
+                    <i class="fa-solid fa-arrow-left"></i> পেজে ফিরে যান
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <h2 style="font-size: 1.8rem; margin-bottom: 15px; background: linear-gradient(90deg, #fff, #93c5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">সাহিত্যপাঠ, পদ্য, নাটক ও উপন্যাস</h2>
+        
+        <!-- গদ্য ট্যাবসমূহ -->
+        <div class="category-title">গদ্য অংশ</div>
+        <div class="chapter-tabs">
+            <button class="tab-btn active" onclick="showChapter('gody1')">১. বাঙ্গালার নব্য লেখকদিগের প্রতি নিবেদন</button>
+            <button class="tab-btn" onclick="showChapter('gody2')">২. অপরিচিতা</button>
+            <button class="tab-btn" onclick="showChapter('gody3')">৩. সাহিত্যে খেলা</button>
+            <button class="tab-btn" onclick="showChapter('gody4')">৪. বিলাসী</button>
+            <button class="tab-btn" onclick="showChapter('gody5')">৫. অর্ধাঙ্গী</button>
+            <button class="tab-btn" onclick="showChapter('gody6')">৬. যৌবনের গান</button>
+            <button class="tab-btn" onclick="showChapter('gody7')">৭. জীবন ও বৃক্ষ</button>
+            <button class="tab-btn" onclick="showChapter('gody8')">৮. গন্তব্য কাবুল</button>
+            <button class="tab-btn" onclick="showChapter('gody9')">৯. মাসি পিসি</button>
+            <button class="tab-btn" onclick="showChapter('gody10')">১০. কপিল দাস মুর্মুর শেষ কাজ</button>
+            <button class="tab-btn" onclick="showChapter('gody11')">১১. রেইনকোট</button>
+            <button class="tab-btn" onclick="showChapter('gody12')">১২. নেকলেস</button>
+        </div>
+
+        <!-- পদ্য ট্যাবসমূহ -->
+        <div class="category-title">পদ্য অংশ</div>
+        <div class="chapter-tabs">
+            <button class="tab-btn" onclick="showChapter('pody1')">১. ঋতু বর্ণন</button>
+            <button class="tab-btn" onclick="showChapter('pody2')">২. বিভীষণের প্রতি মেঘনাদ</button>
+            <button class="tab-btn" onclick="showChapter('pody3')">৩. সোনার তরী</button>
+            <button class="tab-btn" onclick="showChapter('pody4')">৪. বিদ্রোহী</button>
+            <button class="tab-btn" onclick="showChapter('pody5')">৫. সুচেতনা</button>
+            <button class="tab-btn" onclick="showChapter('pody6')">৬. প্রতিদান</button>
+            <button class="tab-btn" onclick="showChapter('pody7')">৭. তাহারেই পড়ে মনে</button>
+            <button class="tab-btn" onclick="showChapter('pody8')">৮. পদ্মা</button>
+            <button class="tab-btn" onclick="showChapter('pody9')">৯. আঠারো বছর বয়স</button>
+            <button class="tab-btn" onclick="showChapter('pody10')">১০. ফেব্রুয়ারি ১৯৬৯</button>
+            <button class="tab-btn" onclick="showChapter('pody11')">১১. আমি কিংবদন্তির কথা বলছি</button>
+            <button class="tab-btn" onclick="showChapter('pody12')">১২. প্রত্যাবর্তনের লজ্জা</button>
+        </div>
+
+        <!-- নাটক ও উপন্যাস ট্যাবসমূহ -->
+        <div class="category-title">নাটক ও উপন্যাস (সহপাঠ)</div>
+        <div class="chapter-tabs">
+            <button class="tab-btn" onclick="showChapter('natok')">নাটক: সিরাজউদ্দৌলা</button>
+            <button class="tab-btn" onclick="showChapter('upobash')">উপন্যাস: লালসালু</button>
+        </div>
+
+        <!-- ================= GODY 1 ================= -->
+        <div id="gody1" class="chapter-content active">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">গদ্য-০১: বাঙ্গালার নব্য লেখকদিগের প্রতি নিবেদন</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">লেখক: বঙ্কিমচন্দ্র চট্টোপাধ্যায়</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1rjMOBj1hCVP_x5QtolXweQv8nWBkZ_te/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ তথ্যাবলী</h3>
+                <ul>
+                    <li>প্রবন্ধটি ১৮৮৫ সালে প্রথম প্রকাশিত হয় এবং এর উৎস 'বিবিধ প্রবন্ধ' গ্রন্থ।</li>
+                    <li>প্রবন্ধটি সাধু রীতিতে লিখিত। মূল কথা: যশ বা অর্থের মোহ ত্যাগ করে সহজ ভাষায় সত্য ও জনকল্যাণমূলক সাহিত্য রচনা করা।</li>
+                    <li>প্রবন্ধে বঙ্কিমচন্দ্র নতুন লেখকদের জন্য ১২টি উপদেশ দিয়েছেন।</li>
+                    <li>প্রথম লাইন: 'যশের জন্য লিখিবেন না'। শেষ লাইন: 'এই নিয়মগুলি বাঙ্গালার লেখকদিগের দ্বারা রক্ষিত হইলে, বাঙ্গালা সাহিত্যের উন্নতি বেগে হইতে থাকিবে'।</li>
+                    <li>বঙ্কিমচন্দ্র সরলতাকে সকল অলংকারের শ্রেষ্ঠ অলংকার বলেছেন। যিনি সোজা কথায় নিজের মনের ভাব সহজে বুঝাতে পারেন তিনিই শ্রেষ্ঠ লেখক।</li>
+                    <li>লেখা সাথে সাথে ছাপাতে নিষেধ করেছেন এবং লেখায় বিদ্যা জাহির করার চেষ্টা পাঠকের জন্য বিরক্তিকর বলেছেন।</li>
+                </ul>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ উক্তি</h3>
+                <ul>
+                    <li>"যশের জন্য লিখিবেন না নইলে যশও হইবে না, লেখাও ভালো হইবে না।"</li>
+                    <li>"বিদ্যা প্রকাশের চেষ্টা পাঠকের অতিশয় বিরক্তিকর এবং রচনার পরিপাট্যের বিশেষ হানিজনক।"</li>
+                    <li>"যে বিষয়ে যাহার অধিকার নাই, সে বিষয়ে তাহার হস্তক্ষেপ অকর্তব্য।"</li>
+                    <li>"যে কথার প্রমাণ দিতে পারিবে না, তাহা লিখিও না।"</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= GODY 2 ================= -->
+        <div id="gody2" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">গদ্য-০২: অপরিচিতা</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">লেখক: রবীন্দ্রনাথ ঠাকুর</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1rjMOBj1hCVP_x5QtolXweQv8nWBkZ_te/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ তথ্যাবলী</h3>
+                <ul>
+                    <li>গল্পের মূলবাণী ও উপজীব্য: যৌতুক প্রথার বিরুদ্ধে সম্মিলিত প্রতিরোধ।</li>
+                    <li>অনুপমের বর্তমান বয়স ২৭ বছর, বিয়ের সময় বয়স ছিল ২৩ বছর। কল্যাণীর বর্তমান বয়স ১৯ বছর, বিয়ের সময় ছিল ১৫ বছর।</li>
+                    <li>অনুপমকে তুলনা করা হয়েছে শিমুল ফুল, মাকাল ফল এবং অন্নপূর্ণার কোলে গজাননের ছোট ভাই কার্তিকের সাথে।</li>
+                    <li>কল্যাণীকে তুলনা করা হয়েছে ভ্রমর, সুধাময় সুর ও রজনীগন্ধা শুভ্র মঞ্জুরীর সাথে।</li>
+                    <li>অনুপমের মামা তার থেকে ৬ বছরের বড়। অনুপমের সংসারে মামার প্রভাব ফল্গুর বালির মতো।</li>
+                    <li>প্রথম লাইন: "আজ আমার বয়স ২৭ মাত্র।" শেষ লাইন: "কিন্তু ভাগ্য আমার ভালো এইতো আমি জায়গা পাইয়াছি।"</li>
+                </ul>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ উক্তি</h3>
+                <ul>
+                    <li>"তামাকটুকু পর্যন্ত খাই না। ভালো মানুষ হওয়ার কোন ঝঞ্জাট নাই, তাই আমি নিতান্ত ভালো মানুষ।" - অনুপম</li>
+                    <li>"ওহে! মেয়ে যদি বল একটি খাসা মেয়ে আছে।" - হরিশ</li>
+                    <li>"ঠাট্টা তো আপনিই করিয়া সারিয়াছেন। ঠাট্টার সম্পর্কটাকে স্থায়ী করিবার ইচ্ছা আমার নাই।" - শম্ভুনাথ সেন</li>
+                    <li>"আপনারা আমাদের গাড়িতে আসুন না - এখানে জায়গা আছে।" - কল্যাণী</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= GODY 3 ================= -->
+        <div id="gody3" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">গদ্য-০৩: সাহিত্যে খেলা</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">লেখক: প্রমথ চৌধুরী</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1rjMOBj1hCVP_x5QtolXweQv8nWBkZ_te/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ তথ্যাবলী</h3>
+                <ul>
+                    <li>প্রবন্ধটি সর্বপ্রথম প্রকাশিত হয় 'সবুজপত্র' পত্রিকার শ্রাবণ ১৩২২ বঙ্গাব্দ সংখ্যায়।</li>
+                    <li>সাহিত্যের উদ্দেশ্য হচ্ছে সকলকে আনন্দ দান করা, কারো মনোরঞ্জন করা নয়। সমাজের মনোরঞ্জন করতে গেলে সাহিত্য হয়ে পড়ে স্বধর্মচ্যুত।</li>
+                    <li>যে খেলার ভিতর আনন্দ নেই কিন্তু উপরি পাওনার আশা আছে তার নাম খেলা নয়, জুয়াখেলা।</li>
+                    <li>শিক্ষার উদ্দেশ্য মানুষের মনকে বিশ্বের খবর জানানো, সাহিত্যের উদ্দেশ্য মানুষের মনকে জাগানো।</li>
+                    <li>খেলা হচ্ছে জীবজগতে একমাত্র নিষ্কামকর্ম।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= GODY 4 ================= -->
+        <div id="gody4" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">গদ্য-০৪: বিলাসী</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">লেখক: শরৎচন্দ্র চট্টোপাধ্যায়</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1rjMOBj1hCVP_x5QtolXweQv8nWBkZ_te/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ তথ্যাবলী</h3>
+                <ul>
+                    <li>গল্পটি প্রথমে 'ভারতী' পত্রিকার বৈশাখ ১৩২৫ বঙ্গাব্দ (১৯১৮) সংখ্যায় প্রকাশিত হয়।</li>
+                    <li>গল্পের কথক চরিত্র হলো 'ন্যাড়া'। মৃত্যুঞ্জয়ের বাগানের পরিমাণ ছিল ২০-২৫ বিঘা।</li>
+                    <li>মৃত্যুঞ্জয় ৪৫ দিন শয্যাগত ছিল। বিলাসী মারা যায় মৃত্যুঞ্জয়ের মৃত্যুর ৭ দিন পর।</li>
+                    <li>গল্পে বর্ণিত হয়েছে ব্যতিক্রমধর্মী দুই মানব-মানবীর চরিত্রের অসাধারণ প্রেমের মহিমা—যা ছাপিয়ে উঠেছে জাতিগত বিভেদের সীমা।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= GODY 5 ================= -->
+        <div id="gody5" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">গদ্য-০৫: অর্ধাঙ্গী</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">লেখক: রোকেয়া সাখাওয়াত হোসেন</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1rjMOBj1hCVP_x5QtolXweQv8nWBkZ_te/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ তথ্যাবলী</h3>
+                <ul>
+                    <li>রোগীর চিকিৎসা করার আগে রোগের অবস্থা জানা আবশ্যক।</li>
+                    <li>সীতাকে রামের পুতুল হিসেবে উপস্থাপন করা হয়েছে। অবলাদের হাতে সমাজের জীবন-মরণের কাঠি আছে।</li>
+                    <li>লেখিকার মতে, সমান সুবিধা পেলে নারীরাও শ্রেষ্ঠত্ব অর্জন করতে পারত।</li>
+                    <li>মনটাকে স্বাধীনতা দেওয়া যায় ধর্মবন্ধন ছিন্ন না করেও।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= GODY 6 ================= -->
+        <div id="gody6" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">গদ্য-০৬: যৌবনের গান</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">লেখক: কাজী নজরুল ইসলাম</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1rjMOBj1hCVP_x5QtolXweQv8nWBkZ_te/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ তথ্যাবলী</h3>
+                <ul>
+                    <li>১৯৩২ সালে সিরাজগঞ্জে মুসলিম যুবসমাজের সংবর্ধনার উত্তরে দেওয়া নজরুলের ভাষণের পরিমার্জিত লিখিত রূপ।</li>
+                    <li>নজরুলের মতে, বার্ধক্য তাহাই—যাহা পুরাতনকে, মিথ্যাকে, মৃত্যুকে আঁকড়িয়া পড়িয়া থাকে।</li>
+                    <li>প্রবন্ধে কবি তার একমাত্র সম্বল হিসেবে তরুণদের প্রতি ভালোবাসা ও প্রাণের টান উল্লেখ করেছেন।</li>
+                    <li>খোদা হাত দিয়েছেন অর্জন করিয়া লইবার জন্য, ভিখারির মতো ভিক্ষা করিবার জন্য নয়।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= GODY 7 ================= -->
+        <div id="gody7" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">গদ্য-০৭: জীবন ও বৃক্ষ</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">লেখক: মোতাহের হোসেন চৌধুরী</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1rjMOBj1hCVP_x5QtolXweQv8nWBkZ_te/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ তথ্যাবলী</h3>
+                <ul>
+                    <li>প্রবন্ধটি প্রাবন্ধিকের 'সংস্কৃতি-কথা' গ্রন্থ থেকে সংকলিত।</li>
+                    <li>রবীন্দ্রনাথ ঠাকুর নদীর গতির মধ্যেই মনুষ্যত্বের সাদৃশ্য দেখতে পেয়েছেন।</li>
+                    <li>মানুষের বৃদ্ধি কেবল দৈহিক নয়, আত্মিকও। নীরব ভাষায় বৃক্ষ আমাদের সার্থকতার গান শুনায়।</li>
+                    <li>বিচিত্র অভিজ্ঞতা, প্রচুর প্রেম ও গভীর অনুভূতির দ্বারা আত্মার পরিপুষ্টি ও মাধুর্য সম্পাদন সম্ভব।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= GODY 8 ================= -->
+        <div id="gody8" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">গদ্য-০৮: গন্তব্য কাবুল</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">লেখক: সৈয়দ মুজতবা আলী</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1rjMOBj1hCVP_x5QtolXweQv8nWBkZ_te/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ তথ্যাবলী</h3>
+                <ul>
+                    <li>ভ্রমণকাহিনীটি 'দেশে-বিদেশে' (১৯৪৮) গ্রন্থ থেকে সংকলিত।</li>
+                    <li>আরবি প্রবাদ: "ইয়োম উস সফর, নিসফ উস্ সফর" (যাত্রার দিনই অর্ধেক ভ্রমণ)।</li>
+                    <li>পাঠান প্রবাদ অনুসারে—"হন্তদন্ত হওয়ার মানে শয়তানের পন্থায় চলা"।</li>
+                    <li>কাবুলি বেতার কর্মচারীর মতে, দুনিয়ার সব পরীক্ষা পাস করার চেয়ে বড়ো পরীক্ষা খাইবারপাস পাস করা।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= GODY 9 ================= -->
+        <div id="gody9" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">গদ্য-০৯: মাসি পিসি</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">লেখক: মানিক বন্দ্যোপাধ্যায়</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1rjMOBj1hCVP_x5QtolXweQv8nWBkZ_te/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ তথ্যাবলী</h3>
+                <ul>
+                    <li>প্রথম প্রকাশিত হয় কলকাতার 'পূর্বাশা' পত্রিকায় (মার্চ-এপ্রিল ১৯৪৬)।</li>
+                    <li>আহ্লাদি চার মাসের অন্তঃসত্ত্বা ছিল। কলেরা মহামারীতে তার বাবা-মা-ভাই মারা যায়।</li>
+                    <li>গল্পের মূল বিষয়: পুরুষতান্ত্রিক সমাজে নারীদের অস্তিত্বের সংগ্রাম ও প্রতিরোধ।</li>
+                    <li>মাসি-পিসি বঁটি আর দা হাতের কাছে রেখে, জলভেজা কাঁথা প্রস্তুত করে যুদ্ধের আয়োজন করে থাকে।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= GODY 10 ================= -->
+        <div id="gody10" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">গদ্য-১০: কপিল দাস মুর্মুর শেষ কাজ</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">লেখক: শওকত আলী</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1rjMOBj1hCVP_x5QtolXweQv8nWBkZ_te/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ তথ্যাবলী</h3>
+                <ul>
+                    <li>'লেলিহান সাধ' (১৯৭৭) গ্রন্থ থেকে সংকলিত।</li>
+                    <li>কপিল দাস মুর্মু একজন প্রবীণ সাঁওতাল যার স্মৃতিভ্রম হয়।</li>
+                    <li>'মুর্মু' শব্দের অর্থ নীল গাভী, যা এই গোত্রের গোত্র চিহ্ন তথা টোটেম।</li>
+                    <li>গল্পের মূল বক্তব্য: লড়াইয়ের কোনো বয়স নেই এবং বসতভিটা ও অধিকার রক্ষায় শোষিত কৃষকের সংগ্রাম অব্যাহত থাকে।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= GODY 11 ================= -->
+        <div id="gody11" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">গদ্য-১১: রেইনকোট</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">লেখক: আখতারুজ্জামান ইলিয়াস</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1rjMOBj1hCVP_x5QtolXweQv8nWBkZ_te/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ তথ্যাবলী</h3>
+                <ul>
+                    <li>গল্পগ্রন্থ 'জাল স্বপ্ন স্বপ্নের জাল' (১৯৯৭) থেকে সংকলিত।</li>
+                    <li>মুক্তিযুদ্ধের শেষ পর্যায়ে ঢাকার পরিস্থিতি ও নুরুল হুদার চরিত্রে শ্যালক মিন্টুর রেইনকোটের মাধ্যমে সাহস ও দেশপ্রেম সঞ্চারের কাহিনী।</li>
+                    <li>"রাশিয়ার ছিল জেনারেল উইন্টার, আমাদের জেনারেল মনসুন।"</li>
+                    <li>সাবভার্সিব অ্যাক্টিভিটিজ বলতে রাষ্ট্রবিরোধী কর্মকাণ্ডকে বোঝায়।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= GODY 12 ================= -->
+        <div id="gody12" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">গদ্য-১২: নেকলেস</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">লেখক: গী দ্য মোপাসাঁ (অনুবাদ: পূর্ণেন্দু দস্তিদার)</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1rjMOBj1hCVP_x5QtolXweQv8nWBkZ_te/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ তথ্যাবলী</h3>
+                <ul>
+                    <li>১৮৮৪ সালে ফরাসি পত্রিকা 'La Gaulois'-এ প্রকাশিত হয় (ফরাসি নাম 'La Parure')।</li>
+                    <li>মাদাম লোইসেল (মাতিলদা) ধনী বান্ধবী ফোরস্টিয়ারের কাছ থেকে যে হারটি ধার করেছিলেন তা হারিয়ে ফেলে ৩৬ হাজার ফ্রাঁ দিয়ে আসল হিরের হার কিনে দেন।</li>
+                    <li>দীর্ঘ ১০ বছর কঠোর পরিশ্রমের পর জানতে পারেন ধার করা হারটি নকল ছিল এবং তার দাম ৫০০ ফ্রাঁর বেশি ছিল না।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= PODY 1 ================= -->
+        <div id="pody1" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">পদ্য-০১: ঋতু বর্ণন</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">কবি: আলাওল</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1rjMOBj1hCVP_x5QtolXweQv8nWBkZ_te/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ তথ্যাবলী</h3>
+                <ul>
+                    <li>বিখ্যাত কাব্যগ্রন্থ 'পদ্মাবতী'র ঋতু বর্ণন খণ্ড থেকে সংকলিত। অক্ষরবৃত্ত ছন্দে রচিত।</li>
+                    <li>কবিতায় প্রথমে বসন্ত ঋতুর বর্ণনা দেওয়া হয়েছে। দখিনা বাতাসকে প্রেমের দূত বলা হয়েছে।</li>
+                    <li>মালিক মোহাম্মদ জাইসীর 'পদমাবৎ' (১৫৪০) অনুসরণে আলাওল ১৬৪৮ সালে এটি রচনা করেন।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= PODY 2 ================= -->
+        <div id="pody2" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">পদ্য-০২: বিভীষণের প্রতি মেঘনাদ</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">কবি: মাইকেল মধুসূদন দত্ত</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1rjMOBj1hCVP_x5QtolXweQv8nWBkZ_te/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ তথ্যাবলী</h3>
+                <ul>
+                    <li>'মেঘনাদবধ কাব্য'-এর ষষ্ঠ সর্গ (বধ) থেকে সংকলিত। এটি ১৪ মাত্রার অক্ষরবৃত্ত/অমিত্রাক্ষর ছন্দে রচিত।</li>
+                    <li>নিকুম্ভিলা যজ্ঞাগারে লক্ষ্মণের হাতে অন্যায় যুদ্ধে নিহত হয় মেঘনাদ।</li>
+                    <li>"গুণবান যদি পরজন, গুণহীন স্বজন, তথাপি নির্গুণ স্বজন শ্রেয়ঃ পরঃ পরঃ সদা।"</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= PODY 3 ================= -->
+        <div id="pody3" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">পদ্য-০৩: সোনার তরী</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">কবি: রবীন্দ্রনাথ ঠাকুর</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1rjMOBj1hCVP_x5QtolXweQv8nWBkZ_te/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ তথ্যাবলী</h3>
+                <ul>
+                    <li>মাত্রাবৃত্ত ছন্দে রচিত (৮+৫ মাত্রা, মোট ৪২ লাইন, ৬টি স্তবক)।</li>
+                    <li>'সোনার ধান' বলতে কবিশিল্পীর সৃষ্টিসম্ভার এবং 'নৌকা/মাঝি' মহাকালের প্রতীক।</li>
+                    <li>ব্যক্তির শারীরিক অস্তিত্ব বিলীন হলেও তার সৃষ্টিকর্ম মহাকালের বুকে টিকে থাকে।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= PODY 4 ================= -->
+        <div id="pody4" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">পদ্য-০৪: বিদ্রোহী</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">কবি: কাজী নজরুল ইসলাম</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1rjMOBj1hCVP_x5QtolXweQv8nWBkZ_te/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ তথ্যাবলী</h3>
+                <ul>
+                    <li>'অগ্নিবীণা' (১৯২২) কাব্যগ্রন্থের ২য় কবিতা। ১৯২২ সালের ৬ জানুয়ারি 'বিজলী' পত্রিকায় প্রথম প্রকাশিত হয়।</li>
+                    <li>সমিল মুক্তক মাত্রাবৃত্ত ছন্দে রচিত (৮টি স্তবক, ১৪৯টি পঙ্ক্তি)।</li>
+                    <li>"আমি চির উন্নত শির" পঙ্ক্তিটি বিদ্রোহীর আত্মমর্যাদা ও অবনতিহীন চেতনার প্রকাশ।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= PODY 5 ================= -->
+        <div id="pody5" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">পদ্য-০৫: সুচেতনা</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">কবি: জীবনানন্দ দাশ</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1rjMOBj1hCVP_x5QtolXweQv8nWBkZ_te/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ তথ্যাবলী</h3>
+                <ul>
+                    <li>'বনলতা সেন' (১৯৪২) কাব্যগ্রন্থ থেকে সংকলিত। অক্ষরবৃত্ত ছন্দে রচিত।</li>
+                    <li>পৃথিবীব্যাপ্ত গভীর অসুখ বা বিপর্যয় থেকে মুক্তির পথই শুভচেতনা।</li>
+                    <li>"পৃথিবীর গভীর গভীরতর অসুখ এখন, মানুষ তবুও ঋণী পৃথিবীর কাছে।"</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= PODY 6 ================= -->
+        <div id="pody6" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">পদ্য-০৬: প্রতিদান</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">কবি: জসীমউদ্দীন</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1rjMOBj1hCVP_x5QtolXweQv8nWBkZ_te/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ তথ্যাবলী</h3>
+                <ul>
+                    <li>'বালুচর' কাব্যগ্রন্থ থেকে সংকলিত। মাত্রাবৃত্ত ছন্দে রচিত (১৮টি লাইন)।</li>
+                    <li>প্রতিশোধের বিপরীতে ভালোবাসা ও উদারতার মাধ্যমে প্রীতিময় পরিবেশ সৃষ্টির চেতনা প্রকাশ পেয়েছে।</li>
+                    <li>কবি তাকেই বুকভরা গান ও ফুলের সোহাগ দেন, যে তাকে কটু কথা বা বিষে ভরা বাণ দিয়েছে।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= PODY 7 ================= -->
+        <div id="pody7" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">পদ্য-০৭: তাহারেই পড়ে মনে</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">কবি: সুফিয়া কামাল</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1rjMOBj1hCVP_x5QtolXweQv8nWBkZ_te/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ তথ্যাবলী</h3>
+                <ul>
+                    <li>১৯৩৫ সালে 'মাসিক মোহাম্মদী' পত্রিকায় প্রকাশিত হয়। অক্ষরবৃত্ত ছন্দে রচিত সংলাপনির্ভর কবিতা।</li>
+                    <li>প্রথম স্বামী সৈয়দ নেহাল হোসেনের আকস্মিক মৃত্যুতে কবির মন যে বিষণ্ণতায় আচ্ছন্ন হয়, প্রকৃতির বসন্তের আগমনেও তা কাটেনি।</li>
+                    <li>"কুহেলি উত্তরী তলে মাঘের সন্ন্যাসী"—শীতের রিক্ততাকে সন্ন্যাসীর সাথে তুলনা করা হয়েছে।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= PODY 8 ================= -->
+        <div id="pody8" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">পদ্য-০৮: পদ্মা</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">কবি: ফররুখ আহমদ</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1rjMOBj1hCVP_x5QtolXweQv8nWBkZ_te/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ তথ্যাবলী</h3>
+                <ul>
+                    <li>'কাফেলা' (১৯৮০) সনেট সংকলন থেকে সংকলিত। ১৪ চরণের অক্ষরবৃত্ত সনেট।</li>
+                    <li>পদ্মা নদীর প্রমত্ত ধ্বংসাত্মক রূপ এবং পলির উর্বরতায় কল্যাণময়ী রূপ—উভয় দিকই ফুটিয়ে তোলা হয়েছে।</li>
+                    <li>হার্মাদ বলতে বঙ্গোপসাগরে পর্তুগিজ ও মগ জলদস্যুদের বোঝায়।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= PODY 9 ================= -->
+        <div id="pody9" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">পদ্য-০৯: আঠারো বছর বয়স</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">কবি: সুকান্ত ভট্টাচার্য</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1rjMOBj1hCVP_x5QtolXweQv8nWBkZ_te/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ তথ্যাবলী</h3>
+                <ul>
+                    <li>'ছাড়পত্র' কাব্যগ্রন্থ থেকে সংকলিত (১৯৪৮ সালে প্রকাশিত)। মাত্রাবৃত্ত ছন্দে রচিত (৩২টি লাইন)।</li>
+                    <li>বয়ঃসন্ধিকালের ঝঁকি নেওয়ার প্রবণতা, অদম্য তারুণ্য শক্তি ও অন্যায়ের বিরুদ্ধে প্রতিবাদের বয়সের বৈশিষ্ট্য ফুটে উঠেছে।</li>
+                    <li>কবি এ দেশের বুকে আঠারো নেমে আসার ইচ্ছা পোষণ করেছেন।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= PODY 10 ================= -->
+        <div id="pody10" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">পদ্য-১০: ফেব্রুয়ারি ১৯৬৯</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">কবি: শামসুর রহমান</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1rjMOBj1hCVP_x5QtolXweQv8nWBkZ_te/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ তথ্যাবলী</h3>
+                <ul>
+                    <li>'নিজ বাসভূমে' কাব্যগ্রন্থ থেকে সংকলিত। গদ্যছন্দে রচিত (২৮টি লাইন)।</li>
+                    <li>১৯৬৯ সালের গণ-অভ্যুত্থানের পটভূমিতে বায়ান্নর ভাষা আন্দোলনের আত্মত্যাগকে স্মরণ করা হয়েছে।</li>
+                    <li>কৃষ্ণচূড়া ফুলকে ভাষা শহীদের ঝলকিত রক্তের বুদ্বুদের সাথে তুলনা করা হয়েছে।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= PODY 11 ================= -->
+        <div id="pody11" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">পদ্য-১১: আমি কিংবদন্তির কথা বলছি</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">কবি: আবু জাফর ওবায়দুল্লাহ</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1rjMOBj1hCVP_x5QtolXweQv8nWBkZ_te/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ তথ্যাবলী</h3>
+                <ul>
+                    <li>একই নামের কাব্যগ্রন্থের নাম কবিতা। গদ্যছন্দে রচিত (৬৮টি লাইন)।</li>
+                    <li>বাঙালি জাতির হাজার বছরের ইতিহাস, পূর্বপুরুষদের শ্রম, নির্যাতন ও মুক্তির আকাঙ্ক্ষা ব্যক্ত হয়েছে।</li>
+                    <li>"তাঁর পিঠে রক্তজবার মতো ক্ষত ছিল" দ্বারা দাসত্ব ও নির্যাতনের ইতিহাস বোঝানো হয়েছে।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= PODY 12 ================= -->
+        <div id="pody12" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">পদ্য-১২: প্রত্যাবর্তনের লজ্জা</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">কবি: আল মাহমুদ</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1rjMOBj1hCVP_x5QtolXweQv8nWBkZ_te/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ তথ্যাবলী</h3>
+                <ul>
+                    <li>'সোনালী কাবিন' কাব্যগ্রন্থ থেকে সংকলিত। গদ্যছন্দে রচিত গল্প বলার ঢংয়ে লেখা।</li>
+                    <li>শহরে যাওয়ার শেষ ট্রেন ধরতে না পেরে গ্রামে ফিরে আসা তরুণের আত্মগ্লানি ও মাতৃভূমিপ্রীতি প্রকাশ পেয়েছে।</li>
+                    <li>নীল আলো জ্বালিয়ে ট্রেনের সংকেত দেওয়া হয়েছিল।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= NATOK ================= -->
+        <div id="natok" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">নাটক: সিরাজউদ্দৌলা</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">নাট্যকার: সিকান্দার আবু জাফর</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1rjMOBj1hCVP_x5QtolXweQv8nWBkZ_te/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ তথ্যাবলী</h3>
+                <ul>
+                    <li>ঐতিহাসিক ট্রাজেডি নাটক। মোট ৪টি অঙ্ক ও ১২টি দৃশ্য।</li>
+                    <li>২৩ বছর বয়সে (১৭৫৬) সিরাজউদ্দৌলা মসনদে বসেন এবং তার শাসনকাল ছিল ১ বছর ২ মাস ১৫ দিন।</li>
+                    <li>১৭৫৭ সালের ২রা জুলাই জাফরগঞ্জের কয়েদখানায় মোহাম্মদী বেগ সিরাজউদ্দৌলাকে হত্যা করে।</li>
+                    <li>"ঘরের লোক অবিশ্বাস্য হলে বাইরের লোকের পক্ষে সবই সম্ভব।" - নবাব সিরাজ</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= UPOBASH ================= -->
+        <div id="upobash" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">উপন্যাস: লালসালু</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">ঔপন্যাসিক: সৈয়দ ওয়ালীউল্লাহ্</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1rjMOBj1hCVP_x5QtolXweQv8nWBkZ_te/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ তথ্যাবলী</h3>
+                <ul>
+                    <li>১৯৪৮ সালে কমরেড পাবলিশার্স থেকে প্রকাশিত প্রথম সামাজিক সমস্যাভিত্তিক উপন্যাস।</li>
+                    <li>ইংরেজি অনুবাদ: 'Tree Without Roots' (১৯৬৭)।</li>
+                    <li>শস্যের চেয়ে টুপি বেশি, ধর্মের আগাছা বেশি—দ্বারা অন্ধবিশ্বাস ও ধর্মীয় ভণ্ডামির প্রসার বোঝানো হয়েছে।</li>
+                    <li>মজিদ নোয়াখালীর লোক; রহিমা তার প্রথম স্ত্রী এবং জমিলা স্বাধীনচেতা কিশোরী দ্বিতীয় স্ত্রী।</li>
+                </ul>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ফুটার -->
+    <footer>
+        <p>&copy; ২০২৬ Varsity Vision। সর্বস্বত্ব সংরক্ষিত।</p>
+        <p style="margin-top: 5px; font-size: 0.85rem; color: #64748b;">সম্পাদনা : জুনায়েদ তনয়</p>
+    </footer>
+
+    <!-- ট্যাব পরিবর্তন লজিক -->
+    <script>
+        function showChapter(chapterId) {
+            const contents = document.querySelectorAll('.chapter-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(chapterId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
