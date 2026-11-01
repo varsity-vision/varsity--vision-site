@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSC Model Test - Varsity Vision</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-main: linear-gradient(135deg, #090d16 0%, #171f33 50%, #090d16 100%);
+            --glass-card: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+            --btn-gradient: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Serif Bengali', serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-main);
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-bottom: 50px;
+            background-attachment: fixed;
+        }
+
+        .sticky-header-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            padding: 8px 2%;
+            background: rgba(9, 13, 22, 0.95);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .navbar-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 8px 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+        }
+
+        .brand-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .nav-btn {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+            padding: 6px 16px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 600;
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            transition: all 0.3s;
+            cursor: pointer;
+            margin-left: 8px;
+        }
+
+        .nav-btn:hover {
+            background: var(--btn-gradient);
+            color: #fff;
+        }
+
+        main {
+            margin-top: 85px;
+            padding: 30px 5%;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
+
+        .card {
+            background: var(--glass-card);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(15, 23, 42, 0.8);
+            color: #fff;
+        }
+
+        .btn-action {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: var(--btn-gradient);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 15px;
+        }
+
+        .btn-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(37, 99, 235, 0.6);
+        }
+
+        .exam-top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.9);
+            padding: 15px 22px;
+            border-radius: 14px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            position: sticky;
+            top: 75px;
+            z-index: 99;
+        }
+
+        .timer-badge {
+            background: rgba(225, 29, 72, 0.2);
+            border: 1px solid rgba(225, 29, 72, 0.5);
+            color: #fb7185;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+
+        .question-box {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 20px;
+            border-radius: 14px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .question-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .options-list label {
+            display: block;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 10px 14px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            color: #cbd5e1;
+            transition: all 0.2s;
+        }
+
+        .options-list label:hover {
+            background: rgba(56, 189, 248, 0.12);
+            color: #fff;
+        }
+
+        .options-list input {
+            margin-right: 10px;
+        }
+
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: rgba(15, 23, 42, 0.85);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .leaderboard-table th, .leaderboard-table td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .leaderboard-table th {
+            background: rgba(37, 99, 235, 0.4);
+            color: #38bdf8;
+        }
+
+        footer {
+            background: #020617;
+            color: #94a3b8;
+            text-align: center;
+            padding: 15px;
+            margin-top: auto;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sticky-header-container">
+        <div class="navbar-card">
+            <span onclick="resetHome()" class="brand-name">Varsity Vision</span>
+            <div>
+                <button onclick="toggleLeaderboard()" class="nav-btn">🏆 লিডারবোর্ড</button>
+                <button onclick="resetHome()" class="nav-btn">হোম</button>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- ১. শুরু ফর্ম -->
+        <div id="start-sec" class="card">
+            <h2 style="color: #38bdf8; margin-bottom: 10px;">HSC মডেল টেস্ট</h2>
+            <p style="color: #cbd5e1; margin-bottom: 20px;">মোট প্রশ্ন: ৬০টি | সময়: ৩০ মিনিট | সঠিক: +১, ভুল: -০.২৫</p>
+            
+            <form id="startForm">
+                <div class="form-group">
+                    <label>আপনার নাম *</label>
+                    <input type="text" id="student-name" required placeholder="আপনার নাম লিখুন">
+                </div>
+                <div class="form-group">
+                    <label>আপনার কলেজ *</label>
+                    <input type="text" id="student-college" required placeholder="আপনার কলেজের নাম লিখুন">
+                </div>
+                <button type="submit" class="btn-action">পরীক্ষা শুরু করুন</button>
+            </form>
+        </div>
+
+        <!-- ২. পরীক্ষার সেকশন -->
+        <div id="exam-sec" class="card" style="display: none;">
+            <div class="exam-top-bar">
+                <span id="candidate-info" style="font-weight: 600; color: #38bdf8;"></span>
+                <div class="timer-badge" id="timer">সময় বাকি: ৩০:০০</div>
+            </div>
+            
+            <form id="examForm">
+                <div id="questions-container"></div>
+                <button type="submit" class="btn-action" style="background: linear-gradient(135deg, #16a34a, #15803d);">উত্তরপত্র জমা দিন</button>
+            </form>
+        </div>
+
+        <!-- ৩. রেজাল্ট সেকশন -->
+        <div id="result-sec" class="card" style="display: none; text-align: center;">
+            <h2 style="color: #38bdf8; margin-bottom: 15px;">পরীক্ষার ফলাফল</h2>
+            <div style="font-size: 1.2rem; line-height: 1.8;">
+                <p>শিক্ষার্থী: <span id="res-name" style="color: #fff;"></span></p>
+                <p>সঠিক উত্তর: <span id="res-correct" style="color: #4ade80;">0</span></p>
+                <p>ভুল উত্তর: <span id="res-incorrect" style="color: #f87171;">0</span></p>
+                <p>উত্তর দেওয়া হয়নি: <span id="res-unattempted" style="color: #fbbf24;">0</span></p>
+                <h3 style="margin-top: 15px; color: #38bdf8;">প্রাপ্ত মোট নম্বর: <span id="res-score">0</span> / ৬০</h3>
+            </div>
+            <button onclick="resetHome()" class="btn-action" style="max-width: 250px; margin: 20px auto 0;">আবার পরীক্ষা দিন</button>
+        </div>
+
+        <!-- ৪. লিডারবোর্ড সেকশন -->
+        <div id="leaderboard-sec" class="card" style="display: none;">
+            <h2 style="color: #38bdf8; margin-bottom: 15px; text-align: center;">🏆 মেধা তালিকা (HSC Model Test)</h2>
+            <div id="leaderboard-data"></div>
+            <button onclick="toggleLeaderboard()" class="btn-action" style="max-width: 200px; margin: 20px auto 0;">বন্ধ করুন</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; ২০২৬ Varsity Vision। সর্বস্বত্ব সংরক্ষিত।</p>
+    </footer>
+
+    <script>
+        // HSC ৬০টি প্রশ্ন ব্যাংক
+        const hscQuestions = [
+            { id: 1, question: "'বিলাসী' গল্পে মৃত্যুঞ্জয় কোন শ্রেণিতে পড়ত?", options: ["ফার্স্ট ক্লাস", "সেকেন্ড ক্লাস", "থার্ড ক্লাস", "ফোর্থ ক্লাস"], answer: 2 },
+            { id: 2, question: "What does the word 'unlettered' mean?", options: ["Skilled in writing", "Illiterate", "Educated in literature", "Written in a letter"], answer: 1 },
+            { id: 3, question: "কম্পিউটার নেটওয়ার্কে ডেটা গ্রহণ ও প্রদানের নিয়মকে কী বলে?", options: ["URL", "IP Address", "Browser", "Protocol"], answer: 3 },
+            { id: 4, question: "'ব্যাকরণ' শব্দটি কোন ভাষা থেকে এসেছে?", options: ["বাংলা", "সংস্কৃত", "विदेशি", "তদ্ভব"], answer: 1 },
+            { id: 5, question: "What was the first step taken to educate the bird in 'The Parrot's Tale'?", options: ["Teaching it manners", "Building a proper cage", "Writing books for it", "Providing new food"], answer: 1 },
+            { id: 6, question: "জাতীয় পরিচয়পত্র তৈরিতে কোন প্রযুক্তি ব্যবহৃত হয়?", options: ["আর্টিফিশিয়াল ইন্টেলিজেন্স", "বায়োমেট্রিক্স", "জেনেটিক ইঞ্জিনিয়ারিং", "বায়োইনফরমেটিক্স"], answer: 1 },
+            { id: 7, question: "'অপরিচিতা' গল্পে রেলভ্রমণকালে দেখা মেয়েটির সুধাকণ্ঠকে অনুপম কিসের সঙ্গে তুলনা করেছে?", options: ["রুপার কাঠি", "সোনার কাঠি", "মধুর ঝরনা", "বাঁশির সুর"], answer: 1 },
+            { id: 8, question: "A good boy is accustomed ___ hard work.", options: ["with", "for", "to", "by"], answer: 2 },
+            { id: 9, question: "'ব্যাকরণ' শব্দের বিশ্লেষিত রূপ কোনটি?", options: ["বি + আ + √কৃ + অপ", "বি + আ + √কৃ + অন", "বি + আ + √কৃ + অন্", "বি + আ + √কৃ + অনট"], answer: 1 },
+            { id: 10, question: "HTML-এর পূর্ণরূপ কী?", options: ["HighText Machine Language", "Hyperlink and Text Management Language", "HyperText Markup Language", "Home Tool Markup Language"], answer: 2 },
+            { id: 11, question: "What does the word 'scripture' mean?", options: ["A type of bird", "Polite behaviour", "Sacred writings", "Exquisite craftsmanship"], answer: 2 },
+            { id: 12, question: "'রেইনকোট' গল্পে রেইনকোটটি কার?", options: ["নুরুল হুদার", "মিন্টুর", "আলতাফের", "রহমানের"], answer: 1 },
+            { id: 13, question: "শব্দের অর্থযুক্ত ক্ষুদ্রতম অংশকে কী বলা হয়?", options: ["রূপ", "ধ্বনি", "সন্ধি", "বর্ণ"], answer: 0 },
+            { id: 14, question: "ডেটা স্থানান্তরে বিটের বিন্যাসব্যবস্থা হলো—", options: ["মোড", "মেথড", "স্পিড", "টপোলজি"], answer: 0 },
+            { id: 15, question: "Who was given the responsibility of educating the bird?", options: ["The King", "The King's guards", "The King's nephews", "The royal ministers"], answer: 2 },
+            { id: 16, question: "'বিদ্রোহী' কবিতাটি কোন পত্রিকায় প্রকাশিত হয়েছিল?", options: ["ধূমকেতু", "বিজলী", "সওগাত", "মোসলেম ভারত"], answer: 1 },
+            { id: 17, question: "কম্পিউটার থেকে প্রিন্টারে ডেটা স্থানান্তরের ক্ষেত্রে কোনটি ব্যবহৃত হয়?", options: ["ন্যারো ব্যান্ড", "ভয়েস ব্যান্ড", "হাফ-ডুপ্লেক্স", "ফুল-ডুপ্লেক্স"], answer: 0 },
+            { id: 18, question: "He is not addicted ___ any bad thing.", options: ["with", "to", "for", "by"], answer: 1 },
+            { id: 19, question: "রূপতত্ত্বের আলোচ্য বিষয় নয় কোনটি?", options: ["সমাস", "প্রত্যয়", "সন্ধি", "উপসর্গ"], answer: 2 },
+            { id: 20, question: "What does the word 'exquisite' mean?", options: ["Polite behaviour", "Genuine or real", "Finely made or beautiful", "Illiterate"], answer: 2 },
+            { id: 21, question: "'আমার পথ' প্রবন্ধে কাজী নজরুল ইসলামের কর্ণধার কে?", options: ["সমাজ", "ধর্ম", "শিক্ষক", "নিজে"], answer: 3 },
+            { id: 22, question: "ডেটাবেজে প্রতিটি রেকর্ডকে অনন্যভাবে শনাক্ত করে কোনটি?", options: ["Field", "Index", "Primary Key", "Foreign Key"], answer: 2 },
+            { id: 23, question: "'বিলাসী' গল্পে বিলাসী কীসের প্রতীক?", options: ["প্রেমনিষ্ঠার", "প্রতিহিংসার", "সামাজিক মর্যাদার", "অর্থনৈতিক স্বাচ্ছন্দ্যের"], answer: 0 },
+            { id: 24, question: "The King ordered to educate the bird because—", options: ["The bird was intelligent", "The bird lacked manners and was unlettered", "The bird could fly too high", "The bird had excellent manners"], answer: 1 },
+            { id: 25, question: "'ব্যাকরণ' শব্দের ব্যুৎপত্তিগত অর্থ কী?", options: ["ভাষার সংবিধান", "গ্রামার", "ভাষাবিষয়ক জ্ঞান", "বিশ্লেষণ"], answer: 3 },
+            { id: 26, question: "কোনটি HTML-এর empty tag?", options: ["&lt;p&gt;", "&lt;table&gt;", "&lt;br&gt;", "&lt;b&gt;"], answer: 2 },
+            { id: 27, question: "'রেইনকোট' গল্পে 'সাবভার্সিভ অ্যাকটিভিটিজ' বলতে কী বোঝানো হয়েছে?", options: ["সামাজিক কর্মকাণ্ড", "রাষ্ট্রবিরোধী কর্মকাণ্ড", "সাংস্কৃতিক কর্মকাণ্ড", "রাজনৈতিক প্রচারণা"], answer: 1 },
+            { id: 28, question: "He is not averse ___ any hard work.", options: ["to", "with", "for", "by"], answer: 0 },
+            { id: 29, question: "'বচন' ব্যাকরণের কোন অংশের আলোচ্য বিষয়?", options: ["ধ্বনিতত্ত্ব", "শব্দতত্ত্ব", "রূপতত্ত্ব", "বাক্যতত্ত্ব"], answer: 2 },
+            { id: 30, question: "কোনটি সার্চ ইঞ্জিন?", options: ["Twitter", "YouTube", "Pipilika", "Wikipedia"], answer: 2 },
+            { id: 31, question: "What did the royal scholars conclude about the bird?", options: ["The bird was too wise", "The bird's nest could not hold much knowledge", "The bird was too young to be educated", "The bird needed more food"], answer: 1 },
+            { id: 32, question: "'সোনার তরী' কবিতায় 'বাঁকা জল' মূলত কীসের প্রতীক?", options: ["কালস্রোতের", "জীবনের আনন্দের", "প্রকৃতির সৌন্দর্যের", "মানবপ্রেমের"], answer: 0 },
+            { id: 33, question: "He clings ___ his determination.", options: ["on", "at", "to", "with"], answer: 2 },
+            { id: 34, question: "ক্রায়োসার্জারিতে সাধারণত কোনটি ক্রায়োজনিক এজেন্ট হিসেবে ব্যবহৃত হয়?", options: ["তরল নাইট্রোজেন", "তরল পানি", "বাষ্প", "কার্বন ডাই-অক্সাইড গ্যাস"], answer: 0 },
+            { id: 35, question: "'ব্যাকরণ' শব্দটি কোন ধরনের শব্দ?", options: ["তদ্ভব", "দেশি", "বিদেশি", "তৎসম"], answer: 3 },
+            { id: 36, question: "Which of the following best describes 'manners'?", options: ["A type of bird", "Polite behaviour", "Illiteracy", "Fine craftsmanship"], answer: 1 },
+            { id: 37, question: "'সোনার তরী' কবিতার উপজীব্য বিষয় কী?", options: ["প্রকৃতিপ্রেম", "জীবনচেতনা", "দেশপ্রেম", "মানবসভ্যতা"], answer: 1 },
+            { id: 38, question: "HTML ফাইল সম্পাদনার জন্য কোনটি Text Editor?", options: ["Notepad", "Notepad++", "Sublime Text", "সবগুলো"], answer: 3 },
+            { id: 39, question: "He is used ___ hard work.", options: ["with", "to", "by", "for"], answer: 1 },
+            { id: 40, question: "'The Origin and Development of Bengali Language' গ্রন্থটির লেখক কে?", options: ["ড. দীনেশচন্দ্র সেন", "ড. সুনীতিকুমার চট্টোপাধ্যায়", "ড. মুহম্মদ শহীদুল্লাহ", "ড. সুকুমার সেন"], answer: 1 },
+            { id: 41, question: "কম্পিউটার নেটওয়ার্কের জন্য নেটওয়ার্ক ব্যাকবোন হিসেবে ব্যবহৃত ক্যাবলভিত্তিক টপোলজি কোনটি?", options: ["বাস", "রিং", "স্টার", "মেশ"], answer: 0 },
+            { id: 42, question: "What does the word 'deliberated' mean?", options: ["Considered carefully", "A type of bird", "Sacred writings", "Genuine or real"], answer: 0 },
+            { id: 43, question: "'বিলাসী' গল্পটি কত বঙ্গাব্দে প্রকাশিত হয়?", options: ["১৩২৩", "১৩২৪", "১৩২৫", "১৩২৬"], answer: 2 },
+            { id: 44, question: "কম্পিউটার নেটওয়ার্কে একই সঙ্গে উভয় দিকে ডেটা স্থানান্তরের পদ্ধতিকে কী বলে?", options: ["সিমপ্লেক্স", "হাফ-ডুপ্লেক্স", "ফুল-ডুপ্লেক্স", "অ্যাসিনক্রোনাস"], answer: 2 },
+            { id: 45, question: "He is not doubtful ___ his success.", options: ["about", "of", "with", "for"], answer: 1 },
+            { id: 46, question: "What was the bird's cage made of?", options: ["Silver", "Gold", "Wood", "Iron"], answer: 1 },
+            { id: 47, question: "'সাহিত্যে খেলা' প্রবন্ধ অনুসারে সাহিত্যের উদ্দেশ্য কী?", options: ["আনন্দ দেওয়া", "অর্থ উপার্জন", "জ্ঞান বিতরণ", "ইতিহাস সংরক্ষণ"], answer: 0 },
+            { id: 48, question: "শর্তসাপেক্ষে ডেটা অনুসন্ধান করাকে কী বলে?", options: ["মডিউল", "কুয়েরি", "সর্টিং", "ইনডেক্সিং"], answer: 1 },
+            { id: 49, question: "He is very much conscious ___ duties.", options: ["with", "for", "of", "by"], answer: 2 },
+            { id: 50, question: "'রেইনকোট' গল্পে মিন্টু কবে বাড়ি ছেড়ে গিয়েছিল?", options: ["২১ জুন", "২২ জুন", "২৩ জুন", "২৪ জুন"], answer: 2 },
+            { id: 51, question: "What did the bird's cage symbolize?", options: ["The bird's freedom", "The bird's education", "The bird's imprisonment", "The bird's happiness"], answer: 2 },
+            { id: 52, question: "কোনটি কৃত্রিম বুদ্ধিমত্তায় ব্যবহৃত প্রোগ্রামিং ভাষা?", options: ["LISP", "CSS", "HTML", "SQL"], answer: 0 },
+            { id: 53, question: "'বাঙ্গালার নব্য লেখকদিগের প্রতি নিবেদন' প্রবন্ধে লেখক প্রথমে কোনটির জন্য লিখতে নিষেধ করেছেন?", options: ["অর্থ", "যশ", "জ্ঞান", "আনন্দ"], answer: 1 },
+            { id: 54, question: "He is not boastful ___ his talents.", options: ["with", "of", "to", "by"], answer: 1 },
+            { id: 55, question: "টেবিলের প্রতিটি রেকর্ডকে অনন্যভাবে শনাক্ত করার জন্য কোন Key ব্যবহৃত হয়?", options: ["Foreign Key", "Primary Key", "Composite Key", "Candidate Key"], answer: 1 },
+            { id: 56, question: "'তাহারেই পড়ে মনে' কবিতায় 'মাঘের সন্ন্যাসী' বলতে কী বোঝানো হয়েছে?", options: ["বসন্ত ঋতু", "শীত ঋতুর বৈশিষ্ট্য", "বর্ষাকাল", "শরৎ ঋতু"], answer: 1 },
+            { id: 57, question: "Which of the following is the meaning of 'scripture'?", options: ["Religious texts", "A type of bird", "A golden cage", "A musical instrument"], answer: 0 },
+            { id: 58, question: "কোনটি আউটসোর্সিংয়ের মার্কেটপ্লেস?", options: ["Facebook", "Myspace", "Upwork", "Wikipedia"], answer: 2 },
+            { id: 59, question: "He behaves well ___ all.", options: ["at", "with", "to", "by"], answer: 1 },
+            { id: 60, question: "ডেটাবেজের ভিত্তি কোনটি?", options: ["ফিল্ড", "রেকর্ড", "টেবিল", "কুয়েরি"], answer: 0 }
+        ];
+
+        let timerInterval = null;
+        let studentName = "";
+        let studentCollege = "";
+
+        // ১. ফর্ম সাবমিট ও পরীক্ষা শুরু
+        document.getElementById('startForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            studentName = document.getElementById('student-name').value;
+            studentCollege = document.getElementById('student-college').value;
+
+            document.getElementById('start-sec').style.display = 'none';
+            document.getElementById('leaderboard-sec').style.display = 'none';
+            document.getElementById('result-sec').style.display = 'none';
+            document.getElementById('exam-sec').style.display = 'block';
+            document.getElementById('candidate-info').innerText = `পরীক্ষার্থী: ${studentName} (${studentCollege})`;
+
+            renderQuestions();
+            startTimer(30 * 60); // ৬০টি প্রশ্নের জন্য ৩০ মিনিট
+        });
+
+        // ২. প্রশ্ন লোড করা
+        function renderQuestions() {
+            let container = document.getElementById('questions-container');
+            let html = '';
+            hscQuestions.forEach((q, idx) => {
+                html += `
+                    <div class="question-box">
+                        <div class="question-title">${idx + 1}. ${q.question}</div>
+                        <div class="options-list">
+                            ${q.options.map((opt, optIdx) => `
+                                <label>
+                                    <input type="radio" name="q_${idx}" value="${optIdx}">
+                                    ${opt}
+                                </label>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        // ৩. টাইমার চালানো
+        function startTimer(seconds) {
+            let total = seconds;
+            let timerEl = document.getElementById('timer');
+            if(timerInterval) clearInterval(timerInterval);
+            
+            timerInterval = setInterval(() => {
+                let m = Math.floor(total / 60);
+                let s = total % 60;
+                timerEl.innerText = `সময় বাকি: ${m < 10 ? '0'+m : m}:${s < 10 ? '0'+s : s}`;
+                if (total <= 0) {
+                    clearInterval(timerInterval);
+                    calculateResult();
+                }
+                total--;
+            }, 1000);
+        }
+
+        // ৪. ফাইনাল সাবমিট ও ফলাফল গণনা (সরাসরি পপ-আপ ছাড়া)
+        document.getElementById('examForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            clearInterval(timerInterval);
+            calculateResult();
+        });
+
+        function calculateResult() {
+            let correct = 0;
+            let incorrect = 0;
+            let unattempted = 0;
+
+            hscQuestions.forEach((q, idx) => {
+                let selected = document.querySelector(`input[name="q_${idx}"]:checked`);
+                if (selected) {
+                    if (parseInt(selected.value) === q.answer) {
+                        correct++;
+                    } else {
+                        incorrect++;
+                    }
+                } else {
+                    unattempted++;
+                }
+            });
+
+            let score = (correct * 1) - (incorrect * 0.25);
+            score = score < 0 ? 0 : score;
+
+            document.getElementById('res-name').innerText = studentName;
+            document.getElementById('res-correct').innerText = correct;
+            document.getElementById('res-incorrect').innerText = incorrect;
+            document.getElementById('res-unattempted').innerText = unattempted;
+            document.getElementById('res-score').innerText = score.toFixed(2);
+
+            // লিডারবোর্ডে তথ্য সংরক্ষণ
+            saveToLeaderboard(studentName, studentCollege, score.toFixed(2));
+
+            document.getElementById('exam-sec').style.display = 'none';
+            document.getElementById('result-sec').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ৫. লিডারবোর্ড ম্যানেজমেন্ট
+        function saveToLeaderboard(name, college, score) {
+            let leaderboard = JSON.parse(localStorage.getItem('hsc_leaderboard') || '[]');
+            leaderboard.push({ name, college, score: parseFloat(score), date: new Date().toLocaleDateString('bn-BD') });
+            leaderboard.sort((a, b) => b.score - a.score);
+            localStorage.setItem('hsc_leaderboard', JSON.stringify(leaderboard));
+        }
+
+        function toggleLeaderboard() {
+            let boardSec = document.getElementById('leaderboard-sec');
+            if (boardSec.style.display === 'none' || boardSec.style.display === '') {
+                loadLeaderboardData();
+                document.getElementById('start-sec').style.display = 'none';
+                document.getElementById('exam-sec').style.display = 'none';
+                document.getElementById('result-sec').style.display = 'none';
+                boardSec.style.display = 'block';
+            } else {
+                boardSec.style.display = 'none';
+                document.getElementById('start-sec').style.display = 'block';
+            }
+        }
+
+        function loadLeaderboardData() {
+            let leaderboard = JSON.parse(localStorage.getItem('hsc_leaderboard') || '[]');
+            let dataContainer = document.getElementById('leaderboard-data');
+            
+            if (leaderboard.length === 0) {
+                dataContainer.innerHTML = '<p style="text-align:center; color:#cbd5e1; padding: 20px;">এখনও পর্যন্ত কোনো ডেটা জমা হয়নি।</p>';
+                return;
+            }
+
+            let html = `
+                <table class="leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th>র‍্যাংক</th>
+                            <th>নাম</th>
+                            <th>কলেজ</th>
+                            <th>প্রাপ্ত নম্বর</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            leaderboard.forEach((item, index) => {
+                html += `
+                    <tr>
+                        <td style="font-weight:700; color:${index === 0 ? '#fbbf24' : '#38bdf8'};">#${index + 1}</td>
+                        <td>${item.name}</td>
+                        <td>${item.college}</td>
+                        <td style="font-weight:700; color:#4ade80;">${item.score}</td>
+                    </tr>
+                `;
+            });
+
+            html += '</tbody></table>';
+            dataContainer.innerHTML = html;
+        }
+
+        // ৬. হোম বাটন ও পুনরায় শুরু করা
+        function resetHome() {
+            if(timerInterval) clearInterval(timerInterval);
+            document.getElementById('exam-sec').style.display = 'none';
+            document.getElementById('result-sec').style.display = 'none';
+            document.getElementById('leaderboard-sec').style.display = 'none';
+            document.getElementById('start-sec').style.display = 'block';
+            document.getElementById('startForm').reset();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
