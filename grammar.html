@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>বাংলা ব্যাকরণ ও নির্মিতি - Varsity Vision</title>
+    
+    <!-- Noto Serif Bengali Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-main: linear-gradient(135deg, #090d16 0%, #171f33 50%, #090d16 100%);
+            --glass-card: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+            --btn-gradient: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Serif Bengali', serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-main);
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-bottom: 50px;
+            background-attachment: fixed;
+        }
+
+        /* স্টিকি নেভিগেশন বার */
+        .sticky-header-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            padding: 10px 4%;
+            background: rgba(9, 13, 22, 0.9);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        .brand-subtitle {
+            font-size: 0.75rem;
+            color: #38bdf8;
+            font-weight: 600;
+            display: block;
+        }
+
+        .btn-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 18px;
+            background: #0f172a;
+            color: #38bdf8;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border-radius: 50px;
+            text-decoration: none;
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            transition: 0.3s;
+        }
+        .btn-home:hover {
+            background: var(--btn-gradient);
+            color: #fff;
+        }
+
+        main {
+            margin-top: 90px;
+            flex: 1;
+            padding: 30px 6%;
+        }
+
+        .category-title {
+            color: #38bdf8;
+            font-size: 1.2rem;
+            margin: 20px 0 10px 0;
+            border-left: 4px solid #06b6d4;
+            padding-left: 10px;
+        }
+
+        .chapter-tabs {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            scrollbar-width: thin;
+        }
+
+        .tab-btn {
+            background: var(--glass-card);
+            color: #cbd5e1;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 8px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background: var(--btn-gradient);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
+        }
+
+        .chapter-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .chapter-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .pdf-box {
+            background: var(--glass-card);
+            backdrop-filter: blur(12px);
+            padding: 20px 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            background: var(--btn-gradient);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+            transition: 0.3s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        .content-card {
+            background: var(--glass-card);
+            backdrop-filter: blur(12px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            margin-bottom: 25px;
+        }
+
+        .content-card h3 {
+            color: #38bdf8;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 8px;
+        }
+
+        .content-card ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            color: #cbd5e1;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+        .content-card ul li { margin-bottom: 6px; }
+
+        footer {
+            background: #020617;
+            color: #94a3b8;
+            text-align: center;
+            padding: 25px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- নেভিগেশন বার -->
+    <div class="sticky-header-container">
+        <div class="navbar-card">
+            <div>
+                <a href="bangla.html" class="brand-name">varsity vision</a>
+                <span class="brand-subtitle">বাংলা ব্যাকরণ ও নির্মিতি সেকশন</span>
+            </div>
+            <div>
+                <a href="bangla.html" class="btn-home">
+                    <i class="fa-solid fa-arrow-left"></i> পেজে ফিরে যান
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <h2 style="font-size: 1.8rem; margin-bottom: 15px; background: linear-gradient(90deg, #fff, #93c5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">বাংলা ব্যাকরণ ও নির্মিতি শিট</h2>
+        
+        <!-- ব্যাকরণ ট্যাবসমূহ -->
+        <div class="category-title">ব্যাকরণ ও নির্মিতি ক্যাটাগরি</div>
+        <div class="chapter-tabs">
+            <button class="tab-btn active" onclick="showChapter('basic')">১. মৌলিক ধারণা ও বানান</button>
+            <button class="tab-btn" onclick="showChapter('uccaron')">২. উচ্চারণ ও সন্ধি</button>
+            <button class="tab-btn" onclick="showChapter('somash')">৩. সমাস</button>
+            <button class="tab-btn" onclick="showChapter('karok')">৪. কারক ও বিভক্তি</button>
+            <button class="tab-btn" onclick="showChapter('bagdhara')">৫. বাগধারা ও প্রবাদ</button>
+            <button class="tab-btn" onclick="showChapter('shuddho')">৬. এক কথায় প্রকাশ ও বাক্যশুদ্ধি</button>
+        </div>
+
+        <!-- ================= BASIC & BANAN ================= -->
+        <div id="basic" class="chapter-content active">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">বাংলা ব্যাকরণের মৌলিক ধারণা ও প্রমিত বানান</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">এইচএসসি ও এডমিশন স্পেশাল শিট</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1CmRdesFGlvYpnt405lprpMx72pH1n2RX/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>ব্যাকরণের প্রধান আলোচ্য বিষয়</h3>
+                <ul>
+                    <li><strong>ধ্বনিতত্ত্ব:</strong> ভাষার ধ্বনি, উৎপত্তি, উচ্চারণস্থান ও পারস্পরিক সম্পর্ক নিয়ে আলোচনা করে[cite: 116]।</li>
+                    <li><strong>রূপতত্ত্ব বা শব্দতত্ত্ব:</strong> শব্দের গঠন, শ্রেণিবিভাগ, উপসর্গ, প্রত্যয়, সন্ধি, সমাস, পদ ও বিভক্তি নিয়ে আলোচনা করে[cite: 116]।</li>
+                    <li><strong>বাক্যতত্ত্ব:</strong> বাক্যের গঠন, পদের পারস্পরিক সম্পর্ক ও শ্রেণিবিভাগ বিশ্লেষণ করে[cite: 116]।</li>
+                    <li><strong>অর্থতত্ত্ব:</strong> শব্দ, পদ ও বাক্যের অর্থ এবং অর্থের পরিবর্তন নিয়ে আলোচনা করে[cite: 116]।</li>
+                </ul>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ শুদ্ধ বানান</h3>
+                <ul>
+                    <li>আকাঙ্ক্ষা, অভ্যর্থনা, অভ্যুদয়, অন্তর্দৃষ্টি, উচ্ছ্বাস, উৎকর্ষ, ঔজ্জ্বল্য, কৃতিত্ব, গৃহিণী, দুর্বিষহ, নৈপুণ্য, পৃথিবী, প্রতিযোগিতা, প্রণিধানযোগ্য, বৈশিষ্ট্য, মুমূর্ষু, মনীষী, শুশ্রূষা, সান্ত্বনা, স্বতঃস্ফূর্ত, স্বায়ত্তশাসন, ব্যতিক্রম, বাঙালি, শ্রেণি, কাহিনি, পদবি[cite: 119]।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= UCCARON & SANDHI ================= -->
+        <div id="uccaron" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">উচ্চারণ, ধ্বনিবিজ্ঞান ও সন্ধি</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">এইচএসসি ও এডমিশন স্পেশাল শিট</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1CmRdesFGlvYpnt405lprpMx72pH1n2RX/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>ধ্বনি ও উচ্চারণ</h3>
+                <ul>
+                    <li><strong>স্বরধ্বনি:</strong> উচ্চারণের সময় মুখগহ্বরে বায়ুপ্রবাহে উল্লেখযোগ্য বাধা সৃষ্টি হয় না[cite: 121]।</li>
+                    <li><strong>ব্যঞ্জনধ্বনি:</strong> উচ্চারণের সময় বায়ুপ্রবাহ মুখগহ্বরে বাধা পায় বা সংকুচিত হয়[cite: 121]।</li>
+                    <li><strong>ঘোষ ও অঘোষ:</strong> স্বরতন্ত্রী কম্পিত হয়ে ঘোষ এবং কম্পন ছাড়াই অঘোষ ধ্বনি উৎপন্ন হয়[cite: 122]।</li>
+                </ul>
+            </div>
+            <div class="content-card">
+                <h3>সন্ধি ও প্রকারভেদ</h3>
+                <ul>
+                    <li>পাশাপাশি অবস্থিত দুটি ধ্বনির মিলন বা পরিবর্তনের ফলে যে ধ্বনিগত রূপ সৃষ্টি হয়, তাকে সন্ধি বলে[cite: 123]।</li>
+                    <li>সন্ধি প্রধানত তিন প্রকার: স্বরসন্ধি, ব্যঞ্জনসন্ধি ও বিসর্গসন্ধি[cite: 123]।</li>
+                    <li>উদাহরণ: বিদ্যা + আলয় = বিদ্যালয় (স্বরসন্ধি), উৎ + ছেদ = উচ্ছেদ (ব্যঞ্জনসন্ধি), মনঃ + যোগ = মনোযোগ (বিসর্গসন্ধি)[cite: 124, 125]।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= SOMASH ================= -->
+        <div id="somash" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">সমাস</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">এইচএসসি ও এডমিশন স্পেশাল শিট</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1CmRdesFGlvYpnt405lprpMx72pH1n2RX/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>সমাসের প্রধান প্রকারভেদ</h3>
+                <ul>
+                    <li><strong>দ্বন্দ্ব সমাস:</strong> উভয় পদের অর্থ সমানভাবে প্রধান থাকে (যেমন: মা ও বাবা = মা-বাবা)[cite: 126]।</li>
+                    <li><strong>কর্মধারয় সমাস:</strong> বিশেষণ ও বিশেষ্যের সম্পর্ক থাকে এবং একই ব্যক্তি বা বস্তুকে নির্দেশ করে (যেমন: নীল যে পদ্ম = নীলপদ্ম)[cite: 126]।</li>
+                    <li><strong>তৎপুরুষ সমাস:</strong> পূর্বপদের বিভক্তি লোপ পায় এবং পরপদের অর্থ প্রধান থাকে (যেমন: রাজার পুত্র = রাজপুত্র)[cite: 127]।</li>
+                    <li><strong>বহুব্রীহি সমাস:</strong> সমস্যমান পদের কোনোটি প্রধান না হয়ে অন্য কোনো ব্যক্তি বা বস্তুকে নির্দেশ করে (যেমন: নীল কণ্ঠ যার = নীলকণ্ঠ)[cite: 128]।</li>
+                    <li><strong>দ্বিগু সমাস:</strong> পূর্বপদ সংখ্যাবাচক এবং সমষ্টি বা সমাহার বোঝায় (যেমন: তিন ফলের সমাহার = ত্রিফলা)[cite: 128, 129]।</li>
+                    <li><strong>অব্যয়ীভাব সমাস:</strong> অব্যয় পদ পূর্বে বসে অব্যয়ের অর্থ বা প্রাধান্য বজায় রাখে (যেমন: শক্তি অনুসারে = যথাশক্তি)[cite: 129]।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= KAROK ================= -->
+        <div id="karok" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">কারক ও বিভক্তি</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">এইচএসসি ও এডমিশন স্পেশাল শিট</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1CmRdesFGlvYpnt405lprpMx72pH1n2RX/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>কারকের প্রকারভেদ</h3>
+                <ul>
+                    <li><strong>কর্তৃকারক:</strong> যা ক্রিয়ার কর্তা বা সম্পাদনকারীকে নির্দেশ করে (যেমন: রহিম বই পড়ে)[cite: 135]।</li>
+                    <li><strong>কর্মকারক:</strong> ক্রিয়ার কাজ যার ওপর পড়ে (যেমন: আমি চিঠি লিখেছি)[cite: 135]।</li>
+                    <li><strong>করণকারক:</strong> যার সাহায্যে বা উপকরণের মাধ্যমে কাজ সম্পন্ন হয় (যেমন: সে কলম দিয়ে লেখে)[cite: 136]।</li>
+                    <li><strong>সম্প্রদানকারক:</strong> স্বত্ব ত্যাগ করে কোনো কিছু দান করা বোঝালে (যেমন: ভিক্ষুককে ভিক্ষা দাও)[cite: 136]।</li>
+                    <li><strong>অপাদানকারক:</strong> বিচ্ছেদ, উৎপত্তি, পতন বা দূরত্ব বোঝায় (যেমন: গাছ থেকে ফল পড়ে)[cite: 136]।</li>
+                    <li><strong>অধিকরণকারক:</strong> ক্রিয়ার স্থান, কাল বা আধার নির্দেশ করে (যেমন: মাঠে ছেলেরা খেলে)[cite: 137]।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= BAGDHARA ================= -->
+        <div id="bagdhara" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">বাগধারা ও প্রবাদ-প্রবচন</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">এইচএসসি ও এডমিশন স্পেশাল শিট</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1CmRdesFGlvYpnt405lprpMx72pH1n2RX/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ বাগধারা ও অর্থ</h3>
+                <ul>
+                    <li><strong>অগ্নিশর্মা:</strong> অত্যন্ত রাগান্বিত[cite: 138]।</li>
+                    <li><strong>অরণ্যে রোদন:</strong> নিষ্ফল আবেদন[cite: 138]।</li>
+                    <li><strong>আকাশকুসুম:</strong> অবাস্তব কল্পনা[cite: 138]।</li>
+                    <li><strong>কুম্ভীরাশ্রু:</strong> মিথ্যা কান্না[cite: 139]।</li>
+                    <li><strong>ডুমুরের ফুল:</strong> দুর্লভ বস্তু[cite: 139]।</li>
+                    <li><strong>শাঁখের করাত:</strong> উভয় দিকেই বিপদ[cite: 139]।</li>
+                </ul>
+            </div>
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ প্রবাদ-প্রবচন</h3>
+                <ul>
+                    <li>অতি লোভে তাঁতি নষ্ট, অল্প বিদ্যা ভয়ংকরী, চোর পালালে বুদ্ধি বাড়ে, চোরে চোরে মাসতুতো ভাই, ধর্মের কল বাতাসে নড়ে, ঘর পোড়া গরু সিঁদুরে মেঘে ডরায়[cite: 139, 140]।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= SHUDDHO & EK KOTHAY ================= -->
+        <div id="shuddho" class="chapter-content">
+            <div class="pdf-box">
+                <div>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">এক কথায় প্রকাশ ও বাক্যশুদ্ধি</h3>
+                    <p style="color: #cbd5e1; font-size: 0.88rem;">এইচএসসি ও এডমিশন স্পেশাল শিট</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1CmRdesFGlvYpnt405lprpMx72pH1n2RX/view?usp=drivesdk" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> পিডিএফ ডাউনলোড
+                </a>
+            </div>
+            <div class="content-card">
+                <h3>এক কথায় প্রকাশ</h3>
+                <ul>
+                    <li>যে সব জানে — সর্বজ্ঞ[cite: 141]</li>
+                    <li>যে অল্প কথা বলে — মিতভাষী[cite: 141]</li>
+                    <li>যে অন্যের উপকার করে — পরোপকারী[cite: 141]</li>
+                    <li>উপকারীর উপকার স্বীকার করে যে — কৃতজ্ঞ[cite: 142]</li>
+                    <li>যার তুলনা নেই — অতুলনীয়[cite: 142]</li>
+                    <li>যা সহজে পাওয়া যায় — সুলভ[cite: 142]</li>
+                </ul>
+            </div>
+            <div class="content-card">
+                <h3>বাক্যশুদ্ধি উদাহরণ</h3>
+                <ul>
+                    <li><strong>অশুদ্ধ:</strong> সকল ছাত্ররা উপস্থিত ছিল। <br><strong>শুদ্ধ:</strong> সকল ছাত্র উপস্থিত ছিল (বা ছাত্ররা সবাই উপস্থিত ছিল)[cite: 145]।</li>
+                    <li><strong>অশুদ্ধ:</strong> আমি স্বচক্ষে নিজের চোখে দেখেছি। <br><strong>শুদ্ধ:</strong> আমি স্বচক্ষে দেখেছি[cite: 145]।</li>
+                    <li><strong>অশুদ্ধ:</strong> তিনি সপরিবারসহ এসেছেন। <br><strong>শুদ্ধ:</strong> তিনি সপরিবারে এসেছেন[cite: 145]।</li>
+                </ul>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ফুটার -->
+    <footer>
+        <p>&copy; ২০২৬ Varsity Vision। সর্বস্বত্ব সংরক্ষিত।</p>
+        <p style="margin-top: 5px; font-size: 0.85rem; color: #64748b;">সম্পাদনা : জুনায়েদ তনয়</p>
+    </footer>
+
+    <!-- ট্যাব পরিবর্তন লজিক -->
+    <script>
+        function showChapter(chapterId) {
+            const contents = document.querySelectorAll('.chapter-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(chapterId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
