@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>বাংলা লিখিত সাজেশন - Varsity Vision</title>
+    
+    <!-- Noto Serif Bengali Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-main: linear-gradient(135deg, #090d16 0%, #171f33 50%, #090d16 100%);
+            --glass-card: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+            --btn-gradient: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Serif Bengali', serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-main);
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-bottom: 50px;
+            background-attachment: fixed;
+        }
+
+        /* স্টিকি নেভিগেশন বার */
+        .sticky-header-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            padding: 10px 4%;
+            background: rgba(9, 13, 22, 0.9);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        .brand-subtitle {
+            font-size: 0.75rem;
+            color: #38bdf8;
+            font-weight: 600;
+            display: block;
+        }
+
+        .btn-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 18px;
+            background: #0f172a;
+            color: #38bdf8;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border-radius: 50px;
+            text-decoration: none;
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            transition: 0.3s;
+        }
+        .btn-home:hover {
+            background: var(--btn-gradient);
+            color: #fff;
+        }
+
+        main {
+            margin-top: 90px;
+            flex: 1;
+            padding: 30px 6%;
+        }
+
+        .category-title {
+            color: #38bdf8;
+            font-size: 1.2rem;
+            margin: 20px 0 10px 0;
+            border-left: 4px solid #06b6d4;
+            padding-left: 10px;
+        }
+
+        .chapter-tabs {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            scrollbar-width: thin;
+        }
+
+        .tab-btn {
+            background: var(--glass-card);
+            color: #cbd5e1;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background: var(--btn-gradient);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
+        }
+
+        .chapter-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .chapter-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card {
+            background: var(--glass-card);
+            backdrop-filter: blur(12px);
+            padding: 25px 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            margin-bottom: 20px;
+        }
+
+        .content-card h3 {
+            color: #38bdf8;
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 8px;
+        }
+
+        .q-title {
+            color: #f1f5f9;
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+
+        .answer-box {
+            background: rgba(15, 23, 42, 0.6);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 3px solid #06b6d4;
+            color: #cbd5e1;
+            line-height: 1.7;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background: #020617;
+            color: #94a3b8;
+            text-align: center;
+            padding: 25px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- নেভিগেশন বার -->
+    <div class="sticky-header-container">
+        <div class="navbar-card">
+            <div>
+                <a href="bangla.html" class="brand-name">varsity vision</a>
+                <span class="brand-subtitle">বাংলা লিখিত (Written) সাজেশন সেকশন</span>
+            </div>
+            <div>
+                <a href="bangla.html" class="btn-home">
+                    <i class="fa-solid fa-arrow-left"></i> পেজে ফিরে যান
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <h2 style="font-size: 1.8rem; margin-bottom: 15px; background: linear-gradient(90deg, #fff, #93c5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">বিশ্ববিদ্যালয় ভর্তি বাংলা লিখিত সাজেশন</h2>
+        
+        <!-- ক্যাটাগরি ট্যাবসমূহ -->
+        <div class="category-title">সাজেশন ক্যাটাগরি নির্বাচন করুন</div>
+        <div class="chapter-tabs">
+            <button class="tab-btn active" onclick="showTab('literature-written')">১. সাহিত্যপাঠ (উক্তি ও ব্যাখ্যা)</button>
+            <button class="tab-btn" onclick="showTab('grammar-written')">২. ব্যাকরণ লিখিত অংশ</button>
+            <button class="tab-btn" onclick="showTab('paragraph-written')">৩. অনুচ্ছেদ ও মুক্ত লিখন</button>
+            <button class="tab-btn" onclick="showTab('tips-written')">৪. রিটেন হ্যাক্স ও কৌশল</button>
+        </div>
+
+        <!-- ================= TAB 1: LITERATURE WRITTEN ================= -->
+        <div id="literature-written" class="chapter-content active">
+            <div class="content-card">
+                <h3>গুরুত্বপূর্ণ ব্যাখ্যা ও উক্তি বিশ্লেষণ (গদ্য ও পদ্য)</h3>
+
+                <div class="q-title">১. "ঠাট্টা তো আপনিই করিয়া সারিয়াছেন। ঠাট্টার সম্পর্কটাকে স্থায়ী করিবার ইচ্ছা আমার নাই।" — তাৎপর্য লিখুন।</div>
+                <div class="answer-box">
+                    <strong>উত্তর সংক্ষেপ:</strong> 'অপরিচিতা' গল্পে কল্যাণীর পিতা শম্ভুনাথ সেন অনুপমের মামার যৌতুকলোভী ও অপমানজনক আচরণ প্রত্যক্ষ করে কন্যা সম্প্রদান করতে অস্বীকার করেন। বরপক্ষ বিয়ের আসরে গহনা মেপে দেখে কনেপক্ষকে অপমান করেছিল। শম্ভুনাথ সেনের আত্মমর্যাদাবোধ ও দৃঢ় ব্যক্তিত্বের বহিপ্রকাশ ঘটেছে এই উক্তিটিতে।
+                </div>
+
+                <div class="q-title">২. "বিদ্যা প্রকাশের চেষ্টা পাঠকের অতিশয় বিরক্তিকর এবং রচনার পরিপাট্যের বিশেষ হানিজনক।" — বুঝিয়ে লিখুন।</div>
+                <div class="answer-box">
+                    <strong>উত্তর সংক্ষেপ:</strong> বঙ্কিমচন্দ্র চট্টোপাধ্যায় তাঁর 'বাঙ্গালা নব্য লেখকদিগের প্রতি নিবেদন' প্রবন্ধে লেখকদের অপ্রয়োজনীয় পান্ডিত্য জাহির করতে নিষেধ করেছেন। সাহিত্য সহজ-সরল ভাষায় মনের ভাব প্রকাশের মাধ্যম; অনাবশ্যক বিদ্যা জাহির করলে রচনার সৌন্দর্য নষ্ট হয় এবং পাঠক বিরক্ত হয়।
+                </div>
+
+                <div class="q-title">৩. "আমি চির উন্নত শির" — উক্তিটির দ্বারা কবি কী বুঝিয়েছেন?</div>
+                <div class="answer-box">
+                    <strong>উত্তর সংক্ষেপ:</strong> কাজী নজরুল ইসলাম তাঁর 'বিদ্রোহী' কবিতায় আত্মমর্যাদা ও অন্যায়-অত্যাচারের বিরুদ্ধে অবনতিহীন তারুণ্য চেতনার প্রকাশ ঘটিয়েছেন। কবি পরাধীনতা, শোষক ও অত্যাচারীর সামনে মাথা নত না করে নিজের সত্য ও স্বাধীন সত্তাকে চির উন্নত রাখার দৃঢ় অঙ্গীকার ব্যক্ত করেছেন।
+                </div>
+
+                <div class="q-title">৪. "রাশিয়ার ছিল জেনারেল উইন্টার, আমাদের জেনারেল মনসুন।" — ব্যাখ্যা করুন।</div>
+                <div class="answer-box">
+                    <strong>উত্তর সংক্ষেপ:</strong> 'রেইনকোট' গল্পে আখতারুজ্জামান ইলিয়াস ১৯৭১ সালে বাংলাদেশের বর্ষাকালকে মুক্তিযোদ্ধাদের সহায়তাকারী শক্তি হিসেবে চিহ্নিত করেছেন। দ্বিতীয় বিশ্বযুদ্ধে রাশিয়ার প্রবল শীত যেমন নেপোলিয়ন ও হিটলারকে পরাজিত করেছিল, তেমনি বাংলাদেশের বর্ষা ও কাদা পাকিস্তানি হানাদার বাহিনীর চলাচলে বাধা সৃষ্টি করে মুক্তিযোদ্ধাদের বিজয়ে সহায়তা করেছিল।
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= TAB 2: GRAMMAR WRITTEN ================= -->
+        <div id="grammar-written" class="chapter-content">
+            <div class="content-card">
+                <h3>সরাসরি ব্যাকরণ লিখিত প্রশ্ন ও সমাধান</h3>
+
+                <div class="q-title">১. নিচের অশুদ্ধ বাক্যগুলো শুদ্ধ করে লিখুন:</div>
+                <div class="answer-box">
+                    • <strong>অশুদ্ধ:</strong> সকল ছাত্ররা উপস্থিত ছিল। ➔ <strong>শুদ্ধ:</strong> সকল ছাত্র উপস্থিত ছিল।<br>
+                    • <strong>অশুদ্ধ:</strong> তিনি সপরিবারসহ এসেছেন। ➔ <strong>শুদ্ধ:</strong> তিনি সপরিবারে এসেছেন।<br>
+                    • <strong>অশুদ্ধ:</strong> আবাধ্যতামূলক কাজ করা ঠিক নয়। ➔ <strong>শুদ্ধ:</strong> বাধ্যবাধকতাহীন কাজ করা ঠিক নয়।
+                </div>
+
+                <div class="q-title">২. ব্যাসবাক্যসহ সমাস নির্ণয় করুন:</div>
+                <div class="answer-box">
+                    • <strong>রাজপুত্র:</strong> রাজার পুত্র (ষষ্ঠী তৎপুরুষ সমাস)<br>
+                    • <strong>নীলপদ্ম:</strong> নীল যে পদ্ম (কর্মধারয় সমাস)<br>
+                    • <strong>ত্রিফলা:</strong> তিন ফলের সমাহার (দ্বিগু সমাস)<br>
+                    • <strong>আমরণ:</strong> মরণ পর্যন্ত (অব্যয়ীভাব সমাস)
+                </div>
+
+                <div class="q-title">৩. বাক্য রূপান্তর করুন:</div>
+                <div class="answer-box">
+                    • <strong>সরল থেকে জটিল:</strong> পরিশ্রমী ব্যক্তি সফল হয়। ➔ <em>যে পরিশ্রম করে, সে সফল হয়।</em><br>
+                    • <strong>যৌগিক থেকে সরল:</strong> সে পড়াশোনা করল এবং পরীক্ষায় প্রথম হলো। ➔ <em>পড়াশোনা করে সে পরীক্ষায় প্রথম হলো।</em>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= TAB 3: PARAGRAPH & FREE WRITING ================= -->
+        <div id="paragraph-written" class="chapter-content">
+            <div class="content-card">
+                <h3>সমসাময়িক ও পাঠ্যবই কেন্দ্রিক অনুচ্ছেদ (Paragraph)</h3>
+
+                <div class="q-title">১. অনুচ্ছেদ: যৌতুক প্রথা ও 'অপরিচিতা'</div>
+                <div class="answer-box">
+                    যৌতুক প্রথা আমাদের সমাজের একটি অন্যতম অভিশাপ। রবীন্দ্রনাথ ঠাকুরের 'অপরিচিতা' গল্পে এই কুপ্রথার নগ্ন রূপ ফুটিয়ে তোলা হয়েছে। গল্পের অনুপমের মামার মতো যৌতুকলোভী মানসিকতার কারণে বহু নারীর জীবন বিপন্ন হয়। তবে কল্যাণী ও তার পিতা শম্ভুনাথ সেনের আত্মমর্যাদাবোধ ও অন্যায়ের বিরুদ্ধে প্রতিরোধ আমাদের শেখায় কীভাবে যৌতুকের মতো সামাজিক ব্যাধিকে প্রতিহত করতে হয়। আধুনিক শিক্ষা ও সচেতনতাই পারে সমাজ থেকে এই প্রথা নির্মূল করতে।
+                </div>
+
+                <div class="q-title">২. অনুচ্ছেদ: বায়ান্নর ভাষা আন্দোলন ও 'ফেব্রুয়ারি ১৯৬৯'</div>
+                <div class="answer-box">
+                    বাংলাদেশের স্বাধীনতা ও অধিকার আদায়ের সংগ্রামের ভিত্তি স্থাপিত হয়েছিল ১৯৫২ সালের মহান ভাষা আন্দোলনের মাধ্যমে। কবি শামসুর রহমানের 'ফেব্রুয়ারি ১৯৬৯' কবিতায় বায়ান্নর চেতনা উনসত্তরের গণ-অভ্যুত্থানের জাতীয়তাবাদী আড়ামোড়ায় রূপ নেয়। সালাম, বরকত ও রফিকের রক্তে রঞ্জিত রাজপথ আমাদের স্বাধিকার আন্দোলনের প্রেরণা যুগিয়েছিল, যা পরবর্তীতে ১৯৭১ সালের মহান মুক্তিযুদ্ধের মাধ্যমে স্বাধীন বাংলাদেশ অর্জনে চূড়ান্ত ভূমিকা রাখে।
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= TAB 4: TIPS & STRATEGY ================= -->
+        <div id="tips-written" class="chapter-content">
+            <div class="content-card">
+                <h3>ভর্তি পরীক্ষায় লিখিত অংশে সর্বোচ্চ নম্বর পাওয়ার টেকনিক</h3>
+                <div class="answer-box">
+                    <ul>
+                        <li style="margin-bottom: 8px;"><strong>১. টু-দ্য-পয়েন্ট উত্তর:</strong> অপ্রয়োজনীয় ভূমিকা বা অতিরিক্ত কথা না লিখে মূল উত্তরটি প্রথম ২-৩ লাইনের মধ্যে স্পষ্ট করুন।</li>
+                        <li style="margin-bottom: 8px;"><strong>২. শব্দ ও ব্যাকরণ নির্ভুল রাখা:</strong> লিখিত পরীক্ষায় বানান ভুল ও ব্যাকরণগত অসঙ্গতির জন্য সরাসরি নম্বর কাটা যায়।</li>
+                        <li style="margin-bottom: 8px;"><strong>৩. মূল শব্দ হাইলাইট করা:</strong> উত্তরে মূল কি-ওয়ার্ড (Key Words) বা উদ্ধৃতি থাকলে নিচে আন্ডারলাইন করতে পারেন।</li>
+                        <li style="margin-bottom: 8px;"><strong>৪. সময়ের সঠিক ব্যবস্থাপনা:</strong> লিখিত পরীক্ষার সময় খুবই সীমিত থাকে। তাই প্রতি প্রশ্নের নম্বর অনুযায়ী সময় মেপে লিখুন।</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ফুটার -->
+    <footer>
+        <p>&copy; ২০২৬ Varsity Vision। সর্বস্বত্ব সংরক্ষিত।</p>
+        <p style="margin-top: 5px; font-size: 0.85rem; color: #64748b;">সম্পাদনা : জুনায়েদ তনয়</p>
+    </footer>
+
+    <!-- ট্যাব পরিবর্তনের স্কিপ্ট -->
+    <script>
+        function showTab(tabId) {
+            const contents = document.querySelectorAll('.chapter-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
