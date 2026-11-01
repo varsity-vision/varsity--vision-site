@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+titleআ  <memmemetataetata name="viewport" content="width=device-width, initial-scale=1.0">
+    <ttitleitle>English Preparation - Varsity Vision</title>
+    
+    <!-- Noto Serif Bengali Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-main: linear-gradient(135deg, #090d16 0%, #171f33 50%, #090d16 100%);
+            --glass-card: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+            --glass-card-hover: linear-gradient(135deg, rgba(56, 189, 248, 0.15) 0%, rgba(99, 102, 241, 0.2) 100%);
+            --btn-gradient: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+            --section-grad-1: linear-gradient(180deg, #0f172a 0%, #1e1b4b 100%);
+            --section-grad-2: linear-gradient(180deg, #1e1b4b 0%, #0f172a 100%);
+            --accent-cyan: #38bdf8;
+            --accent-pink: #f43f5e;
+            --accent-green: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Serif Bengali', serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-main);
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-bottom: 50px;
+            background-attachment: fixed;
+        }
+
+        /* 📌 ফিক্সড স্লিম স্টিকি নেভিগেশন কার্ড */
+        .sticky-header-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            padding: 10px 4%;
+            background: rgba(9, 13, 22, 0.9);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+        }
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+        .brand-subtitle {
+            font-size: 0.75rem;
+            color: #38bdf8;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 18px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #cbd5e1;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        .btn-back {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #38bdf8;
+            font-weight: 600;
+            font-size: 0.85rem;
+            border-radius: 50px;
+            text-decoration: none;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            transition: all 0.3s ease;
+        }
+        .btn-back:hover {
+            background: #38bdf8;
+            color: #0f172a;
+        }
+
+        /* 📌 সেকশন লেআউট */
+        main {
+            margin-top: 85px;
+        }
+        .section-container {
+            padding: 50px 8%;
+        }
+        .bg-grad-1 { background: var(--section-grad-1); }
+        .bg-grad-2 { background: var(--section-grad-2); }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            background: linear-gradient(90deg, #ffffff, #93c5fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        .section-desc {
+            text-align: center;
+            color: #cbd5e1;
+            margin-bottom: 35px;
+            font-size: 1rem;
+        }
+
+        /* 📌 হিরো ব্যানার */
+        .english-hero {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.4) 0%, rgba(15, 23, 42, 0.8) 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+        .hero-tag {
+            display: inline-block;
+            padding: 4px 14px;
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+        .hero-title {
+            font-size: 2.4rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        .hero-subtitle {
+            color: #cbd5e1;
+            max-width: 750px;
+            margin: 0 auto 25px;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        /* 📌 কুইক টপিক ফিল্টার বার */
+        .topic-pills {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .pill-btn {
+            background: rgba(255, 255, 255, 0.06);
+            color: #94a3b8;
+            padding: 8px 18px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+        .pill-btn:hover, .pill-btn.active {
+            background: var(--btn-gradient);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+        }
+
+        /* 📌 গ্রিড লেআউট */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--glass-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card:hover { 
+            transform: translateY(-6px); 
+            background: var(--glass-card-hover);
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 12px 35px rgba(56, 189, 248, 0.2);
+        }
+
+        .card-badge {
+            align-self: flex-start;
+            padding: 3px 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        .badge-grammar { background: rgba(56, 189, 248, 0.2); color: #38bdf8; }
+        .badge-vocab { background: rgba(244, 63, 94, 0.2); color: #fb7185; }
+        .badge-written { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: #f8fafc;
+            margin-bottom: 10px;
+        }
+        .card-desc {
+            color: #cbd5e1;
+            font-size: 0.93rem;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .rule-list {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+        .rule-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .rule-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #38bdf8;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--btn-gradient);
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.92rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 6px 25px rgba(37, 99, 235, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* 📌 ফ্ল্যাশ-কার্ড ভোকেব সেকশন */
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 15px;
+        }
+        .vocab-card {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 18px;
+            border-radius: 14px;
+            transition: all 0.3s;
+        }
+        .vocab-card:hover {
+            border-color: #38bdf8;
+            background: rgba(30, 58, 138, 0.3);
+        }
+        .vocab-word {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #38bdf8;
+            margin-bottom: 4px;
+        }
+        .vocab-meaning {
+            font-size: 0.95rem;
+            color: #f8fafc;
+            margin-bottom: 8px;
+        }
+        .vocab-synonym {
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        /* 📌 কুইজ কন্টেইনার */
+        .quiz-box {
+            max-width: 750px;
+            margin: 0 auto;
+            background: var(--glass-card);
+            backdrop-filter: blur(14px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 10px 35px rgba(0,0,0,0.4);
+        }
+        .quiz-q-item {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .quiz-q-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+        .quiz-option {
+            display: block;
+            margin: 8px 0;
+            padding: 10px 14px;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+        .quiz-option:hover {
+            background: rgba(56, 189, 248, 0.1);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+        .quiz-option input {
+            margin-right: 10px;
+        }
+
+        .explanation {
+            display: none;
+            margin-top: 10px;
+            padding: 10px 14px;
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 8px;
+            color: #34d399;
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        /* 📌 ফিক্সড নিউজটিকার */
+        .ticker-wrapper {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            display: flex;
+            background: #020617;
+            color: #fff;
+            font-size: 0.9rem;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.6);
+        }
+        .ticker-title {
+            background: linear-gradient(135deg, #e11d48, #be123c);
+            padding: 8px 16px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        .ticker-content {
+            padding: 6px 10px;
+            width: 100%;
+        }
+
+        footer {
+            background: #020617;
+            color: #94a3b8;
+            text-align: center;
+            padding: 25px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            .sticky-header-container { padding: 6px 3%; }
+            .navbar-card { padding: 8px 12px; }
+            .brand-name { font-size: 1.25rem; }
+            .brand-subtitle { font-size: 0.65rem; }
+            .nav-links { display: none; }
+            main { margin-top: 70px; }
+            .section-container { padding: 35px 4%; }
+            .hero-title { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 📌 ফিক্সড নেভিগেশন বার -->
+    <div class="sticky-header-container">
+        <div class="navbar-card">
+            <div class="brand">
+                <a href="index.html" class="brand-name">varsity vision</a>
+                <span class="brand-subtitle">ইংরেজি বিষয়ভিত্তিক প্রস্তুতি</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#grammar-section">Grammar</a></li>
+                <li><a href="#vocab-section">Vocabulary</a></li>
+                <li><a href="#written-section">DU Written</a></li>
+                <li><a href="#quiz-section">Practice Quiz</a></li>
+            </ul>
+            <a href="index.html" class="btn-back">&larr; মূল পেজে ফিরুন</a>
+        </div>
+    </div>
+
+    <main>
+        <!-- 📌 হিরো সেকশন -->
+        <section class="section-container bg-grad-1" style="padding-bottom: 20px;">
+            <div class="english-hero">
+                <span class="hero-tag">English Special Segment</span>
+                <h1 class="hero-title">English for Varsity Admission</h1>
+                <p class="hero-subtitle">
+                    বিশ্ববিদ্যালয় ভর্তি পরীক্ষায় সাফল্য পেতে ইংরেজি ব্যাকরণ, ভোকেবুলারি এবং লিখিত অংশের নিখুঁত প্রস্তুতির জন্য শর্টকাট রুলস, প্র্যাকটিস সেট ও ফ্রি স্টাডি মেটেরিয়াল।
+                </p>
+                <div class="topic-pills">
+                    <a href="#grammar-section" class="pill-btn active">Grammar Rules</a>
+                    <a href="#vocab-section" class="pill-btn">Vocabulary Master</a>
+                    <a href="#written-section" class="pill-btn">DU Written Special</a>
+                    <a href="#quiz-section" class="pill-btn">Practice Quiz</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 📌 গ্রামার সেকশন -->
+        <section id="grammar-section" class="section-container bg-grad-2">
+            <h2 class="section-title">Grammar Masterclass & Rules</h2>
+            <p class="section-desc">ভর্তি পরীক্ষায় বারবার আসা গুরুত্বপূর্ণ গ্রামার টপিক এবং প্রয়োজনীয় নিয়মাবলী</p>
+            
+            <div class="grid-cards">
+                <!-- ১. Subject-Verb Agreement -->
+                <div class="card">
+                    <div>
+                        <span class="card-badge badge-grammar">Most Important</span>
+                        <h3 class="card-title">Subject-Verb Agreement</h3>
+                        <p class="card-desc">সাবজেক্টের নম্বর ও পার্সন অনুযায়ী ভার্ব পরিবর্তনের সুনির্দিষ্ট রুলস।</p>
+                        <ul class="rule-list">
+                            <li><em>Either...or / Neither...nor</em> থাকলে পাসের সাবজেক্ট অনুযায়ী Verb বসে।</li>
+                            <li><em>Along with / Together with</em> থাকলে প্রথম সাবজেক্ট অনুযায়ী Verb নির্ধারিত হয়।</li>
+                            <li><em>Collective Noun</em> একতাবদ্ধ বোঝালে Singular, বিভক্ত বোঝালে Plural Verb হয়।</li>
+                        </ul>
+                    </div>
+                    <button class="btn-primary" onclick="alert('শীঘ্রই পূর্ণাঙ্গ PDF ডাউনলোড লিংক যোগ করা হবে!')">লেকচার নোটস ডাউনলোড</button>
+                </div>
+
+                <!-- ২. Right Forms of Verbs -->
+                <div class="card">
+                    <div>
+                        <span class="card-badge badge-grammar">High Weightage</span>
+                        <h3 class="card-title">Right Forms of Verbs & Tense</h3>
+                        <p class="card-desc">সঠিক Tense ও Sequence of Tenses প্রয়োগ করার শর্টকার্ট হ্যাকস।</p>
+                        <ul class="rule-list">
+                            <li><em>No sooner had...than / Scarcely had...when</em>-এর পর Past Participle হয়।</li>
+                            <li><em>It is high time / It is time</em>-এর পর Subject থাকলে Past Subjunctive (V2) বসে।</li>
+                            <li><em>Mind / Would you mind / With a view to</em>-এর পর Verb+ing যুক্ত হয়।</li>
+                        </ul>
+                    </div>
+                    <button class="btn-primary" onclick="alert('শীঘ্রই পূর্ণাঙ্গ PDF ডাউনলোড লিংক যোগ করা হবে!')">লেকচার নোটস ডাউনলোড</button>
+                </div>
+
+                <!-- ৩. Conditionals & Modifiers -->
+                <div class="card">
+                    <div>
+                        <span class="card-badge badge-grammar">DU & GST Focus</span>
+                        <h3 class="card-title">Conditionals & Modifiers</h3>
+                        <p class="card-desc">ঢাকা বিশ্ববিদ্যালয় ও গুচ্ছ ভর্তি পরীক্ষায় প্রশ্ন আসার নিশ্চিত টপিক।</p>
+                        <ul class="rule-list">
+                            <li><em>1st Conditional:</em> If + Present = Future Indefinite.</li>
+                            <li><em>2nd Conditional:</em> If + Past = Subject + would/could + V1.</li>
+                            <li><em>Dangling Modifier:</em> Introductory phrase-এর সাবজেক্ট কমার পর সঠিকভাবে বসাতে হয়।</li>
+                        </ul>
+                    </div>
+                    <button class="btn-primary" onclick="alert('শীঘ্রই পূর্ণাঙ্গ PDF ডাউনলোড লিংক যোগ করা হবে!')">লেকচার নোটস ডাউনলোড</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 📌 ভোকেবুলারি মেটেরিয়াল সেকশন -->
+        <section id="vocab-section" class="section-container bg-grad-1">
+            <h2 class="section-title">Vocabulary Smart Cards</h2>
+            <p class="section-desc">ভর্তি পরীক্ষার বিগত বছরের বহুল ব্যবহৃত শব্দ ও Synonyms-Antonyms</p>
+
+            <div class="vocab-grid">
+                <div class="vocab-card">
+                    <div class="vocab-word">Prudent (adj.)</div>
+                    <div class="vocab-meaning">অর্থ: বিচক্ষণ / বিজ্ঞ</div>
+                    <div class="vocab-synonym"><strong>Synonym:</strong> Wise, Cautious<br><strong>Antonym:</strong> Impulsive, Rash</div>
+                </div>
+
+                <div class="vocab-card">
+                    <div class="vocab-word">Meticulous (adj.)</div>
+                    <div class="vocab-meaning">অর্থ: খুঁতখুঁতে / অত্যন্ত সতর্ক</div>
+                    <div class="vocab-synonym"><strong>Synonym:</strong> Precise, Careful<br><strong>Antonym:</strong> Careless, Sloppy</div>
+                </div>
+
+                <div class="vocab-card">
+                    <div class="vocab-word">Transient (adj.)</div>
+                    <div class="vocab-meaning">অর্থ: ক্ষণস্থায়ী</div>
+                    <div class="vocab-synonym"><strong>Synonym:</strong> Temporary, Fleeting<br><strong>Antonym:</strong> Permanent, Lasting</div>
+                </div>
+
+                <div class="vocab-card">
+                    <div class="vocab-word">Candor (noun)</div>
+                    <div class="vocab-meaning">অর্থ: স্পষ্টবাদিতা / সততা</div>
+                    <div class="vocab-synonym"><strong>Synonym:</strong> Honesty, Frankness<br><strong>Antonym:</strong> Deceit, Dishonesty</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 📌 DU Written Special Segment -->
+        <section id="written-section" class="section-container bg-grad-2">
+            <h2 class="section-title">DU Written English Preparation</h2>
+            <p class="section-desc">ঢাকা বিশ্ববিদ্যালয়ের লিখিত অংশের (Written Marks) জন্য বিশেষ দিকনির্দেশনা</p>
+
+            <div class="grid-cards">
+                <div class="card" style="border-left: 4px solid #10b981;">
+                    <div>
+                        <span class="card-badge badge-written">Written Hack 1</span>
+                        <h3 class="card-title">English to Bangla Translation</h3>
+                        <p class="card-desc">আক্ষরিক অনুবাদ না করে ভাবানুবাদ (Contextual Translation) করার অভ্যাস গড়ে তুলুন। বাক্য লম্বা হলে খণ্ড খণ্ড অংশ করে অনুবাদ যুক্ত করুন।</p>
+                    </div>
+                </div>
+
+                <div class="card" style="border-left: 4px solid #10b981;">
+                    <div>
+                        <span class="card-badge badge-written">Written Hack 2</span>
+                        <h3 class="card-title">Sentence Making with Idioms</h3>
+                        <p class="card-desc">প্রদেয় Idiom দিয়ে বাক্য তৈরির ক্ষেত্রে গ্রামার ও অর্থ উভয়ই সঠিক রাখা বাধ্যতামূলক। বাক্য সহজ কিন্তু ত্রুটিমুক্ত রাখা শ্রেয়।</p>
+                    </div>
+                </div>
+
+                <div class="card" style="border-left: 4px solid #10b981;">
+                    <div>
+                        <span class="card-badge badge-written">Written Hack 3</span>
+                        <h3 class="card-title">Short Paragraph / Summary</h3>
+                        <p class="card-desc">Topic Sentence দিয়ে লেখা শুরু করুন। অপ্রয়োজনীয় জটিল বাক্য এড়িয়ে প্রামাণিক যুক্তি দিয়ে সংক্ষিপ্ত ও স্পষ্ট উপসংহার টানুন।</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 📌 ইন্টারেক্টিভ কুইজ সেকশন -->
+        <section id="quiz-section" class="section-container bg-grad-1">
+            <h2 class="section-title">English Practice Quiz</h2>
+            <p class="section-desc">স্বয়ংক্রিয় উত্তর ও ব্যাখ্যসহ আপনার প্রস্তুতি যাচাই করুন</p>
+
+            <div class="quiz-box">
+                <!-- প্রশ্ন ১ -->
+                <div class="quiz-q-item">
+                    <p class="quiz-q-title">1. Neither the teacher nor the students ______ present in the auditorium yesterday.</p>
+                    <label class="quiz-option"><input type="radio" name="eq1" value="0"> was</label>
+                    <label class="quiz-option"><input type="radio" name="eq1" value="1"> were</label>
+                    <label class="quiz-option"><input type="radio" name="eq1" value="0"> is</label>
+                    <label class="quiz-option"><input type="radio" name="eq1" value="0"> are</label>
+                    <div id="exp-1" class="explanation">💡 <strong>ব্যাখ্যা:</strong> Neither...nor দ্বারা দুটি সাবজেক্ট যুক্ত হলে পরের সাবজেক্ট (the students - Plural) অনুযায়ী ভার্ব নির্ধারণ করতে হয়। তাই সঠিক উত্তর <em>were</em>।</div>
+                </div>
+
+                <!-- প্রশ্ন ২ -->
+                <div class="quiz-q-item">
+                    <p class="quiz-q-title">2. It is high time we ______ our strategy for the admission test.</p>
+                    <label class="quiz-option"><input type="radio" name="eq2" value="0"> change</label>
+                    <label class="quiz-option"><input type="radio" name="eq2" value="1"> changed</label>
+                    <label class="quiz-option"><input type="radio" name="eq2" value="0"> should change</label>
+                    <label class="quiz-option"><input type="radio" name="eq2" value="0"> have changed</label>
+                    <div id="exp-2" class="explanation">💡 <strong>ব্যাখ্যা:</strong> It is high time-এর পর সাবজেক্ট (we) থাকলে ভার্বের Past form (V2 - changed) ব্যবহৃত হয়।</div>
+                </div>
+
+                <!-- প্রশ্ন ৩ -->
+                <div class="quiz-q-item">
+                    <p class="quiz-q-title">3. What is the antonym of the word 'Eradicate'?</p>
+                    <label class="quiz-option"><input type="radio" name="eq3" value="0"> Eliminate</label>
+                    <label class="quiz-option"><input type="radio" name="eq3" value="0"> Destroy</label>
+                    <label class="quiz-option"><input type="radio" name="eq3" value="1"> Establish</label>
+                    <label class="quiz-option"><input type="radio" name="eq3" value="0"> Remove</label>
+                    <div id="exp-3" class="explanation">💡 <strong>ব্যাখ্যা:</strong> Eradicate শব্দের অর্থ নির্মূল বা ধ্বংস করা। এর Antonym (বিপরীত শব্দ) হলো Establish (প্রতিষ্ঠা করা)।</div>
+                </div>
+
+                <button onclick="submitEnglishQuiz()" class="btn-primary" style="padding: 13px; font-size: 1.05rem;">উত্তর জমা দিন ও ব্যাখ্যা দেখুন</button>
+                <div id="quiz-score-display" style="display: none; margin-top: 18px; text-align: center; padding: 12px; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 10px; color: #38bdf8; font-weight: 700;"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 📌 ফিক্সড নিউজটিকার -->
+    <div class="ticker-wrapper">
+        <div class="ticker-title">English Update</div>
+        <div class="ticker-content">
+            <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
+                📢 Varsity Vision English Segment: ঢাকা বিশ্ববিদ্যালয় রিটেন স্পেশাল ক্লাসের শিট আপডেট করা হয়েছে! 📝 নিয়মিত প্র্যাকটিস কুইজ টেস্ট দিন।
+            </marquee>
+        </div>
+    </div>
+
+    <!-- ফুটার -->
+    <footer>
+        <p>&copy; ২০২৬ Varsity Vision। সর্বস্বত্ব সংরক্ষিত।</p>
+        <p style="margin-top: 5px; font-size: 0.85rem; color: #64748b;">সম্পাদনা : জুনায়েদ তনয়</p>
+    </footer>
+
+    <!-- জাভাস্ক্রিপ্ট লজিক -->
+    <script>
+        function submitEnglishQuiz() {
+            const q1 = document.querySelector('input[name="eq1"]:checked');
+            const q2 = document.querySelector('input[name="eq2"]:checked');
+            const q3 = document.querySelector('input[name="eq3"]:checked');
+
+            let score = 0;
+            if (q1 && q1.value === "1") score++;
+            if (q2 && q2.value === "1") score++;
+            if (q3 && q3.value === "1") score++;
+
+            // ব্যাখ্যা প্রদর্শন
+            document.getElementById('exp-1').style.display = 'block';
+            document.getElementById('exp-2').style.display = 'block';
+            document.getElementById('exp-3').style.display = 'block';
+
+            // স্কোর প্রদর্শন
+            const scoreDiv = document.getElementById('quiz-score-display');
+            scoreDiv.style.display = 'block';
+            scoreDiv.innerHTML = `আপনার অর্জিত নম্বর: <strong>${score} / ৩</strong> ${score === 3 ? '🎉 অসাধারণ! ইংরেজি প্রস্তুতি খুব ভালো হচ্ছে।' : 'আরেকটু মনোযোগ দিয়ে নিয়মগুলো রিভিশন দিন!'}`;
+        }
+    </script>
+</body>
+</html>
