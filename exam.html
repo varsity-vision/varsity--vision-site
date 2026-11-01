@@ -715,12 +715,12 @@
 
             document.getElementById('hscFormStart').addEventListener('submit', function(e) {
                 e.preventDefault();
-                startExamSession('hsc', 30, 30 * 60, 'HSC বোর্ড');
+                startExamSession('hsc', 60, 45 * 60, 'HSC বোর্ড');
             });
 
             document.getElementById('hscFormSubmit').addEventListener('submit', function(e) {
                 e.preventDefault();
-                submitExamFinal('hsc', 30);
+                submitExamFinal('hsc', 60);
             });
 
             document.getElementById('subFormStart').addEventListener('submit', function(e) {
