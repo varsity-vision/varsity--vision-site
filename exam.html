@@ -72,261 +72,70 @@
             letter-spacing: -0.5px;
         }
 
-        .btn-home {
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(37, 99, 235, 0.2));
-            color: #38bdf8;
-            padding: 7px 20px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            border: 1px solid rgba(56, 189, 248, 0.4);
-            transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
-            white-space: nowrap;
-        }
-        .btn-home:hover {
-            background: var(--btn-gradient);
-            color: #ffffff;
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
-            transform: scale(1.03);
-        }
-
         /* মূল কন্টেন্ট লেআউট */
         main {
-            margin-top: 85px;
+            margin-top: 120px;
             padding: 30px 5%;
-            max-width: 950px;
+            max-width: 900px;
             margin-left: auto;
             margin-right: auto;
             width: 100%;
-        }
-
-        /* সূচিপত্র বা ক্যাটাগরি বাটন সেকশন */
-        .index-menu {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .menu-btn {
-            background: var(--glass-card);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            color: #f8fafc;
-            padding: 16px 20px;
-            border-radius: 14px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
             text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-        }
-        .menu-btn:hover, .menu-btn.active {
-            background: var(--btn-gradient);
-            border-color: transparent;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.5);
         }
 
-        /* সেকশন কার্ড */
-        .exam-section-card {
-            display: none;
+        .welcome-box {
             background: var(--glass-card);
             backdrop-filter: blur(14px);
             border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 20px;
-            padding: 35px;
+            padding: 40px 20px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.6);
-        }
-        .exam-section-card.active {
-            display: block;
-            animation: fadeIn 0.4s ease-out;
+            margin-bottom: 30px;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.98); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        /* ফর্ম স্টাইল */
-        .form-group {
-            margin-bottom: 22px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #f8fafc;
-        }
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 14px 16px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            font-size: 1rem;
-            background: rgba(15, 23, 42, 0.8);
-            color: #fff;
-            transition: all 0.3s;
-        }
-        .form-group input:focus, .form-group select:focus {
-            outline: none;
-            border-color: #38bdf8;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
-        }
-        .form-group select option {
-            background: #0f172a;
-            color: #fff;
-        }
-
-        /* পরীক্ষার হেডার ও টাইমার */
-        .exam-top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(15, 23, 42, 0.9);
-            padding: 15px 22px;
-            border-radius: 14px;
-            margin-bottom: 25px;
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            position: sticky;
-            top: 80px;
-            z-index: 99;
-            backdrop-filter: blur(10px);
-        }
-        .timer-badge {
-            background: rgba(225, 29, 72, 0.2);
-            border: 1px solid rgba(225, 29, 72, 0.5);
-            color: #fb7185;
-            padding: 8px 16px;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 1.05rem;
-        }
-
-        /* প্রশ্নপত্র কন্টেইনার ও স্ক্রল এরিয়া */
-        .questions-scroll-area {
-            max-height: 550px;
-            overflow-y: auto;
-            padding-right: 10px;
-            margin-bottom: 20px;
-        }
-        .questions-scroll-area::-webkit-scrollbar {
-            width: 6px;
-        }
-        .questions-scroll-area::-webkit-scrollbar-track {
-            background: rgba(255,255,255,0.05);
-            border-radius: 10px;
-        }
-        .questions-scroll-area::-webkit-scrollbar-thumb {
-            background: #38bdf8;
-            border-radius: 10px;
-        }
-
-        .question-box {
-            background: rgba(15, 23, 42, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            padding: 22px;
-            border-radius: 16px;
-            margin-bottom: 20px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
-        .question-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #fff;
-            line-height: 1.6;
-        }
-        .options-list label {
-            display: block;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 12px 16px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            cursor: pointer;
-            color: #cbd5e1;
-            transition: all 0.2s;
-            font-size: 0.98rem;
-        }
-        .options-list label:hover {
-            background: rgba(56, 189, 248, 0.12);
-            border-color: rgba(56, 189, 248, 0.4);
-            color: #fff;
-        }
-        .options-list input {
-            margin-right: 12px;
-            accent-color: #38bdf8;
-            transform: scale(1.1);
-        }
-
-        /* বাটন */
-        .btn-action {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            background: var(--btn-gradient);
-            color: #fff;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(6, 182, 212, 0.3);
-            transition: all 0.3s;
-            margin-top: 15px;
-        }
-        .btn-action:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(37, 99, 235, 0.6);
-        }
-
-        /* ডেডিকেটেড লিডারবোর্ড ইন্টারফেস */
-        .leaderboard-wrapper {
-            background: linear-gradient(135deg, rgba(30, 27, 75, 0.6), rgba(15, 23, 42, 0.9));
-            border: 1px solid rgba(56, 189, 248, 0.4);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
-        }
-        .leaderboard-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 15px;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        .leaderboard-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: rgba(15, 23, 42, 0.85);
-            border-radius: 14px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .leaderboard-table th, .leaderboard-table td {
-            padding: 15px 18px;
-            text-align: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .leaderboard-table th {
-            background: rgba(37, 99, 235, 0.4);
+        .welcome-box h1 {
+            font-size: 2rem;
             color: #38bdf8;
-            font-weight: 700;
-            font-size: 1.05rem;
+            margin-bottom: 15px;
         }
-        .leaderboard-table td {
+
+        .welcome-box p {
             color: #cbd5e1;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
         }
-        .rank-1 { color: #fbbf24 !important; font-weight: 700; }
-        .rank-2 { color: #e2e8f0 !important; font-weight: 700; }
-        .rank-3 { color: #b45309 !important; font-weight: 700; }
+
+        /* ক্যাটাগরি বাটন সেকশন */
+        .exam-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .exam-btn {
+            background: var(--glass-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: #f8fafc;
+            padding: 20px;
+            border-radius: 14px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            display: block;
+        }
+
+        .exam-btn:hover {
+            background: var(--btn-gradient);
+            border-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.5);
+            color: #fff;
+        }
 
         footer {
             background: #020617;
@@ -337,559 +146,35 @@
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             font-size: 0.9rem;
         }
-
-        @media (max-width: 768px) {
-            main { padding: 20px 3%; }
-            .exam-top-bar { flex-direction: column; gap: 10px; align-items: flex-start; }
-            .navbar-card { padding: 8px 15px; }
-        }
     </style>
 </head>
 <body>
 
-    <!-- প্রফেশনাল স্লিম নেভিগেশন বার -->
+    <!-- প্রফেশনাল স্লিম নেভিগেশন বার (হোমপেজ বাটন সরানো হয়েছে) -->
     <div class="sticky-header-container">
         <div class="navbar-card">
             <a href="#" class="brand-name">Varsity Vision Portal</a>
-            <a href="#" class="btn-home">হোমপেজ</a>
         </div>
     </div>
 
     <!-- মূল কনটেন্ট -->
     <main>
-        <!-- সূচিপত্র বা মেনু বার -->
-        <div class="index-menu" id="mainMenuNav">
-            <button class="menu-btn active" onclick="switchTab('du-exam')">ঢাকা বিশ্ববিদ্যালয় মডেল টেস্ট (৯০ প্রশ্ন)</button>
-            <button class="menu-btn" onclick="switchTab('hsc-exam')">HSC একাডেমিক মডেল টেস্ট (৬০ প্রশ্ন)</button>
-            <button class="menu-btn" onclick="switchTab('subject-exam')">বিষয়ভিত্তিক পরীক্ষা (১০০ প্রশ্ন)</button>
-            <button class="menu-btn" onclick="switchTab('leaderboard-sec')" style="background: linear-gradient(135deg, #e11d48, #be123c);">🏆 লিডারবোর্ড দেখুন</button>
-        </div>
-
-        <!-- ১. ঢাকা বিশ্ববিদ্যালয় মডেল টেস্ট সেকশন (৯০টি প্রশ্ন) -->
-        <div id="du-exam" class="exam-section-card active">
-            <h2 style="color: #38bdf8; margin-bottom: 10px;">ঢাকা বিশ্ববিদ্যালয় (DU) পূর্ণাঙ্গ মডেল টেস্ট</h2>
-            <p style="color: #cbd5e1; margin-bottom: 25px; font-size: 0.95rem;">বাছাইকৃত পূর্ণাঙ্গ ৯০টি রিয়েল প্রশ্ন। সঠিক উত্তর: +১, ভুল উত্তর: -০.২৫। সময়: ৬০ মিনিট।</p>
+        <div class="welcome-box">
+            <h1>অনলাইন মেধা যাচাই ও মডেল টেস্ট পোর্টাল</h1>
+            <p>আপনার কাঙ্ক্ষিত ক্যাটাগরি নির্বাচন করে মডেল টেস্ট পরীক্ষায় অংশগ্রহণ করুন।</p>
             
-            <div id="du-form-box">
-                <form id="duFormStart">
-                    <div class="form-group">
-                        <label>আপনার পূর্ণ নাম *</label>
-                        <input type="text" id="du-name" required placeholder="আপনার পুরো নাম লিখুন">
-                    </div>
-                    <div class="form-group">
-                        <label>আপনার কলেজের নাম *</label>
-                        <input type="text" id="du-college" required placeholder="আপনার কলেজের নাম লিখুন">
-                    </div>
-                    <button type="submit" class="btn-action">পরীক্ষা শুরু করুন</button>
-                </form>
-            </div>
-
-            <div id="du-exam-box" style="display: none;">
-                <div class="exam-top-bar">
-                    <span id="du-candidate-info" style="font-weight: 600; color: #38bdf8;"></span>
-                    <div class="timer-badge" id="du-timer">সময় বাকি: ৬০:০০</div>
-                </div>
-                <form id="duFormSubmit">
-                    <div class="questions-scroll-area" id="du-questions-container">
-                        <!-- ৯০টি প্রশ্ন ডায়নামিকালি রেন্ডার হবে -->
-                    </div>
-                    <button type="submit" class="btn-action" style="background: linear-gradient(135deg, #16a34a, #15803d);">উত্তর খাতা জমা দিন</button>
-                </form>
-            </div>
-            <div id="du-result-box" style="display: none; text-align: center; padding: 30px;"></div>
-        </div>
-
-        <!-- ২. HSC একাডেমিক মডেল টেস্ট সেকশন (৬০ প্রশ্ন) -->
-        <div id="hsc-exam" class="exam-section-card">
-            <h2 style="color: #38bdf8; margin-bottom: 10px;">HSC বোর্ড পরীক্ষার পূর্ণাঙ্গ মডেল টেস্ট</h2>
-            <p style="color: #cbd5e1; margin-bottom: 25px; font-size: 0.95rem;">বোর্ড স্ট্যান্ডার্ড ৬০টি প্রশ্ন। সময়: ৪৫ মিনিট।</p>
-            
-            <div id="hsc-form-box">
-                <form id="hscFormStart">
-                    <div class="form-group">
-                        <label>আপনার পূর্ণ নাম *</label>
-                        <input type="text" id="hsc-name" required placeholder="আপনার নাম লিখুন">
-                    </div>
-                    <div class="form-group">
-                        <label>আপনার কলেজের নাম *</label>
-                        <input type="text" id="hsc-college" required placeholder="আপনার কলেজের নাম লিখুন">
-                    </div>
-                    <button type="submit" class="btn-action">পরীক্ষা শুরু করুন</button>
-                </form>
-            </div>
-
-            <div id="hsc-exam-box" style="display: none;">
-                <div class="exam-top-bar">
-                    <span id="hsc-candidate-info" style="font-weight: 600; color: #38bdf8;"></span>
-                    <div class="timer-badge" id="hsc-timer">সময় বাকি: ৪৫:০০</div>
-                </div>
-                <form id="hscFormSubmit">
-                    <div class="questions-scroll-area" id="hsc-questions-container">
-                        <!-- HSC প্রশ্ন লোড হবে -->
-                    </div>
-                    <button type="submit" class="btn-action" style="background: linear-gradient(135deg, #16a34a, #15803d);">উত্তর খাতা জমা দিন</button>
-                </form>
-            </div>
-            <div id="hsc-result-box" style="display: none; text-align: center; padding: 30px;"></div>
-        </div>
-
-        <!-- ৩. বিষয়ভিত্তিক পরীক্ষা সেকশন (বাংলা, ইংরেজি, সাধারণ জ্ঞান - প্রতিটিতে ১০০ প্রশ্ন) -->
-        <div id="subject-exam" class="exam-section-card">
-            <h2 style="color: #38bdf8; margin-bottom: 10px;">বিষয়ভিত্তিক স্পেশাল টেস্ট</h2>
-            <p style="color: #cbd5e1; margin-bottom: 25px; font-size: 0.95rem;">বাংলা, ইংরেজি বা সাধারণ জ্ঞান নির্বাচন করুন — প্রতিটি বিষয়ে রয়েছে ১০০টি করে মানসম্মত প্রশ্ন।</p>
-            
-            <div id="sub-form-box">
-                <form id="subFormStart">
-                    <div class="form-group">
-                        <label>আপনার পূর্ণ নাম *</label>
-                        <input type="text" id="sub-name" required placeholder="আপনার নাম লিখুন">
-                    </div>
-                    <div class="form-group">
-                        <label>আপনার কলেজের নাম *</label>
-                        <input type="text" id="sub-college" required placeholder="আপনার কলেজের নাম লিখুন">
-                    </div>
-                    <div class="form-group">
-                        <label>বিষয় নির্বাচন করুন *</label>
-                        <select id="selected-subject" required>
-                            <option value="">-- বিষয় বেছে নিন --</option>
-                            <option value="bangla">বাংলা (১০০ প্রশ্ন)</option>
-                            <option value="english">ইংরেজি (১০০ প্রশ্ন)</option>
-                            <option value="gk">সাধারণ জ্ঞান (১০০ প্রশ্ন)</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn-action">পরীক্ষা শুরু করুন</button>
-                </form>
-            </div>
-
-            <div id="sub-exam-box" style="display: none;">
-                <div class="exam-top-bar">
-                    <span id="sub-candidate-info" style="font-weight: 600; color: #38bdf8;"></span>
-                    <div class="timer-badge" id="sub-timer">সময় বাকি: ৪৫:০০</div>
-                </div>
-                <form id="subFormSubmit">
-                    <div class="questions-scroll-area" id="sub-questions-container">
-                        <!-- বিষয়ভিত্তিক ১০০ প্রশ্ন লোড হবে -->
-                    </div>
-                    <button type="submit" class="btn-action" style="background: linear-gradient(135deg, #16a34a, #15803d);">উত্তর খাতা জমা দিন</button>
-                </form>
-            </div>
-            <div id="sub-result-box" style="display: none; text-align: center; padding: 30px;"></div>
-        </div>
-
-        <!-- ৪. ডেডিকেটেড লিডারবোর্ড ইন্টারফেস -->
-        <div id="leaderboard-sec" class="exam-section-card">
-            <div class="leaderboard-wrapper">
-                <div class="leaderboard-header">
-                    <div>
-                        <h2 style="color: #38bdf8; font-size: 1.6rem; margin-bottom: 5px;">🏆 জাতীয় মেধা তালিকা ও লিডারবোর্ড</h2>
-                        <p style="color: #cbd5e1; font-size: 0.95rem;">দেশের শীর্ষ পরীক্ষার্থীদের পারফরম্যান্স ও স্কোর</p>
-                    </div>
-                    <button onclick="clearLeaderboard()" style="background: rgba(225, 29, 72, 0.2); border: 1px solid rgba(225, 29, 72, 0.5); color: #fb7185; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: 600;">লিডারবোর্ড রিসেট করুন</button>
-                </div>
-                <div id="leaderboard-content">
-                    <!-- লিডারবোর্ড টেবিল এখানে রেন্ডার হবে -->
-                </div>
+            <div class="exam-menu">
+                <a href="questiondu.html" class="exam-btn">ঢাকা বিশ্ববিদ্যালয় মডেল টেস্ট</a>
+                <a href="questionhsc.html" class="exam-btn">HSC একাডেমিক মডেল টেস্ট</a>
+                <a href="questionvarsities.html" class="exam-btn">অন্যান্য বিশ্ববিদ্যালয় মডেল টেস্ট</a>
             </div>
         </div>
-
     </main>
 
     <!-- ফুটার -->
     <footer>
         <p>&copy; ২০২৬ Varsity Vision। সর্বস্বত্ব সংরক্ষিত।</p>
     </footer>
-
-    <!-- জাভাস্ক্রিপ্ট লজিক ও প্রশ্ন ডেটাবেজ -->
-    <script>
-        let currentTimer = null;
-        let studentName = '';
-        let studentCollege = '';
-        let activeCategory = '';
-        let activeSubjectKey = '';
-
-        // ঢাকা বিশ্ববিদ্যালয় (DU) ৯০টি প্রশ্ন
-        const duQuestions = [
-            { id: 1, question: "ণ-ত্ব বিধি অনুসারে কোন জোড় অশুদ্ধ বানান?", options: ["দুর্নিবার, নবারুণ", "হরিণ, মূল্যায়ন", "কেরাণি, পরগণা", "পণ, প্রণয়ন"], answer: 2 },
-            { id: 2, question: "'জেন্দা' কী?", options: ["ভাষা", "জাতি", "গ্রন্থ", "গোষ্ঠী"], answer: 2 },
-            { id: 3, question: "'জ্যেষ্ঠের অবিবাহিত অবস্থায় কনিষ্ঠের বিয়েকে' এক শব্দে কী বলা হয়?", options: ["অগ্রবিয়ে", "পরিবেদন", "পরদানি", "আদানি"], answer: 2 },
-            { id: 4, question: "'হিন্দি' শব্দটি মূলত কোন ভাষা থেকে গৃহীত?", options: ["ফারসি", "সংস্কৃত", "হিন্দি", "প্রাকৃত"], answer: 2 },
-            { id: 5, question: "'দুর্বোধ্য' শব্দের অর্থ কী?", options: ["বধ করা সহজ নয়", "বোঝা সহজ নয়", "বাধ্য করা সহজ নয়", "বোকা"], answer: 1 },
-            { id: 6, question: "'রুগ্ণ' বিশেষণের বিশেষ্য রূপ কোনটি?", options: ["রোগী", "রোগিণী", "রোগাটে", "রোগ"], answer: 0 },
-            { id: 7, question: "'সাত ভায়া' গ্রামের উল্লেখ রয়েছে কোন রচনায়?", options: ["আমি কিংবদন্তির কথা বলছি", "নূরলদীনের কথা মনে পড়ে যায়", "চাষার দুক্ষু", "আহ্বান"], answer: 3 },
-            { id: 8, question: "'সশস্ত্র সুন্দরের অনিবার্য অভ্যুত্থান' পঙ্‌ক্তির শূন্যস্থানে বসবে কোন শব্দ?", options: ["স্বাধীনতা", "মুক্তি", "কবিতা", "সংগীত"], answer: 2 },
-            { id: 9, question: "'Beauty sleep' বলতে কী বোঝায়?", options: ["গভীর ঘুম", "প্রথম রাত্রির ঘুম", "সুন্দর ঘুম", "দুপুরবেলার ঘুম"], answer: 2 },
-            { id: 10, question: "'বহু দেখেছে যে'—এক কথায় কী?", options: ["ভুয়োদর্শী", "দূরদর্শী", "সমদর্শী", "দার্শনিক"], answer: 0 },
-            { id: 11, question: "মিথ্যা বিনয়ের চেয়ে বেশি ভালো হলো—", options: ["অহংকার", "সত্য", "লোকভয়", "ভণ্ডামি"], answer: 1 },
-            { id: 12, question: "'ধার' শব্দটি যে ধ্বনি পরিবর্তন প্রক্রিয়ার দৃষ্টান্ত—", options: ["বিপ্রকর্ষ", "স্বরভক্তি", "সম্প্রকর্ষ", "অন্তর্হতি"], answer: 2 },
-            { id: 13, question: "সিরাজউদ্দৌলা পলাশিতে কীসের ওপর ভরসা করতে চেয়েছিলেন?", options: ["সাঁফ্রের সৈন্যদলের সাহসিকতা", "মোহনলাল-মিরমর্দানের বিচক্ষণতা", "মিরজাফর-রায়দুর্লভের স্বদেশপ্রেম", "ক্লাইভের সৈন্যদলের দুর্বলতা"], answer: 1 },
-            { id: 14, question: "ঠিক শব্দগুচ্ছ কোনটি?", options: ["নিষ্কাসন, শীততাপ, দুর্ভীক্ষ", "অভীষ্ট, নিশ্চল, সমীচীন", "উদিচী, বুভুক্ষু, পোস্ট-অফিস", "লক্ষণ, মধ্যস্ত, উদ্ধোধন"], answer: 1 },
-            { id: 15, question: "জাদুঘর গড়ে উঠেছিল কেন?", options: ["প্রতিষ্ঠাতার রুচিমাফিক", "ঐতিহ্য রক্ষার জন্য", "শুধু নিদর্শন সংগ্রহের জন্য", "জ্ঞানচর্চার জন্য"], answer: 1 },
-            { id: 16, question: "পুরুষবাচক শব্দ নয় কোনটি?", options: ["বেঙ্গমা", "দীর্ঘাঙ্গী", "বর্ষীয়ান", "দুঃখী"], answer: 1 },
-            { id: 17, question: "গ্রিক ট্র্যাজেডির মর্মবাণী কী?", options: ["অবিবেচনাপ্রসূত ত্রুটি", "অমোঘ বিধি", "অবশ্যম্ভাবী মৃত্যু", "অন্তহীন পাপবোধ"], answer: 1 },
-            { id: 18, question: "'এদের কেউ শ্রমিক, কেউ সৈনিক, কেউ বুদ্ধিজীবী।' বাক্যটি কোন রচনা থেকে উদ্ধৃত?", options: ["চাষার দুক্ষু", "মহাজাগতিক কিউরেটর", "আমার পথ", "জীবন ও বৃক্ষ"], answer: 1 },
-            { id: 19, question: "কাজী নজরুল ইসলামের মতে দেশের শত্রু কারা?", options: ["যারা মিথ্যার বেসাতি করে", "যারা অলস", "যারা অশিক্ষিত", "যারা দরিদ্র"], answer: 0 },
-            { id: 20, question: "'মানুষের যখন পতন আসে তখন পদে পদে ভুল হতে থাকে'—উক্তিটি কোন রচনার?", options: ["বায়ান্নর দিনগুলো", "আমার পথ", "জীবন ও বৃক্ষ", "রেইনকোট"], answer: 0 },
-            { id: 21, question: "সমিল প্রবহমান অক্ষরবৃত্ত ছন্দে রচিত কবিতা কোনটি?", options: ["ঐকতান", "বিদ্রোহী", "সোনার তরী", "কবর"], answer: 0 },
-            { id: 22, question: "নিচের কোনটিতে স্বভাবতই ণ হয়?", options: ["তূণ", "তনু", "তরুণ", "তন্বী"], answer: 0 },
-            { id: 23, question: "'একতারা' শব্দটি কোন ভাষা থেকে এসেছে?", options: ["আরবি", "ফারসি", "তুর্কি", "সংস্কৃত"], answer: 1 },
-            { id: 24, question: "'শোক দূর হয়েছে যার'—এক কথায় কী?", options: ["বীতশোক", "শোকাতুর", "শোকগ্রস্ত", "নির্বিকার"], answer: 0 },
-            { id: 25, question: "প্রত্যক্ষ কোনো বস্তুর সঙ্গে পরোক্ষ কোনো বস্তুর তুলনা করলে প্রত্যক্ষ বস্তুটিকে কী বলা হয়?", options: ["উপমেয়", "উপমান", "রূপক", "অতিশয়োক্তি"], answer: 0 },
-            { id: 26, question: "'ছেলেটি মাকে চিঠি লিখছে'—এখানে লিখছে কোন ক্রিয়া?", options: ["অকর্মক", "দ্বিকর্মক", "প্রযোজক", "নামধাতু"], answer: 1 },
-            { id: 27, question: "বাংলা বর্ণমালায় ঐ ও ঔ হচ্ছে—", options: ["মৌলিক বর্ণ", "যৌগিক বর্ণ", "ব্যঞ্জনবর্ণ", "নাসিক্য বর্ণ"], answer: 1 },
-            { id: 28, question: "'শ্বাপদ' শব্দে 'শ্বন' শব্দের অর্থ কী?", options: ["সিংহ", "সারমেয়", "বাঘ", "হরিণ"], answer: 1 },
-            { id: 29, question: "'হন্যমান' যে শব্দের বিশেষণ—", options: ["হনন", "হন্য", "হত", "হিংসা"], answer: 0 },
-            { id: 30, question: "'বিশ্বাসের পাথরে যেন খোদাই সে চোখ'—লালসালু উপন্যাসে উক্তিটির তাৎপর্য কী?", options: ["আত্মবিধ্বংসী ধর্মান্ধতা", "মানবিকতা", "প্রেম", "সামাজিক বৈষম্য"], answer: 0 },
-            { id: 31, question: "Choose the correct meaning of 'Value'.", options: ["Principles", "Punctuality", "Product", "Judgement"], answer: 0 },
-            { id: 32, question: "Choose the correct sentence about Irom Sharmila's hunger strike since 2000.", options: ["Irom Sharmila is on hunger strike since the year 2000.", "Irom Sharmila is being on hunger strike since the year 2000.", "Irom Sharmila was on hunger strike since the year 2000.", "Irom Sharmila has been on hunger strike since the year 2000."], answer: 3 },
-            { id: 33, question: "Choose the correct sentence.", options: ["Whose glasses are these? Are these yours or Sohel's?", "Whose glasses are these? Are these your's or Sohel's?", "Who's glasses are these? Are these yours or Sohel's?", "Who's glasse's are these? Are these your's or Sohel's?"], answer: 0 },
-            { id: 34, question: "What is the title of the passage?", options: ["Bangla folk music", "Rural life", "Riverine culture", "Traditional music"], answer: 0 },
-            { id: 35, question: "The rural riverine people are associated with—", options: ["Mystical songs", "Rock music", "Classical music", "Jazz music"], answer: 0 },
-            { id: 36, question: "What does the word 'Genre' mean?", options: ["A style or category of art, music, or literature", "A type of language", "A musical instrument", "A literary character"], answer: 0 },
-            { id: 37, question: "Which statement is false?", options: ["Folk songs must bear local flavors", "Folk songs reflect culture", "Folk music has traditional roots", "Folk songs are part of heritage"], answer: 0 },
-            { id: 38, question: "'Foment' is a—", options: ["Noun", "Verb", "Adjective", "Adverb"], answer: 1 },
-            { id: 39, question: "What is the meaning of 'Blandishment'?", options: ["Harsh words", "Honeyed words", "Anger", "Criticism"], answer: 1 },
-            { id: 40, question: "How many modifiers are there in the given sentence?", options: ["One", "Two", "Three", "Four"], answer: 1 },
-            { id: 41, question: "What is the gist of the poem?", options: ["Beauty is truth, truth beauty", "Love is life", "Nature is eternal", "Time is money"], answer: 0 },
-            { id: 42, question: "Choose the synonym of 'Repressed'.", options: ["Subdue", "Release", "Express", "Encourage"], answer: 0 },
-            { id: 43, question: "Choose the correct spelling.", options: ["Conscientious", "Consciencious", "Conscentious", "Conscientous"], answer: 0 },
-            { id: 44, question: "The antonym of 'Progress' is—", options: ["Development", "Stagnation", "Advancement", "Improvement"], answer: 1 },
-            { id: 45, question: "The word 'Sympathize' is followed by which preposition?", options: ["with", "to", "for", "at"], answer: 0 },
-            { id: 46, question: "What does the idiom 'To keep an eye on' mean?", options: ["To observe", "To ignore", "To criticize", "To avoid"], answer: 0 },
-            { id: 47, question: "What is the meaning of 'Get along with'?", options: ["Adjust", "Fight", "Avoid", "Reject"], answer: 0 },
-            { id: 48, question: "What is the noun form of 'Humanity'?", options: ["Humanize", "Human", "Humane", "Humanity"], answer: 3 },
-            { id: 49, question: "Choose the antonym of 'Malice'.", options: ["Kindness", "Hatred", "Cruelty", "Enmity"], answer: 0 },
-            { id: 50, question: "The figure of speech used in the given expression about Mina is—", options: ["Simile", "Metaphor", "Personification", "Hyperbole"], answer: 1 },
-            { id: 51, question: "Choose the correct sentence.", options: ["My parents' home is in one of the town's posh areas", "My parents home is in one of the towns posh areas", "My parent's home is in one of the towns posh areas", "My parents' home are in one of the town's posh areas"], answer: 0 },
-            { id: 52, question: "Choose the correct preposition: She was sliding _____ depression.", options: ["into", "in", "at", "on"], answer: 0 },
-            { id: 53, question: "Identify the verbal noun.", options: ["Traveling", "Travel", "Traveler", "Traveled"], answer: 0 },
-            { id: 54, question: "Choose the correct sentence.", options: ["Although he is young, he is very careful.", "Although he young, he is very careful.", "Although he is young, he very careful.", "Although young he, is very careful."], answer: 0 },
-            { id: 55, question: "Choose the correct passive voice.", options: ["The fight was not given up by him even though he was badly bruised.", "He was not given up the fight.", "The fight did not give up by him.", "The fight was not give up by him."], answer: 0 },
-            { id: 56, question: "Choose the correct synonym of 'Foment'.", options: ["Instigate", "Calm", "Suppress", "Prevent"], answer: 0 },
-            { id: 57, question: "Choose the correct meaning of 'Blandishment'.", options: ["Flattery", "Insult", "Threat", "Warning"], answer: 0 },
-            { id: 58, question: "Choose the correct translation: No work is superior or inferior from its value.", options: ["No work is superior or inferior in value.", "All work is inferior.", "Work has no value.", "Only superior work matters."], answer: 0 },
-            { id: 59, question: "Complete the sentence: He will finish the work—", options: ["in no time", "at no time", "on no time", "by no time"], answer: 0 },
-            { id: 60, question: "Choose the correct synonym of 'Subdue'.", options: ["Overcome", "Encourage", "Release", "Support"], answer: 0 },
-            { id: 61, question: "বাংলাদেশের কোন নদী প্রাকৃতিক মৎস্য প্রজনন কেন্দ্র হিসেবে পরিচিত?", options: ["হালদা", "মেঘনা", "যমুনা", "পদ্মা"], answer: 0 },
-            { id: 62, question: "পণ্ডিত অতীশ দীপঙ্করের জন্মস্থান কোনটি?", options: ["চট্টগ্রাম", "কুমিল্লা", "বিক্রমপুর", "ময়মনসিংহ"], answer: 2 },
-            { id: 63, question: "আড়িয়াল বিল কোথায় অবস্থিত?", options: ["কুড়িগ্রাম", "নড়াইল", "নাটোর", "মুন্সিগঞ্জ"], answer: 3 },
-            { id: 64, question: "দুবলার চর কোথায় অবস্থিত?", options: ["সেন্ট মার্টিন দ্বীপে", "সুন্দরবনের দক্ষিণ উপকূলে", "ভোলায়", "কক্সবাজারে"], answer: 1 },
-            { id: 65, question: "নিচের কোন দেশে সমুদ্রবন্দর নেই?", options: ["লেবানন", "মিশর", "আফগানিস্তান", "আলজেরিয়া"], answer: 2 },
-            { id: 66, question: "টেস্ট ক্রিকেটে বাংলাদেশের পক্ষে প্রথম ডাবল সেঞ্চুরি কে করেন?", options: ["মোহাম্মদ আশরাফুল", "মমিনুল হক", "তামিম ইকবাল", "মুশফিকুর রহিম"], answer: 3 },
-            { id: 67, question: "২০২০ সালের গ্রীষ্মকালীন অলিম্পিক কোন শহরে অনুষ্ঠিত হওয়ার কথা ছিল?", options: ["মস্কো", "দোহা", "টোকিও", "লস অ্যাঞ্জেলেস"], answer: 2 },
-            { id: 68, question: "কোন শহরটি 'Big Apple' নামে পরিচিত?", options: ["প্যারিস", "নিউইয়র্ক", "লন্ডন", "সিঙ্গাপুর"], answer: 1 },
-            { id: 69, question: "সত্যেন্দ্রনাথ বসু ছিলেন একজন—", options: ["অর্থনীতিবিদ", "চিকিৎসক", "সমাজবিজ্ঞানী", "পদার্থবিদ"], answer: 3 },
-            { id: 70, question: "পিরানহা কী?", options: ["সাপ", "মাছ", "ব্যাঙ", "কচ্ছপ"], answer: 1 },
-            { id: 71, question: "'জাতীয় যুবনীতি ২০১৭' অনুসারে যুবদের বয়সসীমা কত বছর?", options: ["১২-২৪", "১৫-২৫", "১৮-৩৫", "২০-৩৮"], answer: 2 },
-            { id: 72, question: "মুক্তিযুদ্ধে মুজিবনগর যে সেক্টরের অধীনে ছিল—", options: ["১১", "৮", "২", "১০"], answer: 3 },
-            { id: 73, question: "বাংলাদেশের কোন পণ্য ভৌগোলিক নির্দেশক পণ্যের স্বীকৃতি পেয়েছে?", options: ["ইলিশ", "জামদানি", "বেনারসি", "মসলিন"], answer: 0 },
-            { id: 74, question: "বাংলার প্রাচীন নগর কর্ণসুবর্ণের অবস্থান কোথায় ছিল?", options: ["কুমিল্লা", "মুর্শিদাবাদ", "বগুড়া", "রাজশাহী"], answer: 1 },
-            { id: 75, question: "বাংলাদেশ বিশ্ব বাণিজ্য সংস্থার সদস্যপদ লাভ করে কত সালে?", options: ["১৯৯৪", "১৯৯৫", "১৯৯৩", "১৯৯৬"], answer: 1 },
-            { id: 76, question: "বাংলাকে 'জান্নাতাবাদ' নামকরণ করেন কে?", options: ["বাবর", "আকবর", "হুমায়ুন", "জাহাঙ্গীর"], answer: 2 },
-            { id: 77, question: "'ওয়াঙ্গালা' উৎসব উদযাপন করে কোন জনগোষ্ঠী?", options: ["চাকমা", "মণিপুরি", "গারো", "রাখাইন"], answer: 2 },
-            { id: 78, question: "গ্রিনহাউস গ্যাস নয় কোনটি?", options: ["নাইট্রাস অক্সাইড", "অক্সিজেন", "মিথেন", "কার্বন ডাই-অক্সাইড"], answer: 1 },
-            { id: 79, question: "ঐতিহাসিক ছয় দফায় যে বিষয়টি অন্তর্ভুক্ত ছিল না—", options: ["শাসনতান্ত্রিক কাঠামো", "কেন্দ্রীয় সরকারের ক্ষমতা", "স্বতন্ত্র মুদ্রাব্যবস্থা", "বিচারব্যবস্থা"], answer: 3 },
-            { id: 80, question: "যুক্তিবিদ্যার জনক কে?", options: ["জন স্টুয়ার্ট মিল", "জেরেমি বেনথাম", "আই. এম. কপি", "এরিস্টটল"], answer: 3 },
-            { id: 81, question: "নৌকাবাইচে পরিবেশিত গানের নাম কী?", options: ["ভাটিয়ালি", "সারি গান", "জারি গান", "মুর্শিদি"], answer: 1 },
-            { id: 82, question: "ল্যাটিন শব্দ 'Civics' এর অর্থ কী?", options: ["নাগরিক", "রাষ্ট্র", "আইন", "সমাজ"], answer: 0 },
-            { id: 83, question: "নিচের কোনটি প্রাচীনতম?", options: ["মহাস্থান ব্রাহ্মী লিপি", "পাহাড়পুর", "ময়নামতি", "সোমপুর বিহার"], answer: 0 },
-            { id: 84, question: "ইউরোপের দীর্ঘতম নদী কোনটি?", options: ["দানিয়ুব", "ভলগা", "রাইন", "টেমস"], answer: 1 },
-            { id: 85, question: "ওআইসির প্রধান কার্যালয় কোথায়?", options: ["তেহরান", "জেদ্দা", "কায়রো", "রিয়াদ"], answer: 1 },
-            { id: 86, question: "কোন গ্রহটি সূর্যের সবচেয়ে নিকটবর্তী?", options: ["বুধ", "মঙ্গল", "বৃহস্পতি", "শুক্র"], answer: 0 },
-            { id: 87, question: "ইন্টারপোল কী?", options: ["আন্তর্জাতিক পুলিশ সংস্থা", "আন্তর্জাতিক রাজনৈতিক সংস্থা", "আন্তর্জাতিক পোলিও নিয়ন্ত্রণ সংস্থা", "আন্তর্জাতিক বাজার উন্নয়ন সংস্থা"], answer: 0 },
-            { id: 88, question: "'The Republic' গ্রন্থটির রচয়িতা কে?", options: ["প্লেটো", "সক্রেটিস", "অ্যারিস্টটল", "হোরেস"], answer: 0 },
-            { id: 89, question: "বাংলাদেশ ও ভারতের মধ্যে অভিন্ন নদীর সংখ্যা কত?", options: ["৫২", "৫০", "৫৩", "৫৪"], answer: 3 },
-            { id: 90, question: "বাংলার প্রথম নবাব কে ছিলেন?", options: ["আলীবর্দী খান", "সুজাউদ্দিন মুহাম্মদ খান", "মুর্শিদকুলী খান", "সিরাজউদ্দৌলা"], answer: 2 }
-        ];
-
-        // অন্যান্য সেগমেন্টের প্রশ্ন ব্যাংক (HSC-তে ৬০টি, Subject ভিত্তিক প্রতিটিতে ১০০টি করে)
-        const basePools = {
-            hsc: [
-                { id: 1, q: "'বিলাসী' গল্পে মৃত্যুঞ্জয় কোন শ্রেণিতে পড়ত?", opts: ["ফার্স্ট ক্লাস", "সেকেন্ড ক্লাস", "থার্ড ক্লাস", "ফোর্থ ক্লাস"], ans: 2 },
-                { id: 2, q: "What does the word 'unlettered' mean?", opts: ["Skilled in writing", "Illiterate", "Educated in literature", "Written in a letter"], ans: 1 },
-                { id: 3, q: "কম্পিউটার নেটওয়ার্কে ডেটা গ্রহণ ও প্রদানের নিয়মকে কী বলে?", opts: ["URL", "IP Address", "Browser", "Protocol"], ans: 3 },
-                { id: 4, q: "'ব্যাকরণ' শব্দটি কোন ভাষা থেকে এসেছে?", opts: ["বাংলা", "সংস্কৃত", "বিদেশি", "তদ্ভব"], ans: 1 },
-                { id: 5, q: "What was the first step taken to educate the bird in 'The Parrot's Tale'?", opts: ["Teaching it manners", "Building a proper cage", "Writing books for it", "Providing new food"], ans: 1 },
-                { id: 6, q: "জাতীয় পরিচয়পত্র তৈরিতে কোন প্রযুক্তি ব্যবহৃত হয়?", opts: ["আর্টিফিশিয়াল ইন্টেলিজেন্স", "বায়োমেট্রিক্স", "জেনেটিক ইঞ্জিনিয়ারিং", "বায়োইনফরমেটিক্স"], ans: 1 },
-                { id: 7, q: "'অপরিচিতা' গল্পে রেলভ্রমণকালে দেখা মেয়েটির সুধাকণ্ঠকে অনুপম কিসের সঙ্গে তুলনা করেছে?", opts: ["রুপার কাঠি", "সোনার কাঠি", "মধুর ঝরনা", "বাঁশির সুর"], ans: 1 },
-                { id: 8, q: "A good boy is accustomed ___ hard work.", opts: ["with", "for", "to", "by"], ans: 2 },
-                { id: 9, q: "'ব্যাকরণ' শব্দের বিশ্লেষিত রূপ কোনটি?", opts: ["বি + আ + √কৃ + অপ", "বি + আ + √কৃ + অন", "বি + আ + √কৃ + অন্", "বি + আ + √কৃ + অনট"], ans: 1 },
-                { id: 10, q: "HTML-এর পূর্ণরূপ কী?", opts: ["HighText Machine Language", "Hyperlink and Text Management Language", "HyperText Markup Language", "Home Tool Markup Language"], ans: 2 },
-                { id: 11, q: "What does the word 'scripture' mean?", opts: ["A type of bird", "Polite behaviour", "Sacred writings", "Exquisite craftsmanship"], ans: 2 },
-                { id: 12, q: "'রেইনকোট' গল্পে রেইনকোটটি কার?", opts: ["নুরুল হুদার", "মিন্টুর", "আলতাফের", "রহমানের"], ans: 1 },
-                { id: 13, q: "শব্দের অর্থযুক্ত ক্ষুদ্রতম অংশকে কী বলা হয়?", opts: ["রূপ", "ধ্বনি", "সন্ধি", "বর্ণ"], ans: 0 },
-                { id: 14, q: "ডেটা স্থানান্তরে বিটের বিন্যাসব্যবস্থা হলো—", opts: ["মোড", "মেথড", "স্পিড", "টপোলজি"], ans: 0 },
-                { id: 15, q: "Who was given the responsibility of educating the bird?", opts: ["The King", "The King's guards", "The King's nephews", "The royal ministers"], ans: 2 },
-                { id: 16, q: "'বিদ্রোহী' কবিতাটি কোন পত্রিকায় প্রকাশিত হয়েছিল?", opts: ["ধূমকেতু", "বিজলী", "সওগাত", "মোসলেম ভারত"], ans: 1 },
-                { id: 17, q: "কম্পিউটার থেকে প্রিন্টারে ডেটা স্থানান্তরের ক্ষেত্রে কোনটি ব্যবহৃত হয়?", opts: ["ন্যারো ব্যান্ড", "ভয়েস ব্যান্ড", "হাফ-ডুপ্লেক্স", "ফুল-ডুপ্লেক্স"], ans: 0 },
-                { id: 18, q: "He is not addicted ___ any bad thing.", opts: ["with", "to", "for", "by"], ans: 1 },
-                { id: 19, q: "রূপতত্ত্বের আলোচ্য বিষয় নয় কোনটি?", opts: ["সমাস", "প্রত্যয়", "সন্ধি", "উপসর্গ"], ans: 2 },
-                { id: 20, q: "What does the word 'exquisite' mean?", opts: ["Polite behaviour", "Genuine or real", "Finely made or beautiful", "Illiterate"], ans: 2 },
-                { id: 21, q: "'আমার পথ' প্রবন্ধে কাজী নজরুল ইসলামের কর্ণধার কে?", opts: ["সমাজ", "ধর্ম", "শিক্ষক", "নিজে"], ans: 3 },
-                { id: 22, q: "ডেটাবেজে প্রতিটি রেকর্ডকে অনন্যভাবে শনাক্ত করে কোনটি?", opts: ["Field", "Index", "Primary Key", "Foreign Key"], ans: 2 },
-                { id: 23, q: "'বিলাসী' গল্পে বিলাসী কীসের প্রতীক?", opts: ["প্রেমনিষ্ঠার", "প্রতিহিংসার", "সামাজিক মর্যাদার", "অর্থনৈতিক স্বাচ্ছন্দ্যের"], ans: 0 },
-                { id: 24, q: "The King ordered to educate the bird because—", opts: ["The bird was intelligent", "The bird lacked manners and was unlettered", "The bird could fly too high", "The bird had excellent manners"], ans: 1 },
-                { id: 25, q: "'ব্যাকরণ' শব্দের ব্যুৎপত্তিগত অর্থ কী?", opts: ["ভাষার সংবিধান", "গ্রামার", "ভাষাবিষয়ক জ্ঞান", "বিশ্লেষণ"], ans: 3 },
-                { id: 26, q: "কোনটি HTML-এর empty tag?", opts: ["<p>", "<table>", "<br>", "<b>"], ans: 2 },
-                { id: 27, q: "'রেইনকোট' গল্পে 'সাবভার্সিভ অ্যাকটিভিটিজ' বলতে কী বোঝানো হয়েছে?", opts: ["সামাজিক কর্মকাণ্ড", "রাষ্ট্রবিরোধী কর্মকাণ্ড", "সাংস্কৃতিক কর্মকাণ্ড", "রাজনৈতিক প্রচারণা"], ans: 1 },
-                { id: 28, q: "He is not averse ___ any hard work.", opts: ["to", "with", "for", "by"], ans: 0 },
-                { id: 29, q: "'বচন' ব্যাকরণের কোন অংশের আলোচ্য বিষয়?", opts: ["ধ্বনিতত্ত্ব", "শব্দতত্ত্ব", "রূপতত্ত্ব", "বাক্যতত্ত্ব"], ans: 2 },
-                { id: 30, q: "কোনটি সার্চ ইঞ্জিন?", opts: ["Twitter", "YouTube", "Pipilika", "Wikipedia"], ans: 2 },
-                { id: 31, q: "What did the royal scholars conclude about the bird?", opts: ["The bird was too wise", "The bird's nest could not hold much knowledge", "The bird was too young to be educated", "The bird needed more food"], ans: 1 },
-                { id: 32, q: "'সোনার তরী' কবিতায় 'বাঁকা জল' মূলত কীসের প্রতীক?", opts: ["কালস্রোতের", "জীবনের আনন্দের", "প্রকৃতির সৌন্দর্যের", "মানবপ্রেমের"], ans: 0 },
-                { id: 33, q: "He clings ___ his determination.", opts: ["on", "at", "to", "with"], ans: 2 },
-                { id: 34, q: "ক্রায়োসার্জারিতে সাধারণত কোনটি ক্রায়োজনিক এজেন্ট হিসেবে ব্যবহৃত হয়?", opts: ["তরল নাইট্রোজেন", "তরল পানি", "বাষ্প", "কার্বন ডাই-অক্সাইড গ্যাস"], ans: 0 },
-                { id: 35, q: "'ব্যাকরণ' শব্দটি কোন ধরনের শব্দ?", opts: ["তদ্ভব", "দেশি", "বিদেশি", "তৎসম"], ans: 3 },
-                { id: 36, q: "Which of the following best describes 'manners'?", opts: ["A type of bird", "Polite behaviour", "Illiteracy", "Fine craftsmanship"], ans: 1 },
-                { id: 37, q: "'সোনার তরী' কবিতার উপজীব্য বিষয় কী?", opts: ["প্রকৃতিপ্রেম", "জীবনচেতনা", "দেশপ্রেম", "মানবসভ্যতা"], ans: 1 },
-                { id: 38, q: "HTML ফাইল সম্পাদনার জন্য কোনটি Text Editor?", opts: ["Notepad", "Notepad++", "Sublime Text", "সবগুলো"], ans: 3 },
-                { id: 39, q: "He is used ___ hard work.", opts: ["with", "to", "by", "for"], ans: 1 },
-                { id: 40, q: "'The Origin and Development of Bengali Language' গ্রন্থটির লেখক কে?", opts: ["ড. দীনেশচন্দ্র সেন", "ড. সুনীতিকুমার চট্টোপাধ্যায়", "ড. মুহম্মদ শহীদুল্লাহ", "ড. সুকুমার সেন"], ans: 1 },
-                { id: 41, q: "কম্পিউটার নেটওয়ার্কের জন্য নেটওয়ার্ক ব্যাকবোন হিসেবে ব্যবহৃত ক্যাবলভিত্তিক টপোলজি কোনটি?", opts: ["বাস", "রিং", "স্টার", "মেশ"], ans: 0 },
-                { id: 42, q: "What does the word 'deliberated' mean?", opts: ["Considered carefully", "A type of bird", "Sacred writings", "Genuine or real"], ans: 0 },
-                { id: 43, q: "'বিলাসী' গল্পটি কত বঙ্গাব্দে প্রকাশিত হয়?", opts: ["১৩২৩", "১৩২৪", "১৩২৫", "১৩২৬"], ans: 2 },
-                { id: 44, q: "কম্পিউটার নেটওয়ার্কে একই সঙ্গে উভয় দিকে ডেটা স্থানান্তরের পদ্ধতিকে কী বলে?", opts: ["সিমপ্লেক্স", "হাফ-ডুপ্লেক্স", "ফুল-ডুপ্লেক্স", "অ্যাসিনক্রোনাস"], ans: 2 },
-                { id: 45, q: "He is not doubtful ___ his success.", opts: ["about", "of", "with", "for"], ans: 1 },
-                { id: 46, q: "What was the bird's cage made of?", opts: ["Silver", "Gold", "Wood", "Iron"], ans: 1 },
-                { id: 47, q: "'সাহিত্যে খেলা' প্রবন্ধ অনুসারে সাহিত্যের উদ্দেশ্য কী?", opts: ["আনন্দ দেওয়া", "অর্থ উপার্জন", "জ্ঞান বিতরণ", "ইতিহাস সংরক্ষণ"], ans: 0 },
-                { id: 48, q: "শর্তসাপেক্ষে ডেটা অনুসন্ধান করাকে কী বলে?", opts: ["মডিউল", "কুয়েরি", "সর্টিং", "ইনডেক্সিং"], ans: 1 },
-                { id: 49, q: "He is very much conscious ___ duties.", opts: ["with", "for", "of", "by"], ans: 2 },
-                { id: 50, q: "'রেইনকোট' গল্পে মিন্টু কবে বাড়ি ছেড়ে গিয়েছিল?", opts: ["২১ জুন", "২২ জুন", "২৩ জুন", "২৪ জুন"], ans: 2 },
-                { id: 51, q: "What did the bird's cage symbolize?", opts: ["The bird's freedom", "The bird's education", "The bird's imprisonment", "The bird's happiness"], ans: 2 },
-                { id: 52, q: "কোনটি কৃত্রিম বুদ্ধিমত্তায় ব্যবহৃত প্রোগ্রামিং ভাষা?", opts: ["LISP", "CSS", "HTML", "SQL"], ans: 0 },
-                { id: 53, q: "'বাঙ্গালার নব্য লেখকদিগের প্রতি নিবেদন' প্রবন্ধে লেখক প্রথমে কোনটির জন্য লিখতে নিষেধ করেছেন?", opts: ["অর্থ", "যশ", "জ্ঞান", "আনন্দ"], ans: 1 },
-                { id: 54, q: "He is not boastful ___ his talents.", opts: ["with", "of", "to", "by"], ans: 1 },
-                { id: 55, q: "টেবিলের প্রতিটি রেকর্ডকে অনন্যভাবে শনাক্ত করার জন্য কোন Key ব্যবহৃত হয়?", opts: ["Foreign Key", "Primary Key", "Composite Key", "Candidate Key"], ans: 1 },
-                { id: 56, q: "'তাহারেই পড়ে মনে' কবিতায় 'মাঘের সন্ন্যাসী' বলতে কী বোঝানো হয়েছে?", opts: ["বসন্ত ঋতু", "শীত ঋতুর বৈশিষ্ট্য", "বর্ষাকাল", "শরৎ ঋতু"], ans: 1 },
-                { id: 57, q: "Which of the following is the meaning of 'scripture'?", opts: ["Religious texts", "A type of bird", "A golden cage", "A musical instrument"], ans: 0 },
-                { id: 58, q: "কোনটি আউটসোর্সিংয়ের মার্কেটপ্লেস?", opts: ["Facebook", "Myspace", "Upwork", "Wikipedia"], ans: 2 },
-                { id: 59, q: "He behaves well ___ all.", opts: ["at", "with", "to", "by"], ans: 1 },
-                { id: 60, q: "ডেটাবেজের ভিত্তি কোনটি?", opts: ["ফিল্ড", "রেকর্ড", "টেবিল", "কুয়েরি"], ans: 0 }
-            ],
-            bangla: generateHundredPool('বাংলা'),
-            english: generateHundredPool('ইংরেজি'),
-            gk: generateHundredPool('সাধারণ জ্ঞান')
-        };
-
-        // ১০০ প্রশ্ন জেনারেটর হেল্পার ফাংশন
-        function generateHundredPool(subjectName) {
-            let list = [];
-            for(let i=1; i<=100; i++) {
-                list.push({
-                    id: i,
-                    q: `${subjectName} বিষয়ক গুরুত্বপূর্ণ প্রশ্ন নম্বর ${i}: নিচের কোনটি সঠিক?`,
-                    opts: ["বিকল্প ক (সঠিক উত্তর)", "বিকল্প খ", "বিকল্প গ", "বিকল্প ঘ"],
-                    ans: 0
-                });
-            }
-            return list;
-        }
-
-        function getUniqueQuestionBank(categoryKey, count, titlePrefix = '') {
-            let pool = basePools[categoryKey] || basePools.hsc;
-            let questions = [];
-            for (let i = 1; i <= count; i++) {
-                let baseQ = pool[(i - 1) % pool.length];
-                questions.push({
-                    id: i,
-                    title: `${i}. [${titlePrefix}] ${baseQ.q}`,
-                    opts: baseQ.opts,
-                    ans: baseQ.ans
-                });
-            }
-            return questions;
-        }
-
-        window.onload = function() {
-            document.getElementById('duFormStart').addEventListener('submit', function(e) {
-                e.preventDefault();
-                startExamSession('du', duQuestions.length, 60 * 60, 'ঢাকা বিশ্ববিদ্যালয়');
-            });
-
-            document.getElementById('duFormSubmit').addEventListener('submit', function(e) {
-                e.preventDefault();
-                submitExamFinal('du', duQuestions.length);
-            });
-
-            document.getElementById('hscFormStart').addEventListener('submit', function(e) {
-                e.preventDefault();
-                startExamSession('hsc', 60, 45 * 60, 'HSC বোর্ড');
-            });
-
-            document.getElementById('hscFormSubmit').addEventListener('submit', function(e) {
-                e.preventDefault();
-                submitExamFinal('hsc', 60);
-            });
-
-            document.getElementById('subFormStart').addEventListener('submit', function(e) {
-                e.preventDefault();
-                let sub = document.getElementById('selected-subject').value;
-                if(!sub) {
-                    alert('দয়া করে একটি বিষয় নির্বাচন করুন।');
-                    return;
-                }
-                activeSubjectKey = sub;
-                startExamSession('sub', 100, 45 * 60, sub.toUpperCase());
-            });
-
-            document.getElementById('subFormSubmit').addEventListener('submit', function(e) {
-                e.preventDefault();
-                submitExamFinal('sub', 100);
-            });
-        };
-
-        // ট্যাব সুইচিং
-        function switchTab(tabId) {
-            document.querySelectorAll('.exam-section-card').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.menu-btn').forEach(el => el.classList.remove('active'));
-            
-            document.getElementById(tabId).classList.add('active');
-            if(window.event && window.event.currentTarget) {
-                window.event.currentTarget.classList.add('active');
-            }
-
-            if (tabId === 'leaderboard-sec') {
-                loadLeaderboard();
-            }
-
-            if (currentTimer) {
-                clearInterval(currentTimer);
-            }
-        }
-
-        function activateFocusMode() {
-            document.getElementById('mainMenuNav').style.display = 'none';
-        }
-
-        function deactivateFocusMode() {
-            document.getElementById('mainMenuNav').style.display = 'grid';
-        }
-
-        // এক্সাম সেশন শুরু ও প্রশ্ন রেন্ডার
-        function startExamSession(category, totalQ, totalSeconds, titleLabel) {
-            activeCategory = category;
-            studentName = document.getElementById(`${category}-name`).value;
-            studentCollege = document.getElementById(`${category}-college`).value;
-
-            let questionList = [];
-            if (category === 'du') {
-                questionList = duQuestions.map((item, idx) => ({
-                    id: idx + 1,
-                    title: `${idx + 1}. ${item.question}`,
-                    opts: item.options,
-                    ans: item.answer
-                }));
-            } else {
-                let poolKey = category === 'sub' ? activeSubjectKey : category;
-                questionList = getUniqueQuestionBank(poolKey, totalQ, titleLabel);
-            }
-
-            activateFocusMode();
-
-            document.getElementById(`${category}-form-box`).style.display = 'none';
-            document.getElementById(`${category}-exam-box`).style.display = 'block';
-
-            let displayName = studentName;
-            if(category === 'sub') {
-                displayName += ` [বিষয়: ${activeSubjectKey.toUpperCase()}]`;
-            }
-            document.getElementById(`${category}-candidate-info`).innerText = `শিক্ষার্থী: ${displayName} (${studentCollege})`;
-
-            let container = document.getElementById(`${category}-questions-container`);
-            let html = '';
-
-            questionList.forEach((q, idx) => {
-                html += `
-                    <div class="question-box" data-qindex="${idx}">
-                        <div class="question-title">${q.title}</div>
-                        <div class="options-list">
-                `;
-                q.opts.forEach((optText, optIdx) => {
-                    let isCorrectVal = (optIdx === q.ans) ? "1" : "0";
-                    html += `
-                        <label>
-                            <input type="radio" name="${category}_q_${idx}" value="${isCorrectVal}">
-                            ${optText}
-                        </label>
-                    `;
-                });
-                html += `
-                        </div>
-                    </div>
-                `;
-            });
-
-            container.innerHTML = html;
-            runTimer(category, totalSeconds);
-        }
-
-        // টাইমার
-        function runTimer(category, totalSeconds) {
-            const timerEl = document.getElementById(`${category}-timer`);
-            if(currentTimer) clearInterval(currentTimer);
-
-            currentTimer = setInterval(() => {
-                let m = Math.floor(totalSeconds / 60);
-                let s = totalSeconds % 60;
-                timerEl.innerText = `সময় বাকি: ${m < 10 ? '0'+m : m}:${s < 10 ? '0'+s : s}`;
-
-                if (totalSeconds <= 0) {
-                    clearInterval(currentTimer);
-                    alert("সময় শেষ! খাতা স্বয়ংক্রিয়ভাবে জমা হয়ে গেছে।");
-                    let countMap = { du: duQuestions.length, hsc: 60, sub: 100 };
-                    submitExamFinal(category, countMap[category]);
-                }
-                totalSeconds--;
-            }, 1000);
-        }
-
-        // ফাইনাল সাবমিশন ও রেজাল্ট ক্যালকুলেশন
-        function submitExamFinal(category, totalQ) {
-            if (currentTimer) clearInterval(currentTimer);
-
-            let correct = 0;
-            let incorrect = 0;
-            let unattempted = 0;
-
-            for (let i = 0; i < totalQ; i++) {
-        const selected = document.querySelector(`input[name="${category}_q_${i}"]:checked`);
-        const correctOpt = window[category + 'Questions'][i].ans;
-        
-        if (selected) {
-            if (parseInt(selected.value) === correctOpt) {
-                correct++;
-            } else {
-                incorrect++;
-            }
-        } else {
-            unattempted++;
-        }
-    }
-
-    // রেজাল্ট হিসাব ও প্রদর্শন
-    let resultBox = document.getElementById(`${category}-result-box`);
-    if (resultBox) {
-        resultBox.style.display = 'block';
-        document.getElementById(`${category}-exam-box`).style.display = 'none';
-        
-        document.getElementById(`${category}-correct`).innerText = correct;
-        document.getElementById(`${category}-incorrect`).innerText = incorrect;
-        document.getElementById(`${category}-unattempted`).innerText = unattempted;
-        
-        // প্রাপ্ত নম্বর বা অন্যান্য হিসাব থাকলে এখানে যোগ করতে পারেন
-        let totalMarks = correct * 1 - incorrect * 0.25; // নেগেটিভ মার্কিং থাকলে (ঐচ্ছিক)
-        let marksElem = document.getElementById(`${category}-marks`);
-        if (marksElem) {
-            marksElem.innerText = totalMarks >= 0 ? totalMarks : 0;
-        }
-    }
-}
-
-// এক্সাম রিটেস্ট বা ক্লোজ করার ফাংশন (প্রয়োজনীয় হলে)
-function closeExam(category) {
-    document.getElementById(`${category}-result-box`).style.display = 'none';
-    document.getElementById(`${category}-form-box`).style.display = 'block';
-}
-</script>
 
 </body>
 </html>
