@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Routine & Time-Setter - Varsity Vision</title>
+    
+    <!-- Noto Serif Bengali Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-main: linear-gradient(135deg, #090d16 0%, #171f33 50%, #090d16 100%);
+            --glass-card: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+            --btn-gradient: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+            --section-grad-1: linear-gradient(180deg, #0f172a 0%, #1e1b4b 100%);
+            --section-grad-2: linear-gradient(180deg, #1e1b4b 0%, #0f172a 100%);
+            --accent-blue: #38bdf8;
+            --accent-green: #34d399;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Serif Bengali', serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-main);
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-bottom: 50px;
+            background-attachment: fixed;
+        }
+
+        /* 📌 ফিক্সড নেভিগেশন */
+        .sticky-header-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            padding: 10px 4%;
+            background: rgba(9, 13, 22, 0.9);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .btn-back {
+            padding: 7px 18px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #38bdf8;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border-radius: 50px;
+            text-decoration: none;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background: var(--accent-blue);
+            color: #0f172a;
+        }
+
+        main {
+            margin-top: 85px;
+        }
+
+        .section-container {
+            padding: 40px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            background: linear-gradient(90deg, #ffffff, #93c5fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .section-desc {
+            text-align: center;
+            color: #cbd5e1;
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        /* ট্যাব নেভিগেশন */
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #cbd5e1;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-btn.active {
+            background: var(--btn-gradient);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.4);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: var(--glass-card);
+            backdrop-filter: blur(12px);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            margin-bottom: 25px;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: var(--accent-blue);
+            margin-bottom: 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #f8fafc;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .custom-select, .custom-input {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(15, 23, 42, 0.8);
+            color: #fff;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .custom-select:focus, .custom-input:focus {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            width: 100%;
+            padding: 13px 24px;
+            background: var(--btn-gradient);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 6px 25px rgba(37, 99, 235, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* পপ-আপ মডাল 스타일 */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(9, 13, 22, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 99999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-container {
+            background: #ffffff;
+            color: #0f172a;
+            border-radius: 20px;
+            max-width: 850px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            position: relative;
+            padding: 35px;
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: #f1f5f9;
+            border: none;
+            color: #ef4444;
+            font-size: 1.5rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .routine-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .routine-table th, .routine-table td {
+            border: 1px solid #cbd5e1;
+            padding: 10px 12px;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .routine-table th {
+            background-color: #f1f5f9;
+            color: #0f172a;
+            font-weight: 700;
+        }
+
+        .todo-print-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .todo-print-table th, .todo-print-table td {
+            border: 1px solid #cbd5e1;
+            padding: 12px 14px;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        .todo-print-table th {
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+
+        .checkbox-box {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #475569;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .print-footer-branding {
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px dashed #cbd5e1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #475569;
+        }
+
+        .social-brand-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600;
+        }
+
+        .fa-facebook { color: #1877f2; }
+        .fa-youtube { color: #ff0000; }
+
+        .list-box { list-style: none; }
+        .list-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(15, 23, 42, 0.7);
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 10px;
+        }
+        .list-item.completed span { text-decoration: line-through; color: #64748b; }
+        .btn-icon { background: transparent; border: none; color: #f43f5e; cursor: pointer; font-size: 1.1rem; }
+
+        /* প্রিন্ট কনট্রোল */
+        @media print {
+            body { background: #ffffff !important; color: #000000 !important; }
+            .no-print, .sticky-header-container, footer, .tab-container { display: none !important; }
+            .modal-overlay { position: static !important; background: none !important; display: block !important; padding: 0 !important; }
+            .modal-container { max-width: 100% !important; box-shadow: none !important; padding: 0 !important; max-height: none !important; }
+            .modal-close-btn, .modal-actions { display: none !important; }
+            
+            body.print-routine-mode #todo-modal-content { display: none !important; }
+            body.print-todo-mode #routine-modal-content { display: none !important; }
+        }
+
+        footer {
+            background: #020617;
+            color: #94a3b8;
+            text-align: center;
+            padding: 25px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- নেভিগেশন কার্ড -->
+    <div class="sticky-header-container no-print">
+        <div class="navbar-card">
+            <div class="brand">
+                <a href="index.html" class="brand-name">varsity vision</a>
+            </div>
+            <div>
+                <a href="index.html" class="btn-back">&larr; হোমপেজে ফিরুন</a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section class="section-container bg-grad-1 no-print">
+            <h2 class="section-title">পূর্ণাঙ্গ ডেইলি লাইফ ও স্টাডি টাইম-সেটার</h2>
+            <p class="section-desc">ঘুম, ফজর ও অন্যান্য ওয়াক্তের নামাজ, গোসল, খাওয়া এবং অধ্যায়ভিত্তিক পড়ার সুবিন্যস্ত রুটিন</p>
+
+            <div class="tab-container">
+                <button class="tab-btn active" onclick="switchTab('routine-tab')"><i class="fa-solid fa-clock"></i> দৈনিক রুটিন ও টাইম-সেটার</button>
+                <button class="tab-btn" onclick="switchTab('todo-tab')"><i class="fa-solid fa-list-check"></i> চেকলিস্ট টাইপ টু-ডু শিট</button>
+            </div>
+
+            <div style="max-width: 800px; margin: 0 auto;">
+                
+                <!-- ট্যাব ১: রুটিন জেনারেটর -->
+                <div id="routine-tab" class="tab-content active">
+                    <div class="card">
+                        <h3 class="card-title"><i class="fa-solid fa-sliders"></i> দৈনিক রুটিন কনফিগারেশন</h3>
+                        
+                        <div class="form-group">
+                            <label for="wake-time">ঘুম থেকে ওঠার সময়:</label>
+                            <input type="time" id="wake-time" class="custom-input" value="05:30">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="target-select">ভর্তি পরীক্ষার মূল টার্গেট:</label>
+                            <select id="target-select" class="custom-select">
+                                <option value="ঢাকা বিশ্ববিদ্যালয় ও সাধারণ ভার্সিটি (DU, GST)">ঢাকা বিশ্ববিদ্যালয় ও সাধারণ ভার্সিটি (DU, GST)</option>
+                                <option value="ইঞ্জিনিয়ারিং (BUET & CKET)">ইঞ্জিনিয়ারিং (BUET & CKET)</option>
+                                <option value="মেডিকেল (MBBS)">মেডিকেল (MBBS)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>১. প্রথম পড়ার বিষয় ও অধ্যায়:</label>
+                            <input type="text" id="sub1-input" class="custom-input" placeholder="যেমন: পদার্থবিজ্ঞান - ভেক্টর">
+                        </div>
+
+                        <div class="form-group">
+                            <label>২. দ্বিতীয় পড়ার বিষয় ও অধ্যায়:</label>
+                            <input type="text" id="sub2-input" class="custom-input" placeholder="যেমন: রসায়ন - জৈব যৌগ">
+                        </div>
+
+                        <div class="form-group">
+                            <label>৩. তৃতীয় পড়ার বিষয় ও অধ্যায়:</label>
+                            <input type="text" id="sub3-input" class="custom-input" placeholder="যেমন: ইংরেজি বা সাধারণ জ্ঞান / বাংলা">
+                        </div>
+
+                        <button class="btn-primary" onclick="generateRoutineModal()"><i class="fa-solid fa-calendar-check"></i> পূর্ণাঙ্গ রুটিন তৈরি করুন</button>
+                    </div>
+                </div>
+
+                <!-- ট্যাব ২: টু-ডু শিট জেনারেটর -->
+                <div id="todo-tab" class="tab-content">
+                    <div class="card">
+                        <h3 class="card-title"><i class="fa-solid fa-clipboard-list"></i> টু-ডু চেকলিস্ট শিট ম্যানেজার</h3>
+                        <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 15px;">আপনার পড়ার ধাপ ও কাজের বিবরণ এখানে যোগ করুন। প্রিন্ট অপশনে তারিখসহ চেকলিস্ট শিট পেয়ে যাবেন।</p>
+                        
+                        <div class="form-group">
+                            <div style="display: flex; gap: 10px;">
+                                <input type="text" id="todo-input" class="custom-input" placeholder="কাজের বিবরণ বা ধাপ লিখুন (যেমন: বায়োলজি ২য় পত্র রিভিশন)...">
+                                <button class="btn-primary" style="width: auto; margin-top: 0;" onclick="addTodo()">যোগ করুন</button>
+                            </div>
+                        </div>
+
+                        <ul id="todo-list" class="list-box" style="margin-top: 20px;">
+                            <!-- লিস্ট -->
+                        </ul>
+
+                        <button class="btn-primary" style="background: linear-gradient(135deg, #16a34a, #0d9488); margin-top: 20px;" onclick="openTodoPrintModal()">
+                            <i class="fa-solid fa-print"></i> চেকলিস্ট প্রিন্ট / PDF শিট দেখুন
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- পপ-আপ মডাল -->
+    <div id="routine-modal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-container" onclick="event.stopPropagation()">
+            <button class="modal-close-btn" onclick="closeModalDirect()">&times;</button>
+            
+            <!-- রুটিন প্রিন্ট কন্টেন্ট -->
+            <div id="routine-modal-content">
+                <div style="text-align: center; border-bottom: 2px solid #0f172a; padding-bottom: 10px; margin-bottom: 15px;">
+                    <h2 style="color: #0f172a; font-size: 1.6rem;">Varsity Vision - Daily Master Routine</h2>
+                    <p style="color: #64748b; font-size: 0.9rem;">নামাজ, প্রার্থনা, ঘুম, খাওয়া ও পড়াশোনার সমন্বিত সময়সূচি</p>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; font-size: 0.9rem; color: #475569; font-weight: 600; margin-bottom: 15px;">
+                    <div>ঘুম থেকে ওঠা: <span id="out-wake" style="color: #020617;"></span></div>
+                    <div>টার্গেট: <span id="modal-target" style="color: #020617;"></span></div>
+                </div>
+
+                <table class="routine-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">সময়</th>
+                            <th style="width: 30%;">কার্যক্রম / ক্যাটাগরি</th>
+                            <th style="width: 45%;">বিস্তারিত বিবরণ ও পড়ার বিষয়</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modal-table-body">
+                        <!-- ডাইনামিক রো -->
+                    </tbody>
+                </table>
+
+                <div class="modal-actions" style="margin-top: 20px; text-align: center;">
+                    <button class="btn-primary" style="background: linear-gradient(135deg, #16a34a, #0d9488); width: auto; padding: 12px 30px;" onclick="printRoutinePage()">
+                        <i class="fa-solid fa-download"></i> রুটিন ডাউনলোড / প্রিন্ট করুন (PDF)
+                    </button>
+                </div>
+
+                <div class="print-footer-branding">
+                    <div class="social-brand-item"><i class="fa-brands fa-facebook"></i> facebook.com/varsityvision</div>
+                    <div style="font-weight: 700; color: #0f172a;">Varsity Vision — Daily Routine</div>
+                    <div class="social-brand-item"><i class="fa-brands fa-youtube"></i> youtube.com/@varsityvision</div>
+                </div>
+            </div>
+
+            <!-- টু-ডু চেকলিস্ট প্রিন্ট কন্টেন্ট -->
+            <div id="todo-modal-content" style="display: none;">
+                <div style="text-align: center; border-bottom: 2px solid #0f172a; padding-bottom: 10px; margin-bottom: 15px;">
+                    <h2 style="color: #0f172a; font-size: 1.6rem;">Varsity Vision - Daily Task Checklist Sheet</h2>
+                    <p style="color: #64748b; font-size: 0.9rem;">শিক্ষার্থীর কর্মপরিকল্পনা ও ধাপসমূহ</p>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; font-size: 0.95rem; color: #475569; font-weight: 600; margin-bottom: 15px;">
+                    <div>তারিখ: _______________________</div>
+                    <div>বার: ___________________</div>
+                </div>
+
+                <table class="todo-print-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%; text-align: center;">✓</th>
+                            <th style="width: 25%;">কাজের ধাপ / ক্যাটাগরি</th>
+                            <th style="width: 45%;">কাজের বিবরণ (পড়া / টাস্ক)</th>
+                            <th style="width: 20%;">নোট / স্ট্যাটাস</th>
+                        </tr>
+                    </thead>
+                    <tbody id="todo-print-tbody">
+                        <!-- ডাইনামিক রো -->
+                    </tbody>
+                </table>
+
+                <div class="modal-actions" style="margin-top: 20px; text-align: center;">
+                    <button class="btn-primary" style="background: linear-gradient(135deg, #16a34a, #0d9488); width: auto; padding: 12px 30px;" onclick="printTodoPage()">
+                        <i class="fa-solid fa-download"></i> চেকলিস্ট শিট প্রিন্ট / PDF করুন
+                    </button>
+                </div>
+
+                <div class="print-footer-branding">
+                    <div class="social-brand-item"><i class="fa-brands fa-facebook"></i> facebook.com/varsityvision</div>
+                    <div style="font-weight: 700; color: #0f172a;">Varsity Vision — Checklist Sheet</div>
+                    <div class="social-brand-item"><i class="fa-brands fa-youtube"></i> youtube.com/@varsityvision</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ফুটার -->
+    <footer class="no-print">
+        <p>&copy; ২০২৬ Varsity Vision। সর্বস্বত্ব সংরক্ষিত।</p>
+        <p style="margin-top: 5px; font-size: 0.85rem; color: #64748b;">সম্পাদনা : জুনায়েদ তনয়</p>
+    </footer>
+
+    <!-- জাভাস্ক্রিপ্ট লজিক -->
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        // টাইম-সেটার রুটিন জেনারেটর (ঘুম, ফজর, নামাজ, গোসল, খাওয়া ও পড়াশোনা আলাদা কলামসহ)
+        function generateRoutineModal() {
+            const wakeTime = document.getElementById("wake-time").value || "05:30";
+            const target = document.getElementById("target-select").value;
+            
+            const sub1 = document.getElementById("sub1-input").value.trim() || "পদার্থবিজ্ঞান ১ম পত্র (ভেক্টর)";
+            const sub2 = document.getElementById("sub2-input").value.trim() || "রসায়ন ২য় পত্র (জৈব যৌগ)";
+            const sub3 = document.getElementById("sub3-input").value.trim() || "ইংরেজি / বাংলা ব্যাকরণ";
+
+            document.getElementById("out-wake").innerText = wakeTime;
+            document.getElementById("modal-target").innerText = target;
+
+            const tbody = document.getElementById("modal-table-body");
+            tbody.innerHTML = "";
+
+            const routineData = [
+                { time: `${wakeTime} - ${addMinutes(wakeTime, 25)}`, category: "ওজু ও প্রস্তুতি", details: "ঘুম থেকে ওঠা, ফ্রেশ হওয়া এবং ফজর নামাজের প্রস্তুতি" },
+                { time: `${addMinutes(wakeTime, 25)} - ${addMinutes(wakeTime, 60)}`, category: "নামাজ / প্রার্থনা", details: "ফজর নামাজ আদায় এবং পবিত্র কোরআন বা তেলাওয়াত/প্রার্থনা" },
+                { time: `${addMinutes(wakeTime, 60)} - ${addMinutes(wakeTime, 180)}`, category: "পড়াশোনা (সেশন ১)", details: `<strong>${sub1}</strong> (সকালের শান্ত পরিবেশে মূল বই পড়া ও কনসেপ্ট ক্লিয়ারিং)` },
+                { time: `${addMinutes(wakeTime, 180)} - ${addMinutes(wakeTime, 210)}`, category: "নাস্তা ও গোসল", details: "সকালের পুষ্টিকর নাস্তা গ্রহণ ও গোসল সম্পন্ন করে রিফ্রেশ হওয়া" },
+                { time: `${addMinutes(wakeTime, 210)} - ${addMinutes(wakeTime, 330)}`, category: "পড়াশোনা (সেশন ২)", details: `<strong>${sub2}</strong> (থিওরি পড়া ও গাণিতিক সমস্যা সমাধান)` },
+                { time: `দুপুর ১২:৩০ - ০১:৩০`, category: "নামাজ ও বিরতি", details: "যুহর নামাজ আদায় ও বিশ্রাম" },
+                { time: `দুপুর ০১:৩০ - ০২:৩০`, category: "দুপুরের খাবার", details: "দুপুরের খাবার গ্রহণ ও সংক্ষিপ্ত বিশ্রাম (পাওয়ার ন্যাপ)" },
+                { time: `দুপুর ০২:৩০ - ০৪:৩০`, category: "পড়াশোনা (সেশন ৩)", details: `<strong>${sub3}</strong> (রিভিশন, শর্ট নোট তৈরি ও অনুশীলন)` },
+                { time: `বিকাল ০৪:৩০ - ০৫:৩০`, category: "নামাজ ও রিলাক্স", details: "আসর নামাজ আদায় + হালকা হাঁটাচলা ও মানসিক ক্লান্তি দূর করা" },
+                { time: `সন্ধ্যা ০৬:০০ - ০৭:৩০`, category: "নামাজ ও রিভিশন", details: "মাগরিব নামাজ আদায় + সারদিনের পড়ার মূল পয়েন্টগুলো দ্রুত চোখ বুলিয়ে নেওয়া" },
+                { time: `রাত ০৮:০০ - ১০:০০`, category: "অ্যাডমিশন ফোকাস", details: `<strong>প্রশ্ন ব্যাংক সলভ & মডেল টেস্ট:</strong> GK, English Vocabulary বা ভার্সিটি প্রশ্ন ব্যাংক সমাধান (${target})` },
+                { time: `রাত ১০:০০ - ১০:৩০`, category: "নামাজ ও খাবার", details: "এশা নামাজ আদায় ও রাতের খাবার গ্রহণ" },
+                { time: `রাত ১০:৩০ - ১১:০০`, category: "ঘুম প্রস্তুতি", details: "আগামীকালের টু-ডু লিস্ট তৈরি ও ঘুমের প্রস্তুতি (ঘুমানোর সুনির্দিষ্ট সময়)" }
+            ];
+
+            routineData.forEach(slot => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `<td>${slot.time}</td><td><strong>${slot.category}</strong></td><td>${slot.details}</td>`;
+                tbody.appendChild(tr);
+            });
+
+            document.getElementById("routine-modal-content").style.display = "block";
+            document.getElementById("todo-modal-content").style.display = "none";
+            document.getElementById("routine-modal").style.display = "flex";
+        }
+
+        function addMinutes(timeStr, mins) {
+            let [h, m] = timeStr.split(':').map(Number);
+            let date = new Date();
+            date.setHours(h, m + mins);
+            return String(date.getHours()).padStart(2, '0') + ':' + String(date.getMinutes()).padStart(2, '0');
+        }
+
+        function openTodoPrintModal() {
+            const tbody = document.getElementById("todo-print-tbody");
+            tbody.innerHTML = "";
+
+            if (todos.length > 0) {
+                todos.forEach((t, index) => {
+                    const tr = document.createElement("tr");
+                    tr.innerHTML = `
+                        <td style="text-align: center;"><span class="checkbox-box">${t.completed ? '✓' : ''}</span></td>
+                        <td>ধাপ - ${index + 1}</td>
+                        <td>${t.text}</td>
+                        <td></td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            } else {
+                for (let i = 1; i <= 8; i++) {
+                    const tr = document.createElement("tr");
+                    tr.innerHTML = `
+                        <td style="text-align: center;"><span class="checkbox-box"></span></td>
+                        <td>ধাপ - ${i}</td>
+                        <td style="height: 35px;"></td>
+                        <td></td>
+                    `;
+                    tbody.appendChild(tr);
+                }
+            }
+
+            document.getElementById("routine-modal-content").style.display = "none";
+            document.getElementById("todo-modal-content").style.display = "block";
+            document.getElementById("routine-modal").style.display = "flex";
+        }
+
+        function closeModalDirect() {
+            document.getElementById("routine-modal").style.display = "none";
+        }
+
+        function closeModal(e) {
+            if (e.target.id === "routine-modal") {
+                document.getElementById("routine-modal").style.display = "none";
+            }
+        }
+
+        function printRoutinePage() {
+            document.body.classList.remove('print-todo-mode');
+            document.body.classList.add('print-routine-mode');
+            window.print();
+        }
+
+        function printTodoPage() {
+            document.body.classList.remove('print-routine-mode');
+            document.body.classList.add('print-todo-mode');
+            window.print();
+        }
+
+        // টু-ডু ম্যানেজমেন্ট
+        let todos = JSON.parse(localStorage.getItem("vv_todos_sheet")) || [];
+
+        function renderTodos() {
+            const list = document.getElementById("todo-list");
+            list.innerHTML = "";
+
+            todos.forEach((item, index) => {
+                const li = document.createElement("li");
+                li.className = `list-item ${item.completed ? 'completed' : ''}`;
+                li.innerHTML = `
+                    <span onclick="toggleTodo(${index})" style="cursor:pointer;">
+                        ${item.completed ? '✓ ' : '○ '} ${item.text}
+                    </span>
+                    <button class="btn-icon" onclick="deleteTodo(${index})"><i class="fa-solid fa-trash-can"></i></button>
+                `;
+                list.appendChild(li);
+            });
+
+            localStorage.setItem("vv_todos_sheet", JSON.stringify(todos));
+        }
+
+        function addTodo() {
+            const input = document.getElementById("todo-input");
+            const text = input.value.trim();
+            if (text) {
+                todos.push({ text, completed: false });
+                input.value = "";
+                renderTodos();
+            }
+        }
+
+        function toggleTodo(index) {
+            todos[index].completed = !todos[index].completed;
+            renderTodos();
+        }
+
+        function deleteTodo(index) {
+            todos.splice(index, 1);
+            renderTodos();
+        }
+
+        renderTodos();
+    </script>
+</body>
+</html>
