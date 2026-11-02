@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Model Test - Varsity Vision</title>
+    
+    <!-- Noto Serif Bengali Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-main: linear-gradient(135deg, #090d16 0%, #171f33 50%, #090d16 100%);
+            --glass-card: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+            --btn-gradient: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Serif Bengali', serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-main);
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-attachment: fixed;
+        }
+
+        /* 📌 স্টিকি নেভিগেশন বার */
+        .sticky-header-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            padding: 10px 4%;
+            background: rgba(9, 13, 22, 0.9);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        .brand-subtitle {
+            font-size: 0.75rem;
+            color: #38bdf8;
+            font-weight: 600;
+            display: block;
+        }
+
+        .btn-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 18px;
+            background: #0f172a;
+            color: #38bdf8;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border-radius: 50px;
+            text-decoration: none;
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            transition: 0.3s;
+        }
+        .btn-home:hover {
+            background: var(--btn-gradient);
+            color: #fff;
+        }
+
+        /* 📌 মূল লেআউট */
+        main {
+            margin-top: 85px;
+            flex: 1;
+            padding: 30px 6%;
+            max-width: 1000px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card {
+            background: var(--glass-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            margin-bottom: 25px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .card h2 {
+            color: #38bdf8;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #cbd5e1;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 12px 22px;
+            background: var(--btn-gradient);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+            transition: 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        /* 📌 এক্সাম সেকশন ও টাইমার */
+        #exam-section {
+            display: none;
+        }
+
+        .exam-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.85);
+            padding: 15px 25px;
+            border-radius: 14px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            position: sticky;
+            top: 80px;
+            z-index: 99;
+            backdrop-filter: blur(10px);
+            margin-bottom: 25px;
+        }
+
+        .timer-box {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #f87171;
+            background: rgba(239, 68, 68, 0.1);
+            padding: 6px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .question-card {
+            background: var(--glass-card);
+            backdrop-filter: blur(12px);
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .question-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #f8fafc;
+            margin-bottom: 15px;
+        }
+
+        .options-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .options-list li label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            cursor: pointer;
+            transition: 0.2s;
+            color: #cbd5e1;
+        }
+
+        .options-list li label:hover {
+            background: rgba(56, 189, 248, 0.1);
+            border-color: rgba(56, 189, 248, 0.3);
+            color: #fff;
+        }
+
+        .options-list input[type="radio"] {
+            accent-color: #06b6d4;
+        }
+
+        #result-section {
+            display: none;
+            text-align: center;
+        }
+
+        .result-box {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #38bdf8;
+            margin: 20px 0;
+        }
+
+        /* 📌 ফুটার */
+        footer {
+            background: #020617;
+            color: #94a3b8;
+            text-align: center;
+            padding: 25px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: auto;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                margin-top: 75px;
+                padding: 20px 4%;
+            }
+            .exam-header {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 📌 স্টিকি নেভিগেশন বার -->
+    <div class="sticky-header-container">
+        <div class="navbar-card">
+            <div>
+                <a href="english.html" class="brand-name">varsity vision</a>
+                <span class="brand-subtitle">English Model Test</span>
+            </div>
+            <div>
+                <a href="english.html" class="btn-home">
+                    <i class="fa-solid fa-arrow-left"></i> পেজে ফিরে যান
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 📌 মূল কনটেন্ট -->
+    <main>
+        <!-- ১. স্টুডেন্ট রেজিস্ট্রেশন ফর্ম -->
+        <div id="reg-section" class="card">
+            <h2>English Admission Model Test</h2>
+            <p style="color: #94a3b8; margin-bottom: 20px;">পরীক্ষায় অংশ নিতে আপনার নাম ও কলেজের নাম দিয়ে 'Start Exam' বাটনে ক্লিক করুন। মোট প্রশ্ন: ৬০টি (Textual & Vocab: ৪০, Grammar: ২০)। সময়: ৩০ মিনিট।</p>
+            
+            <div class="form-group">
+                <label for="student-name">আপনার নাম:</label>
+                <input type="text" id="student-name" class="form-control" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="college-name">কলেজের নাম:</label>
+                <input type="text" id="college-name" class="form-control" placeholder="Enter your college name" required>
+            </div>
+
+            <button type="button" class="btn-primary" onclick="startExam()">
+                <i class="fa-solid fa-play"></i> Start Exam
+            </button>
+        </div>
+
+        <!-- ২. মূল পরীক্ষা ও প্রশ্নপত্র সেকশন -->
+        <div id="exam-section">
+            <div class="exam-header">
+                <div>
+                    <h3 id="display-user-info" style="color: #38bdf8; font-size: 1.1rem;">Candidate: </h3>
+                </div>
+                <div class="timer-box">
+                    <i class="fa-solid fa-clock"></i> Time Left: <span id="time">30:00</span>
+                </div>
+            </div>
+
+            <form id="quiz-form">
+                <div id="questions-container"></div>
+
+                <button type="button" class="btn-primary" onclick="submitExam()" style="margin-top: 20px; padding: 15px;">
+                    <i class="fa-solid fa-check-to-slot"></i> Submit Exam
+                </button>
+            </form>
+        </div>
+
+        <!-- ৩. রেজাল্ট সেকশন -->
+        <div id="result-section" class="card">
+            <h2>Exam Results</h2>
+            <div class="result-box" id="score-display"></div>
+            <p id="feedback-text" style="color: #cbd5e1; font-size: 1.1rem; margin-bottom: 20px;"></p>
+            <a href="english.html" class="btn-primary" style="text-decoration: none;">Go to English Hub</a>
+        </div>
+    </main>
+
+    <!-- 📌 ফুটার -->
+    <footer>
+        <p>&copy; ২০২৬ Varsity Vision। সর্বস্বত্ব সংরক্ষিত।</p>
+        <p style="margin-top: 5px; font-size: 0.85rem; color: #64748b;">সম্পাদনা : জুনায়েদ তনয়</p>
+    </footer>
+
+    <!-- 📌 ভর্তি পরীক্ষা স্ট্যান্ডার্ড ৬০টি প্রশ্ন ও লজিক -->
+    <script>
+        const questionsData = [
+            // --- Textual English & Vocabulary (1 - 40) ---
+            { q: "1. The speech of 7th March was included in the Memory of the World International Register by UNESCO in which year?", options: ["2015", "2017", "2019", "2021"], answer: 1 },
+            { q: "2. What is the synonym of the word 'Apartheid'?", options: ["Harmonization", "Racial Segregation", "Emancipation", "Integration"], answer: 1 },
+            { q: "3. In 'The Luncheon', what was the age of the writer when he met the lady?", options: ["20 years", "25 years", "20 years ago", "30 years"], answer: 2 },
+            { q: "4. The word 'Emancipation' stands for —", options: ["Bondage", "Slavery", "Liberation", "Restraint"], answer: 2 },
+            { q: "5. Langston Hughes compares a broken dream to a —", options: ["broken-winged bird", "barren field", "dry leaf", "fading sun"], answer: 0 },
+            { q: "6. D.H. Lawrence notes that the dreams of the day are —", options: ["harmless", "dangerous", "elusive", "confusing"], answer: 1 },
+            { q: "7. Jerry in 'Mother in Mannville' possessed a 'substrate of' —", options: ["honesty", "integrity", "kindness", "bravery"], answer: 1 },
+            { q: "8. Kuakata is locally known as —", options: ["Sagar Kanya", "Daughter of Sea", "Sea Paradise", "Both A & B"], answer: 3 },
+            { q: "9. S.T. Coleridge wrote the poem —", options: ["To Daffodils", "The Rime of the Ancient Mariner", "Ozymandias", "The Patriot"], answer: 1 },
+            { q: "10. What is the antonym of 'Pristine'?", options: ["Unspoiled", "Pure", "Polluted", "Immaculate"], answer: 2 },
+            { q: "11. 'Foyot's' in the story 'The Luncheon' is a —", options: ["Hotel", "Restaurant", "Museum", "Park"], answer: 1 },
+            { q: "12. The word 'Biodiversity' means —", options: ["Ecological variety", "Monoculture", "Plant life", "Animal breeding"], answer: 0 },
+            { q: "13. Valentina Tereshkova was launched into space in the spacecraft named —", options: ["Vostok 5", "Vostok 6", "Apollo 11", "Sputnik 1"], answer: 1 },
+            { q: "14. Kalpana Chawla was born in —", options: ["Karnal, India", "Delhi, India", "Houston, USA", "Punjab, India"], answer: 0 },
+            { q: "15. What is the synonym of 'Diligent'?", options: ["Lazy", "Industrious", "Careless", "Idle"], answer: 1 },
+            { q: "16. Choose the correct spelling:", options: ["Bureaucracy", "Beurocracy", "Burocracy", "Bureaucracey"], answer: 0 },
+            { q: "17. What is the antonym of 'Benevolent'?", options: ["Kind", "Malevolent", "Generous", "Friendly"], answer: 1 },
+            { q: "18. Choose the correct spelling:", options: ["Questionaire", "Questionnaire", "Questionair", "Questionnare"], answer: 1 },
+            { q: "19. The idiom 'Apple of discord' means —", options: ["A sweet fruit", "Subject of dispute", "Very dear", "Peaceful condition"], answer: 1 },
+            { q: "20. The synonym of 'Candid' is —", options: ["Frank", "Secretive", "Evasive", "Deceitful"], answer: 0 },
+            { q: "21. What is the meaning of 'Crocodile tears'?", options: ["Genuine sorrow", "False tears", "Heavy rain", "Animal emotion"], answer: 1 },
+            { q: "22. What is the antonym of 'Barren'?", options: ["Infertile", "Unproductive", "Fertile", "Dry"], answer: 2 },
+            { q: "23. Choose the correct spelling:", options: ["Millenium", "Millennium", "Milennium", "Milenium"], answer: 1 },
+            { q: "24. 'A bed of roses' means —", options: ["A difficult path", "A comfortable situation", "Full of thorns", "Garden"], answer: 1 },
+            { q: "25. Synonym of 'Vivid' is —", options: ["Graphic", "Dull", "Vague", "Dim"], answer: 0 },
+            { q: "26. Antonym of 'Abundant' is —", options: ["Plentiful", "Scarce", "Ample", "Rich"], answer: 1 },
+            { q: "27. Choose the correct spelling:", options: ["Acommodation", "Accommodation", "Accomodation", "Acomodation"], answer: 1 },
+            { q: "28. 'Etiquette' refers to —", options: ["Rules of correct behavior", "Moral principles", "Culture", "Habits"], answer: 0 },
+            { q: "29. What is the synonym of 'Turbulence'?", options: ["Calmness", "Chaos", "Peace", "Quiet"], answer: 1 },
+            { q: "30. The word 'Sanctuary' refers to a —", options: ["Haven", "Danger zone", "Market", "City"], answer: 0 },
+            { q: "31. Choose the correct spelling:", options: ["Renaissance", "Renascence", "Renaisance", "Ranaissance"], answer: 0 },
+            { q: "32. The idiom 'Hard nut to crack' means —", options: ["Easy job", "A difficult problem", "Fresh nut", "Simple test"], answer: 1 },
+            { q: "33. Antonym of 'Courtesy' is —", options: ["Politeness", "Rudeness", "Civility", "Respect"], answer: 1 },
+            { q: "34. Nelson Mandela spent how many years in prison?", options: ["18 years", "27 years", "30 years", "25 years"], answer: 1 },
+            { q: "35. Synonym of 'Elusive' is —", options: ["Fleeting", "Tangible", "Definite", "Permanent"], answer: 0 },
+            { q: "36. Choose the correct spelling:", options: ["Lieutenant", "Leftenant", "Lieutenent", "Leiftenant"], answer: 0 },
+            { q: "37. What is the antonym of 'Vindictive'?", options: ["Revengeful", "Forgiving", "Spiteful", "Hostile"], answer: 1 },
+            { q: "38. 'Substrate' means —", options: ["Foundation", "Surface", "Roof", "Top"], answer: 0 },
+            { q: "39. What is the synonym of 'Compunction'?", options: ["Remorse", "Joy", "Satisfaction", "Pride"], answer: 0 },
+            { q: "40. Choose the correct spelling:", options: ["Surveillance", "Surveillence", "Surveilance", "Survelance"], answer: 0 },
+
+            // --- English Grammar Section (41 - 60) ---
+            { q: "41. It is high time we _______ our bad habits.", options: ["change", "changed", "had changed", "will change"], answer: 1 },
+            { q: "42. I went there with a view to _______ him.", options: ["meet", "meeting", "met", "to meet"], answer: 1 },
+            { q: "43. Neither he nor his friends _______ present in the meeting yesterday.", options: ["was", "were", "is", "are"], answer: 1 },
+            { q: "44. You must abstain _______ smoking.", options: ["from", "to", "at", "by"], answer: 0 },
+            { q: "45. If I _______ a king, I would help the poor.", options: ["am", "was", "were", "had been"], answer: 2 },
+            { q: "46. One of my friends _______ a talented doctor.", options: ["are", "is", "were", "have been"], answer: 1 },
+            { q: "47. If you had informed me earlier, I _______ you.", options: ["would help", "will help", "would have helped", "helped"], answer: 2 },
+            { q: "48. He is accustomed _______ hard work.", options: ["to", "with", "for", "in"], answer: 0 },
+            { q: "49. Slow and steady _______ the race.", options: ["win", "wins", "has won", "winning"], answer: 1 },
+            { q: "50. He talked as if he _______ everything.", options: ["knows", "knew", "had known", "has known"], answer: 1 },
+            { q: "51. He as well as his companions _______ present.", options: ["were", "was", "are", "have been"], answer: 1 },
+            { q: "52. No sooner had the teacher entered the classroom _______ the students stood up.", options: ["when", "then", "than", "before"], answer: 2 },
+            { q: "53. The boy prefers reading _______ writing.", options: ["than", "to", "from", "for"], answer: 1 },
+            { q: "54. Ten miles _______ a long distance to walk.", options: ["are", "is", "were", "have been"], answer: 1 },
+            { q: "55. He died _______ over-eating.", options: ["of", "from", "by", "for"], answer: 1 },
+            { q: "56. Identify the correct sentence:", options: ["He is taller than me.", "He is taller than I.", "He is more tall than I.", "He is tallest than me."], answer: 1 },
+            { q: "57. I look forward to _______ from you soon.", options: ["hear", "hearing", "heard", "to hear"], answer: 1 },
+            { q: "58. Scarcely had I reached the station _______ the train left.", options: ["than", "when", "then", "before"], answer: 1 },
+            { q: "59. Bread and butter _______ my favorite breakfast.", options: ["are", "is", "were", "have been"], answer: 1 },
+            { q: "60. The police _______ searching for the thief.", options: ["is", "are", "was", "has been"], answer: 1 }
+        ];
+
+        let timer;
+        let timeLeft = 1800; // 30 minutes
+
+        function startExam() {
+            const name = document.getElementById('student-name').value.trim();
+            const college = document.getElementById('college-name').value.trim();
+
+            if(!name || !college) {
+                alert('Please enter your name and college name!');
+                return;
+            }
+
+            document.getElementById('display-user-info').innerText = `Candidate: ${name} (${college})`;
+            document.getElementById('reg-section').style.display = 'none';
+            document.getElementById('exam-section').style.display = 'block';
+
+            loadQuestions();
+            startTimer();
+        }
+
+        function loadQuestions() {
+            const container = document.getElementById('questions-container');
+            let html = '';
+
+            questionsData.forEach((item, index) => {
+                html += `
+                    <div class="question-card">
+                        <div class="question-title">${item.q}</div>
+                        <ul class="options-list">
+                `;
+                item.options.forEach((opt, optIndex) => {
+                    html += `
+                        <li>
+                            <label>
+                                <input type="radio" name="q${index}" value="${optIndex}">
+                                ${opt}
+                            </label>
+                        </li>
+                    `;
+                });
+                html += `</ul></div>`;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function startTimer() {
+            timer = setInterval(() => {
+                let minutes = Math.floor(timeLeft / 60);
+                let seconds = timeLeft % 60;
+
+                minutes = minutes < 10 ? '0' + minutes : minutes;
+                seconds = seconds < 10 ? '0' + seconds : seconds;
+
+                document.getElementById('time').innerText = `${minutes}:${seconds}`;
+
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    alert('Time is up! Your answer sheet has been submitted automatically.');
+                    submitExam();
+                }
+                timeLeft--;
+            }, 1000);
+        }
+
+        function submitExam() {
+            clearInterval(timer);
+            let score = 0;
+
+            questionsData.forEach((item, index) => {
+                const selected = document.querySelector(`input[name="q${index}"]:checked`);
+                if (selected && parseInt(selected.value) === item.answer) {
+                    score++;
+                }
+            });
+
+            document.getElementById('exam-section').style.display = 'none';
+            document.getElementById('result-section').style.display = 'block';
+
+            document.getElementById('score-display').innerText = `Your Score: ${score} / 60`;
+            
+            let feedback = '';
+            if(score >= 50) feedback = 'Outstanding! Excellent preparation for University Admission.';
+            else if(score >= 35) feedback = 'Good Job! Review grammar rules and vocabulary to improve further.';
+            else feedback = 'Needs Improvement. Revise the textual sheets and grammar topics thoroughly.';
+            
+            document.getElementById('feedback-text').innerText = feedback;
+        }
+    </script>
+</body>
+</html>
