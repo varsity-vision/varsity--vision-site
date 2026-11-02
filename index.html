@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Varsity Vision - বিশ্ববিদ্যালয় ভর্তি প্রস্তুতি প্লাটফর্ম</title>
     
+    <!-- 📌 PWA ও অ্যাপ আইকন লিঙ্ক -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#002D62">
+    <link rel="apple-touch-icon" href="image_2.png">
+
     <!-- 📌 সোশ্যাল মিডিয়া লিংক শেয়ার প্রিভিউ মেটা ট্যাগ -->
     <meta property="og:title" content="Varsity Vision - বিশ্ববিদ্যালয় ভর্তি প্রস্তুতি প্লাটফর্ম">
     <meta property="og:description" content="আপনার স্বপ্নের বিশ্ববিদ্যালয়ে পৌঁছানোর যাত্রায় সেরা গাইডলাইন ও ভর্তি প্রস্তুতি প্ল্যাটফর্ম।">
@@ -1045,7 +1050,7 @@
         <p style="margin-top: 5px; font-size: 0.85rem; color: #64748b;">সম্পাদনা : জুনায়েদ তনয়</p>
     </footer>
 
-    <!-- জাভাস্ক্রিপ্ট লজিক -->
+    <!-- জাভাস্ক্রিপ্ট লজিক ও সার্ভিস ওয়ার্কার রেজিস্ট্রেশন -->
     <script>
         // স্লাইডার নেভিগেশন লজিক
         function slideContainer(sliderId, direction) {
@@ -1109,6 +1114,17 @@
         function handleEnrollmentSubmit(e) {
             e.preventDefault();
             window.location.href = 'payment.html';
+        }
+
+        // 📌 PWA সার্ভিস ওয়ার্কার রেজিস্ট্রেশন
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js').then(function(registration) {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function(err) {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
         }
     </script>
 </body>
