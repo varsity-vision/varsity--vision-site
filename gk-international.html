@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আন্তর্জাতিক বিষয়াবলি - Varsity Vision</title>
+    
+    <!-- Noto Serif Bengali Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-main: linear-gradient(135deg, #090d16 0%, #171f33 50%, #090d16 100%);
+            --glass-card: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+            --glass-card-hover: linear-gradient(135deg, rgba(56, 189, 248, 0.15) 0%, rgba(99, 102, 241, 0.2) 100%);
+            --btn-gradient: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+            --section-grad-1: linear-gradient(180deg, #0f172a 0%, #1e1b4b 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Serif Bengali', serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-main);
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-bottom: 50px;
+            background-attachment: fixed;
+        }
+
+        /* 📌 ফিক্সড স্লিম স্টিকি নেভিগেশন কার্ড */
+        .sticky-header-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            padding: 10px 4%;
+            background: rgba(9, 13, 22, 0.9);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+        }
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+        .brand-subtitle {
+            font-size: 0.75rem;
+            color: #38bdf8;
+            font-weight: 600;
+        }
+
+        /* জিকে পেজে ফিরে যাওয়ার বাটন */
+        .home-btn-box {
+            background: var(--btn-gradient);
+            padding: 2px;
+            border-radius: 50px;
+            box-shadow: 0 0 12px rgba(37, 99, 235, 0.4);
+            transition: transform 0.2s;
+        }
+        .home-btn-box:hover {
+            transform: scale(1.05);
+        }
+        .btn-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 18px;
+            background: #0f172a;
+            color: #38bdf8;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .btn-home:hover {
+            background: transparent;
+            color: #ffffff;
+        }
+
+        /* 📌 সেকশন লেআউট */
+        main {
+            margin-top: 85px;
+            flex: 1;
+        }
+        .section-container {
+            padding: 50px 6%;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .bg-grad-1 { background: var(--section-grad-1); border-radius: 24px; margin-top: 20px;}
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            background: linear-gradient(90deg, #ffffff, #93c5fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        .section-desc {
+            text-align: center;
+            color: #cbd5e1;
+            margin-bottom: 40px;
+            font-size: 1rem;
+        }
+
+        /* ইনফো কার্ড লেআউট (তথ্যসমৃদ্ধ বক্স) */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .info-card {
+            background: var(--glass-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+            transition: all 0.3s ease;
+        }
+        .info-card:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 12px 40px rgba(56, 189, 248, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .info-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
+        }
+
+        .info-icon {
+            font-size: 1.8rem;
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.1);
+            padding: 12px;
+            border-radius: 14px;
+        }
+
+        .info-title {
+            font-size: 1.3rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        /* পয়েন্ট বা লিস্ট স্টাইল */
+        .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .bullet-list li {
+            position: relative;
+            padding-left: 20px;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .bullet-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #06b6d4;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .bullet-list li strong {
+            color: #f1f5f9;
+        }
+
+        /* ফুটার */
+        footer {
+            background: #020617;
+            color: #94a3b8;
+            text-align: center;
+            padding: 25px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .section-container {
+                padding: 30px 4%;
+            }
+            .section-title {
+                font-size: 1.7rem;
+            }
+            main {
+                margin-top: 75px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 📌 ফিক্সড স্লিম নেভিগেশন কার্ড -->
+    <div class="sticky-header-container">
+        <div class="navbar-card">
+            <div class="brand">
+                <a href="gk.html" class="brand-name">varsity vision</a>
+                <span class="brand-subtitle">আন্তর্জাতিক বিষয়াবলি নোটস</span>
+            </div>
+            <div class="home-btn-box">
+                <a href="gk.html" class="btn-home">
+                    <i class="fa-solid fa-arrow-left"></i> জিকে সেকশনে ফিরে যান
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- মূল কনটেন্ট ও তথ্যভাণ্ডার -->
+    <main>
+        <div class="section-container bg-grad-1">
+            <h2 class="section-title">আন্তর্জাতিক বিষয়াবলি: সারসংক্ষেপ ও প্রস্তুতি নোট</h2>
+            <p class="section-desc">বিশ্ব রাজনীতি, সংস্থা, চুক্তি এবং ভর্তি পরীক্ষার উপযোগী গুরুত্বপূর্ণ তথ্যাবলি</p>
+
+            <div class="info-grid">
+                
+                <!-- ১. আন্তর্জাতিক সংস্থা ও সদর দপ্তর -->
+                <div class="info-card">
+                    <div class="info-header">
+                        <div class="info-icon"><i class="fa-solid fa-building-columns"></i></div>
+                        <h3 class="info-title">আন্তর্জাতিক সংস্থা ও সদর দপ্তর</h3>
+                    </div>
+                    <ul class="bullet-list">
+                        <li><strong>জাতিসংঘ (UN):</strong> প্রতিষ্ঠিত হয় ২৪ অক্টোবর, ১৯৪৫। সদর দপ্তর: নিউইয়র্ক, যুক্তরাষ্ট্র। বর্তমান সদস্য দেশ ১৯৩টি।</li>
+                        <li><strong>বিশ্ব ব্যাংক ও আইএমএফ (IMF):</strong> উভয় সংস্থাই গঠিত হয় ১৯৪৪ সালের ব্রেটন উডস সম্মেলনের মাধ্যমে। সদর দপ্তর: ওয়াশিংটন ডি.সি.।</li>
+                        <li><strong>ইউরোপীয় ইউনিয়ন (EU):</strong> সদর দপ্তর: ব্রাসেলস, বেলজিয়াম। একক মুদ্রা হিসেবে ইউরো চালু করে ১৯৯৯ সালে।</li>
+                        <li><strong>ডি-৮ ও আসিয়ান:</strong> ডি-৮ এর সদর দপ্তর ইস্তাম্বুল (তুরস্ক) এবং আসিয়ানের সদর দপ্তর জাকার্তা (ইন্দোনেশিয়া)।</li>
+                    </ul>
+                </div>
+
+                <!-- ২. বিশ্ব ইতিহাস ও বিপ্লব -->
+                <div class="info-card">
+                    <div class="info-header">
+                        <div class="info-icon"><i class="fa-solid fa-globe"></i></div>
+                        <h3 class="info-title">বিশ্ব ইতিহাস ও বিপ্লব</h3>
+                    </div>
+                    <ul class="bullet-list">
+                        <li><strong>ফরাসি বিপ্লব:</strong> ১৭৮৯ সালে শুরু হয়। এর মূল স্লোগান ছিল— "স্বাধীনতা, সাম্য ও ভ্রাতৃত্ব"।</li>
+                        <li><strong>রুশ বিপ্লব:</strong> ১৯১৭ সালে বলশেভিক বিপ্লবের মাধ্যমে রাশিয়ায় জার শাসনের অবসান ঘটে এবং সমাজতন্ত্র প্রতিষ্ঠিত হয়।</li>
+                        <li><strong>প্রথম ও দ্বিতীয় বিশ্বযুদ্ধ:</strong> প্রথম বিশ্বযুদ্ধ ১৯১৪-১৯১৮ সাল এবং দ্বিতীয় বিশ্বযুদ্ধ ১৯৩৯-১৯৪৫ সাল পর্যন্ত স্থায়ী হয়েছিল।</li>
+                        <li><strong>স্নায়ুযুদ্ধ (Cold War):</strong> দ্বিতীয় বিশ্বযুদ্ধের পর যুক্তরাষ্ট্র ও সোভিয়েত ইউনিয়নের মধ্যকার রাজনৈতিক ও আদর্শগত দ্বন্দ্ব (১৯৪৭-১৯৯১)।</li>
+                    </ul>
+                </div>
+
+                <!-- ৩. ভৌগোলিক পরিচিতি ও প্রণালী -->
+                <div class="info-card">
+                    <div class="info-header">
+                        <div class="info-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                        <h3 class="info-title">গুরুত্বপূর্ণ প্রণালী ও সীমারেখা</h3>
+                    </div>
+                    <ul class="bullet-list">
+                        <li><strong>প্রণালী পরিচিতি:</strong> হরমুজ প্রণালী পারস্য উপসাগর ও ওমান উপসাগরকে যুক্ত করেছে। জিব্রাল্টার প্রণালী আটলান্টিক মহাসাগর ও ভূমধ্যসাগরকে সংযুক্ত করেছে।</li>
+                        <li><strong>মাজিনট ও সিগফ্রিড লাইন:</strong> ফ্রান্স ও জার্মানির মধ্যকার প্রতিরক্ষা লাইন হলো মাজিনট লাইন।</li>
+                        <li><strong>ডুরান্ড লাইন:</strong> পাকিস্তান ও আফগানিস্তানের মধ্যকার সীমান্তবর্তী রেখা।</li>
+                        <li><strong>বর্ডার গার্ডস:</strong> যুক্তরাষ্ট্র ও কানাডার দীর্ঘতম সীমান্তরেখাকে "৪৯তম সমান্তরাল রেখা" বলা হয়।</li>
+                    </ul>
+                </div>
+
+                <!-- ৪. সাম্প্রতিক ভূ-রাজনীতি ও চুক্তি -->
+                <div class="info-card">
+                    <div class="info-header">
+                        <div class="info-icon"><i class="fa-solid fa-handshake"></i></div>
+                        <h3 class="info-title">ঐতিহাসিক চুক্তি ও পরিবেশ</h3>
+                    </div>
+                    <ul class="bullet-list">
+                        <li><strong>কিয়োটো প্রটোকল:</strong> ১৯৯৭ সালে জাপানের কিয়োটোতে অনুষ্ঠিত গ্রিনহাউস গ্যাস নির্গমন হ্রাসের আন্তর্জাতিক চুক্তি।</li>
+                        <li><strong>প্যারিস জলবায়ু চুক্তি:</strong> ২০১৫ সালে স্বাক্ষরিত বৈশ্বিক উষ্ণতা রোধ সংক্রান্ত ঐতিহাসিক চুক্তি।</li>
+                        <li><strong>ভার্সাই চুক্তি:</strong> ১৯১৯ সালে স্বাক্ষরিত হয়, যা প্রথম বিশ্বযুদ্ধের আনুষ্ঠানিকভাবে সমাপ্তি ঘটায়।</li>
+                        <li><strong>ন্যাটো (NATO):</strong> ৪ এপ্রিল ১৯৪৯ সালে প্রতিষ্ঠিত সামরিক জোট। সদর দপ্তর: ব্রাসেলস, বেলজিয়াম।</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- ফুটার -->
+    <footer>
+        <p>&copy; ২০২৬ Varsity Vision। সর্বস্বত্ব সংরক্ষিত।</p>
+        <p style="margin-top: 5px; font-size: 0.85rem; color: #64748b;">সম্পাদনা : জুনায়েদ তনয়</p>
+    </footer>
+
+</body>
+</html>
