@@ -3,16 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vision AI - Varsity Vision</title>
+    <title>Varsity Vision - বিশ্ববিদ্যালয় ভর্তি প্রস্তুতি প্লাটফর্ম</title>
+    
+    <!-- 📌 সোশ্যাল মিডিয়া লিংক শেয়ার প্রিভিউ মেটা ট্যাগ -->
+    <meta property="og:title" content="Varsity Vision - বিশ্ববিদ্যালয় ভর্তি প্রস্তুতি প্লাটফর্ম">
+    <meta property="og:description" content="আপনার স্বপ্নের বিশ্ববিদ্যালয়ে পৌঁছানোর যাত্রায় সেরা গাইডলাইন ও ভর্তি প্রস্তুতি প্ল্যাটফর্ম।">
+    <meta property="og:image" content="du.png">
+    <meta property="og:type" content="website">
+
     <!-- Noto Serif Bengali Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --bg-dark: #090d16;
-            --border-glass: rgba(56, 189, 248, 0.2);
-            --accent-cyan: #38bdf8;
-            --text-main: #f8fafc;
-            --text-sub: #94a3b8;
+            --bg-main: linear-gradient(135deg, #090d16 0%, #171f33 50%, #090d16 100%);
+            --glass-card: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+            --glass-card-hover: linear-gradient(135deg, rgba(56, 189, 248, 0.15) 0%, rgba(99, 102, 241, 0.2) 100%);
+            --btn-gradient: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+            --section-grad-1: linear-gradient(180deg, #0f172a 0%, #1e1b4b 100%);
+            --section-grad-2: linear-gradient(180deg, #1e1b4b 0%, #0f172a 100%);
         }
 
         * {
@@ -20,155 +31,1085 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Noto Serif Bengali', serif;
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-dark);
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.15) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.15) 0px, transparent 50%);
-            color: var(--text-main);
-            height: 100vh;
+            background: var(--bg-main);
+            color: #f8fafc;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
+            min-height: 100vh;
+            padding-bottom: 50px;
+            background-attachment: fixed;
         }
 
-        /* প্রিমিয়াম হেডার ডিজাইন */
-        .chat-header {
+        /* 📌 ফিক্সড স্লিম স্টিকি নেভিগেশন কার্ড */
+        .sticky-header-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            padding: 10px 4%;
+            background: rgba(9, 13, 22, 0.9);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-card {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 24px;
-            background: rgba(9, 13, 22, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-glass);
-            z-index: 10;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
         }
 
-        .chat-title-group {
+        .brand {
             display: flex;
-            align-items: center;
-            gap: 12px;
+            flex-direction: column;
         }
-
-        .status-dot {
-            width: 10px;
-            height: 10px;
-            background-color: #10b981;
-            border-radius: 50%;
-            box-shadow: 0 0 10px #10b981;
-        }
-
-        .chat-title {
-            font-size: 1.25rem;
+        .brand-name {
+            font-size: 1.5rem;
             font-weight: 700;
             background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+        .brand-subtitle {
+            font-size: 0.75rem;
+            color: #38bdf8;
+            font-weight: 600;
         }
 
-        .back-btn {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--accent-cyan);
-            padding: 8px 18px;
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #cbd5e1;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* এনরোল বাটন */
+        .enroll-btn-box {
+            background: var(--btn-gradient);
+            padding: 2px;
+            border-radius: 50px;
+            box-shadow: 0 0 12px rgba(37, 99, 235, 0.4);
+            transition: transform 0.2s;
+        }
+        .enroll-btn-box:hover {
+            transform: scale(1.05);
+        }
+        .btn-enroll {
+            display: inline-block;
+            padding: 7px 18px;
+            background: #0f172a;
+            color: #38bdf8;
+            font-weight: 700;
+            font-size: 0.9rem;
             border-radius: 50px;
             text-decoration: none;
-            font-size: 0.88rem;
-            font-weight: 600;
-            border: 1px solid var(--border-glass);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .btn-enroll:hover {
+            background: transparent;
+            color: #ffffff;
+        }
+
+        /* 📌 সেকশন লেআউট */
+        main {
+            margin-top: 85px;
+        }
+        
+        /* 📌 Vision AI Chatbox Styles */
+        .vision-ai-container {
+            padding: 20px 8% 10px 8%;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .vision-ai-box {
+            background: var(--glass-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 16px;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
             transition: all 0.3s ease;
         }
 
-        .back-btn:hover {
-            background: var(--accent-cyan);
-            color: #0f172a;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+        .vision-ai-box:hover {
+            transform: translateY(-3px);
+            background: var(--glass-card-hover);
+            border-color: rgba(56, 189, 248, 0.6);
+            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.2);
         }
 
-        /* মূল হিরো কনটেন্ট এলাকা */
-        .main-container {
-            flex: 1;
+        .vision-ai-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .vision-ai-icon {
+            font-size: 1.8rem;
+            background: var(--btn-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .vision-ai-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2px;
+        }
+
+        .vision-ai-instruction {
+            font-size: 0.88rem;
+            color: #cbd5e1;
+        }
+
+        .vision-ai-action-btn {
+            background: var(--btn-gradient);
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+            white-space: nowrap;
+        }
+
+        .section-container {
+            padding: 60px 8%;
+        }
+        .bg-grad-1 { background: var(--section-grad-1); }
+        .bg-grad-2 { background: var(--section-grad-2); }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            background: linear-gradient(90deg, #ffffff, #93c5fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        .section-desc {
+            text-align: center;
+            color: #cbd5e1;
+            margin-bottom: 40px;
+            font-size: 1rem;
+        }
+
+        /* 📌 স্লাইডার স্ট্রাকচার */
+        .slider-wrapper {
+            position: relative;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+        
+        .slider-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            gap: 20px;
+            padding: 10px 5px 25px 5px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .slider-container::-webkit-scrollbar {
+            height: 6px;
+        }
+        .slider-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+        .slider-container::-webkit-scrollbar-thumb {
+            background: #38bdf8;
+            border-radius: 10px;
+        }
+
+        .slider-card {
+            flex: 0 0 100%;
+            scroll-snap-align: center;
+            background: var(--glass-card);
+            backdrop-filter: blur(12px);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-img-box {
+            width: 100%;
+            height: 180px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            background: rgba(15, 23, 42, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .slider-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .slider-btn:hover {
+            background: #38bdf8;
+            color: #0f172a;
+        }
+        
+        /* গ্রিড কার্ডস */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--glass-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card:hover { 
+            transform: translateY(-8px); 
+            background: var(--glass-card-hover);
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 12px 40px rgba(56, 189, 248, 0.25);
+        }
+
+        .subject-card {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.35) 0%, rgba(15, 23, 42, 0.6) 100%);
+            border-left: 4px solid #06b6d4;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--btn-gradient);
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 18px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 6px 25px rgba(37, 99, 235, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .card-btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 18px;
+        }
+        .card-btn-group .btn-primary {
+            flex: 1;
+            margin-top: 0;
+        }
+        .btn-apply {
+            background: linear-gradient(135deg, #16a34a 0%, #0d9488 100%);
+            box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);
+        }
+        .btn-apply:hover {
+            box-shadow: 0 6px 25px rgba(22, 163, 74, 0.6);
+        }
+
+        .exam-banner {
+            background: linear-gradient(135deg, #1e1b4b 0%, #311b92 50%, #4a148c 100%);
+            color: #fff;
+            text-align: center;
+            padding: 50px 25px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        .form-card {
+            max-width: 550px;
+            margin: 0 auto;
+            background: var(--glass-card);
+            backdrop-filter: blur(16px);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #f8fafc;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 13px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(15, 23, 42, 0.7);
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: #38bdf8;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+        }
+        
+        .custom-dropdown-select {
+            width: 100%;
+            padding: 13px 15px;
+            border: 1px solid rgba(37, 99, 235, 0.5);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #38bdf8;
+            background: rgba(15, 23, 42, 0.9) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2338bdf8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>") no-repeat right 15px center;
+            background-size: 18px;
+            -webkit-appearance: none;
+            appearance: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .custom-dropdown-select option {
+            background-color: #0f172a;
+            color: #fff;
+        }
+
+        /* মডাল পপ-আপ স্টাইল */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(9, 13, 22, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 99999;
             justify-content: center;
             align-items: center;
-            text-align: center;
             padding: 20px;
         }
 
-        .hero-card {
-            background: rgba(23, 31, 51, 0.6);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--border-glass);
-            border-radius: 24px;
-            padding: 40px 30px;
-            max-width: 520px;
+        .modal-content {
+            background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 500px;
             width: 100%;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            color: #f8fafc;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            position: relative;
+            animation: modalPop 0.3s ease-out;
         }
 
-        .bot-icon-badge {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 20px;
-            background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 2rem;
-            box-shadow: 0 10px 25px rgba(6, 182, 212, 0.4);
+        @keyframes modalPop {
+            0% { transform: scale(0.85); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
         }
 
-        .hero-card h2 {
+        .modal-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            color: #f43f5e;
+            font-size: 1.8rem;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .modal-title {
+            color: #38bdf8;
             font-size: 1.4rem;
-            color: var(--text-main);
             margin-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 8px;
         }
 
-        .hero-card p {
-            font-size: 0.95rem;
-            color: var(--text-sub);
-            line-height: 1.6;
-            margin-bottom: 20px;
+        .modal-body p {
+            color: #cbd5e1;
+            line-height: 1.7;
+            margin-bottom: 10px;
+            font-size: 0.98rem;
         }
 
-        .pulse-text {
-            display: inline-block;
-            font-size: 0.85rem;
-            color: var(--accent-cyan);
-            background: rgba(56, 189, 248, 0.1);
-            padding: 6px 16px;
-            border-radius: 50px;
-            border: 1px solid rgba(56, 189, 248, 0.2);
+        /* 📌 ফিক্সড নিউজটিকার */
+        .ticker-wrapper {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            display: flex;
+            background: #020617;
+            color: #fff;
+            font-size: 0.9rem;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.6);
+        }
+        .ticker-title {
+            background: linear-gradient(135deg, #e11d48, #be123c);
+            padding: 8px 16px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        .ticker-content {
+            padding: 6px 10px;
+            width: 100%;
+        }
+
+        footer {
+            background: #020617;
+            color: #94a3b8;
+            text-align: center;
+            padding: 25px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            .sticky-header-container {
+                padding: 6px 3%;
+            }
+            .navbar-card {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 8px 12px;
+            }
+            .brand-name {
+                font-size: 1.25rem;
+            }
+            .brand-subtitle {
+                font-size: 0.65rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .btn-enroll {
+                padding: 6px 14px;
+                font-size: 0.8rem;
+            }
+            main {
+                margin-top: 70px;
+            }
+            .section-container {
+                padding: 40px 4%;
+            }
+            .vision-ai-container {
+                padding: 15px 4% 5px 4%;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- হেডার -->
-    <div class="chat-header">
-        <div class="chat-title-group">
-            <div class="status-dot"></div>
-            <div class="chat-title">Varsity Vision AI</div>
+    <!-- 📌 ১. ফিক্সড স্লিম মোবাইল-ফ্রেন্ডলি নেভিগেশন কার্ড -->
+    <div class="sticky-header-container">
+        <div class="navbar-card">
+            <div class="brand">
+                <a href="#" class="brand-name">varsity vision</a>
+                <span class="brand-subtitle">বিশ্ববিদ্যালয় ভর্তি প্রস্তুতি প্লাটফর্ম</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about-section">আমাদের সম্পর্কে</a></li>
+                <li><a href="#universities-section">বিশ্ববিদ্যালয়</a></li>
+                <li><a href="#routine-section">স্টাডি রুটিন</a></li>
+                <li><a href="#courses-section">কোর্সসমূহ</a></li>
+                <li><a href="#enrollment-section">এনরোলমেন্ট</a></li>
+            </ul>
+            <div class="enroll-btn-box">
+                <a href="#enrollment-section" class="btn-enroll">এনরোল করুন</a>
+            </div>
         </div>
-        <a href="index.html" class="back-btn">&larr; হোমপেজে ফিরুন</a>
     </div>
 
-    <!-- মূল কার্ড -->
-    <div class="main-container">
-        <div class="hero-card">
-            <div class="bot-icon-badge">🎓</div>
-            <h2>Varsity Vision AI Assistant</h2>
-            <p>এইচএসসি ও বিশ্ববিদ্যালয় ভর্তি প্রস্তুতি বা পড়াশোনার যেকোনো বিষয়ে সাহায্য পেতে আমাদের এআই অ্যাসিস্ট্যান্ট প্রস্তুত রয়েছে।</p>
-            <div class="pulse-text">👉 নিচের ডানপাশের চ্যাট আইকনে ক্লিক করে কথা বলুন</div>
+    <!-- মূল কনটেন্ট -->
+    <main>
+        <!-- 📌 নতুন ভিশন এআই চ্যাটবক্স সেকশন (নেভিগেশনের নিচে) -->
+        <div class="vision-ai-container">
+            <a href="chat.html" class="vision-ai-box">
+                <div class="vision-ai-info">
+                    <span class="vision-ai-icon">🤖</span>
+                    <div>
+                        <div class="vision-ai-title">vision ai</div>
+                        <div class="vision-ai-instruction">খুঁজে নাও তোমার কাঙ্ক্ষিত উত্তর</div>
+                    </div>
+                </div>
+                <div class="vision-ai-action-btn">চ্যাট শুরু করুন</div>
+            </a>
+        </div>
+
+        <!-- এবাউট সেকশন -->
+        <section id="about-section" class="section-container bg-grad-1">
+            <h2 class="section-title">আমাদের সম্পর্কে</h2>
+            <p class="section-desc">আপনার স্বপ্নের বিশ্ববিদ্যালয়ে পৌঁছানোর যাত্রায় সেরা গাইডলাইন</p>
+            
+            <div style="max-width: 750px; margin: 0 auto; background: var(--glass-card); backdrop-filter: blur(12px); border-radius: 20px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);">
+                <div style="width: 100%; height: 260px; overflow: hidden; background: rgba(15, 23, 42, 0.8);">
+                    <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1000&auto=format&fit=crop" alt="University Campus" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                </div>
+                <div style="padding: 30px; text-align: center;">
+                    <p style="line-height: 1.9; color: #cbd5e1; font-size: 1.05rem;">
+                        <strong style="color: #38bdf8; font-size: 1.15rem; display: block; margin-bottom: 10px;">Varsity Vision-এ আপনাকে স্বাগতম</strong>
+                        ভর্তি পরীক্ষার্থীদের জন্য এটি একটি আধুনিক ও বিশ্বস্ত প্ল্যাটফর্ম। সঠিক দিকনির্দেশনা, সমৃদ্ধ লেকচার ও নিয়মিত অনলাইন মক টেস্টের মাধ্যমে আপনার ভর্তি নিশ্চিত করাই আমাদের মূল অঙ্গীকার। আপনার কাঙ্ক্ষিত লক্ষ্য অর্জনে আমরা সর্বদা আপনার পাশে আছি।
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 📌 দেশসেরা ১০টি পাবলিক বিশ্ববিদ্যালয় (স্লাইডার সেকশন) -->
+        <section id="universities-section" class="section-container bg-grad-2">
+            <h2 class="section-title">দেশসেরা ১০টি পাবলিক বিশ্ববিদ্যালয়</h2>
+            <p class="section-desc">ডানে-বামে স্লাইড করে বিশ্ববিদ্যালয়গুলোর সংক্ষিপ্ত ইতিহাস ও আবেদন যোগ্যতা দেখুন</p>
+            
+            <div class="slider-wrapper">
+                <div class="slider-container" id="uniSlider">
+                    
+                    <!-- ১. ঢাকা বিশ্ববিদ্যালয় -->
+                    <div class="slider-card">
+                        <div>
+                            <div class="card-img-box">
+                                <img src="du.png" alt="ঢাকা বিশ্ববিদ্যালয়" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600&auto=format&fit=crop';">
+                            </div>
+                            <h3 style="color: #38bdf8; font-size: 1.3rem;">ঢাকা বিশ্ববিদ্যালয় (DU)</h3>
+                            <p style="color: #cbd5e1; margin-top: 8px; font-size: 0.92rem; line-height: 1.6;">
+                                <strong>ইতিহাস ও পরিচিতি:</strong> ১৯২১ সালে প্রতিষ্ঠিত "প্রাচ্যের অক্সফোর্ড" খ্যাত ঢাকা বিশ্ববিদ্যালয় বাংলাদেশের সর্বপ্রাচীন ও সর্বোচ্চ বিদ্যাপীঠ। ভাষা আন্দোলন ও স্বাধীনতা সংগ্রাম সহ দেশের প্রতিটি ঐতিহাসিক অধ্যায়ে এ প্রতিষ্ঠানের অবদান অপরিসীম।
+                            </p>
+                        </div>
+                        <div class="card-btn-group">
+                            <button class="btn-primary" onclick="openModal('ঢাকা বিশ্ববিদ্যালয় (DU)', 'এসএসসি ও এইচএসসি উভয় পরীক্ষায় চতুর্থ বিষয়সহ ন্যূনতম জিপিএ ৩.০০ এবং বিষয়/ইউনিটভেদে মোট জিপিএ ৭.৫০ থেকে ৮.০০ থাকতে হয়।')">আবেদন যোগ্যতা</button>
+                            <a href="https://admission.eis.du.ac.bd/" target="_blank" class="btn-primary btn-apply">আবেদন করুন</a>
+                        </div>
+                    </div>
+
+                    <!-- ২. বুয়েট -->
+                    <div class="slider-card">
+                        <div>
+                            <div class="card-img-box">
+                                <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&auto=format&fit=crop" alt="বাংলাদেশ প্রকৌশল বিশ্ববিদ্যালয়" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&auto=format&fit=crop';">
+                            </div>
+                            <h3 style="color: #38bdf8; font-size: 1.3rem;">বাংলাদেশ প্রকৌশল বিশ্ববিদ্যালয় (BUET)</h3>
+                            <p style="color: #cbd5e1; margin-top: 8px; font-size: 0.92rem; line-height: 1.6;">
+                                <strong>ইতিহাস ও পরিচিতি:</strong> ১৯৬২ সালে প্রতিষ্ঠিত হলেও এর প্রকৌশল শিক্ষার ঐতিহ্য শুরু হয় ১৯১২ সালের ঢাকা সার্ভে স্কুল থেকে। এটি দেশের প্রকৌশল ও প্রযুক্তি শিক্ষার সর্বোচ্চ এবং অত্যন্ত মর্যাদাপূর্ণ প্রতিষ্ঠান।
+                            </p>
+                        </div>
+                        <div class="card-btn-group">
+                            <button class="btn-primary" onclick="openModal('বাংলাদেশ প্রকৌশল বিশ্ববিদ্যালয় (BUET)', 'এসএসসিতে জিপিএ ৪.০০ এবং এইচএসসিতে গণিত, পদার্থ ও রসায়নে উচ্চ গ্রেডসহ মোট জিপিএ ন্যূনতম রূপরেখা অনুযায়ী থাকতে হবে।')">আবেদন যোগ্যতা</button>
+                            <a href="https://ugadmission.buet.ac.bd/" target="_blank" class="btn-primary btn-apply">আবেদন করুন</a>
+                        </div>
+                    </div>
+
+                    <!-- ৩. রাজশাহী বিশ্ববিদ্যালয় -->
+                    <div class="slider-card">
+                        <div>
+                            <div class="card-img-box">
+                                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&auto=format&fit=crop" alt="রাজশাহী বিশ্ববিদ্যালয়" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&auto=format&fit=crop';">
+                            </div>
+                            <h3 style="color: #38bdf8; font-size: 1.3rem;">রাজশাহী বিশ্ববিদ্যালয় (RU)</h3>
+                            <p style="color: #cbd5e1; margin-top: 8px; font-size: 0.92rem; line-height: 1.6;">
+                                <strong>ইতিহাস ও পরিচিতি:</strong> ১৯৫৩ সালে প্রতিষ্ঠিত রাজশাহী বিশ্ববিদ্যালয় উত্তরবঙ্গের সর্ববৃহৎ ও দৃষ্টিনন্দন প্যারিস রোড খ্যাত বিশাল সবুজ প্রাকৃতিক ক্যানভাসের ঐতিহ্যবাহী বিদ্যাপীঠ।
+                            </p>
+                        </div>
+                        <div class="card-btn-group">
+                            <button class="btn-primary" onclick="openModal('রাজশাহী বিশ্ববিদ্যালয় (RU)', 'এসএসসি ও এইচএসসিতে পৃথকভাবে ন্যূনতম জিপিএ ৩.৫০ এবং মোট জিপিএ ৭.০০ (বিজ্ঞান শাখার জন্য জিপিএ ৮.০০) প্রয়োজন হয়।')">আবেদন যোগ্যতা</button>
+                            <a href="https://admission.ru.ac.bd/" target="_blank" class="btn-primary btn-apply">আবেদন করুন</a>
+                        </div>
+                    </div>
+
+                    <!-- ৪. চট্টগ্রাম বিশ্ববিদ্যালয় -->
+                    <div class="slider-card">
+                        <div>
+                            <div class="card-img-box">
+                                <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&auto=format&fit=crop" alt="চট্টগ্রাম বিশ্ববিদ্যালয়" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=600&auto=format&fit=crop';">
+                            </div>
+                            <h3 style="color: #38bdf8; font-size: 1.3rem;">চট্টগ্রাম বিশ্ববিদ্যালয় (CU)</h3>
+                            <p style="color: #cbd5e1; margin-top: 8px; font-size: 0.92rem; line-height: 1.6;">
+                                <strong>ইতিহাস ও পরিচিতি:</strong> ১৯৬৬ সালে প্রতিষ্ঠিত চট্টগ্রাম বিশ্ববিদ্যালয় পাহাড়, প্রাকৃতিক সৌন্দর্য ও জয়বাংলা ভাস্কর্য ঘেরা দেশের অন্যতম মনোরম ও একমাত্র শাটল ট্রেনভিত্তিক পাবলিক বিশ্ববিদ্যালয়।
+                            </p>
+                        </div>
+                        <div class="card-btn-group">
+                            <button class="btn-primary" onclick="openModal('চট্টগ্রাম বিশ্ববিদ্যালয় (CU)', 'এসএসসি ও এইচএসসিতে আলাদাভাবে ন্যূনতম জিপিএ ৩.০০ সহ ইউনিটভেদে মোট জিপিএ ৬.৫০ থেকে ৭.৫০ পর্যন্ত প্রয়োজন হয়।')">আবেদন যোগ্যতা</button>
+                            <a href="https://admission.cu.ac.bd/" target="_blank" class="btn-primary btn-apply">আবেদন করুন</a>
+                        </div>
+                    </div>
+
+                    <!-- ৫. জাহাঙ্গীরনগর বিশ্ববিদ্যালয় -->
+                    <div class="slider-card">
+                        <div>
+                            <div class="card-img-box">
+                                <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=600&auto=format&fit=crop" alt="জাহাঙ্গীরনগর বিশ্ববিদ্যালয়" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&auto=format&fit=crop';">
+                            </div>
+                            <h3 style="color: #38bdf8; font-size: 1.3rem;">জাহাঙ্গীরনগর বিশ্ববিদ্যালয় (JU)</h3>
+                            <p style="color: #cbd5e1; margin-top: 8px; font-size: 0.92rem; line-height: 1.6;">
+                                <strong>ইতিহাস ও পরিচিতি:</strong> ১৯৭০ সালে প্রতিষ্ঠিত জাহাঙ্গীরনগর বিশ্ববিদ্যালয় দেশের একমাত্র সম্পূর্ণ আবাসিক পাবলিক বিশ্ববিদ্যালয়, যা অতিথি পাখি, লাল শাপলার লেক ও সাংস্কৃতিক আবহাওয়ার জন্য বিখ্যাত।
+                            </p>
+                        </div>
+                        <div class="card-btn-group">
+                            <button class="btn-primary" onclick="openModal('জাহাঙ্গীরনগর বিশ্ববিদ্যালয় (JU)', 'বিভিন্ন ইউনিটের শর্ত সাপেক্ষে এসএসসি ও এইচএসসি উভয় পরীক্ষায় ন্যূনতম জিপিএ ৩.৫০ (মোট জিপিএ ৭.০০ - ৮.০০) থাকতে হয়।')">আবেদন যোগ্যতা</button>
+                            <a href="https://ju-admission.org/" target="_blank" class="btn-primary btn-apply">আবেদন করুন</a>
+                        </div>
+                    </div>
+
+                    <!-- ৬. গুচ্ছ (GST) বিশ্ববিদ্যালয় -->
+                    <div class="slider-card">
+                        <div>
+                            <div class="card-img-box">
+                                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&auto=format&fit=crop" alt="GST গুচ্ছ বিশ্ববিদ্যালয়সমূহ" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1532012197267-da84d127e765?w=600&auto=format&fit=crop';">
+                            </div>
+                            <h3 style="color: #38bdf8; font-size: 1.3rem;">GST গুচ্ছ বিশ্ববিদ্যালয়সমূহ</h3>
+                            <p style="color: #cbd5e1; margin-top: 8px; font-size: 0.92rem; line-height: 1.6;">
+                                <strong>ইতিহাস ও পরিচিতি:</strong> শিক্ষার্থীদের ভর্তি পরীক্ষার শারীরিক ও আর্থিক ভোগান্তি কমাতে দেশের ২৪টি সাধারণ এবং বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয় নিয়ে গঠিত সমন্বিত ভর্তি ব্যবস্থা।
+                            </p>
+                        </div>
+                        <div class="card-btn-group">
+                            <button class="btn-primary" onclick="openModal('GST গুচ্ছ বিশ্ববিদ্যালয়সমূহ', 'বিজ্ঞান, মানবিক ও বাণিজ্য শাখা ভেদে এসএসসি ও এইচএসসিতে ন্যূনতম জিপিএ ৩.০০ সহ মোট জিপিএ ৬.৫০ থেকে ৮.০০ প্রয়োজন হয়।')">আবেদন যোগ্যতা</button>
+                            <a href="https://gstadmission.ac.bd/" target="_blank" class="btn-primary btn-apply">আবেদন করুন</a>
+                        </div>
+                    </div>
+
+                    <!-- ৭. কৃষি গুচ্ছ -->
+                    <div class="slider-card">
+                        <div>
+                            <div class="card-img-box">
+                                <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=600&auto=format&fit=crop" alt="কৃষি গুচ্ছ বিশ্ববিদ্যালয়সমূহ" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600&auto=format&fit=crop';">
+                            </div>
+                            <h3 style="color: #38bdf8; font-size: 1.3rem;">কৃষি গুচ্ছ বিশ্ববিদ্যালয়সমূহ</h3>
+                            <p style="color: #cbd5e1; margin-top: 8px; font-size: 0.92rem; line-height: 1.6;">
+                                <strong>ইতিহাস ও পরিচিতি:</strong> দেশের কৃষি উৎপাদন ও গবেষণায় নেতৃত্ব দেওয়া শীর্ষস্থানীয় ৯টি বিশেষায়িত কৃষি ও ভেটেরিনারি বিশ্ববিদ্যালয় একযোগে এই কেন্দ্রীয় ভর্তি প্রক্রিয়া পরিচালনা করে।
+                            </p>
+                        </div>
+                        <div class="card-btn-group">
+                            <button class="btn-primary" onclick="openModal('কৃষি গুচ্ছ বিশ্ববিদ্যালয়সমূহ', 'বিজ্ঞান বিভাগ থেকে এসএসসি ও এইচএসসি উভয় পরীক্ষায় ন্যূনতম জিপিএ ৪.০০ সহ মোট জিপিএ ৮.৫০ থাকতে হয় (পদার্থ, রসায়ন, গণিত ও জীব আবশ্যিক)।')">আবেদন যোগ্যতা</button>
+                            <a href="https://ckru.ac.bd/" target="_blank" class="btn-primary btn-apply">আবেদন করুন</a>
+                        </div>
+                    </div>
+
+                    <!-- ৮. সাস্ট -->
+                    <div class="slider-card">
+                        <div>
+                            <div class="card-img-box">
+                                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&auto=format&fit=crop" alt="শাহজালাল বিজ্ঞান ও প্রযুক্তি" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1562774053-701939374585?w=600&auto=format&fit=crop';">
+                            </div>
+                            <h3 style="color: #38bdf8; font-size: 1.3rem;">শাহজালাল বিজ্ঞান ও প্রযুক্তি (SUST)</h3>
+                            <p style="color: #cbd5e1; margin-top: 8px; font-size: 0.92rem; line-height: 1.6;">
+                                <strong>ইতিহাস ও পরিচিতি:</strong> ১৯৮৯ সালে সিলেটে প্রতিষ্ঠিত শাহজালাল বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয় দেশের প্রথম আধুনিক বিজ্ঞান ও প্রযুক্তিভিত্তিক উচ্চশিক্ষা কেন্দ্র।
+                            </p>
+                        </div>
+                        <div class="card-btn-group">
+                            <button class="btn-primary" onclick="openModal('শাহজালাল বিজ্ঞান ও প্রযুক্তি (SUST)', 'এসএসসি ও এইচএসসি উভয় পরীক্ষায় ন্যূনতম জিপিএ ৩.০০ সহ মোট জিপিএ ৭.০০ থেকে ৭.৫০ প্রয়োজন হয়।')">আবেদন যোগ্যতা</button>
+                            <a href="https://admission.sust.edu/" target="_blank" class="btn-primary btn-apply">আবেদন করুন</a>
+                        </div>
+                    </div>
+
+                    <!-- ৯. খুলনা বিশ্ববিদ্যালয় -->
+                    <div class="slider-card">
+                        <div>
+                            <div class="card-img-box">
+                                <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=600&auto=format&fit=crop" alt="খুলনা বিশ্ববিদ্যালয়" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&auto=format&fit=crop';">
+                            </div>
+                            <h3 style="color: #38bdf8; font-size: 1.3rem;">খুলনা বিশ্ববিদ্যালয় (KU)</h3>
+                            <p style="color: #cbd5e1; margin-top: 8px; font-size: 0.92rem; line-height: 1.6;">
+                                <strong>ইতিহাস ও পরিচিতি:</strong> ১৯৯১ সালে প্রতিষ্ঠিত খুলনা বিশ্ববিদ্যালয় একাডেমিক শৃঙ্খলা, ছাত্র রাজনীতিমুক্ত ও সম্পূর্ণ সেশনজটমুক্ত শিক্ষা পরিবেশের জন্য প্রশংসিত।
+                            </p>
+                        </div>
+                        <div class="card-btn-group">
+                            <button class="btn-primary" onclick="openModal('খুলনা বিশ্ববিদ্যালয় (KU)', 'উভয় পরীক্ষায় ন্যূনতম জিপিএ ৩.০০ সহ মোট জিপিএ ৬.৫০ থেকে ৭.৫০ প্রয়োজন হয়। নির্দিষ্ট কিছু বিভাগে আলাদা নম্বর শর্ত থাকে।')">আবেদন যোগ্যতা</button>
+                            <a href="https://ku.ac.bd/admission" target="_blank" class="btn-primary btn-apply">আবেদন করুন</a>
+                        </div>
+                    </div>
+
+                    <!-- ১০. বরিশাল বিশ্ববিদ্যালয় -->
+                    <div class="slider-card">
+                        <div>
+                            <div class="card-img-box">
+                                <img src="https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?w=600&auto=format&fit=crop" alt="বরিশাল বিশ্ববিদ্যালয়" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&auto=format&fit=crop';">
+                            </div>
+                            <h3 style="color: #38bdf8; font-size: 1.3rem;">বরিশাল বিশ্ববিদ্যালয় (BU)</h3>
+                            <p style="color: #cbd5e1; margin-top: 8px; font-size: 0.92rem; line-height: 1.6;">
+                                <strong>ইতিহাস ও পরিচিতি:</strong> ২০১১ সালে কীর্তনখোলা নদীর তীরে প্রতিষ্ঠিত বরিশাল বিশ্ববিদ্যালয় দক্ষিণাঞ্চলের শিক্ষার্থীদের আধুনিক উচ্চশিক্ষায় উদ্বুদ্ধ করতে গড়ে ওঠা একটি দ্রুত বিকাশমান প্রতিষ্ঠান।
+                            </p>
+                        </div>
+                        <div class="card-btn-group">
+                            <button class="btn-primary" onclick="openModal('বরিশাল বিশ্ববিদ্যালয় (BU)', 'এসএসসি ও এইচএসসি পরীক্ষায় আলাদাভাবে ন্যূনতম জিপিএ ৩.০০ সহ গুচ্ছ শর্ত অনুযায়ী মোট জিপিএ ৬.০০ থেকে ৭.০০ থাকতে হয়।')">আবেদন যোগ্যতা</button>
+                            <a href="https://bu.ac.bd/" target="_blank" class="btn-primary btn-apply">আবেদন করুন</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- বিশ্ববিদ্যালয়ের স্লাইডার কন্ট্রোল বাটন -->
+            <div class="slider-nav">
+                <button class="slider-btn" onclick="slideContainer('uniSlider', 'prev')">&larr; পূর্ববর্তী</button>
+                <button class="slider-btn" onclick="slideContainer('uniSlider', 'next')">পরবর্তী &rarr;</button>
+            </div>
+        </section>
+
+        <!-- 📌 নতুন সেগমেন্ট: স্টাডি রুটিন ও প্ল্যানার কার্ড -->
+        <section id="routine-section" class="section-container bg-grad-1">
+            <h2 class="section-title">স্মার্ট স্টাডি রুটিন ও প্ল্যানার</h2>
+            <p class="section-desc">HSC ও বিশ্ববিদ্যালয় ভর্তি প্রস্তুতির জন্য কাস্টমাইজড রুটিন ও টু-ডু লিস্ট তৈরি করুন</p>
+            
+            <div style="max-width: 850px; margin: 0 auto;">
+                <div class="card" style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%); border: 1px solid rgba(56, 189, 248, 0.3); padding: 35px; border-radius: 24px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);">
+                    <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between;">
+                        <div style="flex: 1; min-width: 280px;">
+                            <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; font-size: 0.85rem; font-weight: 700; padding: 4px 12px; border-radius: 50px; border: 1px solid rgba(56, 189, 248, 0.3);">NEW FEATURE</span>
+                            <h3 style="color: #fff; font-size: 1.8rem; margin: 12px 0 8px 0; font-weight: 700;">HSC & Admission স্টাডি রুটিন মেকার</h3>
+                            <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.7;">
+                                আপনার পছন্দমত বিভাগ (বিজ্ঞান, মানবিক, বাণিজ্য), বিষয় ও টার্গেট অনুযায়ী দৈনিক পড়ার রুটিন তৈরি করুন। এছাড়া ডেইলি টাস্ক ট্র্যাকার ও প্রিন্ট-ফ্রেন্ডলি PDF ডাউনলোডের সুব্যবস্থা রয়েছে।
+                            </p>
+                        </div>
+                        <div style="text-align: center;">
+                            <a href="studyroutine.html" class="btn-primary" style="padding: 14px 28px; font-size: 1.05rem; background: linear-gradient(135deg, #38bdf8 0%, #6366f1 100%); border-radius: 14px; box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);">
+                                📅 একটি রুটিন তৈরি করুন &rarr;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- বিষয়ভিত্তিক প্রস্তুতি -->
+        <section class="section-container bg-grad-2">
+            <h2 class="section-title">বিষয়ভিত্তিক প্রস্তুতি</h2>
+            <p class="section-desc">বিষয়ভিত্তিক স্পেশাল গাইডলাইন ও অনলাইন স্টাডি মেটেরিয়াল</p>
+            <div class="grid-cards">
+                <div class="card subject-card">
+                    <div>
+                        <h3 style="color: #06b6d4; font-size: 1.3rem;">বাংলা (Bangla)</h3>
+                        <p style="color: #cbd5e1; margin-top: 10px; font-size: 0.95rem; line-height: 1.6;">ব্যাকরণ, সাহিত্যপাঠ এবং গুরুত্বপূর্ণ বিগত বছরের প্রশ্ন ব্যাংক সমাধান।</p>
+                    </div>
+                    <a href="bangla.html" target="_blank" class="btn-primary">প্রস্তুতি শুরু করুন</a>
+                </div>
+                <div class="card subject-card">
+                    <div>
+                        <h3 style="color: #06b6d4; font-size: 1.3rem;">ইংরেজি (English)</h3>
+                        <p style="color: #cbd5e1; margin-top: 10px; font-size: 0.95rem; line-height: 1.6;">Grammar rules, Vocabulary, & Comprehension complete guide.</p>
+                    </div>
+                    <a href="english.html" target="_blank" class="btn-primary">প্রস্তুতি শুরু করুন</a>
+                </div>
+                <div class="card subject-card">
+                    <div>
+                        <h3 style="color: #06b6d4; font-size: 1.3rem;">সাধারণ জ্ঞান (GK)</h3>
+                        <p style="color: #cbd5e1; margin-top: 10px; font-size: 0.95rem; line-height: 1.6;">বাংলাদেশ ও আন্তর্জাতিক বিষয়াবলি এবং সাম্প্রতিক সাধারণ জ্ঞান তথ্য।</p>
+                    </div>
+                    <a href="gk.html" target="_blank" class="btn-primary">প্রস্তুতি শুরু করুন</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 📌 আমাদের প্রিমিয়াম কোর্সসমূহ (ঢাকা বিশ্ববিদ্যালয় রিটেন সামনে রেখে স্লাইডার কার্ড) -->
+        <section id="courses-section" class="section-container bg-grad-1">
+            <h2 class="section-title">আমাদের প্রিমিয়াম কোর্সসমূহ</h2>
+            <p class="section-desc">ডানে-বামে স্লাইড করে আমাদের স্পেশাল ব্যাচগুলো দেখুন</p>
+            
+            <div class="slider-wrapper">
+                <div class="slider-container" id="courseSlider">
+                    
+                    <!-- ১. ঢাকা বিশ্ববিদ্যালয় রিটেন স্পেশাল (সবার সামনে প্রদর্শিত হবে) -->
+                    <div class="slider-card">
+                        <div>
+                            <div class="card-img-box">
+                                <img src="duwritten.png" alt="Written Special" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x200?text=Written+Special';">
+                            </div>
+                            <h3 style="font-size: 1.3rem; color: #fff;">ঢাকা বিশ্ববিদ্যালয় রিটেন স্পেশাল</h3>
+                            <p style="color: #cbd5e1; margin-top: 8px; font-size: 0.92rem; line-height: 1.6;">
+                                <strong>কোর্স হাইলাইটস:</strong> খাতা মূল্যায়ন, ফ্রি হ্যান্ড রাইটিং হ্যাকস, ট্রান্সলেশন এবং রিটেন পরীক্ষার পূর্ণাঙ্গ সাজেশন। ঢাকা বিশ্ববিদ্যালয় ভর্তি পরীক্ষায় লিখিত অংশে শতভাগ নিশ্চিত প্রস্তুতির জন্য আজই জয়েন করুন।
+                            </p>
+                            <h4 style="color: #38bdf8; font-size: 1.3rem; margin-top: 10px;">ফি: ৩০০ ৳</h4>
+                        </div>
+                        <a href="#enrollment-section" class="btn-primary" style="width: 100%; text-align: center;" onclick="selectCourse('written')">কোর্স কিনুন</a>
+                    </div>
+
+                    <!-- ২. বিশ্ববিদ্যালয় ভর্তি প্রস্তুতি -->
+                    <div class="slider-card">
+                        <div>
+                            <div class="card-img-box">
+                                <img src="univarsitycourse.png" alt="Varsity Admission Course" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x200?text=Varsity+Admission';">
+                            </div>
+                            <h3 style="font-size: 1.3rem; color: #fff;">বিশ্ববিদ্যালয় ভর্তি প্রস্তুতি</h3>
+                            <p style="color: #cbd5e1; margin-top: 8px; font-size: 0.92rem; line-height: 1.6;">
+                                <strong>কোর্স হাইলাইটস:</strong> ফুল মডেল টেস্ট, ডাউট সলভিং লাইভ ক্লাস, শর্টকাট টেকনিক ও স্পেশাল লেকচার শিট। আপনার স্বপ্ন পূরণের সেরা প্রস্তুতি।
+                            </p>
+                            <h4 style="color: #38bdf8; font-size: 1.3rem; margin-top: 10px;">ফি: ১০০০ ৳</h4>
+                        </div>
+                        <a href="#enrollment-section" class="btn-primary" style="width: 100%; text-align: center;" onclick="selectCourse('du')">কোর্স কিনুন</a>
+                    </div>
+
+                    <!-- ৩. HSC একাডেমিক কোর্স -->
+                    <div class="slider-card">
+                        <div>
+                            <div class="card-img-box">
+                                <img src="hscacademic.jpeg" alt="HSC Academic Course" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x200?text=HSC+Academic';">
+                            </div>
+                            <h3 style="font-size: 1.3rem; color: #fff;">HSC একাডেমিক কোর্স</h3>
+                            <p style="color: #cbd5e1; margin-top: 8px; font-size: 0.92rem; line-height: 1.6;">
+                                <strong>কোর্স হাইলাইটস:</strong> বোর্ড পরীক্ষার শতভাগ প্রস্তুতি, চ্যাপ্টারভিত্তিক কনসেপ্ট ক্লিয়ারিং ও এ প্লাস নিশ্চিতকরণের বিশেষ গাইডলাইন।
+                            </p>
+                            <h4 style="color: #38bdf8; font-size: 1.3rem; margin-top: 10px;">ফি: ৫০০ ৳</h4>
+                        </div>
+                        <a href="#enrollment-section" class="btn-primary" style="width: 100%; text-align: center;" onclick="selectCourse('hsc')">কোর্স কিনুন</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- কোর্সের স্লাইডার কন্ট্রোল বাটন -->
+            <div class="slider-nav">
+                <button class="slider-btn" onclick="slideContainer('courseSlider', 'prev')">&larr; পূর্ববর্তী</button>
+                <button class="slider-btn" onclick="slideContainer('courseSlider', 'next')">পরবর্তী &rarr;</button>
+            </div>
+        </section>
+
+        <!-- অনলাইন পরীক্ষা -->
+        <section class="section-container bg-grad-2">
+            <div class="exam-banner">
+                <h2 style="font-size: 2rem; margin-bottom: 10px;">অনলাইন মেধা যাচাই পরীক্ষা</h2>
+                <p style="margin-bottom: 22px; color: #cbd5e1; font-size: 0.95rem;">আমাদের তৈরি অনলাইন পোটালের মাধ্যমে বাস্তব পরীক্ষার অভিজ্ঞতা নিন।</p>
+                <a href="exam.html" class="btn-primary" style="background: linear-gradient(135deg, #e11d48, #be123c); padding: 12px 30px; font-size: 1rem; border-radius: 50px; box-shadow: 0 0 20px rgba(225, 29, 72, 0.4);">পরীক্ষা পোর্টালে যান</a>
+            </div>
+        </section>
+
+        <!-- ফ্রি কুইজ -->
+        <section class="section-container bg-grad-1">
+            <h2 class="section-title">ফ্রি কুইজ পরীক্ষা</h2>
+            <p class="section-desc">স্বয়ংক্রিয় উত্তর যাচাই ও তাত্ক্ষণিক ফলাফল</p>
+            <div style="max-width: 650px; margin: 0 auto; background: var(--glass-card); backdrop-filter: blur(12px); padding: 30px; border-radius: 18px; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 8px 32px rgba(0,0,0,0.3);">
+                <div style="margin-bottom: 22px;">
+                    <p style="font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; color: #fff;">১. 'বরফ গলা নদী' উপন্যাসের রচিয়তা কে?</p>
+                    <label style="display: block; margin: 6px 0; cursor: pointer; color: #cbd5e1; font-size: 0.95rem;"><input type="radio" name="q1" value="1"> জহির রায়হান</label>
+                    <label style="display: block; margin: 6px 0; cursor: pointer; color: #cbd5e1; font-size: 0.95rem;"><input type="radio" name="q1" value="0"> শহীদুল্লা কায়সার</label>
+                </div>
+                <div style="margin-bottom: 22px;">
+                    <p style="font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; color: #fff;">২. What is the synonym of 'Competent'?</p>
+                    <label style="display: block; margin: 6px 0; cursor: pointer; color: #cbd5e1; font-size: 0.95rem;"><input type="radio" name="q2" value="1"> Capable</label>
+                    <label style="display: block; margin: 6px 0; cursor: pointer; color: #cbd5e1; font-size: 0.95rem;"><input type="radio" name="q2" value="0"> Incompetent</label>
+                </div>
+                <button onclick="checkQuiz()" class="btn-primary" style="width: 100%;">উত্তর জমা দিন</button>
+                <div id="quiz-result" style="margin-top: 18px; padding: 12px; background: rgba(34, 197, 94, 0.2); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.4); border-radius: 10px; display: none; text-align: center; font-size: 1rem; font-weight: 600;"></div>
+            </div>
+        </section>
+
+        <!-- এনরোলমেন্ট ফর্ম -->
+        <section id="enrollment-section" class="section-container bg-grad-2">
+            <h2 class="section-title">কোর্স এনরোলমেন্ট ফর্ম</h2>
+            <p class="section-desc">সহজেই আপনার কাঙ্ক্ষিত কোর্সটি বেছে নিয়ে এনরোল করুন</p>
+            <div class="form-card">
+                <form onsubmit="handleEnrollmentSubmit(event)">
+                    <div class="form-group">
+                        <label>শিক্ষার্থীর নাম *</label>
+                        <input type="text" required placeholder="আপনার পুরো নাম লিখুন">
+                    </div>
+                    <div class="form-group">
+                        <label>মোবাইল নাম্বার *</label>
+                        <input type="tel" required placeholder="017XXXXXXXX">
+                    </div>
+                    <div class="form-group">
+                        <label>কলেজের নাম *</label>
+                        <input type="text" required placeholder="আপনার কলেজের নাম লিখুন">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>কোর্স নির্বাচন করুন *</label>
+                        <select id="course-select" class="custom-dropdown-select" required onchange="updateTotal()">
+                            <option value="" data-price="0">-- কোর্স বেছে নিন --</option>
+                            <option value="du" data-price="1000">বিশ্ববিদ্যালয় ভর্তি প্রস্তুতি — (১০০০ ৳)</option>
+                            <option value="hsc" data-price="500">HSC একাডেমিক কোর্স — (৫০০ ৳)</option>
+                            <option value="written" data-price="300">ঢাকা বিশ্ববিদ্যালয় রিটেন স্পেশাল — ( ৩০০ ৳)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>মোট পেমেন্ট ফি *</label>
+                        <input type="text" id="total-fee" readonly value="0 ৳" style="background: rgba(15, 23, 42, 0.9); font-weight: 700; color: #38bdf8; font-size: 1.1rem; border-color: rgba(56, 189, 248, 0.4);">
+                    </div>
+                    
+                    <button type="submit" class="btn-primary" style="width: 100%; padding: 14px; font-size: 1.1rem; background: linear-gradient(135deg, #16a34a, #15803d); border-radius: 10px; box-shadow: 0 0 20px rgba(22, 163, 74, 0.4);">পেমেন্ট করুন</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- সোশ্যাল লিংক -->
+        <section class="section-container bg-grad-1" style="text-align: center;">
+            <h2 class="section-title">আমাদের সাথে যুক্ত থাকুন</h2>
+            <p class="section-desc">নিয়মিত স্টাডি টিপস ও ক্লাসের খবর পেতে ফলো করুন</p>
+            <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                <a href="https://www.facebook.com/profile.php?id=61576601532502" target="_blank" class="btn-primary" style="background: linear-gradient(135deg, #1877f2, #0d52ab); border-radius: 50px;">ফেসবুক পেজ</a>
+                <a href="https://youtube.com/@varsityvision-hsctoadmission?si=Eaf7ncNVHq9D_RVB" target="_blank" class="btn-primary" style="background: linear-gradient(135deg, #ff0000, #990000); border-radius: 50px;">ইউটিউব চ্যানেল</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- 📌 আবেদন যোগ্যতা দেখানোর জন্য পপ-আপ মডাল বক্স -->
+    <div id="eligibility-modal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close-btn" onclick="closeModalDirect()">&times;</button>
+            <h3 id="modal-university-name" class="modal-title">বিশ্ববিদ্যালয়ের নাম</h3>
+            <div class="modal-body">
+                <p id="modal-university-details">এখানে যোগ্যতার বিস্তারিত তথ্য প্রদর্শিত হবে।</p>
+            </div>
         </div>
     </div>
 
-    <!-- 📌 Botpress Embed Script -->
-    <script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
-    <script src="https://files.bpcontent.cloud/2026/11/02/14/20261102144444-PXC9X7JO.js" defer></script>
+    <!-- 📌 ২. ফিক্সড নিউজটিকার -->
+    <div class="ticker-wrapper">
+        <div class="ticker-title">ভিশন আপডেট</div>
+        <div class="ticker-content">
+            <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
+                📢 Varsity Vision-এ বিশ্ববিদ্যালয় ভর্তি পরীক্ষা প্রস্তুতি কোর্স ২০২৬-এ ভর্তি চলছে! 🌟 আজই এনরোল করুন। 📝 বিনামূল্যে অনলাইন মক টেস্ট দিতে কুইজ সেকশনে অংশ নিন।
+            </marquee>
+        </div>
+    </div>
 
+    <!-- ফুটার -->
+    <footer>
+        <p>&copy; ২০২৬ Varsity Vision। সর্বস্বত্ব সংরক্ষিত।</p>
+        <p style="margin-top: 5px; font-size: 0.85rem; color: #64748b;">সম্পাদনা : জুনায়েদ তনয়</p>
+    </footer>
+
+    <!-- জাভাস্ক্রিপ্ট লজিক -->
+    <script>
+        // স্লাইডার নেভিগেশন লজিক
+        function slideContainer(sliderId, direction) {
+            const slider = document.getElementById(sliderId);
+            const cardWidth = slider.querySelector('.slider-card').offsetWidth + 20;
+            if (direction === 'next') {
+                slider.scrollLeft += cardWidth;
+            } else {
+                slider.scrollLeft -= cardWidth;
+            }
+        }
+
+        // মডাল পপ-আপ ফাংশনসমূহ
+        function openModal(uniName, details) {
+            document.getElementById('modal-university-name').innerText = uniName;
+            document.getElementById('modal-university-details').innerText = details;
+            document.getElementById('eligibility-modal').style.display = 'flex';
+        }
+
+        function closeModalDirect() {
+            document.getElementById('eligibility-modal').style.display = 'none';
+        }
+
+        function closeModal(event) {
+            if (event.target.id === 'eligibility-modal') {
+                document.getElementById('eligibility-modal').style.display = 'none';
+            }
+        }
+
+        // কুইজ ফাংশন
+        function checkQuiz() {
+            const q1 = document.querySelector('input[name="q1"]:checked');
+            const q2 = document.querySelector('input[name="q2"]:checked');
+            let score = 0;
+            
+            if (q1 && q1.value === "1") score++;
+            if (q2 && q2.value === "1") score++;
+
+            const resDiv = document.getElementById('quiz-result');
+            if (resDiv) {
+                resDiv.style.display = 'block';
+                resDiv.innerHTML = `আপনার মোট নম্বর: <strong>${score} / ২</strong> ${score === 2 ? '🎉 চমৎকার!' : 'আরেকটু চেষ্টা করুন!'}`;
+            }
+        }
+
+        // কোর্স সিলেক্ট ও পেমেন্ট আপডেট
+        function updateTotal() {
+            const select = document.getElementById('course-select');
+            const price = select.options[select.selectedIndex].getAttribute('data-price') || 0;
+            document.getElementById('total-fee').value = price + " ৳";
+        }
+
+        function selectCourse(courseVal) {
+            const select = document.getElementById('course-select');
+            if (select) {
+                select.value = courseVal;
+                updateTotal();
+            }
+        }
+
+        function handleEnrollmentSubmit(e) {
+            e.preventDefault();
+            window.location.href = 'payment.html';
+        }
+    </script>
 </body>
 </html>
