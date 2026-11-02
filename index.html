@@ -138,6 +138,75 @@
         main {
             margin-top: 85px;
         }
+        
+        /* 📌 Vision AI Chatbox Styles */
+        .vision-ai-container {
+            padding: 20px 8% 10px 8%;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .vision-ai-box {
+            background: var(--glass-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 16px;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .vision-ai-box:hover {
+            transform: translateY(-3px);
+            background: var(--glass-card-hover);
+            border-color: rgba(56, 189, 248, 0.6);
+            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.2);
+        }
+
+        .vision-ai-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .vision-ai-icon {
+            font-size: 1.8rem;
+            background: var(--btn-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .vision-ai-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2px;
+        }
+
+        .vision-ai-instruction {
+            font-size: 0.88rem;
+            color: #cbd5e1;
+        }
+
+        .vision-ai-action-btn {
+            background: var(--btn-gradient);
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+            white-space: nowrap;
+        }
+
         .section-container {
             padding: 60px 8%;
         }
@@ -503,6 +572,9 @@
             .section-container {
                 padding: 40px 4%;
             }
+            .vision-ai-container {
+                padding: 15px 4% 5px 4%;
+            }
         }
     </style>
 </head>
@@ -530,6 +602,20 @@
 
     <!-- মূল কনটেন্ট -->
     <main>
+        <!-- 📌 নতুন ভিশন এআই চ্যাটবক্স সেকশন (নেভিগেশনের নিচে) -->
+        <div class="vision-ai-container">
+            <a href="chat.html" class="vision-ai-box">
+                <div class="vision-ai-info">
+                    <span class="vision-ai-icon">🤖</span>
+                    <div>
+                        <div class="vision-ai-title">vision ai</div>
+                        <div class="vision-ai-instruction">খুঁজে নাও তোমার কাঙ্ক্ষিত উত্তর</div>
+                    </div>
+                </div>
+                <div class="vision-ai-action-btn">চ্যাট শুরু করুন</div>
+            </a>
+        </div>
+
         <!-- এবাউট সেকশন -->
         <section id="about-section" class="section-container bg-grad-1">
             <h2 class="section-title">আমাদের সম্পর্কে</h2>
