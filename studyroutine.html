@@ -412,8 +412,8 @@
 
     <main>
         <section class="section-container bg-grad-1 no-print">
-            <h2 class="section-title">স্মার্ট ডায়নামিক স্টাডি প্ল্যানার</h2>
-            <p class="section-desc">আপনার ঘুম থেকে ওঠার সময় অনুযায়ী সারদিনের পড়ার সুষম রুটিন স্বয়ংক্রিয়ভাবে তৈরি হয়ে যাবে</p>
+            <h2 class="section-title">স্মার্ট ডাইনামিক স্টাডি প্ল্যানার</h2>
+            <p class="section-desc">বাংলাদেশ টাইম অনুযায়ী ঘুম থেকে ওঠার ওপর ভিত্তি করে স্বয়ংক্রিয় রুটিন</p>
 
             <div class="tab-container">
                 <button class="tab-btn active" onclick="switchTab('routine-tab')"><i class="fa-solid fa-clock"></i> ডাইনামিক রুটিন মেকার</button>
@@ -428,7 +428,7 @@
                         <h3 class="card-title"><i class="fa-solid fa-sliders"></i> সময় ও বিষয় ইনপুট দিন</h3>
                         
                         <div class="form-group">
-                            <label for="wake-time">ঘুম থেকে ওঠার নির্দিষ্ট সময় নির্বাচন করুন:</label>
+                            <label for="wake-time">ঘুম থেকে ওঠার নির্দিষ্ট সময় (BST):</label>
                             <input type="time" id="wake-time" class="custom-input" value="06:00">
                         </div>
 
@@ -503,7 +503,7 @@
             <div id="routine-modal-content">
                 <div style="text-align: center; border-bottom: 2px solid #0f172a; padding-bottom: 10px; margin-bottom: 15px;">
                     <h2 style="color: #0f172a; font-size: 1.6rem;">Varsity Vision - Smart Dynamic Routine</h2>
-                    <p style="color: #64748b; font-size: 0.9rem;">ঘুম থেকে ওঠার সময়ের ওপর ভিত্তি করে স্বয়ংক্রিয় সাজানো টাইম-টেবিল</p>
+                    <p style="color: #64748b; font-size: 0.9rem;">বাংলাদেশ সময় (BST) ও ওঠার সময়ের ওপর ভিত্তি করে সাজানো রুটিন</p>
                 </div>
 
                 <div style="display: flex; justify-content: space-between; font-size: 0.9rem; color: #475569; font-weight: 600; margin-bottom: 15px;">
@@ -514,7 +514,7 @@
                 <table class="routine-table">
                     <thead>
                         <tr>
-                            <th style="width: 25%;">সময়</th>
+                            <th style="width: 25%;">সময় (BST)</th>
                             <th style="width: 30%;">কার্যক্রম / ক্যাটাগরি</th>
                             <th style="width: 45%;">বিস্তারিত বিবরণ ও পড়ার বিষয়</th>
                         </tr>
@@ -594,7 +594,7 @@
             document.getElementById(tabId).classList.add('active');
         }
 
-        // 📌 সম্পূর্ণ ডাইনামিক টাইম-টেবিল লজিক (যেকোনো সময়ের ওয়াক্ত অটো-ট্র্যাকিং সহ)
+        // 📌 বাংলাদেশ টাইম (BST) অনুযায়ী ডাইনামিক রুটিন জেনারেটর
         function generateRoutineModal() {
             const wakeTime = document.getElementById("wake-time").value || "06:00";
             const includePrayer = document.getElementById("prayer-check").checked;
@@ -604,7 +604,7 @@
             const sub2 = document.getElementById("sub2-input").value.trim() || "রসায়ন ২য় পত্র (জৈব যৌগ)";
             const sub3 = document.getElementById("sub3-input").value.trim() || "ইংরেজি / বাংলা ব্যাকরণ";
 
-            document.getElementById("out-wake").innerText = wakeTime;
+            document.getElementById("out-wake").innerText = wakeTime + " (BST)";
             document.getElementById("modal-target").innerText = target;
 
             const tbody = document.getElementById("modal-table-body");
@@ -614,30 +614,31 @@
             let [wakeHour, wakeMin] = wakeTime.split(':').map(Number);
             let currentTimeInMins = wakeHour * 60 + wakeMin;
 
-            // বাংলাদেশের গড় নামাজের আনুমানিক ওয়াক্তের সময়সীমা (মিনিটে রূপান্তরিত)
+            // বাংলাদেশ টাইম অনুযায়ী নামাজের ওয়াক্তের সীমা (মিনিটে)
             const fajrEnd = 6 * 60 + 15;        // সকাল ০৬:১৫
             const dhuhrStart = 12 * 60 + 15;    // দুপুর ১২:১৫
-            const dhuhrEnd = 15 * 60 + 45;      // বিকাল ০৩:৪৫
-            const asrEnd = 17 * 60 + 30;        // বিকাল ০৫:৩০
-            const maghribEnd = 19 * 60 + 0;     // সন্ধ্যা ০৭:০০
+            const dhuhrEnd = 15 * 60 + 45;      // বিকেল ০৩:৪৫
+            const asrStart = 16 * 60 + 15;      // বিকেল ০৪:১৫
+            const asrEnd = 17 * 60 + 30;        // বিকেল ০৫:৩০
+            const maghribStart = 18 * 60 + 0;   // সন্ধ্যা ০৬:০০
             const ishaStart = 19 * 60 + 30;     // রাত ০৭:৩০
 
-            // ১. ঘুম থেকে ওঠার পর তাৎক্ষণিক সময়ের প্রাথমিক ট্র্যাকিং স্ট্যাটাস
+            // ঘুম থেকে ওঠার পর প্রারম্ভিক স্ট্যাটাস নোট (BD Time Context)
             let wakeStatusNote = "";
             if (includePrayer) {
-                if (currentTimeInMins <= fajrLimitCheck(wakeTime)) {
-                    wakeStatusNote = "ঘুম থেকে ওঠা ও ফ্রেশ হয়ে ফজর নামাজের প্রস্তুতি";
-                } else if (currentTimeInMins > fajrLimitCheck(wakeTime) && currentTimeInMins < dhuhrStart) {
-                    wakeStatusNote = "সকালে ঘুম থেকে ওঠা ও ফ্রেশ হয়ে প্রথম সেশনের পড়া শুরু (ফজরের ওয়াক্ত অতিবাহিত হয়েছে)";
-                } else if (currentTimeInMins >= dhuhrStart && currentTimeInMins < dhuhrEnd) {
-                    wakeStatusNote = "দুপুরে ঘুম থেকে ওঠা ও ফ্রেশ হওয়া (যুহরের ওয়াক্ত কাছাকাছি / চলমান)";
-                } else if (currentTimeInMins >= dhuhrEnd && currentTimeInMins < asrEnd) {
-                    wakeStatusNote = "বিকালে ঘুম থেকে ওঠা ও ফ্রেশ হওয়া (আসরের ওয়াক্ত কাছাকাছি / চলমান)";
+                if (currentTimeInMins <= fajrEnd) {
+                    wakeStatusNote = "ঘুম থেকে ওঠা, ফ্রেশ হওয়া এবং ফজর নামাজের প্রস্তুতি (BD Time)";
+                } else if (currentTimeInMins > fajrEnd && currentTimeInMins < dhuhrStart) {
+                    wakeStatusNote = "সকালে ঘুম থেকে ওঠা ও ফ্রেশ হয়ে প্রথম সেশনের পড়া শুরু (ফজর ওয়াক্ত অতিবাহিত হয়েছে)";
+                } else if (currentTimeInMins >= dhuhrStart && currentTimeInMins < asrStart) {
+                    wakeStatusNote = "দুপুরে ঘুম থেকে ওঠা ও ফ্রেশ হওয়া (যুহর ওয়াক্তের কাছাকাছি / চলমান)";
+                } else if (currentTimeInMins >= asrStart && currentTimeInMins < maghribStart) {
+                    wakeStatusNote = "বিকেলে ঘুম থেকে ওঠা ও ফ্রেশ হওয়া (আসরের ওয়াক্তের কাছাকাছি / চলমান)";
                 } else {
-                    wakeStatusNote = "সন্ধ্যা/রাতে ঘুম থেকে ওঠা ও ফ্রেশ হয়ে দিনের পড়ার সেশন বিন্যাস";
+                    wakeStatusNote = "সন্ধ্যা/রাতে ঘুম থেকে ওঠা ও ফ্রেশ হয়ে নৈশকালীন স্টাডি বিন্যাস";
                 }
             } else {
-                wakeStatusNote = "ঘুম থেকে ওঠা, ফ্রেশ হওয়া এবং দিনের প্রারম্ভিক প্রস্তুতি";
+                wakeStatusNote = "ঘুম থেকে ওঠা, ফ্রেশ হওয়া এবং দিনের প্রারম্ভিক স্টাডি প্রস্তুতি";
             }
 
             routineData.push({
@@ -646,7 +647,7 @@
                 details: wakeStatusNote
             });
 
-            // ২. ডাইনামিক পড়ার সেশন ও অন্যান্য সময় বিন্যাস
+            // পড়া ও ওয়াক্তের ধারাবাহিক ফ্লো
             let currentCursorMins = currentTimeInMins + 30;
 
             // সেশন ১ (২ ঘণ্টা)
@@ -655,17 +656,17 @@
             routineData.push({
                 time: `${s1Start} - ${s1End}`,
                 category: "পড়াশোনা (সেশন ১)",
-                details: `<strong>${sub1}</strong> (কনসেপ্ট রিডিং ও মূল বই সমাধান)`
+                details: `<strong>${sub1}</strong> (মূল বই রিডিং ও কনসেপ্ট ক্লিয়ারিং)`
             });
             currentCursorMins += 120;
 
-            // খাবার/গোসলের বিরতি (৩০ মিনিট)
+            // নাস্তা/খাবার ও বিরতি (৩০ মিনিট)
             let b1Start = minsToTime(currentCursorMins);
             let b1End = minsToTime(currentCursorMins + 30);
             routineData.push({
                 time: `${b1Start} - ${b1End}`,
-                category: "নাস্তা/খাবার & রিফ্রেশ",
-                details: "খাবার গ্রহণ, হালকা রিফ্রেশমেন্ট ও বিশ্রাম"
+                category: "খাবার & রিফ্রেশমেন্ট",
+                details: "খাবার গ্রহণ, হালকা চা/নাস্তা ও সংক্ষিপ্ত বিশ্রাম"
             });
             currentCursorMins += 30;
 
@@ -675,12 +676,12 @@
             routineData.push({
                 time: `${s2Start} - ${s2End}`,
                 category: "পড়াশোনা (সেশন ২)",
-                details: `<strong>${sub2}</strong> (থিওরি পড়া ও গাণিতিক অনুশীলন)`
+                details: `<strong>${sub2}</strong> (থিওরি পড়া ও গাণিতিক সমস্যা সমাধান)`
             });
             currentCursorMins += 120;
 
-            // নামাজের ওয়াক্ত পর্যবেক্ষণ ও বিরতি যোগ (যদি ডাইনামিক ফ্লোতে সাপেক্ষে আসে)
-            if (includePrayer && currentCursorMins < dhuhrEnd && currentCursorMins >= dhuhrStart - 60) {
+            // যুহর ওয়াক্ত চেক
+            if (includePrayer && currentCursorMins < dhuhrEnd && currentCursorMins >= dhuhrStart - 30) {
                 routineData.push({
                     time: `দুপুর ১২:৩০ - ০১:৩০`,
                     category: "যুহর ও বিরতি",
@@ -705,11 +706,11 @@
                 details: `<strong>প্রশ্ন ব্যাংক সলভ & মডেল টেস্ট:</strong> GK, English Vocabulary বা ভার্সিটি প্রশ্ন ব্যাংক সমাধান (${target})`
             });
 
-            // নাইট টিউন অ্যান্ড শাটডাউন
+            // রাতের খাবার ও ঘুম
             routineData.push({
                 time: `রাত ১০:০০ - ১০:৩০`,
                 category: "রাতের খাবার ও এশা/বিশ্রাম",
-                details: includePrayer ? "এশা নামাজ আদায়, রাতের খাবার গ্রহণ ও মানসিক শান্তি" : "রাতের খাবার গ্রহণ ও রিলাক্সেশন"
+                details: includePrayer ? "এশা নামাজ আদায়, রাতের খাবার গ্রহণ ও মানসিক রিফ্রেশমেন্ট" : "রাতের খাবার গ্রহণ ও রিলাক্সেশন"
             });
 
             routineData.push({
@@ -718,7 +719,7 @@
                 details: "আজকের পড়ার প্রোগ্রেস রিভিউ, টু-ডু চেকলিস্ট তৈরি ও ঘুমাতে যাওয়ার প্রস্তুতি"
             });
 
-            // সারণীতে ডাটা রেন্ডারিং
+            // সারণীতে রেন্ডার
             routineData.forEach(slot => {
                 const tr = document.createElement("tr");
                 tr.innerHTML = `<td>${slot.time}</td><td><strong>${slot.category}</strong></td><td>${slot.details}</td>`;
@@ -728,10 +729,6 @@
             document.getElementById("routine-modal-content").style.display = "block";
             document.getElementById("todo-modal-content").style.display = "none";
             document.getElementById("routine-modal").style.display = "flex";
-        }
-
-        function fajrLimitCheck(timeStr) {
-            return 6 * 60 + 15; // সকাল ৬:১৫ মিনিট
         }
 
         function addMinutes(timeStr, mins) {
