@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>সাম্প্রতিক সমাচার - Varsity Vision</title>
+    
+    <!-- Noto Serif Bengali Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-main: linear-gradient(135deg, #090d16 0%, #171f33 50%, #090d16 100%);
+            --glass-card: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+            --glass-card-hover: linear-gradient(135deg, rgba(56, 189, 248, 0.15) 0%, rgba(99, 102, 241, 0.2) 100%);
+            --btn-gradient: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+            --section-grad-1: linear-gradient(180deg, #0f172a 0%, #1e1b4b 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Serif Bengali', serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-main);
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-bottom: 50px;
+            background-attachment: fixed;
+        }
+
+        /* 📌 ফিক্সড স্লিম স্টিকি নেভিগেশন কার্ড */
+        .sticky-header-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            padding: 10px 4%;
+            background: rgba(9, 13, 22, 0.9);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+        }
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+        .brand-subtitle {
+            font-size: 0.75rem;
+            color: #38bdf8;
+            font-weight: 600;
+        }
+
+        .home-btn-box {
+            background: var(--btn-gradient);
+            padding: 2px;
+            border-radius: 50px;
+            box-shadow: 0 0 12px rgba(37, 99, 235, 0.4);
+            transition: transform 0.2s;
+        }
+        .home-btn-box:hover {
+            transform: scale(1.05);
+        }
+        .btn-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 18px;
+            background: #0f172a;
+            color: #38bdf8;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .btn-home:hover {
+            background: transparent;
+            color: #ffffff;
+        }
+
+        /* 📌 সেকশন লেআউট */
+        main {
+            margin-top: 85px;
+            flex: 1;
+        }
+        .section-container {
+            padding: 50px 6%;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .bg-grad-1 { background: var(--section-grad-1); border-radius: 24px; margin-top: 20px;}
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            background: linear-gradient(90deg, #ffffff, #93c5fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        .section-desc {
+            text-align: center;
+            color: #cbd5e1;
+            margin-bottom: 40px;
+            font-size: 1rem;
+        }
+
+        /* স্ট্যাটিক কারেন্ট অ্যাফেয়ার্স নোটস (উপরে) */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .info-card {
+            background: var(--glass-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+            transition: all 0.3s ease;
+        }
+        .info-card:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 12px 40px rgba(56, 189, 248, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .info-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
+        }
+
+        .info-icon {
+            font-size: 1.8rem;
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.1);
+            padding: 12px;
+            border-radius: 14px;
+        }
+
+        .info-title {
+            font-size: 1.3rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .bullet-list li {
+            position: relative;
+            padding-left: 20px;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .bullet-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #06b6d4;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* 🔴 পেশাদার 'VISION লাইভ' কার্ড স্টাইলিং (নিচে রাখা হয়েছে) */
+        .vision-live-card {
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 58, 138, 0.4) 100%);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            border-left: 5px solid #ef4444;
+            border-radius: 22px;
+            padding: 30px;
+            margin-top: 10px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vision-live-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 18px;
+            margin-bottom: 20px;
+        }
+
+        .vision-live-title-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .vision-live-icon {
+            font-size: 1.5rem;
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.15);
+            padding: 12px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .vision-live-brand-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #ffffff, #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.5px;
+        }
+
+        .live-pulse-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+        }
+
+        .live-feed-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            max-height: 320px;
+            overflow-y: auto;
+            padding-right: 8px;
+        }
+
+        .live-feed-list::-webkit-scrollbar { width: 6px; }
+        .live-feed-list::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.02); border-radius: 10px; }
+        .live-feed-list::-webkit-scrollbar-thumb { background: rgba(56, 189, 248, 0.3); border-radius: 10px; }
+
+        .live-feed-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 14px 18px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            transition: all 0.3s ease;
+        }
+        .live-feed-item:hover {
+            background: rgba(56, 189, 248, 0.08);
+            border-color: rgba(56, 189, 248, 0.3);
+            transform: translateX(4px);
+        }
+        .live-feed-title {
+            color: #f1f5f9;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            line-height: 1.5;
+        }
+        .live-feed-title:hover { color: #38bdf8; }
+        
+        .live-feed-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+
+        footer {
+            background: #020617;
+            color: #94a3b8;
+            text-align: center;
+            padding: 25px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .section-container { padding: 30px 4%; }
+            .section-title { font-size: 1.7rem; }
+            main { margin-top: 75px; }
+            .vision-live-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 📌 ফিক্সড স্লিম নেভিগেশন কার্ড -->
+    <div class="sticky-header-container">
+        <div class="navbar-card">
+            <div class="brand">
+                <a href="gk.html" class="brand-name">varsity vision</a>
+                <span class="brand-subtitle">সাম্প্রতিক সমাচার</span>
+            </div>
+            <div class="home-btn-box">
+                <a href="gk.html" class="btn-home">
+                    <i class="fa-solid fa-arrow-left"></i> জিকে সেকশনে ফিরে যান
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- মূল কনটেন্ট -->
+    <main>
+        <div class="section-container bg-grad-1">
+            <h2 class="section-title">সাম্প্রতিক সমাচার: কারেন্ট অ্যাফেয়ার্স ও আপডেট</h2>
+            <p class="section-desc">বিশ্ববিদ্যালয় ভর্তি পরীক্ষার উপযোগী গুরুত্বপূর্ণ তথ্যপঞ্জি ও অটোমেটিক আপডেট</p>
+
+            <!-- 📚 ১. স্ট্যাটিক কারেন্ট অ্যাফেয়ার্স নোটস (উপরে) -->
+            <div class="info-grid">
+                <!-- সাম্প্রতিক বাংলাদেশ -->
+                <div class="info-card">
+                    <div class="info-header">
+                        <div class="info-icon"><i class="fa-solid fa-newspaper"></i></div>
+                        <h3 class="info-title">সাম্প্রতিক বাংলাদেশ</h3>
+                    </div>
+                    <ul class="bullet-list">
+                        <li><strong>মেগা প্রকল্প আপডেট:</strong> রূপপুর পারমাণবিক বিদ্যুৎ কেন্দ্র ও মেট্রোরেলের সম্প্রসারণ আপডেট।</li>
+                        <li><strong>অর্থনৈতিক সূচক:</strong> সর্বশেষ জিডিপি প্রবৃদ্ধি ও প্রাক্কলিত মাথাপিছু আয়।</li>
+                        <li><strong>জাতীয় অর্জন:</strong> স্বাধীনতা ও একুশে পদক সংক্রান্ত গুরুত্বপূর্ণ তথ্যবলি।</li>
+                        <li><strong>কৃষি ও জিআই পণ্য:</strong> সাম্প্রতিক ভৌগোলিক নির্দেশক (GI) সনদপ্রাপ্ত নতুন পণ্যসমূহ।</li>
+                    </ul>
+                </div>
+
+                <!-- সাম্প্রতিক আন্তর্জাতিক -->
+                <div class="info-card">
+                    <div class="info-header">
+                        <div class="info-icon"><i class="fa-solid fa-earth-americas"></i></div>
+                        <h3 class="info-title">সাম্প্রতিক আন্তর্জাতিক</h3>
+                    </div>
+                    <ul class="bullet-list">
+                        <li><strong>আন্তর্জাতিক ভূ-রাজনীতি:</strong> বিশ্বজুড়ে নতুন রাষ্ট্রপ্রধানদের নির্বাচন ও কূটনৈতিক পরিবর্তন।</li>
+                        <li><strong>গুরুত্বপূর্ণ সামিট:</strong> জলবায়ু সম্মেলন (COP) ও জি-২০ শীর্ষ বৈঠকের গৃহীত সিদ্ধান্ত।</li>
+                        <li><strong>আন্তর্জাতিক জোট:</strong> ব্রিকস (BRICS) ও আসিয়ানের নতুন উদ্যোগসমূহ।</li>
+                        <li><strong>ক্রীড়া ও সম্মাননা:</strong> আন্তর্জাতিক প্রধান টুর্নামেন্ট ও পুরষ্কার বিজয়ী ব্যক্তিগণ।</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 🔴 ২. স্ক্রোল করার পর পাওয়ার মতো 'VISION লাইভ' কার্ড (নিচে) -->
+            <div class="vision-live-card">
+                <div class="vision-live-header">
+                    <div class="vision-live-title-area">
+                        <div class="vision-live-icon">
+                            <i class="fa-solid fa-satellite-dish"></i>
+                        </div>
+                        <div>
+                            <h3 class="vision-live-brand-title">VISION লাইভ</h3>
+                            <span style="font-size: 0.75rem; color: #94a3b8;">রিয়েল-টাইম বিশ্ব ও দেশীয় সংবাদ আপডেট</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <span class="live-pulse-badge">
+                            <i class="fa-solid fa-circle fa-beat" style="font-size: 8px; color: #ef4444;"></i> LIVE FEED
+                        </span>
+                        <span style="font-size: 0.75rem; color: #38bdf8;" id="fetch-status">
+                            <i class="fa-solid fa-rotate fa-spin"></i> সিঙ্ক হচ্ছে...
+                        </span>
+                    </div>
+                </div>
+
+                <ul class="live-feed-list" id="auto-news-container">
+                    <!-- JavaScript দিয়ে ডায়নামিক ডাটা লোড হবে -->
+                </ul>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ফুটার -->
+    <footer>
+        <p>&copy; ২০২৬ Varsity Vision। সর্বস্বত্ব সংরক্ষিত।</p>
+        <p style="margin-top: 5px; font-size: 0.85rem; color: #64748b;">সম্পাদনা : জুনায়েদ তনয়</p>
+    </footer>
+
+    <!-- ⚡ অটোমেটিক নিউজ ফেচিং স্ক্রিপ্ট -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const newsContainer = document.getElementById("auto-news-container");
+            const statusText = document.getElementById("fetch-status");
+
+            const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=https://feeds.bbci.co.uk/bengali/rss.xml`;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'ok') {
+                        newsContainer.innerHTML = "";
+                        statusText.innerHTML = '<i class="fa-solid fa-check-circle" style="color: #22c55e;"></i> আপডেট সক্রিয়';
+                        
+                        // শীর্ষ ৮টি লাইভ খবর প্রদর্শন
+                        data.items.slice(0, 8).forEach(item => {
+                            const pubDate = new Date(item.pubDate).toLocaleDateString('bn-BD', {
+                                day: 'numeric',
+                                month: 'long',
+                                year: 'numeric'
+                            });
+
+                            const listItem = document.createElement("li");
+                            listItem.className = "live-feed-item";
+                            listItem.innerHTML = `
+                                <a href="${item.link}" target="_blank" class="live-feed-title">${item.title}</a>
+                                <div class="live-feed-meta">
+                                    <span><i class="fa-regular fa-clock"></i> ${pubDate}</span>
+                                    <span style="color: #38bdf8; font-weight: 600;"><i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem;"></i> বিস্তারিত</span>
+                                </div>
+                            `;
+                            newsContainer.appendChild(listItem);
+                        });
+                    } else {
+                        throw new Error("Data fetch error");
+                    }
+                })
+                .catch(error => {
+                    statusText.innerHTML = '<i class="fa-solid fa-shield-halved" style="color: #38bdf8;"></i> অফলাইন মোড';
+                    newsContainer.innerHTML = `
+                        <li class="live-feed-item">
+                            <span class="live-feed-title">জাতিসংঘের জলবায়ু সম্মেলন ও বৈশ্বিক অর্থনৈতিক ফোরামের সর্বশেষ এজেন্ডা।</span>
+                            <div class="live-feed-meta">
+                               <span><i class="fa-regular fa-clock"></i> সাম্প্রতিক আপডেট</span>
+                               <span style="color: #38bdf8;">VISION ভল্ট</span>
+                            </div>
+                        </li>
+                    `;
+                });
+        });
+    </script>
+</body>
+</html>
