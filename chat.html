@@ -133,14 +133,14 @@
 
     <script>
         // 👉 আপনার জেমিনি এপিআই কি (API Key) সরাসরি নিচের কোটেশনের ভেতরে বসিয়ে দিন
-        const API_KEY = "YOUR_GEMINI_API_KEY_HERE";
+        const API_KEY = "AQ.Ab8RN6InkwqDF4Kq8bJuAeu5w0sFugg0Nf5xEZ8BhiTNHYSf7w";
 
         async function sendMessage() {
             const inputField = document.getElementById('userInput');
             const messageText = inputField.value.trim();
             if (!messageText) return;
 
-            if (API_KEY === "YOUR_GEMINI_API_KEY_HERE" || !API_KEY) {
+            if (API_KEY === "AQ.Ab8RN6InkwqDF4Kq8bJuAeu5w0sFugg0Nf5xEZ8BhiTNHYSf7w" || !API_KEY) {
                 alert("দয়া করে কোডের ভেতরে আপনার জেমিনি এপিআই কি (API Key) বসান!");
                 return;
             }
