@@ -1,0 +1,15 @@
+{
+  "name": "Varsity Vision",
+  "short_name": "VarsityVision",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#002D62",
+  "icons": [
+    {
+      "src": "image_2.png",
+      "sizes": "192x192 512x512 1024x1024",
+      "type": "image/png"
+    }
+  ]
+}
