@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Routine & Time-Setter - Varsity Vision</title>
+    <title>Smart Dynamic Time-Setter Routine - Varsity Vision</title>
     
     <!-- Noto Serif Bengali Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -117,7 +117,7 @@
             font-size: 1rem;
         }
 
-        /* ট্যাব নেভিগেশন */
+        /* 📌 ট্যাব নেভিগেশন */
         .tab-container {
             display: flex;
             justify-content: center;
@@ -212,6 +212,21 @@
             box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
         }
 
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #cbd5e1;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .checkbox-label input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
         .btn-primary {
             display: inline-block;
             width: 100%;
@@ -234,7 +249,7 @@
             transform: translateY(-2px);
         }
 
-        /* পপ-আপ মডাল 스타일 */
+        /* 📌 পপ-আপ মডাল */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -360,7 +375,7 @@
         .list-item.completed span { text-decoration: line-through; color: #64748b; }
         .btn-icon { background: transparent; border: none; color: #f43f5e; cursor: pointer; font-size: 1.1rem; }
 
-        /* প্রিন্ট কনট্রোল */
+        /* 📌 প্রিন্ট কনট্রোল */
         @media print {
             body { background: #ffffff !important; color: #000000 !important; }
             .no-print, .sticky-header-container, footer, .tab-container { display: none !important; }
@@ -383,7 +398,7 @@
 </head>
 <body>
 
-    <!-- নেভিগেশন কার্ড -->
+    <!-- 📌 নেভিগেশন কার্ড -->
     <div class="sticky-header-container no-print">
         <div class="navbar-card">
             <div class="brand">
@@ -397,24 +412,31 @@
 
     <main>
         <section class="section-container bg-grad-1 no-print">
-            <h2 class="section-title">পূর্ণাঙ্গ ডেইলি লাইফ ও স্টাডি টাইম-সেটার</h2>
-            <p class="section-desc">ঘুম, ফজর ও অন্যান্য ওয়াক্তের নামাজ, গোসল, খাওয়া এবং অধ্যায়ভিত্তিক পড়ার সুবিন্যস্ত রুটিন</p>
+            <h2 class="section-title">স্মার্ট ডায়নামিক স্টাডি প্ল্যানার</h2>
+            <p class="section-desc">আপনার ঘুম থেকে ওঠার সময় অনুযায়ী সারদিনের পড়ার সুষম রুটিন স্বয়ংক্রিয়ভাবে তৈরি হয়ে যাবে</p>
 
             <div class="tab-container">
-                <button class="tab-btn active" onclick="switchTab('routine-tab')"><i class="fa-solid fa-clock"></i> দৈনিক রুটিন ও টাইম-সেটার</button>
-                <button class="tab-btn" onclick="switchTab('todo-tab')"><i class="fa-solid fa-list-check"></i> চেকলিস্ট টাইপ টু-ডু শিট</button>
+                <button class="tab-btn active" onclick="switchTab('routine-tab')"><i class="fa-solid fa-clock"></i> ডাইনামিক রুটিন মেকার</button>
+                <button class="tab-btn" onclick="switchTab('todo-tab')"><i class="fa-solid fa-list-check"></i> টু-ডু চেকলিস্ট শিট</button>
             </div>
 
             <div style="max-width: 800px; margin: 0 auto;">
                 
-                <!-- ট্যাব ১: রুটিন জেনারেটর -->
+                <!-- 📌 ট্যাব ১: রুটিন জেনারেটর -->
                 <div id="routine-tab" class="tab-content active">
                     <div class="card">
-                        <h3 class="card-title"><i class="fa-solid fa-sliders"></i> দৈনিক রুটিন কনফিগারেশন</h3>
+                        <h3 class="card-title"><i class="fa-solid fa-sliders"></i> সময় ও বিষয় ইনপুট দিন</h3>
                         
                         <div class="form-group">
-                            <label for="wake-time">ঘুম থেকে ওঠার সময়:</label>
-                            <input type="time" id="wake-time" class="custom-input" value="05:30">
+                            <label for="wake-time">ঘুম থেকে ওঠার নির্দিষ্ট সময় নির্বাচন করুন:</label>
+                            <input type="time" id="wake-time" class="custom-input" value="06:00">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="prayer-check" checked> 
+                                রুটিনে ওয়াক্তভিত্তিক নামাজ/প্রার্থনার বিরতি অটো-এড করতে চাই
+                            </label>
                         </div>
 
                         <div class="form-group">
@@ -441,19 +463,19 @@
                             <input type="text" id="sub3-input" class="custom-input" placeholder="যেমন: ইংরেজি বা সাধারণ জ্ঞান / বাংলা">
                         </div>
 
-                        <button class="btn-primary" onclick="generateRoutineModal()"><i class="fa-solid fa-calendar-check"></i> পূর্ণাঙ্গ রুটিন তৈরি করুন</button>
+                        <button class="btn-primary" onclick="generateRoutineModal()"><i class="fa-solid fa-calendar-check"></i> রুটিন জেনারেট করুন</button>
                     </div>
                 </div>
 
-                <!-- ট্যাব ২: টু-ডু শিট জেনারেটর -->
+                <!-- 📌 ট্যাব ২: টু-ডু শিট জেনারেটর -->
                 <div id="todo-tab" class="tab-content">
                     <div class="card">
                         <h3 class="card-title"><i class="fa-solid fa-clipboard-list"></i> টু-ডু চেকলিস্ট শিট ম্যানেজার</h3>
-                        <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 15px;">আপনার পড়ার ধাপ ও কাজের বিবরণ এখানে যোগ করুন। প্রিন্ট অপশনে তারিখসহ চেকলিস্ট শিট পেয়ে যাবেন।</p>
+                        <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 15px;">আজকের কাজের বিবরণ বা পড়ার ধাপগুলো যুক্ত করে এক ক্লিকেই চেকলিস্ট প্রিন্ট শিট তৈরি করুন।</p>
                         
                         <div class="form-group">
                             <div style="display: flex; gap: 10px;">
-                                <input type="text" id="todo-input" class="custom-input" placeholder="কাজের বিবরণ বা ধাপ লিখুন (যেমন: বায়োলজি ২য় পত্র রিভিশন)...">
+                                <input type="text" id="todo-input" class="custom-input" placeholder="কাজের বিবরণ বা নির্দিষ্ট ধাপ লিখুন...">
                                 <button class="btn-primary" style="width: auto; margin-top: 0;" onclick="addTodo()">যোগ করুন</button>
                             </div>
                         </div>
@@ -472,7 +494,7 @@
         </section>
     </main>
 
-    <!-- পপ-আপ মডাল -->
+    <!-- 📌 পপ-আপ মডাল -->
     <div id="routine-modal" class="modal-overlay" onclick="closeModal(event)">
         <div class="modal-container" onclick="event.stopPropagation()">
             <button class="modal-close-btn" onclick="closeModalDirect()">&times;</button>
@@ -480,12 +502,12 @@
             <!-- রুটিন প্রিন্ট কন্টেন্ট -->
             <div id="routine-modal-content">
                 <div style="text-align: center; border-bottom: 2px solid #0f172a; padding-bottom: 10px; margin-bottom: 15px;">
-                    <h2 style="color: #0f172a; font-size: 1.6rem;">Varsity Vision - Daily Master Routine</h2>
-                    <p style="color: #64748b; font-size: 0.9rem;">নামাজ, প্রার্থনা, ঘুম, খাওয়া ও পড়াশোনার সমন্বিত সময়সূচি</p>
+                    <h2 style="color: #0f172a; font-size: 1.6rem;">Varsity Vision - Smart Dynamic Routine</h2>
+                    <p style="color: #64748b; font-size: 0.9rem;">ঘুম থেকে ওঠার সময়ের ওপর ভিত্তি করে স্বয়ংক্রিয় সাজানো টাইম-টেবিল</p>
                 </div>
 
                 <div style="display: flex; justify-content: space-between; font-size: 0.9rem; color: #475569; font-weight: 600; margin-bottom: 15px;">
-                    <div>ঘুম থেকে ওঠা: <span id="out-wake" style="color: #020617;"></span></div>
+                    <div>ঘুম থেকে ওঠার সময়: <span id="out-wake" style="color: #020617;"></span></div>
                     <div>টার্গেট: <span id="modal-target" style="color: #020617;"></span></div>
                 </div>
 
@@ -510,7 +532,7 @@
 
                 <div class="print-footer-branding">
                     <div class="social-brand-item"><i class="fa-brands fa-facebook"></i> facebook.com/varsityvision</div>
-                    <div style="font-weight: 700; color: #0f172a;">Varsity Vision — Daily Routine</div>
+                    <div style="font-weight: 700; color: #0f172a;">Varsity Vision — Dynamic Routine Planner</div>
                     <div class="social-brand-item"><i class="fa-brands fa-youtube"></i> youtube.com/@varsityvision</div>
                 </div>
             </div>
@@ -519,7 +541,7 @@
             <div id="todo-modal-content" style="display: none;">
                 <div style="text-align: center; border-bottom: 2px solid #0f172a; padding-bottom: 10px; margin-bottom: 15px;">
                     <h2 style="color: #0f172a; font-size: 1.6rem;">Varsity Vision - Daily Task Checklist Sheet</h2>
-                    <p style="color: #64748b; font-size: 0.9rem;">শিক্ষার্থীর কর্মপরিকল্পনা ও ধাপসমূহ</p>
+                    <p style="color: #64748b; font-size: 0.9rem;">শিক্ষার্থীর কর্মপরিকল্পনা ও নির্দিষ্ট ধাপসমূহ</p>
                 </div>
 
                 <div style="display: flex; justify-content: space-between; font-size: 0.95rem; color: #475569; font-weight: 600; margin-bottom: 15px;">
@@ -557,13 +579,13 @@
         </div>
     </div>
 
-    <!-- ফুটার -->
+    <!-- 📌 ফুটার -->
     <footer class="no-print">
         <p>&copy; ২০২৬ Varsity Vision। সর্বস্বত্ব সংরক্ষিত।</p>
         <p style="margin-top: 5px; font-size: 0.85rem; color: #64748b;">সম্পাদনা : জুনায়েদ তনয়</p>
     </footer>
 
-    <!-- জাভাস্ক্রিপ্ট লজিক -->
+    <!-- 📌 জাভাস্ক্রিপ্ট লজিক -->
     <script>
         function switchTab(tabId) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -572,9 +594,10 @@
             document.getElementById(tabId).classList.add('active');
         }
 
-        // টাইম-সেটার রুটিন জেনারেটর (ঘুম, ফজর, নামাজ, গোসল, খাওয়া ও পড়াশোনা আলাদা কলামসহ)
+        // 📌 সম্পূর্ণ ডাইনামিক টাইম-টেবিল লজিক (যেকোনো সময়ের ওয়াক্ত অটো-ট্র্যাকিং সহ)
         function generateRoutineModal() {
-            const wakeTime = document.getElementById("wake-time").value || "05:30";
+            const wakeTime = document.getElementById("wake-time").value || "06:00";
+            const includePrayer = document.getElementById("prayer-check").checked;
             const target = document.getElementById("target-select").value;
             
             const sub1 = document.getElementById("sub1-input").value.trim() || "পদার্থবিজ্ঞান ১ম পত্র (ভেক্টর)";
@@ -587,22 +610,115 @@
             const tbody = document.getElementById("modal-table-body");
             tbody.innerHTML = "";
 
-            const routineData = [
-                { time: `${wakeTime} - ${addMinutes(wakeTime, 25)}`, category: "ওজু ও প্রস্তুতি", details: "ঘুম থেকে ওঠা, ফ্রেশ হওয়া এবং ফজর নামাজের প্রস্তুতি" },
-                { time: `${addMinutes(wakeTime, 25)} - ${addMinutes(wakeTime, 60)}`, category: "নামাজ / প্রার্থনা", details: "ফজর নামাজ আদায় এবং পবিত্র কোরআন বা তেলাওয়াত/প্রার্থনা" },
-                { time: `${addMinutes(wakeTime, 60)} - ${addMinutes(wakeTime, 180)}`, category: "পড়াশোনা (সেশন ১)", details: `<strong>${sub1}</strong> (সকালের শান্ত পরিবেশে মূল বই পড়া ও কনসেপ্ট ক্লিয়ারিং)` },
-                { time: `${addMinutes(wakeTime, 180)} - ${addMinutes(wakeTime, 210)}`, category: "নাস্তা ও গোসল", details: "সকালের পুষ্টিকর নাস্তা গ্রহণ ও গোসল সম্পন্ন করে রিফ্রেশ হওয়া" },
-                { time: `${addMinutes(wakeTime, 210)} - ${addMinutes(wakeTime, 330)}`, category: "পড়াশোনা (সেশন ২)", details: `<strong>${sub2}</strong> (থিওরি পড়া ও গাণিতিক সমস্যা সমাধান)` },
-                { time: `দুপুর ১২:৩০ - ০১:৩০`, category: "নামাজ ও বিরতি", details: "যুহর নামাজ আদায় ও বিশ্রাম" },
-                { time: `দুপুর ০১:৩০ - ০২:৩০`, category: "দুপুরের খাবার", details: "দুপুরের খাবার গ্রহণ ও সংক্ষিপ্ত বিশ্রাম (পাওয়ার ন্যাপ)" },
-                { time: `দুপুর ০২:৩০ - ০৪:৩০`, category: "পড়াশোনা (সেশন ৩)", details: `<strong>${sub3}</strong> (রিভিশন, শর্ট নোট তৈরি ও অনুশীলন)` },
-                { time: `বিকাল ০৪:৩০ - ০৫:৩০`, category: "নামাজ ও রিলাক্স", details: "আসর নামাজ আদায় + হালকা হাঁটাচলা ও মানসিক ক্লান্তি দূর করা" },
-                { time: `সন্ধ্যা ০৬:০০ - ০৭:৩০`, category: "নামাজ ও রিভিশন", details: "মাগরিব নামাজ আদায় + সারদিনের পড়ার মূল পয়েন্টগুলো দ্রুত চোখ বুলিয়ে নেওয়া" },
-                { time: `রাত ০৮:০০ - ১০:০০`, category: "অ্যাডমিশন ফোকাস", details: `<strong>প্রশ্ন ব্যাংক সলভ & মডেল টেস্ট:</strong> GK, English Vocabulary বা ভার্সিটি প্রশ্ন ব্যাংক সমাধান (${target})` },
-                { time: `রাত ১০:০০ - ১০:৩০`, category: "নামাজ ও খাবার", details: "এশা নামাজ আদায় ও রাতের খাবার গ্রহণ" },
-                { time: `রাত ১০:৩০ - ১১:০০`, category: "ঘুম প্রস্তুতি", details: "আগামীকালের টু-ডু লিস্ট তৈরি ও ঘুমের প্রস্তুতি (ঘুমানোর সুনির্দিষ্ট সময়)" }
-            ];
+            let routineData = [];
+            let [wakeHour, wakeMin] = wakeTime.split(':').map(Number);
+            let currentTimeInMins = wakeHour * 60 + wakeMin;
 
+            // বাংলাদেশের গড় নামাজের আনুমানিক ওয়াক্তের সময়সীমা (মিনিটে রূপান্তরিত)
+            const fajrEnd = 6 * 60 + 15;        // সকাল ০৬:১৫
+            const dhuhrStart = 12 * 60 + 15;    // দুপুর ১২:১৫
+            const dhuhrEnd = 15 * 60 + 45;      // বিকাল ০৩:৪৫
+            const asrEnd = 17 * 60 + 30;        // বিকাল ০৫:৩০
+            const maghribEnd = 19 * 60 + 0;     // সন্ধ্যা ০৭:০০
+            const ishaStart = 19 * 60 + 30;     // রাত ০৭:৩০
+
+            // ১. ঘুম থেকে ওঠার পর তাৎক্ষণিক সময়ের প্রাথমিক ট্র্যাকিং স্ট্যাটাস
+            let wakeStatusNote = "";
+            if (includePrayer) {
+                if (currentTimeInMins <= fajrLimitCheck(wakeTime)) {
+                    wakeStatusNote = "ঘুম থেকে ওঠা ও ফ্রেশ হয়ে ফজর নামাজের প্রস্তুতি";
+                } else if (currentTimeInMins > fajrLimitCheck(wakeTime) && currentTimeInMins < dhuhrStart) {
+                    wakeStatusNote = "সকালে ঘুম থেকে ওঠা ও ফ্রেশ হয়ে প্রথম সেশনের পড়া শুরু (ফজরের ওয়াক্ত অতিবাহিত হয়েছে)";
+                } else if (currentTimeInMins >= dhuhrStart && currentTimeInMins < dhuhrEnd) {
+                    wakeStatusNote = "দুপুরে ঘুম থেকে ওঠা ও ফ্রেশ হওয়া (যুহরের ওয়াক্ত কাছাকাছি / চলমান)";
+                } else if (currentTimeInMins >= dhuhrEnd && currentTimeInMins < asrEnd) {
+                    wakeStatusNote = "বিকালে ঘুম থেকে ওঠা ও ফ্রেশ হওয়া (আসরের ওয়াক্ত কাছাকাছি / চলমান)";
+                } else {
+                    wakeStatusNote = "সন্ধ্যা/রাতে ঘুম থেকে ওঠা ও ফ্রেশ হয়ে দিনের পড়ার সেশন বিন্যাস";
+                }
+            } else {
+                wakeStatusNote = "ঘুম থেকে ওঠা, ফ্রেশ হওয়া এবং দিনের প্রারম্ভিক প্রস্তুতি";
+            }
+
+            routineData.push({
+                time: `${wakeTime} - ${addMinutes(wakeTime, 30)}`,
+                category: "ঘুম থেকে ওঠা ও প্রস্তুতি",
+                details: wakeStatusNote
+            });
+
+            // ২. ডাইনামিক পড়ার সেশন ও অন্যান্য সময় বিন্যাস
+            let currentCursorMins = currentTimeInMins + 30;
+
+            // সেশন ১ (২ ঘণ্টা)
+            let s1Start = minsToTime(currentCursorMins);
+            let s1End = minsToTime(currentCursorMins + 120);
+            routineData.push({
+                time: `${s1Start} - ${s1End}`,
+                category: "পড়াশোনা (সেশন ১)",
+                details: `<strong>${sub1}</strong> (কনসেপ্ট রিডিং ও মূল বই সমাধান)`
+            });
+            currentCursorMins += 120;
+
+            // খাবার/গোসলের বিরতি (৩০ মিনিট)
+            let b1Start = minsToTime(currentCursorMins);
+            let b1End = minsToTime(currentCursorMins + 30);
+            routineData.push({
+                time: `${b1Start} - ${b1End}`,
+                category: "নাস্তা/খাবার & রিফ্রেশ",
+                details: "খাবার গ্রহণ, হালকা রিফ্রেশমেন্ট ও বিশ্রাম"
+            });
+            currentCursorMins += 30;
+
+            // সেশন ২ (২ ঘণ্টা)
+            let s2Start = minsToTime(currentCursorMins);
+            let s2End = minsToTime(currentCursorMins + 120);
+            routineData.push({
+                time: `${s2Start} - ${s2End}`,
+                category: "পড়াশোনা (সেশন ২)",
+                details: `<strong>${sub2}</strong> (থিওরি পড়া ও গাণিতিক অনুশীলন)`
+            });
+            currentCursorMins += 120;
+
+            // নামাজের ওয়াক্ত পর্যবেক্ষণ ও বিরতি যোগ (যদি ডাইনামিক ফ্লোতে সাপেক্ষে আসে)
+            if (includePrayer && currentCursorMins < dhuhrEnd && currentCursorMins >= dhuhrStart - 60) {
+                routineData.push({
+                    time: `দুপুর ১২:৩০ - ০১:৩০`,
+                    category: "যুহর ও বিরতি",
+                    details: "যুহর নামাজ আদায়, দুপুরের খাবার ও সংক্ষিপ্ত পাওয়ার ন্যাপ"
+                });
+            }
+
+            // সেশন ৩ (২ ঘণ্টা)
+            let s3Start = minsToTime(currentCursorMins);
+            let s3End = minsToTime(currentCursorMins + 120);
+            routineData.push({
+                time: `${s3Start} - ${s3End}`,
+                category: "পড়াশোনা (সেশন ৩)",
+                details: `<strong>${sub3}</strong> (রিভিশন, শর্ট নোট তৈরি ও অনুশীলন)`
+            });
+            currentCursorMins += 120;
+
+            // সান্ধ্যকালীন অ্যাডমিশন ফোকাস
+            routineData.push({
+                time: `রাত ০৮:০০ - ১০:০০`,
+                category: "অ্যাডমিশন ফোকাস",
+                details: `<strong>প্রশ্ন ব্যাংক সলভ & মডেল টেস্ট:</strong> GK, English Vocabulary বা ভার্সিটি প্রশ্ন ব্যাংক সমাধান (${target})`
+            });
+
+            // নাইট টিউন অ্যান্ড শাটডাউন
+            routineData.push({
+                time: `রাত ১০:০০ - ১০:৩০`,
+                category: "রাতের খাবার ও এশা/বিশ্রাম",
+                details: includePrayer ? "এশা নামাজ আদায়, রাতের খাবার গ্রহণ ও মানসিক শান্তি" : "রাতের খাবার গ্রহণ ও রিলাক্সেশন"
+            });
+
+            routineData.push({
+                time: `রাত ১০:৩০ - ১১:০০`,
+                category: "আগামীকালের প্ল্যান",
+                details: "আজকের পড়ার প্রোগ্রেস রিভিউ, টু-ডু চেকলিস্ট তৈরি ও ঘুমাতে যাওয়ার প্রস্তুতি"
+            });
+
+            // সারণীতে ডাটা রেন্ডারিং
             routineData.forEach(slot => {
                 const tr = document.createElement("tr");
                 tr.innerHTML = `<td>${slot.time}</td><td><strong>${slot.category}</strong></td><td>${slot.details}</td>`;
@@ -614,13 +730,23 @@
             document.getElementById("routine-modal").style.display = "flex";
         }
 
-        function addMinutes(timeStr, mins) {
-            let [h, m] = timeStr.split(':').map(Number);
-            let date = new Date();
-            date.setHours(h, m + mins);
-            return String(date.getHours()).padStart(2, '0') + ':' + String(date.getMinutes()).padStart(2, '0');
+        function fajrLimitCheck(timeStr) {
+            return 6 * 60 + 15; // সকাল ৬:১৫ মিনিট
         }
 
+        function addMinutes(timeStr, mins) {
+            let [h, m] = timeStr.split(':').map(Number);
+            let total = h * 60 + m + mins;
+            return minsToTime(total);
+        }
+
+        function minsToTime(totalMins) {
+            let hours = Math.floor(totalMins / 60) % 24;
+            let minutes = totalMins % 60;
+            return String(hours).padStart(2, '0') + ':' + String(minutes).padStart(2, '0');
+        }
+
+        // 📌 টু-ডু প্রিন্ট শিট জেনারেটর
         function openTodoPrintModal() {
             const tbody = document.getElementById("todo-print-tbody");
             tbody.innerHTML = "";
@@ -676,7 +802,7 @@
             window.print();
         }
 
-        // টু-ডু ম্যানেজমেন্ট
+        // টু-ডু লিস্ট লোকাল স্টোরেজ
         let todos = JSON.parse(localStorage.getItem("vv_todos_sheet")) || [];
 
         function renderTodos() {
