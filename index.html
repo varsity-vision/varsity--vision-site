@@ -1089,7 +1089,7 @@
     </footer>
 
     <!-- জাভাস্ক্রিপ্ট লজিক ও সার্ভিস ওয়ার্কার রেজিস্ট্রেশন -->
-    <script>
+  <script>
         // স্লাইডার নেভিগেশন লজিক
         function slideContainer(sliderId, direction) {
             const slider = document.getElementById(sliderId);
@@ -1154,49 +1154,53 @@
             window.location.href = 'payment.html';
         }
 
-        // 📌 PWA সার্ভিস ওয়ার্কার রেজিস্ট্রেশন
+        // 📌 সার্ভিস ওয়ার্কার রেজিস্ট্রেশন (গিটহাব সাব-ফোল্ডারের জন্য আপডেটেড)
         if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js').then(function(registration) {
-            console.log('ServiceWorker registration successful');
-        }).catch(function(err) {
-            console.log('ServiceWorker registration failed: ', err);
-        });
-    });
-}
-
-        // 📌 PWA কাস্টম ইনস্টল লজিক (টেস্ট ভার্সন)
-let deferredPrompt;
-const installBtn = document.getElementById('pwa-install-btn');
-
-window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-});
-
-if (installBtn) {
-    // সাময়িকভাবে চেক করার জন্য বাটনটি সবসময় শো করিয়ে রাখতে পারেন
-    installBtn.style.display = 'inline-flex'; 
-
-    installBtn.addEventListener('click', async () => {
-        if (deferredPrompt) {
-            deferredPrompt.prompt();
-            const { outcome } = await deferredPrompt.userChoice;
-            if (outcome === 'accepted') {
-                console.log('User accepted the install prompt');
-            }
-            deferredPrompt = null;
-            installBtn.style.display = 'none';
-        } else {
-            alert('আপনার ব্রাউজার বা ডিভাইস থেকে সরাসরি মেনু (3-dot) এ গিয়ে "Install app" বা "Add to Home Screen" সিলেক্ট করুন।');
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('sw.js').then(function(registration) {
+                    console.log('ServiceWorker registration successful');
+                }, function(err) {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
         }
-    });
-}
 
-window.addEventListener('appinstalled', () => {
-    if (installBtn) installBtn.style.display = 'none';
-    console.log('PWA app installed successfully');
-});;
+        // 📌 সরাসরি কাজ করার মতো PWA ইনস্টল স্ক্রিপ্ট
+        let deferredPrompt;
+        const installBtn = document.getElementById('pwa-install-btn');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            // ব্রাউজার যোগ্য মনে করলে বাটনটি সাথে সাথে দৃশ্যমান হবে
+            if (installBtn) {
+                installBtn.style.display = 'inline-flex';
+            }
+        });
+
+        if (installBtn) {
+            // যদি ব্রাউজার স্বয়ংক্রিয়ভাবে ইভেন্ট না দেয়, তবুও যেন ইউজার ক্লিক করলে গাইড বা প্রম্পট পায়
+            installBtn.style.display = 'inline-flex'; 
+
+            installBtn.addEventListener('click', async () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    if (outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                    }
+                    deferredPrompt = null;
+                    installBtn.style.display = 'none';
+                } else {
+                    alert('আপনার ব্রাউজার থেকে সরাসরি মেনু (3-dot) এ গিয়ে "Install app" বা "Add to Home screen" সিলেক্ট করুন।');
+                }
+            });
+        }
+
+        window.addEventListener('appinstalled', () => {
+            if (installBtn) installBtn.style.display = 'none';
+            console.log('PWA app installed successfully');
+        });
     </script>
 </body>
 </html>
