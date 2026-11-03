@@ -1156,14 +1156,14 @@
 
         // 📌 PWA সার্ভিস ওয়ার্কার রেজিস্ট্রেশন
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/sw.js').then(function(registration) {
-                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                }, function(err) {
-                    console.log('ServiceWorker registration failed: ', err);
-                });
-            });
-        }
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('sw.js').then(function(registration) {
+            console.log('ServiceWorker registration successful');
+        }).catch(function(err) {
+            console.log('ServiceWorker registration failed: ', err);
+        });
+    });
+}
 
         // 📌 PWA কাস্টম ইনস্টল লজিক (টেস্ট ভার্সন)
 let deferredPrompt;
