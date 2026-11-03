@@ -111,6 +111,34 @@
             color: #38bdf8;
         }
 
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* ইনস্টল বাটন স্টাইল */
+        .btn-install {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 7px 16px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.88rem;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .btn-install:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 18px rgba(16, 185, 129, 0.6);
+        }
+
         /* এনরোল বাটন */
         .enroll-btn-box {
             background: var(--btn-gradient);
@@ -568,7 +596,11 @@
                 display: none;
             }
             .btn-enroll {
-                padding: 6px 14px;
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+            .btn-install {
+                padding: 6px 12px;
                 font-size: 0.8rem;
             }
             main {
@@ -599,8 +631,14 @@
                 <li><a href="#courses-section">কোর্সসমূহ</a></li>
                 <li><a href="#enrollment-section">এনরোলমেন্ট</a></li>
             </ul>
-            <div class="enroll-btn-box">
-                <a href="#enrollment-section" class="btn-enroll">এনরোল করুন</a>
+            <div class="header-actions">
+                <!-- 📌 নতুন অ্যাপ ইনস্টল বাটন -->
+                <button id="pwa-install-btn" class="btn-install" style="display: none;">
+                    📲 ইনস্টল
+                </button>
+                <div class="enroll-btn-box">
+                    <a href="#enrollment-section" class="btn-enroll">এনরোল করুন</a>
+                </div>
             </div>
         </div>
     </div>
@@ -689,7 +727,7 @@
                             </div>
                             <h3 style="color: #38bdf8; font-size: 1.3rem;">রাজশাহী বিশ্ববিদ্যালয় (RU)</h3>
                             <p style="color: #cbd5e1; margin-top: 8px; font-size: 0.92rem; line-height: 1.6;">
-                                <strong>ইতিহাস ও পরিচিতি:</strong> ১৯৫৩ সালে প্রতিষ্ঠিত রাজশাহী বিশ্ববিদ্যালয় উত্তরবঙ্গের সর্ববৃহৎ ও দৃষ্টিনন্দন প্যারিস রোড খ্যাত বিশাল সবুজ প্রাকৃতিক ক্যানভাসের ঐতিহ্যবাহী বিদ্যাপীঠ।
+                                <strong>ইতিহাস ও পরিচিতি:</strong> ১৯৫৩ সালে প্রতিষ্ঠিত রাজশাহী বিশ্ববিদ্যালয় উত্তরবঙ্গের সর্ববৃহৎ ও দৃষ্টিনন্দন প্যারিস রোড খ্যাত বিশাল সবুজ প্রাকৃতিক ক্যানভাসে বিস্তৃত ঐতিহ্যবাহী বিদ্যাপীঠ।
                             </p>
                         </div>
                         <div class="card-btn-group">
@@ -1126,6 +1164,39 @@
                 });
             });
         }
+
+        // 📌 PWA কাস্টম ইনস্টল লজিক
+        let deferredPrompt;
+        const installBtn = document.getElementById('pwa-install-btn');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // ব্রাউজারের ডিফল্ট পপআপ বন্ধ করা
+            e.preventDefault();
+            deferredPrompt = e;
+            // ইনস্টল বাটন ভিজিবল করা
+            if (installBtn) {
+                installBtn.style.display = 'inline-flex';
+            }
+        });
+
+        if (installBtn) {
+            installBtn.addEventListener('click', async () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    if (outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                    }
+                    deferredPrompt = null;
+                    installBtn.style.display = 'none';
+                }
+            });
+        }
+
+        window.addEventListener('appinstalled', () => {
+            if (installBtn) installBtn.style.display = 'none';
+            console.log('PWA app installed successfully');
+        });
     </script>
 </body>
 </html>
