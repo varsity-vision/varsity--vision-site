@@ -1,5 +1,5 @@
 // একটি ক্যাশ নাম দিন
-const CACHE_NAME = 'varsity-vision-v1';
+const CACHE_NAME = 'varsity-vision-v2;
 
 // ক্যাশ করার জন্য ফাইলগুলোর তালিকা
 const assetsToCache = [
