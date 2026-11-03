@@ -632,8 +632,8 @@
                 <li><a href="#enrollment-section">এনরোলমেন্ট</a></li>
             </ul>
             <div class="header-actions">
-                <!-- 📌 নতুন অ্যাপ ইনস্টল বাটন -->
-                <button id="pwa-install-btn" class="btn-install" style="display: none;">
+                <!-- 📌 ইনস্টল বাটন -->
+                <button id="pwa-install-btn" class="btn-install">
                     📲 ইনস্টল
                 </button>
                 <div class="enroll-btn-box">
@@ -645,7 +645,7 @@
 
     <!-- মূল কনটেন্ট -->
     <main>
-        <!-- 📌 নতুন ভিশন এআই চ্যাটবক্স সেকশন (নেভিগেশনের নিচে) -->
+        <!-- 📌 নতুন ভিশন এআই চ্যাটবক্স সেকশন -->
         <div class="vision-ai-container">
             <a href="chat.html" class="vision-ai-box">
                 <div class="vision-ai-info">
@@ -727,7 +727,7 @@
                             </div>
                             <h3 style="color: #38bdf8; font-size: 1.3rem;">রাজশাহী বিশ্ববিদ্যালয় (RU)</h3>
                             <p style="color: #cbd5e1; margin-top: 8px; font-size: 0.92rem; line-height: 1.6;">
-                                <strong>ইতিহাস ও পরিচিতি:</strong> ১৯৫৩ সালে প্রতিষ্ঠিত রাজশাহী বিশ্ববিদ্যালয় উত্তরবঙ্গের সর্ববৃহৎ ও দৃষ্টিনন্দন প্যারিস রোড খ্যাত বিশাল সবুজ প্রাকৃতিক ক্যানভাসে বিস্তৃত ঐতিহ্যবাহী বিদ্যাপীঠ।
+                                <strong>ইতিহাস ও পরিচিতি:</strong> ১৯৫৩ সালে প্রতিষ্ঠিত রাজশাহী বিশ্ববিদ্যালয় উত্তরবঙ্গের সর্ববৃহৎ ও দৃষ্টিনন্দন প্যারিস রোড খ্যাت বিশাল সবুজ প্রাকৃতিক ক্যানভাসে বিস্তৃত ঐতিহ্যবাহী বিদ্যাপীঠ।
                             </p>
                         </div>
                         <div class="card-btn-group">
@@ -919,7 +919,7 @@
             </div>
         </section>
 
-        <!-- 📌 আমাদের প্রিমিয়াম কোর্সসমূহ (ঢাকা বিশ্ববিদ্যালয় রিটেন সামনে রেখে স্লাইডার কার্ড) -->
+        <!-- 📌 আমাদের প্রিমিয়াম কোর্সসমূহ -->
         <section id="courses-section" class="section-container bg-grad-1">
             <h2 class="section-title">আমাদের প্রিমিয়াম কোর্সসমূহ</h2>
             <p class="section-desc">ডানে-বামে স্লাইড করে আমাদের স্পেশাল ব্যাচগুলো দেখুন</p>
@@ -927,7 +927,7 @@
             <div class="slider-wrapper">
                 <div class="slider-container" id="courseSlider">
                     
-                    <!-- ১. ঢাকা বিশ্ববিদ্যালয় রিটেন স্পেশাল (সবার সামনে প্রদর্শিত হবে) -->
+                    <!-- ১. ঢাকা বিশ্ববিদ্যালয় রিটেন স্পেশাল -->
                     <div class="slider-card">
                         <div>
                             <div class="card-img-box">
@@ -1072,7 +1072,21 @@
         </div>
     </div>
 
-    <!-- 📌 ২. ফিক্সড নিউজটিকার -->
+    <!-- 📌 ইনস্টল গাইড দেখানোর জন্য পপ-আপ মডাল -->
+    <div id="install-guide-modal" class="modal-overlay" onclick="closeInstallModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()" style="text-align: center;">
+            <button class="modal-close-btn" onclick="closeInstallModalDirect()">&times;</button>
+            <h3 class="modal-title" style="color: #10b981;">📱 অ্যাপ ইনস্টল করার নিয়ম</h3>
+            <div class="modal-body" style="text-align: left; margin-top: 15px;">
+                <p style="margin-bottom: 10px;">১. আপনার ব্রাউজারের ওপরের ডানকোণায় থাকা <b>( ⋮ ) থ্রি-ডট মেনুতে</b> ক্লিক করুন।</p>
+                <p style="margin-bottom: 10px;">২. মেনু থেকে <b>"Install app"</b> অথবা <b>"Add to Home screen"</b> অপশনটি খুঁজে বের করুন এবং তাতে ক্লিক করুন।</p>
+                <p style="margin-bottom: 15px;">৩. ব্যাс! আপনার হোম স্ক্রিনে অ্যাপের শর্টকাট বা অ্যাপ ইনস্টল হয়ে যাবে।</p>
+            </div>
+            <button onclick="closeInstallModalDirect()" class="btn-primary" style="width: 100%; background: linear-gradient(135deg, #10b981, #059669);">বুঝেছি</button>
+        </div>
+    </div>
+
+    <!-- 📌 ফিক্সড নিউজটিকার -->
     <div class="ticker-wrapper">
         <div class="ticker-title">ভিশন আপডেট</div>
         <div class="ticker-content">
@@ -1088,8 +1102,8 @@
         <p style="margin-top: 5px; font-size: 0.85rem; color: #64748b;">সম্পাদনা : জুনায়েদ তনয়</p>
     </footer>
 
-    <!-- জাভাস্ক্রিপ্ট লজিক ও সার্ভিস ওয়ার্কার রেজিস্ট্রেশন -->
-  <script>
+    <!-- জাভাস্ক্রিপ্ট লজিক -->
+    <script>
         // স্লাইডার নেভিগেশন লজিক
         function slideContainer(sliderId, direction) {
             const slider = document.getElementById(sliderId);
@@ -1115,6 +1129,30 @@
         function closeModal(event) {
             if (event.target.id === 'eligibility-modal') {
                 document.getElementById('eligibility-modal').style.display = 'none';
+            }
+        }
+
+        // ইনস্টল গাইড মডাল কন্ট্রোল
+        const installBtn = document.getElementById('pwa-install-btn');
+        const installModal = document.getElementById('install-guide-modal');
+
+        if (installBtn) {
+            installBtn.addEventListener('click', () => {
+                if (installModal) {
+                    installModal.style.display = 'flex';
+                }
+            });
+        }
+
+        function closeInstallModalDirect() {
+            if (installModal) {
+                installModal.style.display = 'none';
+            }
+        }
+
+        function closeInstallModal(event) {
+            if (event.target.id === 'install-guide-modal') {
+                installModal.style.display = 'none';
             }
         }
 
@@ -1154,53 +1192,14 @@
             window.location.href = 'payment.html';
         }
 
-        // 📌 সার্ভিস ওয়ার্কার রেজিস্ট্রেশন (গিটহাব সাব-ফোল্ডারের জন্য আপডেটেড)
+        // সার্ভিস ওয়ার্কার রেজিস্টার
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-                navigator.serviceWorker.register('sw.js').then(function(registration) {
-                    console.log('ServiceWorker registration successful');
-                }, function(err) {
+                navigator.serviceWorker.register('sw.js').catch(function(err) {
                     console.log('ServiceWorker registration failed: ', err);
                 });
             });
         }
-
-        // 📌 সরাসরি কাজ করার মতো PWA ইনস্টল স্ক্রিপ্ট
-        let deferredPrompt;
-        const installBtn = document.getElementById('pwa-install-btn');
-
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            // ব্রাউজার যোগ্য মনে করলে বাটনটি সাথে সাথে দৃশ্যমান হবে
-            if (installBtn) {
-                installBtn.style.display = 'inline-flex';
-            }
-        });
-
-        if (installBtn) {
-            // যদি ব্রাউজার স্বয়ংক্রিয়ভাবে ইভেন্ট না দেয়, তবুও যেন ইউজার ক্লিক করলে গাইড বা প্রম্পট পায়
-            installBtn.style.display = 'inline-flex'; 
-
-            installBtn.addEventListener('click', async () => {
-                if (deferredPrompt) {
-                    deferredPrompt.prompt();
-                    const { outcome } = await deferredPrompt.userChoice;
-                    if (outcome === 'accepted') {
-                        console.log('User accepted the install prompt');
-                    }
-                    deferredPrompt = null;
-                    installBtn.style.display = 'none';
-                } else {
-                    alert('আপনার ব্রাউজার থেকে সরাসরি মেনু (3-dot) এ গিয়ে "Install app" বা "Add to Home screen" সিলেক্ট করুন।');
-                }
-            });
-        }
-
-        window.addEventListener('appinstalled', () => {
-            if (installBtn) installBtn.style.display = 'none';
-            console.log('PWA app installed successfully');
-        });
     </script>
 </body>
 </html>
