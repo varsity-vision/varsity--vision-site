@@ -1165,38 +1165,38 @@
             });
         }
 
-        // 📌 PWA কাস্টম ইনস্টল লজিক
-        let deferredPrompt;
-        const installBtn = document.getElementById('pwa-install-btn');
+        // 📌 PWA কাস্টম ইনস্টল লজিক (টেস্ট ভার্সন)
+let deferredPrompt;
+const installBtn = document.getElementById('pwa-install-btn');
 
-        window.addEventListener('beforeinstallprompt', (e) => {
-            // ব্রাউজারের ডিফল্ট পপআপ বন্ধ করা
-            e.preventDefault();
-            deferredPrompt = e;
-            // ইনস্টল বাটন ভিজিবল করা
-            if (installBtn) {
-                installBtn.style.display = 'inline-flex';
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+});
+
+if (installBtn) {
+    // সাময়িকভাবে চেক করার জন্য বাটনটি সবসময় শো করিয়ে রাখতে পারেন
+    installBtn.style.display = 'inline-flex'; 
+
+    installBtn.addEventListener('click', async () => {
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            if (outcome === 'accepted') {
+                console.log('User accepted the install prompt');
             }
-        });
-
-        if (installBtn) {
-            installBtn.addEventListener('click', async () => {
-                if (deferredPrompt) {
-                    deferredPrompt.prompt();
-                    const { outcome } = await deferredPrompt.userChoice;
-                    if (outcome === 'accepted') {
-                        console.log('User accepted the install prompt');
-                    }
-                    deferredPrompt = null;
-                    installBtn.style.display = 'none';
-                }
-            });
+            deferredPrompt = null;
+            installBtn.style.display = 'none';
+        } else {
+            alert('আপনার ব্রাউজার বা ডিভাইস থেকে সরাসরি মেনু (3-dot) এ গিয়ে "Install app" বা "Add to Home Screen" সিলেক্ট করুন।');
         }
+    });
+}
 
-        window.addEventListener('appinstalled', () => {
-            if (installBtn) installBtn.style.display = 'none';
-            console.log('PWA app installed successfully');
-        });
+window.addEventListener('appinstalled', () => {
+    if (installBtn) installBtn.style.display = 'none';
+    console.log('PWA app installed successfully');
+});;
     </script>
 </body>
 </html>
